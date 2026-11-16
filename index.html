@@ -44,7 +44,7 @@
   button.text { background: none; color: var(--muted); padding: 6px 8px; }
   button.text.danger, button.danger { color: var(--danger); }
   input[type=text], input[type=search], input[type=date], input[type=number] {
-    background: var(--field); border: 1px solid transparent; border-radius: 14px; padding: 10px 14px; min-width: 0; width: 100%; font-size: 16px; }
+    background: var(--field); border: 1px solid transparent; border-radius: 14px; padding: 10px 14px; min-width: 0; width: 100%; height: 46px; font-size: 16px; }
   .num { font-variant-numeric: tabular-nums; }
 
   /* ヘッダー + タブ */
@@ -271,7 +271,6 @@ function render() {
   document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.view === view));
   for (const v of VIEWS) $('#v-' + v).hidden = v !== view;
   if (views[view]) views[view]($('#v-' + view));
-  else $('#v-' + view).innerHTML = '<div class="empty"><b>準備中</b>この画面はこれから作ります</div>';
 }
 acts.tab = el => { view = el.dataset.view; try { localStorage.setItem(VIEW_KEY, view); } catch (e) {} render(); window.scrollTo(0, 0); };
 
@@ -605,6 +604,74 @@ acts['w-pick'] = el => { wDate = el.dataset.d; render(); window.scrollTo({ top: 
 acts['w-del'] = () => { snap(); delete state.weights[wDate]; save(); render(); toast('体重の記録を削除しました', true); };
 let resizeTimer = 0;
 window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (view === 'weight') render(); }, 150); });
+
+/* ---------- 設定 ---------- */
+views.settings = el => {
+  const st = state.settings, days = Object.keys(state.meals).length, ws = Object.keys(state.weights).length;
+  el.innerHTML = `
+    <form class="card pad stack" id="sForm" autocomplete="off">
+      <div class="two">
+        ${numField('1日の目標カロリー（kcal）', 'kcal', st.kcal, true)}
+        ${numField('目標体重（kg・任意）', 'weightGoal', st.weightGoal ?? '')}
+      </div>
+      <div class="f"><span>PFCの目標比率（%・合計100）</span>
+        <div class="three">${numField('たんぱく質 P', 'p', st.pfc.p, true)}${numField('脂質 F', 'f', st.pfc.f, true)}${numField('炭水化物 C', 'c', st.pfc.c, true)}</div>
+      </div>
+      <p class="note num" id="pfcNote" aria-live="polite"></p>
+      <button class="primary wide">保存する</button>
+    </form>
+    <p class="sec">バックアップ</p>
+    <div class="card pad stack">
+      <p class="note">記録はこの端末のブラウザの中だけに保存されます（食事 ${days}日分・体重 ${ws}件・マイ食品 ${state.custom.length}件）。機種変更やブラウザのデータ削除に備えて、ときどき書き出しておくと安心です。</p>
+      <div class="two"><button type="button" data-act="export">書き出す</button><button type="button" data-act="import">読み込む</button></div>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+    <p class="sec">食品データについて</p>
+    <div class="card pad"><p class="note">同梱の食品データは、文部科学省「${esc(DB ? DB.source : '日本食品標準成分表2020年版（八訂）')}」の可食部100gあたりの値です${DB ? `（${DB.list.length.toLocaleString('ja-JP')}品目）` : ''}。炭水化物は差引き法による値を使っています。「1個」「茶碗1杯」などの重さは目安です。</p></div>`;
+  updatePfcNote();
+};
+function readSettings() {
+  const f = $('#sForm').elements, v = n => numOr(f[n].value, NaN);
+  return { kcal: v('kcal'), weightGoal: numOr(f.weightGoal.value, null), pfc: { p: v('p'), f: v('f'), c: v('c') } };
+}
+function updatePfcNote() {
+  const s = readSettings(), sum = s.pfc.p + s.pfc.f + s.pfc.c, note = $('#pfcNote');
+  const okSum = Math.abs(sum - 100) < 0.01, okK = s.kcal > 0;
+  note.classList.toggle('bad', !okSum);
+  note.textContent = !Number.isFinite(sum) ? '3つの比率を入力してください'
+    : !okSum ? `合計が ${fmt(sum)}% です。100% になるようにしてください`
+    : okK ? `合計 100%：たんぱく質 ${Math.round(s.kcal * s.pfc.p / 400)}g・脂質 ${Math.round(s.kcal * s.pfc.f / 900)}g・炭水化物 ${Math.round(s.kcal * s.pfc.c / 400)}g` : '合計 100%';
+  return okSum;
+}
+document.addEventListener('input', e => { if (e.target.closest('#sForm')) updatePfcNote(); });
+document.addEventListener('submit', e => {
+  if (e.target.id !== 'sForm') return;
+  e.preventDefault();
+  const s = readSettings();
+  if (!(s.kcal >= 500 && s.kcal <= 10000)) { toast('目標カロリーは500〜10000kcalで入力してください'); return; }
+  if (s.weightGoal != null && !(s.weightGoal >= 20 && s.weightGoal <= 300)) { toast('目標体重は20〜300kgで入力してください'); return; }
+  if ([s.pfc.p, s.pfc.f, s.pfc.c].some(n => !(n >= 0)) || !updatePfcNote()) { toast('PFCの比率は合計100%にしてください'); return; }
+  state.settings = { kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc };
+  save(); render(); toast('設定を保存しました');
+});
+acts.export = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: 'application/json' }));
+  a.download = `meshi-log-${dayStr()}.json`; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+acts.import = () => $('#importFile').click();
+document.addEventListener('change', async e => {
+  if (e.target.id !== 'importFile' || !e.target.files[0]) return;
+  try {
+    const data = JSON.parse(await e.target.files[0].text());
+    if (!data || typeof data !== 'object' || !data.settings || !data.meals) throw new Error('format');
+    const next = normalize(data);
+    if (!confirm(`この端末の記録を、ファイルの内容（食事 ${Object.keys(next.meals).length}日分・体重 ${Object.keys(next.weights).length}件）で置き換えます。よろしいですか？`)) return;
+    snap(); state = next; save(); render(); toast('バックアップを読み込みました', true);
+  } catch (err) { toast('このファイルは読み込めませんでした'); }
+  finally { e.target.value = ''; }
+});
 
 /* ---------- 起動 ---------- */
 render();
