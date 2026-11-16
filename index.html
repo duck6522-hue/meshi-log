@@ -266,7 +266,9 @@ async function loadDB() {
     }
     for (const cm of j.common) {
       const fd = map.get(cm.id); if (!fd) continue;
-      fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + fd.official); fd.alts = cm.k.split(/\s+/).map(norm);
+      // 「ぎゅうにく」「ぶたにく」「とりにく」でも肉の部位が出るようにする
+      const meat = /^(和牛|輸入牛|牛)/.test(cm.n) ? ' ぎゅうにく 牛肉' : /^豚/.test(cm.n) ? ' ぶたにく 豚肉' : /^鶏/.test(cm.n) ? ' とりにく 鶏肉 けいにく' : '';
+      fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + meat + fd.official); fd.alts = cm.k.split(/\s+/).map(norm);
     }
     // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
     const extra = (j.extra || []).map(x => ({ id: x.id, name: x.n, official: x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
