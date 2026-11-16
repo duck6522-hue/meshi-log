@@ -149,6 +149,21 @@
   .tip { position: absolute; top: 0; pointer-events: none; background: #23262f; color: #fff; border-radius: 10px; padding: 4px 10px; font-size: 12px; white-space: nowrap; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
   .tip b { font-size: 14px; margin-left: 6px; }
 
+  textarea { background: var(--field); border: 1px solid transparent; border-radius: 14px; padding: 10px 14px; width: 100%; font-size: 15px; line-height: 1.6; resize: vertical; }
+  textarea:focus-visible { outline: 2px solid var(--p2); outline-offset: 2px; }
+  .sug { display: flex; gap: 8px; overflow-x: auto; padding: 8px 2px 2px; scrollbar-width: none; }
+  .sug::-webkit-scrollbar { display: none; }
+  .chip { flex: none; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 6px 12px; font-size: 13px; white-space: nowrap; min-height: 36px; }
+  .chip.mem { border-color: color-mix(in srgb, var(--p2) 45%, var(--line)); background: var(--tint); color: var(--pt); }
+  .chip small { font-weight: 400; margin-left: 4px; opacity: .85; }
+  .week { position: relative; display: flex; gap: 6px; height: 110px; padding-bottom: 20px; }
+  .week .goal { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--muted); pointer-events: none; }
+  .wd { flex: 1; height: 100%; background: none; padding: 0; border-radius: 6px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; }
+  .wd .bar { width: 100%; max-width: 28px; min-height: 2px; border-radius: 4px 4px 0 0; background: color-mix(in srgb, var(--muted) 45%, var(--card)); }
+  .wd.on .bar { background: linear-gradient(180deg, var(--p1), var(--p2)); }
+  .wd small { position: absolute; bottom: -20px; font-size: 11px; font-weight: 700; color: var(--muted); }
+  .wd.on small { color: var(--pt); font-weight: 900; }
+
   .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30;
     background: #23262f; color: #fff; border-radius: 14px; padding: 10px 10px 10px 16px; display: flex; align-items: center; gap: 10px; width: max-content; max-width: calc(100vw - 32px); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 6px 20px rgba(0,0,0,.25); font-size: 14px; }
   .toast button { background: rgba(255,255,255,.16); color: #fff; flex: none; }
@@ -196,7 +211,10 @@ const kc = n => Math.round(n).toLocaleString('ja-JP');
 const numOr = (v, d) => (v === '' || v === null || v === undefined || !Number.isFinite(+v)) ? d : +v;
 
 /* ---------- 保存（この端末の localStorage だけ） ---------- */
-const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 } }, meals: {}, weights: {}, custom: [], recent: [] });
+const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, recipe: { prefs: '', template: '' } }, meals: {}, weights: {}, custom: [], sets: [], recent: [] });
+const item = e => ({ foodId: e.foodId ?? null, name: String(e.name), grams: +e.grams, qty: numOr(e.qty, +e.grams), unit: String(e.unit || 'g'), unitG: numOr(e.unitG, 1),
+  kcal: numOr(e.kcal, 0), p: numOr(e.p, 0), f: numOr(e.f, 0), c: numOr(e.c, 0) });
+const validItem = e => e && e.name && numOr(e.grams, -1) >= 0;
 function normalize(s) {
   const f = fresh();
   if (!s || typeof s !== 'object') return f;
@@ -207,22 +225,24 @@ function normalize(s) {
   if (p >= 0 && ft >= 0 && c >= 0 && Math.round(p + ft + c) === 100) f.settings.pfc = { p, f: ft, c };
   for (const [d, list] of Object.entries(s.meals || {})) {
     if (!isDay(d) || !Array.isArray(list)) continue;
-    const ok = list.filter(e => e && e.name && MEALS.some(m => m[0] === e.meal) && numOr(e.grams, -1) >= 0).map(e => ({
-      id: String(e.id || uid()), meal: e.meal, foodId: e.foodId ?? null, name: String(e.name), grams: +e.grams,
-      qty: numOr(e.qty, +e.grams), unit: String(e.unit || 'g'), unitG: numOr(e.unitG, 1),
-      kcal: numOr(e.kcal, 0), p: numOr(e.p, 0), f: numOr(e.f, 0), c: numOr(e.c, 0) }));
+    const ok = list.filter(e => validItem(e) && MEALS.some(m => m[0] === e.meal)).map(e => ({ id: String(e.id || uid()), meal: e.meal, ...item(e) }));
     if (ok.length) f.meals[d] = ok;
   }
   for (const [d, w] of Object.entries(s.weights || {})) if (isDay(d) && numOr(w, 0) > 0) f.weights[d] = +w;
   f.custom = (Array.isArray(s.custom) ? s.custom : []).filter(x => x && x.name).map(x => ({
     id: String(x.id || 'c:' + uid()), name: String(x.name), kcal: numOr(x.kcal, 0), p: numOr(x.p, 0), f: numOr(x.f, 0), c: numOr(x.c, 0),
     unitLabel: String(x.unitLabel || ''), unitG: numOr(x.unitG, 0) }));
+  const rc = st.recipe || {};
+  f.settings.recipe = { prefs: String(rc.prefs || '').slice(0, 2000), template: String(rc.template || '').slice(0, 6000) };
+  f.sets = (Array.isArray(s.sets) ? s.sets : []).filter(x => x && x.name && Array.isArray(x.items))
+    .map(x => ({ id: String(x.id || uid()), name: String(x.name), items: x.items.filter(validItem).map(item) })).filter(x => x.items.length);
   f.recent = (Array.isArray(s.recent) ? s.recent : []).filter(x => x && x.id != null).slice(0, 30);
   return f;
 }
 function load() { try { const raw = localStorage.getItem(KEY); if (raw) return normalize(JSON.parse(raw)); } catch (e) {} return fresh(); }
-let saveOk = true;
+let saveOk = true, memCache = null;
 function save() {
+  memCache = null;
   try { localStorage.setItem(KEY, JSON.stringify(state)); saveOk = true; }
   catch (e) { if (saveOk) toast('この端末に保存できませんでした（プライベートブラウズ中かもしれません）'); saveOk = false; }
 }
@@ -326,12 +346,17 @@ views.today = el => {
     <small>目標 ${Math.round(goal)}g</small></div>`;
   const meals = MEALS.map(([m, name]) => {
     const items = list.filter(e => e.meal === m), mt = sumEntries(items);
+    const prev = items.length ? [] : (state.meals[addDays(curDay, -1)] || []).filter(e => e.meal === m);
+    const chips = suggest(m, list).map(r => `<button class="chip mem" data-act="quick" data-meal="${m}" data-id="${esc(r.id)}">＋ ${esc(r.name)}<small>${esc(amountShort(r.by[m].e))}</small></button>`).join('')
+      + (prev.length ? `<button class="chip" data-act="copy-prev" data-meal="${m}">前日の${name}をコピー<small>${prev.length}品</small></button>` : '')
+      + (items.length >= 2 ? `<button class="chip" data-act="save-set" data-meal="${m}">この組み合わせをセットに保存</button>` : '');
     const rows = items.map(e => { const et = sumEntries([e]); return `<button class="row" data-act="edit-entry" data-id="${esc(e.id)}">
       <span class="tx"><b>${esc(e.name)}</b><small>${esc(amountText(e))}・${pfcText(et)}</small></span>
       <span class="kc">${kc(et.kcal)}<small>kcal</small></span></button>`; }).join('');
     return `<div class="grp"><h2><b>${name}</b><span class="num">${items.length ? kc(mt.kcal) + ' kcal' : ''}</span><span class="sp"></span>
       <button class="add" data-act="add-food" data-meal="${m}" aria-label="${name}に追加">＋</button></h2>
-      <div class="card">${rows || '<div class="empty">まだ記録がありません</div>'}</div></div>`;
+      <div class="card">${rows || '<div class="empty">まだ記録がありません</div>'}</div>
+      ${chips ? `<div class="sug">${chips}</div>` : ''}</div>`;
   }).join('');
   el.innerHTML = `
     <div class="dnav">
@@ -346,7 +371,9 @@ views.today = el => {
       <div class="rest num">${rest >= 0 ? `あと ${kc(rest)} kcal` : `${kc(-rest)} kcal オーバー`}</div>
     </div>
     <div class="stats">${tile('たんぱく質', t.p, g.p)}${tile('脂質', t.f, g.f)}${tile('炭水化物', t.c, g.c)}</div>
-    ${meals}`;
+    ${meals}
+    ${weekCard()}
+    <button class="wide" data-act="recipe" style="margin-top:20px;background:var(--card)">🍳 残りカロリーに合うレシピをAIに相談</button>`;
 };
 acts.day = el => { const d = addDays(curDay, +el.dataset.d); if (d <= dayStr()) { curDay = d; render(); } };
 document.addEventListener('change', e => {
@@ -375,7 +402,10 @@ function renderResults() {
   const status = dbError ? '<p class="note">同梱の食品データを読み込めませんでした。マイ食品は使えます。</p>' : !DB ? '<p class="note">食品データを読み込み中…</p>' : '';
   if (!q) {
     const recent = state.recent.map(r => foodById(r.id)).filter(Boolean).slice(0, 12), mine = state.custom.map(customFood);
+    const often = [...memory().values()].filter(r => r.by[sheetCtx.meal]).sort((a, b) => b.by[sheetCtx.meal].n - a.by[sheetCtx.meal].n).slice(0, 8).map(r => foodById(r.id)).filter(Boolean);
     box.innerHTML = status
+      + (state.sets.length ? `<p class="sec">マイセット</p><div class="results">${state.sets.map(setRow('add-set')).join('')}</div>` : '')
+      + (often.length ? `<p class="sec">${mealName(sheetCtx.meal)}によく食べる</p><div class="results">${often.map(foodRow).join('')}</div>` : '')
       + (recent.length ? `<p class="sec">最近使った食品</p><div class="results">${recent.map(foodRow).join('')}</div>` : '')
       + (mine.length ? `<p class="sec">マイ食品</p><div class="results">${mine.map(foodRow).join('')}</div>` : '')
       + (!recent.length && !mine.length ? '<div class="empty"><b>食品名を入力してください</b>ひらがなでも探せます（例：ごはん、とりむね、なっとう）</div>' : '');
@@ -472,10 +502,18 @@ acts['del-entry'] = () => {
 views.foods = el => {
   const rows = state.custom.map(x => { const fd = customFood(x); return `<button class="row" data-act="edit-custom" data-id="${esc(x.id)}">
     <span class="tx"><b>${esc(x.name)}</b><small>${per100(fd)}${x.unitG > 0 ? `・${esc(x.unitLabel || '1食分')} ${fmt(x.unitG)}g` : ''}</small></span></button>`; }).join('');
+  const mem = [...memory().values()].sort((a, b) => b.n - a.n || (a.last < b.last ? 1 : -1)).slice(0, 20).map(r => {
+    const top = MEALS.map(m => [r.by[m[0]] ? r.by[m[0]].n : 0, m[1]]).sort((a, b) => b[0] - a[0])[0];
+    return `<button class="row" data-act="mem-add" data-id="${esc(r.id)}"><span class="tx"><b>${esc(r.name)}</b><small>${r.n}回・最後は ${md(r.last)}・${top[1]}が多い</small></span><span class="tag">＋ 記録</span></button>`; }).join('');
   el.innerHTML = `<button class="primary wide" data-act="new-custom">＋ 食品を登録</button>
     <p class="sec">登録した食品（${state.custom.length}）</p>
     <div class="card">${rows || '<div class="empty"><b>まだありません</b>よく食べる商品や自炊メニューを、パッケージの栄養成分表示を見ながら登録できます</div>'}</div>
-    <p class="note" style="margin:12px 4px 0">登録した食品は、食事を追加するときの検索でいちばん上に出ます。</p>`;
+    <p class="note" style="margin:8px 4px 0">登録した食品は、食事を追加するときの検索でいちばん上に出ます。</p>
+    <p class="sec">マイセット（${state.sets.length}）</p>
+    <div class="card">${state.sets.map(setRow('edit-set')).join('') || '<div class="empty">「きょう」で2品以上を記録すると、その組み合わせをセットに保存できます</div>'}</div>
+    <p class="sec">よく食べる食品（メモリー）</p>
+    <div class="card">${mem || '<div class="empty">記録がたまると、よく食べるものがここに並びます</div>'}</div>
+    <p class="note" style="margin:8px 4px 0">同じ食事で2回以上食べたものは、「きょう」の各食事の下に「いつもの」として出ます。</p>`;
 };
 const numField = (label, name, v, req) => `<label class="f"><span>${label}</span><input type="number" name="${name}" inputmode="decimal" step="any" min="0" ${req ? 'required' : ''} value="${v ?? ''}"></label>`;
 function openCustom(x, then) {
@@ -620,9 +658,18 @@ views.settings = el => {
       <p class="note num" id="pfcNote" aria-live="polite"></p>
       <button class="primary wide">保存する</button>
     </form>
+    <p class="sec">レシピ提案プロンプト</p>
+    <form class="card pad stack" id="rForm" autocomplete="off">
+      <label class="f"><span>好み・苦手・条件（プロンプトに差し込まれます）</span>
+        <textarea name="prefs" rows="3" maxlength="2000" placeholder="例：辛いものが好き。きのこは苦手。平日は15分以内、電子レンジ中心。1人分。">${esc(st.recipe.prefs)}</textarea></label>
+      <label class="f"><span>プロンプトの文面</span>
+        <textarea name="template" id="tplText" rows="10" maxlength="6000">${esc(st.recipe.template || DEFAULT_TEMPLATE)}</textarea></label>
+      <p class="note">{ } の部分は、そのときの記録で置き換わります：{meal} {date} {goal_kcal} {goal_p} {goal_f} {goal_c} {eaten_kcal} {eaten_p} {eaten_f} {eaten_c} {rest_kcal} {rest_p} {rest_f} {rest_c} {meal_kcal} {eaten_list} {favorites} {prefs}。「めしログ: 」で始まる行の形式を残すと、AIの回答をそのまま取り込めます。</p>
+      <div class="acts"><button type="button" class="text" data-act="tpl-reset">初期の文面に戻す</button><button class="primary">保存する</button></div>
+    </form>
     <p class="sec">バックアップ</p>
     <div class="card pad stack">
-      <p class="note">記録はこの端末のブラウザの中だけに保存されます（食事 ${days}日分・体重 ${ws}件・マイ食品 ${state.custom.length}件）。機種変更やブラウザのデータ削除に備えて、ときどき書き出しておくと安心です。</p>
+      <p class="note">記録はこの端末のブラウザの中だけに保存されます（食事 ${days}日分・体重 ${ws}件・マイ食品 ${state.custom.length}件・マイセット ${state.sets.length}件）。機種変更やブラウザのデータ削除に備えて、ときどき書き出しておくと安心です。</p>
       <div class="two"><button type="button" data-act="export">書き出す</button><button type="button" data-act="import">読み込む</button></div>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
@@ -651,7 +698,7 @@ document.addEventListener('submit', e => {
   if (!(s.kcal >= 500 && s.kcal <= 10000)) { toast('目標カロリーは500〜10000kcalで入力してください'); return; }
   if (s.weightGoal != null && !(s.weightGoal >= 20 && s.weightGoal <= 300)) { toast('目標体重は20〜300kgで入力してください'); return; }
   if ([s.pfc.p, s.pfc.f, s.pfc.c].some(n => !(n >= 0)) || !updatePfcNote()) { toast('PFCの比率は合計100%にしてください'); return; }
-  state.settings = { kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc };
+  state.settings = { ...state.settings, kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc };
   save(); render(); toast('設定を保存しました');
 });
 acts.export = () => {
@@ -671,6 +718,212 @@ document.addEventListener('change', async e => {
     snap(); state = next; save(); render(); toast('バックアップを読み込みました', true);
   } catch (err) { toast('このファイルは読み込めませんでした'); }
   finally { e.target.value = ''; }
+});
+
+/* ---------- メモリー（よく食べるものを記録から覚える） ---------- */
+function memory() {
+  if (memCache) return memCache;
+  const m = new Map();
+  for (const [d, list] of Object.entries(state.meals)) for (const e of list) {
+    if (e.foodId == null) continue;
+    let r = m.get(e.foodId); if (!r) m.set(e.foodId, r = { id: e.foodId, name: e.name, n: 0, last: '', by: {} });
+    const b = r.by[e.meal] || (r.by[e.meal] = { n: 0, d: '', e });
+    r.n++; b.n++;
+    if (d >= b.d) { b.d = d; b.e = e; }
+    if (d >= r.last) { r.last = d; r.name = e.name; }
+  }
+  return memCache = m;
+}
+// その食事で2回以上食べていて、きょうはまだ記録していないもの
+function suggest(meal, dayList) {
+  const have = new Set(dayList.filter(e => e.meal === meal).map(e => e.foodId));
+  return [...memory().values()].filter(r => r.by[meal] && r.by[meal].n >= 2 && !have.has(r.id))
+    .sort((a, b) => b.by[meal].n - a.by[meal].n || (a.by[meal].d < b.by[meal].d ? 1 : -1)).slice(0, 5);
+}
+const amountShort = e => e.unit === 'g' ? `${fmt(e.grams)}g` : `${e.unit}${e.qty === 1 ? '' : '×' + fmt(e.qty)}`;
+// 栄養値は、食品データが今もあれば最新のものに合わせる（マイ食品を直したあとも正しく入る）
+const freshen = it => { const fd = foodById(it.foodId); return fd ? { ...it, name: fd.name, kcal: fd.kcal, p: fd.p, f: fd.f, c: fd.c } : it; };
+function addItems(meal, items, msg) {
+  if (!items.length) return;
+  snap();
+  const list = state.meals[curDay] || (state.meals[curDay] = []);
+  for (const it of items) {
+    const e = { id: uid(), meal, ...freshen(item(it)) }; list.push(e);
+    if (e.foodId != null) state.recent = [{ id: e.foodId, unit: e.unit, qty: e.qty }, ...state.recent.filter(r => r.id !== e.foodId)].slice(0, 30);
+  }
+  save(); closeSheet(); render(); toast(msg, true);
+}
+acts.quick = el => {
+  const meal = el.dataset.meal, r = memory().get(parseId(el.dataset.id)), b = r && r.by[meal];
+  if (b) addItems(meal, [b.e], `${r.name} を${mealName(meal)}に記録しました`);
+};
+acts['copy-prev'] = el => {
+  const meal = el.dataset.meal;
+  addItems(meal, (state.meals[addDays(curDay, -1)] || []).filter(e => e.meal === meal), `前日の${mealName(meal)}をコピーしました`);
+};
+acts['mem-add'] = el => {
+  const r = memory().get(parseId(el.dataset.id)); if (!r) return;
+  const meal = MEALS.map(m => m[0]).sort((a, b) => (r.by[b] ? r.by[b].n : 0) - (r.by[a] ? r.by[a].n : 0))[0], e = r.by[meal].e, fd = foodById(r.id);
+  curDay = dayStr();
+  openAmount(fd || { id: e.foodId, name: e.name, official: '', kcal: e.kcal, p: e.p, f: e.f, c: e.c, units: e.unit === 'g' ? [] : [[e.unit, e.unitG]] }, { meal });
+};
+
+/* ---------- マイセット（よくある組み合わせ） ---------- */
+const setRow = act => x => { const t = sumEntries(x.items); return `<button class="row" data-act="${act}" data-id="${esc(x.id)}">
+  <span class="tx"><b>${esc(x.name)}</b><small>${x.items.map(i => esc(i.name)).join('、')}</small></span>
+  <span class="kc">${kc(t.kcal)}<small>kcal</small></span></button>`; };
+function openSet(x, items) {
+  const list = x ? x.items : items, t = sumEntries(list);
+  openSheet(`<h2>${x ? 'マイセットを編集' : 'セットに保存'}<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <label class="f"><span>セットの名前</span><input type="text" name="name" required maxlength="30" value="${esc(x ? x.name : '')}" placeholder="例：いつもの朝食"></label>
+    <div class="card">${list.map(i => `<div class="row"><span class="tx"><b>${esc(i.name)}</b><small>${esc(amountText(i))}</small></span><span class="kc">${kc(i.kcal * i.grams / 100)}<small>kcal</small></span></div>`).join('')}</div>
+    <p class="note num">合計 ${kc(t.kcal)}kcal・${pfcText(t)}。食事を追加する画面の「マイセット」から、まとめて記録できます。</p>
+    <div class="acts">${x ? '<button type="button" class="text danger" data-act="del-set">削除</button>' : ''}<button class="primary">保存する</button></div>`,
+    { type: 'set', id: x ? x.id : null, items: list });
+}
+acts['save-set'] = el => {
+  const meal = el.dataset.meal, items = (state.meals[curDay] || []).filter(e => e.meal === meal).map(item);
+  openSet(null, items); $('#sheetForm').elements.name.value = `いつもの${mealName(meal)}`;
+};
+acts['edit-set'] = el => { const x = state.sets.find(s => s.id === el.dataset.id); if (x) openSet(x); };
+acts['add-set'] = el => { const x = state.sets.find(s => s.id === el.dataset.id); if (x) addItems(sheetCtx.meal, x.items, `「${x.name}」を${mealName(sheetCtx.meal)}に記録しました`); };
+submits.set = (form, ctx) => {
+  const name = String(form.get('name')).trim(); if (!name) { toast('名前を入力してください'); return; }
+  const x = ctx.id && state.sets.find(s => s.id === ctx.id);
+  if (x) x.name = name; else state.sets.unshift({ id: uid(), name, items: ctx.items });
+  save(); closeSheet(); render(); toast('セットを保存しました');
+};
+acts['del-set'] = () => { const id = sheetCtx.id; snap(); state.sets = state.sets.filter(s => s.id !== id); save(); closeSheet(); render(); toast('セットを削除しました', true); };
+
+/* ---------- この7日間 ---------- */
+function weekCard() {
+  const g = targets().kcal, days = [...Array(7)].map((_, i) => addDays(curDay, i - 6));
+  const vals = days.map(d => sumEntries(state.meals[d] || []).kcal), logged = vals.filter(v => v > 0);
+  const top = Math.max(g * 1.25, ...vals), avg = logged.length ? logged.reduce((a, b) => a + b, 0) / logged.length : 0;
+  let streak = 0; for (let d = state.meals[dayStr()] ? dayStr() : addDays(dayStr(), -1); state.meals[d]; d = addDays(d, -1)) streak++;
+  return `<div class="grp"><h2><b>この7日間</b><span class="num">${logged.length ? `平均 ${kc(avg)} kcal（記録した${logged.length}日）` : ''}</span></h2>
+    <div class="card pad"><div class="week"><i class="goal" style="bottom:${20 + g / top * 90}px"></i>
+      ${days.map((d, i) => `<button class="wd${d === curDay ? ' on' : ''}" data-act="goto" data-d="${d}" title="${md(d)} ${kc(vals[i])}kcal" aria-label="${dayLabel(d)} ${kc(vals[i])}キロカロリー">
+        <span class="bar" style="height:${vals[i] / top * 100}%"></span><small>${WD[dayDate(d).getDay()]}</small></button>`).join('')}</div>
+      <p class="note num" style="margin-top:8px">点線は目標 ${kc(g)}kcal。棒をタップするとその日を開きます。${streak > 1 ? `連続記録 ${streak}日。` : ''}</p></div></div>`;
+}
+acts.goto = el => { curDay = el.dataset.d; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+/* ---------- レシピ提案プロンプト ---------- */
+const DEFAULT_TEMPLATE = `あなたは管理栄養士の視点を持つ料理家です。{meal}のレシピを3つ提案してください。
+
+# きょうの状況（{date}）
+- 1日の目標: {goal_kcal}kcal（たんぱく質{goal_p}g・脂質{goal_f}g・炭水化物{goal_c}g）
+- ここまでの摂取: {eaten_kcal}kcal（たんぱく質{eaten_p}g・脂質{eaten_f}g・炭水化物{eaten_c}g）
+- 残り: {rest_kcal}kcal（たんぱく質{rest_p}g・脂質{rest_f}g・炭水化物{rest_c}g）
+- きょう食べたもの: {eaten_list}
+
+# 好み・条件
+{prefs}
+- よく食べる食品: {favorites}
+
+# お願い
+- この食事は{meal_kcal}kcal前後を目安に、残りのPFCのうち足りていないものを補える内容にしてください
+- きょう食べたものと重なりすぎないようにしてください
+- 各レシピに、材料と分量（1人前）、作り方（手短に）、所要時間を書いてください
+- 最後に、各レシピの1人前の栄養を次の形式で1行ずつ書いてください（アプリに取り込むので形式を守ってください）
+めしログ: 料理名 | 1人前の重さg | kcal | たんぱく質g | 脂質g | 炭水化物g`;
+function recipePrompt(meal) {
+  const list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), rest = k => Math.max(0, Math.round(g[k] - t[k]));
+  const open = ['breakfast', 'lunch', 'dinner'].filter(m => m === meal || !list.some(e => e.meal === m)).length || 1;
+  const fav = [...memory().values()].sort((a, b) => b.n - a.n).slice(0, 12).map(r => r.name);
+  const prefs = state.settings.recipe.prefs.trim();
+  const v = {
+    meal: mealName(meal), date: dayLabel(curDay),
+    goal_kcal: Math.round(g.kcal), goal_p: Math.round(g.p), goal_f: Math.round(g.f), goal_c: Math.round(g.c),
+    eaten_kcal: Math.round(t.kcal), eaten_p: Math.round(t.p), eaten_f: Math.round(t.f), eaten_c: Math.round(t.c),
+    rest_kcal: rest('kcal'), rest_p: rest('p'), rest_f: rest('f'), rest_c: rest('c'),
+    meal_kcal: meal === 'snack' ? Math.min(rest('kcal'), 200) : Math.round(rest('kcal') / open),
+    eaten_list: list.length ? list.map(e => `${e.name} ${fmt(e.grams)}g`).join('、') : 'まだありません',
+    favorites: fav.length ? fav.join('、') : '（まだ記録が少ないのでおまかせ）',
+    prefs: prefs ? prefs.split('\n').map(l => '- ' + l.trim()).filter(l => l.length > 2).join('\n') : '- 特になし',
+  };
+  return (state.settings.recipe.template || DEFAULT_TEMPLATE).replace(/\{(\w+)\}/g, (m, k) => k in v ? v[k] : m);
+}
+const mealSeg = (name, cur) => `<div class="seg">${MEALS.map(([m, n]) => `<label class="pick"><input type="radio" name="${name}" value="${m}" ${m === cur ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div>`;
+function openRecipe(meal) {
+  openSheet(`<h2>レシピをAIに相談<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <div class="f"><span>どの食事のレシピ？</span>${mealSeg('rmeal', meal)}</div>
+    <label class="f"><span>プロンプト（この場で書き足せます）</span><textarea id="rp" rows="11">${esc(recipePrompt(meal))}</textarea></label>
+    <p class="note">コピーして ChatGPT や Claude などに貼り付けてください。好みや文面は「設定」で変えられます。</p>
+    <div class="acts"><button class="primary">プロンプトをコピー</button></div>
+    <div class="two">${navigator.share ? '<button type="button" data-act="recipe-share">共有する</button>' : '<span></span>'}<button type="button" data-act="ai-import">AIの回答を取り込む</button></div>`,
+    { type: 'recipe', meal }, true);
+}
+acts.recipe = () => {
+  const h = new Date().getHours(), list = state.meals[curDay] || [];
+  const byTime = h < 10 ? 'breakfast' : h < 15 ? 'lunch' : 'dinner';
+  openRecipe(curDay === dayStr() ? byTime : ['breakfast', 'lunch', 'dinner'].find(m => !list.some(e => e.meal === m)) || 'dinner');
+};
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+  try { const ta = $('#rp'); ta.focus(); ta.select(); return document.execCommand('copy'); } catch (e) { return false; }
+}
+submits.recipe = async () => { toast(await copyText($('#rp').value) ? 'プロンプトをコピーしました。AIに貼り付けてください' : 'コピーできませんでした。文面を長押しして選択してください'); };
+acts['recipe-share'] = () => { navigator.share({ text: $('#rp').value }).catch(() => {}); };
+acts['tpl-reset'] = () => { $('#tplText').value = DEFAULT_TEMPLATE; toast('初期の文面に戻しました。「保存する」で確定します'); };
+document.addEventListener('submit', e => {
+  if (e.target.id !== 'rForm') return;
+  e.preventDefault();
+  const f = new FormData(e.target), tpl = String(f.get('template')).trim();
+  state.settings.recipe = { prefs: String(f.get('prefs')).trim(), template: tpl === DEFAULT_TEMPLATE ? '' : tpl };
+  save(); render(); toast('レシピ提案の設定を保存しました');
+});
+
+/* ---------- AIの回答から取り込む ---------- */
+function parseAI(text) {
+  const out = [], n = s => { const x = parseFloat(String(s || '').replace(/,/g, '').replace(/^[^\d.]*/, '')); return Number.isFinite(x) && x >= 0 ? x : 0; };
+  for (const line of String(text).normalize('NFKC').split('\n')) {
+    const m = line.match(/めしログ\s*:\s*(.+)/); if (!m) continue;
+    const c = m[1].split('|').map(s => s.replace(/[*`]/g, '').trim());
+    if (c.length < 3 || !c[0] || c[0] === '料理名') continue;
+    out.push({ name: c[0].slice(0, 60), g: n(c[1]) || 100, kcal: n(c[2]), p: n(c[3]), f: n(c[4]), c: n(c[5]) });
+  }
+  return out;
+}
+function renderAI() {
+  const items = sheetCtx.items = parseAI($('#aiText').value);
+  $('#aiRes').innerHTML = items.length ? `<div class="card">${items.map((x, i) => `<label class="row"><input type="checkbox" name="pick" value="${i}" ${items.length === 1 ? 'checked' : ''} style="width:22px;height:22px;flex:none;accent-color:var(--p2)">
+    <span class="tx"><b>${esc(x.name)}</b><small>1人前 ${fmt(x.g)}g・P${fmt(x.p)} F${fmt(x.f)} C${fmt(x.c)}</small></span><span class="kc">${kc(x.kcal)}<small>kcal</small></span></label>`).join('')}</div>`
+    : $('#aiText').value.trim() ? '<p class="note bad">「めしログ: 料理名 | 重さ | kcal | P | F | C」の形の行が見つかりませんでした。</p>' : '';
+}
+acts['ai-import'] = () => {
+  const meal = sheetCtx && sheetCtx.meal || 'dinner';
+  openSheet(`<h2>AIの回答を取り込む<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <label class="f"><span>AIの回答を貼り付け</span><textarea id="aiText" rows="6" placeholder="回答をまるごと貼り付けてください。「めしログ: 料理名 | 重さ | kcal | P | F | C」の行だけを読み取ります。"></textarea></label>
+    <div id="aiRes"></div>
+    <div class="f"><span>記録する食事</span>${mealSeg('meal', meal)}</div>
+    <p class="note">選んだ料理は「1人前」の単位つきでマイ食品に登録されます。AIの栄養値は推定なので、目安として使ってください。</p>
+    <div class="acts"><button type="button" data-act="ai-reg">登録だけする</button><button class="primary">登録して記録する</button></div>`,
+    { type: 'ai', meal, items: [] }, true);
+};
+function registerAI() { // 選んだ料理をマイ食品にする（同じ名前があれば上書き）
+  const picked = [...$('#sheetForm').querySelectorAll('[name=pick]:checked')].map(c => sheetCtx.items[+c.value]).filter(Boolean);
+  return picked.map(x => {
+    const k = 100 / x.g, r2 = v => Math.round(v * k * 100) / 100, old = state.custom.find(c => c.name === x.name);
+    const food = { id: old ? old.id : 'c:' + uid(), name: x.name, kcal: r2(x.kcal), p: r2(x.p), f: r2(x.f), c: r2(x.c), unitLabel: '1人前', unitG: x.g };
+    if (old) Object.assign(old, food); else state.custom.unshift(food);
+    return food;
+  });
+}
+acts['ai-reg'] = () => {
+  const foods = registerAI(); if (!foods.length) { toast('取り込む料理を選んでください'); return; }
+  save(); closeSheet(); render(); toast(`${foods.length}品をマイ食品に登録しました`);
+};
+submits.ai = form => {
+  const foods = registerAI(); if (!foods.length) { toast('取り込む料理を選んでください'); return; }
+  addItems(form.get('meal'), foods.map(x => ({ foodId: x.id, name: x.name, grams: x.unitG, qty: 1, unit: '1人前', unitG: x.unitG, kcal: x.kcal, p: x.p, f: x.f, c: x.c })), `${foods.length}品を${mealName(form.get('meal'))}に記録しました`);
+};
+$('#sheetForm').addEventListener('input', e => {
+  if (!sheetCtx) return;
+  if (sheetCtx.type === 'recipe' && e.target.name === 'rmeal') { sheetCtx.meal = e.target.value; $('#rp').value = recipePrompt(e.target.value); }
+  if (sheetCtx.type === 'ai' && e.target.id === 'aiText') renderAI();
+  if (sheetCtx.type === 'ai' && e.target.name === 'meal') sheetCtx.meal = e.target.value;
 });
 
 /* ---------- 起動 ---------- */
