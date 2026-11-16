@@ -306,6 +306,214 @@ $('#sheetForm').addEventListener('submit', e => {
 $('#sheet').addEventListener('click', e => { if (e.target === $('#sheet')) closeSheet(); });
 $('#sheet').addEventListener('close', () => { sheetCtx = null; });
 
+/* ---------- きょう（1日の記録） ---------- */
+let curDay = dayStr();
+const WD = ['日', '月', '火', '水', '木', '金', '土'];
+const dayLabel = s => { const d = dayDate(s); return `${d.getMonth() + 1}月${d.getDate()}日（${WD[d.getDay()]}）`; };
+const mealName = m => (MEALS.find(x => x[0] === m) || MEALS[0])[1];
+function sumEntries(list) {
+  const t = { kcal: 0, p: 0, f: 0, c: 0 };
+  for (const e of list) for (const k in t) t[k] += e[k] * e.grams / 100;
+  return t;
+}
+const amountText = e => e.unit === 'g' ? `${fmt(e.grams)}g` : `${e.unit}×${fmt(e.qty)}（${fmt(e.grams)}g）`;
+const pfcText = t => `P${fmt(t.p)} F${fmt(t.f)} C${fmt(t.c)}`;
+const pct = (v, goal) => goal > 0 ? Math.min(100, Math.max(0, v / goal * 100)) : 0;
+
+views.today = el => {
+  const today = dayStr(), list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), rest = g.kcal - t.kcal;
+  const tile = (label, v, goal) => `<div class="stat"><span>${label}</span><b>${fmt(v)}<small>g</small></b>
+    <span class="meter" role="progressbar" aria-label="${label}" aria-valuemin="0" aria-valuemax="${Math.round(goal)}" aria-valuenow="${Math.round(v)}"><i style="width:${pct(v, goal)}%"></i></span>
+    <small>目標 ${Math.round(goal)}g</small></div>`;
+  const meals = MEALS.map(([m, name]) => {
+    const items = list.filter(e => e.meal === m), mt = sumEntries(items);
+    const rows = items.map(e => { const et = sumEntries([e]); return `<button class="row" data-act="edit-entry" data-id="${esc(e.id)}">
+      <span class="tx"><b>${esc(e.name)}</b><small>${esc(amountText(e))}・${pfcText(et)}</small></span>
+      <span class="kc">${kc(et.kcal)}<small>kcal</small></span></button>`; }).join('');
+    return `<div class="grp"><h2><b>${name}</b><span class="num">${items.length ? kc(mt.kcal) + ' kcal' : ''}</span><span class="sp"></span>
+      <button class="add" data-act="add-food" data-meal="${m}" aria-label="${name}に追加">＋</button></h2>
+      <div class="card">${rows || '<div class="empty">まだ記録がありません</div>'}</div></div>`;
+  }).join('');
+  el.innerHTML = `
+    <div class="dnav">
+      <button data-act="day" data-d="-1" aria-label="前の日">‹</button>
+      <div class="day">${dayLabel(curDay)}${curDay === today ? '<small>きょう</small>' : ''}<input type="date" id="dayPick" value="${curDay}" max="${today}" aria-label="日付を選ぶ"></div>
+      <button data-act="day" data-d="1" aria-label="次の日" ${curDay >= today ? 'disabled' : ''}>›</button>
+    </div>
+    <div class="summary">
+      <div class="lab"><span>摂取カロリー</span><span class="num">目標 ${kc(g.kcal)} kcal</span></div>
+      <div class="big">${kc(t.kcal)}<small>kcal</small></div>
+      <div class="bar" role="progressbar" aria-label="カロリー" aria-valuemin="0" aria-valuemax="${Math.round(g.kcal)}" aria-valuenow="${Math.round(t.kcal)}"><i style="width:${pct(t.kcal, g.kcal)}%"></i></div>
+      <div class="rest num">${rest >= 0 ? `あと ${kc(rest)} kcal` : `${kc(-rest)} kcal オーバー`}</div>
+    </div>
+    <div class="stats">${tile('たんぱく質', t.p, g.p)}${tile('脂質', t.f, g.f)}${tile('炭水化物', t.c, g.c)}</div>
+    ${meals}`;
+};
+acts.day = el => { const d = addDays(curDay, +el.dataset.d); if (d <= dayStr()) { curDay = d; render(); } };
+document.addEventListener('change', e => {
+  if (e.target.id === 'dayPick' && isDay(e.target.value) && e.target.value <= dayStr()) { curDay = e.target.value; render(); }
+});
+
+/* ---------- 食品をさがす ---------- */
+const parseId = s => s.startsWith('c:') ? s : +s;
+function searchFoods(q) {
+  const toks = q.normalize('NFKC').trim().split(/\s+/).map(norm).filter(Boolean);
+  if (!toks.length) return [];
+  const hits = [];
+  for (const fd of [...state.custom.map(customFood), ...(DB ? DB.list : [])]) {
+    if (!toks.every(t => fd.key.includes(t))) continue;
+    const nm = norm(fd.name);
+    // マイ食品 → 通称つきの定番 → 成分表のその他、の順。名前の先頭で一致したものを上に
+    hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + (nm.startsWith(toks[0]) ? 0 : nm.includes(toks[0]) ? 1 : 2), fd.name.length, fd]);
+  }
+  return hits.sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 60).map(h => h[2]);
+}
+const foodRow = fd => `<button class="row" data-act="pick-food" data-id="${esc(fd.id)}">
+  <span class="tx"><b>${esc(fd.name)}</b><small>${per100(fd)}</small></span>${fd.custom ? '<span class="tag">マイ食品</span>' : ''}</button>`;
+function renderResults() {
+  const box = $('#qRes'); if (!box) return;
+  const q = $('#q').value.trim();
+  const status = dbError ? '<p class="note">同梱の食品データを読み込めませんでした。マイ食品は使えます。</p>' : !DB ? '<p class="note">食品データを読み込み中…</p>' : '';
+  if (!q) {
+    const recent = state.recent.map(r => foodById(r.id)).filter(Boolean).slice(0, 12), mine = state.custom.map(customFood);
+    box.innerHTML = status
+      + (recent.length ? `<p class="sec">最近使った食品</p><div class="results">${recent.map(foodRow).join('')}</div>` : '')
+      + (mine.length ? `<p class="sec">マイ食品</p><div class="results">${mine.map(foodRow).join('')}</div>` : '')
+      + (!recent.length && !mine.length ? '<div class="empty"><b>食品名を入力してください</b>ひらがなでも探せます（例：ごはん、とりむね、なっとう）</div>' : '');
+    return;
+  }
+  const hits = searchFoods(q);
+  box.innerHTML = status + (hits.length ? `<div class="results">${hits.map(foodRow).join('')}</div>` : '<div class="empty"><b>見つかりませんでした</b>別の呼び方で試すか、マイ食品として登録できます</div>')
+    + `<button type="button" class="wide" data-act="new-custom" data-name="${esc(q)}" style="margin-top:12px">「${esc(q)}」をマイ食品として登録</button>`;
+}
+function openSearch(meal) {
+  openSheet(`<h2>${mealName(meal)}に追加<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <input type="search" id="q" placeholder="食品名でさがす（例：ごはん、とりむね）" enterkeyhint="search" aria-label="食品名でさがす">
+    <div id="qRes"></div>`, { type: 'search', meal }, true);
+  renderResults();
+}
+acts['add-food'] = el => openSearch(el.dataset.meal);
+acts['pick-food'] = el => { const fd = foodById(parseId(el.dataset.id)); if (fd) openAmount(fd, { meal: sheetCtx && sheetCtx.meal || 'breakfast' }); };
+submits.search = () => { $('#q').blur(); };
+
+/* ---------- 量を決めて記録する ---------- */
+function openAmount(fd, { meal, entry }) {
+  const units = [['g', 1], ...fd.units.filter(u => u[1] > 0)];
+  let idx, qty;
+  if (entry) {
+    idx = entry.unit === 'g' ? 0 : units.findIndex(u => u[0] === entry.unit && u[1] === entry.unitG);
+    if (idx < 0) { units.push([entry.unit, entry.unitG]); idx = units.length - 1; }
+    qty = entry.qty;
+  } else {
+    const last = state.recent.find(r => r.id === fd.id);
+    idx = last ? units.findIndex(u => u[0] === last.unit) : -1;
+    if (idx >= 0) qty = last.qty; else if (units.length > 1) { idx = 1; qty = 1; } else { idx = 0; qty = 100; }
+  }
+  openSheet(`<h2>${esc(fd.name)}<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <p class="note">${fd.official && fd.official !== fd.name ? esc(fd.official) + '<br>' : ''}${per100(fd)}</p>
+    <div class="f"><span>単位</span><div class="chips">${units.map((u, i) => `<label class="pick"><input type="radio" name="unit" value="${i}" ${i === idx ? 'checked' : ''}><span>${i ? `${esc(u[0])}（${fmt(u[1])}g）` : 'g'}</span></label>`).join('')}</div></div>
+    <div class="f"><span>量</span><div class="step">
+      <button type="button" data-act="qty" data-d="-1" aria-label="減らす">−</button>
+      <input type="number" name="qty" inputmode="decimal" step="any" min="0" required value="${r1(qty)}" aria-label="量">
+      <button type="button" data-act="qty" data-d="1" aria-label="増やす">＋</button></div></div>
+    <div class="calc" id="calc" aria-live="polite"></div>
+    <div class="f"><span>食事</span><div class="seg">${MEALS.map(([m, n]) => `<label class="pick"><input type="radio" name="meal" value="${m}" ${m === meal ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div></div>
+    <div class="acts">${entry ? '<button type="button" class="text danger" data-act="del-entry">削除</button>' : ''}<button class="primary">${entry ? '保存する' : '記録する'}</button></div>`,
+    { type: 'amount', fd, units, idx, entry, date: curDay });
+  updateCalc();
+}
+function readAmount() {
+  const f = $('#sheetForm'), u = sheetCtx.units[+f.elements.unit.value] || sheetCtx.units[0], qty = Math.max(0, numOr(f.elements.qty.value, 0));
+  return { unit: u[0], unitG: u[1], qty, grams: qty * u[1] };
+}
+function updateCalc() {
+  const a = readAmount(), fd = sheetCtx.fd, k = a.grams / 100;
+  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${fmt(a.grams)}g・${pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}</span>`;
+}
+acts.qty = el => {
+  const inp = $('#sheetForm').elements.qty, a = readAmount(), stepSize = a.unit === 'g' ? 10 : 0.5;
+  inp.value = Math.max(0, r1(a.qty + stepSize * +el.dataset.d)); updateCalc();
+};
+$('#sheetForm').addEventListener('input', e => {
+  if (!sheetCtx) return;
+  if (sheetCtx.type === 'search' && e.target.id === 'q') renderResults();
+  if (sheetCtx.type === 'amount') {
+    if (e.target.name === 'unit') { // 単位を替えたら量も合わせる（g に戻すときは同じ重さ、単位にするときは1つ）
+      const f = $('#sheetForm'), prev = sheetCtx.units[sheetCtx.idx], now = +e.target.value;
+      f.elements.qty.value = now === 0 ? r1(numOr(f.elements.qty.value, 0) * prev[1]) : 1;
+      sheetCtx.idx = now;
+    }
+    updateCalc();
+  }
+});
+submits.amount = (form, ctx) => {
+  const a = readAmount(), fd = ctx.fd, meal = form.get('meal');
+  if (!(a.grams > 0)) { toast('量を入力してください'); return; }
+  const e = { id: ctx.entry ? ctx.entry.id : uid(), meal, foodId: fd.id, name: fd.name, grams: a.grams, qty: a.qty, unit: a.unit, unitG: a.unitG, kcal: fd.kcal, p: fd.p, f: fd.f, c: fd.c };
+  const list = state.meals[ctx.date] || (state.meals[ctx.date] = []);
+  const i = ctx.entry ? list.findIndex(x => x.id === ctx.entry.id) : -1;
+  if (i >= 0) list[i] = e; else list.push(e);
+  if (fd.id != null) state.recent = [{ id: fd.id, unit: a.unit, qty: a.qty }, ...state.recent.filter(r => r.id !== fd.id)].slice(0, 30);
+  save(); closeSheet(); render(); toast(ctx.entry ? '保存しました' : `${mealName(meal)}に記録しました`);
+};
+acts['edit-entry'] = el => {
+  const e = (state.meals[curDay] || []).find(x => x.id === el.dataset.id); if (!e) return;
+  const src = foodById(e.foodId);
+  // 栄養値は記録したときのものを使う。単位の候補だけ今の食品データから借りる
+  openAmount({ id: e.foodId, name: e.name, official: '', kcal: e.kcal, p: e.p, f: e.f, c: e.c, units: src ? src.units : [] }, { meal: e.meal, entry: e });
+};
+acts['del-entry'] = () => {
+  const { entry, date } = sheetCtx; snap();
+  state.meals[date] = (state.meals[date] || []).filter(x => x.id !== entry.id);
+  if (!state.meals[date].length) delete state.meals[date];
+  save(); closeSheet(); render(); toast('記録を削除しました', true);
+};
+
+/* ---------- マイ食品（手入力で登録する食品） ---------- */
+views.foods = el => {
+  const rows = state.custom.map(x => { const fd = customFood(x); return `<button class="row" data-act="edit-custom" data-id="${esc(x.id)}">
+    <span class="tx"><b>${esc(x.name)}</b><small>${per100(fd)}${x.unitG > 0 ? `・${esc(x.unitLabel || '1食分')} ${fmt(x.unitG)}g` : ''}</small></span></button>`; }).join('');
+  el.innerHTML = `<button class="primary wide" data-act="new-custom">＋ 食品を登録</button>
+    <p class="sec">登録した食品（${state.custom.length}）</p>
+    <div class="card">${rows || '<div class="empty"><b>まだありません</b>よく食べる商品や自炊メニューを、パッケージの栄養成分表示を見ながら登録できます</div>'}</div>
+    <p class="note" style="margin:12px 4px 0">登録した食品は、食事を追加するときの検索でいちばん上に出ます。</p>`;
+};
+const numField = (label, name, v, req) => `<label class="f"><span>${label}</span><input type="number" name="${name}" inputmode="decimal" step="any" min="0" ${req ? 'required' : ''} value="${v ?? ''}"></label>`;
+function openCustom(x, then) {
+  openSheet(`<h2>${x && x.id ? 'マイ食品を編集' : 'マイ食品を登録'}<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <label class="f"><span>名前</span><input type="text" name="name" required maxlength="60" value="${esc(x ? x.name : '')}"></label>
+    <div class="f"><span>栄養成分をどの量で入力するか</span><div class="seg">
+      <label class="pick"><input type="radio" name="basis" value="100" checked><span>100gあたり</span></label>
+      <label class="pick"><input type="radio" name="basis" value="unit"><span>1食分あたり</span></label></div></div>
+    <div class="two">
+      <label class="f"><span>1食分の呼び方（任意）</span><input type="text" name="unitLabel" maxlength="12" placeholder="1個、1袋 など" value="${esc(x ? x.unitLabel : '')}"></label>
+      ${numField('1食分の重さ g（任意）', 'unitG', x && x.unitG ? r1(x.unitG) : '')}
+    </div>
+    <div class="two">${numField('エネルギー kcal', 'kcal', x && x.id ? r1(x.kcal) : '', true)}${numField('たんぱく質 g', 'p', x && x.id ? r1(x.p) : '')}</div>
+    <div class="two">${numField('脂質 g', 'f', x && x.id ? r1(x.f) : '')}${numField('炭水化物 g', 'c', x && x.id ? r1(x.c) : '')}</div>
+    <p class="note">パッケージの栄養成分表示をそのまま写せます。「1食分あたり」で入力するときは、1食分の重さも入れてください。</p>
+    <div class="acts">${x && x.id ? '<button type="button" class="text danger" data-act="del-custom">削除</button>' : ''}<button class="primary">保存する</button></div>`,
+    { type: 'custom', id: x && x.id || null, then });
+}
+acts['new-custom'] = el => openCustom(el.dataset.name ? { name: el.dataset.name, unitLabel: '', unitG: 0 } : null, sheetCtx && sheetCtx.type === 'search' ? { meal: sheetCtx.meal } : null);
+acts['edit-custom'] = el => { const x = state.custom.find(c => c.id === el.dataset.id); if (x) openCustom(x, null); };
+submits.custom = (form, ctx) => {
+  const name = String(form.get('name')).trim(), unitG = Math.max(0, numOr(form.get('unitG'), 0)), perUnit = form.get('basis') === 'unit';
+  if (!name) { toast('名前を入力してください'); return; }
+  if (perUnit && !(unitG > 0)) { toast('1食分の重さ（g）を入力してください'); return; }
+  const k = perUnit ? 100 / unitG : 1, v = n => Math.round(Math.max(0, numOr(form.get(n), 0)) * k * 100) / 100;
+  const x = { id: ctx.id || 'c:' + uid(), name, kcal: v('kcal'), p: v('p'), f: v('f'), c: v('c'), unitLabel: String(form.get('unitLabel')).trim(), unitG };
+  const i = state.custom.findIndex(c => c.id === x.id);
+  if (i >= 0) state.custom[i] = x; else state.custom.unshift(x);
+  save(); render();
+  if (ctx.then) openAmount(customFood(x), { meal: ctx.then.meal }); else { closeSheet(); toast('保存しました'); }
+};
+acts['del-custom'] = () => {
+  const id = sheetCtx.id; snap();
+  state.custom = state.custom.filter(c => c.id !== id); state.recent = state.recent.filter(r => r.id !== id);
+  save(); closeSheet(); render(); toast('マイ食品を削除しました（過去の記録は残ります）', true);
+};
+
 /* ---------- 起動 ---------- */
 render();
 loadDB();
