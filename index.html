@@ -188,7 +188,7 @@
 </main>
 
 <div class="toast" id="toast" role="status" hidden><span id="toastMsg"></span><button id="toastUndo" data-act="undo">元に戻す</button></div>
-<dialog id="sheet"><form class="sheet" id="sheetForm" method="dialog" autocomplete="off"></form></dialog>
+<dialog id="sheet"><form class="sheet" id="sheetForm" method="dialog" autocomplete="off" novalidate></form></dialog>
 
 <script>
 'use strict';
@@ -208,18 +208,21 @@ const isDay = s => /^\d{4}-\d{2}-\d{2}$/.test(s) && dayStr(dayDate(s)) === s;
 const r1 = n => Math.round(n * 10) / 10;
 const fmt = n => r1(n).toLocaleString('ja-JP', { maximumFractionDigits: 1 });
 const kc = n => Math.round(n).toLocaleString('ja-JP');
-const numOr = (v, d) => (v === '' || v === null || v === undefined || !Number.isFinite(+v)) ? d : +v;
+// 全角数字や「1,200」のような入力も数として読む
+const toNum = v => { if (typeof v === 'number') return v; const s = String(v ?? '').normalize('NFKC').replace(/[,\s]/g, ''); return /^-?(\d+\.?\d*|\.\d+)$/.test(s) ? +s : NaN; };
+const numOr = (v, d) => { const n = toNum(v); return Number.isFinite(n) ? n : d; };
 
 /* ---------- 保存（この端末の localStorage だけ） ---------- */
-const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, recipe: { prefs: '', template: '' } }, meals: {}, weights: {}, custom: [], sets: [], recent: [] });
+const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, fiber: 20, salt: 7.5, recipe: { prefs: '', template: '' } }, meals: {}, weights: {}, custom: [], sets: [], recent: [] });
 const item = e => ({ foodId: e.foodId ?? null, name: String(e.name), grams: +e.grams, qty: numOr(e.qty, +e.grams), unit: String(e.unit || 'g'), unitG: numOr(e.unitG, 1),
-  kcal: numOr(e.kcal, 0), p: numOr(e.p, 0), f: numOr(e.f, 0), c: numOr(e.c, 0) });
+  kcal: numOr(e.kcal, 0), p: numOr(e.p, 0), f: numOr(e.f, 0), c: numOr(e.c, 0), fib: numOr(e.fib, null), salt: numOr(e.salt, null) });
 const validItem = e => e && e.name && numOr(e.grams, -1) >= 0;
 function normalize(s) {
   const f = fresh();
   if (!s || typeof s !== 'object') return f;
   const st = s.settings || {}, pfc = st.pfc || {};
   f.settings.kcal = Math.max(1, numOr(st.kcal, 2000));
+  f.settings.fiber = Math.max(0, numOr(st.fiber, 20)); f.settings.salt = Math.max(0, numOr(st.salt, 7.5));
   f.settings.weightGoal = numOr(st.weightGoal, null);
   const p = numOr(pfc.p, 20), ft = numOr(pfc.f, 25), c = numOr(pfc.c, 55);
   if (p >= 0 && ft >= 0 && c >= 0 && Math.round(p + ft + c) === 100) f.settings.pfc = { p, f: ft, c };
@@ -231,7 +234,7 @@ function normalize(s) {
   for (const [d, w] of Object.entries(s.weights || {})) if (isDay(d) && numOr(w, 0) > 0) f.weights[d] = +w;
   f.custom = (Array.isArray(s.custom) ? s.custom : []).filter(x => x && x.name).map(x => ({
     id: String(x.id || 'c:' + uid()), name: String(x.name), kcal: numOr(x.kcal, 0), p: numOr(x.p, 0), f: numOr(x.f, 0), c: numOr(x.c, 0),
-    unitLabel: String(x.unitLabel || ''), unitG: numOr(x.unitG, 0) }));
+    fib: numOr(x.fib, 0), salt: numOr(x.salt, 0), unitLabel: String(x.unitLabel || ''), unitG: numOr(x.unitG, 0) }));
   const rc = st.recipe || {};
   f.settings.recipe = { prefs: String(rc.prefs || '').slice(0, 2000), template: String(rc.template || '').slice(0, 6000) };
   f.sets = (Array.isArray(s.sets) ? s.sets : []).filter(x => x && x.name && Array.isArray(x.items))
@@ -256,9 +259,9 @@ async function loadDB() {
   try {
     const j = await (await fetch('foods.json')).json();
     const map = new Map(), list = [];
-    for (const [id, name, kcal, p, f, c] of j.foods) {
+    for (const [id, name, kcal, p, f, c, fib, salt] of j.foods) {
       const short = name.replace(/^(<[^>]+>\s*)?(\([^)]*類\)\s*)?/, '');
-      const fd = { id, name: short, official: name, kcal, p, f, c, units: [], common: false, key: norm(name) };
+      const fd = { id, name: short, official: name, kcal, p, f, c, fib: fib || 0, salt: salt || 0, units: [], common: false, key: norm(name) };
       map.set(id, fd); list.push(fd);
     }
     for (const cm of j.common) {
@@ -267,25 +270,36 @@ async function loadDB() {
     }
     // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
     const extra = (j.extra || []).map(x => ({ id: x.id, name: x.n, official: x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
-      kcal: x.kcal, p: x.p, f: x.f, c: x.c, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
+      kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
     for (const fd of extra) map.set(fd.id, fd);
     list.unshift(...extra);
     DB = { map, list, source: j.source, official: j.foods.length, extra: extra.length };
+    backfill();
   } catch (e) { dbError = true; }
   render();
 }
-const customFood = x => ({ id: x.id, name: x.name, official: '', kcal: x.kcal, p: x.p, f: x.f, c: x.c, custom: true,
+const customFood = x => ({ id: x.id, name: x.name, official: '', kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, salt: x.salt || 0, custom: true,
   units: x.unitG > 0 ? [[x.unitLabel || '1食分', x.unitG]] : [], key: norm(x.name) });
 function foodById(id) {
   if (typeof id === 'string' && id.startsWith('c:')) { const x = state.custom.find(c => c.id === id); return x ? customFood(x) : null; }
   return DB ? DB.map.get(id) || null : null;
 }
+// 食物繊維・食塩相当量を持たない古い記録に、食品データから値を補う
+function backfill() {
+  let changed = false;
+  const fill = e => { if (e.fib != null && e.salt != null) return; const fd = foodById(e.foodId); if (!fd) return; e.fib = fd.fib; e.salt = fd.salt; changed = true; };
+  for (const list of Object.values(state.meals)) list.forEach(fill);
+  for (const x of state.sets) x.items.forEach(fill);
+  if (changed) save();
+}
+const NUT = ['kcal', 'p', 'f', 'c', 'fib', 'salt'];
+const nutOf = fd => ({ kcal: fd.kcal, p: fd.p, f: fd.f, c: fd.c, fib: fd.fib ?? null, salt: fd.salt ?? null });
 const per100 = fd => `100gあたり ${kc(fd.kcal)}kcal・P${fmt(fd.p)} F${fmt(fd.f)} C${fmt(fd.c)}`;
 
 /* ---------- 目標 ---------- */
 function targets() {
   const { kcal, pfc } = state.settings;
-  return { kcal, p: kcal * pfc.p / 100 / 4, f: kcal * pfc.f / 100 / 9, c: kcal * pfc.c / 100 / 4 };
+  return { kcal, p: kcal * pfc.p / 100 / 4, f: kcal * pfc.f / 100 / 9, c: kcal * pfc.c / 100 / 4, fib: state.settings.fiber, salt: state.settings.salt };
 }
 
 /* ---------- 画面の切り替え ---------- */
@@ -306,10 +320,12 @@ function openSheet(html, ctx, tall) {
   if (!d.open) d.showModal();
   d.scrollTop = 0;
 }
-function closeSheet() { const d = $('#sheet'); if (d.open) d.close(); sheetCtx = null; }
+function closeSheet() { const d = $('#sheet'); document.body.append($('#toast')); if (d.open) d.close(); sheetCtx = null; }
 acts.close = closeSheet;
 let toastTimer = 0;
 function toast(msg, undo) {
+  // シートを開いている間はシートの中に出す（外に出すとシートの裏に隠れて見えない）
+  ($('#sheet').open ? $('#sheet') : document.body).append($('#toast'));
   $('#toastMsg').textContent = msg; $('#toastUndo').hidden = !undo; $('#toast').hidden = false;
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { $('#toast').hidden = true; undoSnap = null; }, undo ? 6000 : 2600);
 }
@@ -328,7 +344,7 @@ $('#sheetForm').addEventListener('submit', e => {
   if (fn) fn(new FormData(e.target), sheetCtx);
 });
 $('#sheet').addEventListener('click', e => { if (e.target === $('#sheet')) closeSheet(); });
-$('#sheet').addEventListener('close', () => { sheetCtx = null; });
+$('#sheet').addEventListener('close', () => { document.body.append($('#toast')); sheetCtx = null; });
 
 /* ---------- きょう（1日の記録） ---------- */
 let curDay = dayStr();
@@ -336,8 +352,8 @@ const WD = ['日', '月', '火', '水', '木', '金', '土'];
 const dayLabel = s => { const d = dayDate(s); return `${d.getMonth() + 1}月${d.getDate()}日（${WD[d.getDay()]}）`; };
 const mealName = m => (MEALS.find(x => x[0] === m) || MEALS[0])[1];
 function sumEntries(list) {
-  const t = { kcal: 0, p: 0, f: 0, c: 0 };
-  for (const e of list) for (const k in t) t[k] += e[k] * e.grams / 100;
+  const t = { kcal: 0, p: 0, f: 0, c: 0, fib: 0, salt: 0 };
+  for (const e of list) for (const k in t) t[k] += (e[k] || 0) * e.grams / 100;
   return t;
 }
 const amountText = e => e.unit === 'g' ? `${fmt(e.grams)}g` : `${e.unit}×${fmt(e.qty)}（${fmt(e.grams)}g）`;
@@ -346,9 +362,10 @@ const pct = (v, goal) => goal > 0 ? Math.min(100, Math.max(0, v / goal * 100)) :
 
 views.today = el => {
   const today = dayStr(), list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), rest = g.kcal - t.kcal;
-  const tile = (label, v, goal) => `<div class="stat"><span>${label}</span><b>${fmt(v)}<small>g</small></b>
+  const tile = (label, v, goal, note) => `<div class="stat"><span>${label}</span><b>${fmt(v)}<small>g</small></b>
     <span class="meter" role="progressbar" aria-label="${label}" aria-valuemin="0" aria-valuemax="${Math.round(goal)}" aria-valuenow="${Math.round(v)}"><i style="width:${pct(v, goal)}%"></i></span>
-    <small>目標 ${Math.round(goal)}g</small></div>`;
+    ${note || `<small>目標 ${Math.round(goal)}g</small>`}</div>`;
+  const sugar = Math.max(0, t.c - t.fib), sugarGoal = Math.max(0, g.c - g.fib);
   const meals = MEALS.map(([m, name]) => {
     const items = list.filter(e => e.meal === m), mt = sumEntries(items);
     const prev = items.length ? [] : (state.meals[addDays(curDay, -1)] || []).filter(e => e.meal === m);
@@ -376,6 +393,7 @@ views.today = el => {
       <div class="rest num">${rest >= 0 ? `あと ${kc(rest)} kcal` : `${kc(-rest)} kcal オーバー`}</div>
     </div>
     <div class="stats">${tile('たんぱく質', t.p, g.p)}${tile('脂質', t.f, g.f)}${tile('炭水化物', t.c, g.c)}</div>
+    <div class="stats">${tile('糖質', sugar, sugarGoal, `<small>目安 ${Math.round(sugarGoal)}g</small>`)}${tile('食物繊維', t.fib, g.fib, `<small>目標 ${fmt(g.fib)}g以上</small>`)}${tile('食塩相当量', t.salt, g.salt, `<small${t.salt > g.salt ? ' class="bad"' : ''}>目標 ${fmt(g.salt)}g未満</small>`)}</div>
     ${meals}
     ${weekCard()}
     <button class="wide" data-act="recipe" style="margin-top:20px;background:var(--card)">🍳 残りカロリーに合うレシピをAIに相談</button>`;
@@ -449,7 +467,7 @@ function openAmount(fd, { meal, entry }) {
     <div class="f"><span>単位</span><div class="chips">${units.map((u, i) => `<label class="pick"><input type="radio" name="unit" value="${i}" ${i === idx ? 'checked' : ''}><span>${i ? `${esc(u[0])}（${fmt(u[1])}g）` : 'g'}</span></label>`).join('')}</div></div>
     <div class="f"><span>量</span><div class="step">
       <button type="button" data-act="qty" data-d="-1" aria-label="減らす">−</button>
-      <input type="number" name="qty" inputmode="decimal" step="any" min="0" required value="${r1(qty)}" aria-label="量">
+      <input type="text" name="qty" inputmode="decimal" value="${r1(qty)}" aria-label="量">
       <button type="button" data-act="qty" data-d="1" aria-label="増やす">＋</button></div></div>
     <div class="calc" id="calc" aria-live="polite"></div>
     <div class="f"><span>食事</span><div class="seg">${MEALS.map(([m, n]) => `<label class="pick"><input type="radio" name="meal" value="${m}" ${m === meal ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div></div>
@@ -463,7 +481,7 @@ function readAmount() {
 }
 function updateCalc() {
   const a = readAmount(), fd = sheetCtx.fd, k = a.grams / 100;
-  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${fmt(a.grams)}g・${pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}</span>`;
+  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${fmt(a.grams)}g・${pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${fmt((fd.fib || 0) * k)}g・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
 }
 acts.qty = el => {
   const inp = $('#sheetForm').elements.qty, a = readAmount(), stepSize = a.unit === 'g' ? 10 : 0.5;
@@ -484,7 +502,7 @@ $('#sheetForm').addEventListener('input', e => {
 submits.amount = (form, ctx) => {
   const a = readAmount(), fd = ctx.fd, meal = form.get('meal');
   if (!(a.grams > 0)) { toast('量を入力してください'); return; }
-  const e = { id: ctx.entry ? ctx.entry.id : uid(), meal, foodId: fd.id, name: fd.name, grams: a.grams, qty: a.qty, unit: a.unit, unitG: a.unitG, kcal: fd.kcal, p: fd.p, f: fd.f, c: fd.c };
+  const e = { id: ctx.entry ? ctx.entry.id : uid(), meal, foodId: fd.id, name: fd.name, grams: a.grams, qty: a.qty, unit: a.unit, unitG: a.unitG, ...nutOf(fd) };
   const list = state.meals[ctx.date] || (state.meals[ctx.date] = []);
   const i = ctx.entry ? list.findIndex(x => x.id === ctx.entry.id) : -1;
   if (i >= 0) list[i] = e; else list.push(e);
@@ -495,7 +513,7 @@ acts['edit-entry'] = el => {
   const e = (state.meals[curDay] || []).find(x => x.id === el.dataset.id); if (!e) return;
   const src = foodById(e.foodId);
   // 栄養値は記録したときのものを使う。単位の候補だけ今の食品データから借りる
-  openAmount({ id: e.foodId, name: e.name, official: '', kcal: e.kcal, p: e.p, f: e.f, c: e.c, units: src ? src.units : [] }, { meal: e.meal, entry: e });
+  openAmount({ id: e.foodId, name: e.name, official: '', ...nutOf(e), units: src ? src.units : [] }, { meal: e.meal, entry: e });
 };
 acts['del-entry'] = () => {
   const { entry, date } = sheetCtx; snap();
@@ -521,10 +539,10 @@ views.foods = el => {
     <div class="card">${mem || '<div class="empty">記録がたまると、よく食べるものがここに並びます</div>'}</div>
     <p class="note" style="margin:8px 4px 0">同じ食事で2回以上食べたものは、「きょう」の各食事の下に「いつもの」として出ます。</p>`;
 };
-const numField = (label, name, v, req) => `<label class="f"><span>${label}</span><input type="number" name="${name}" inputmode="decimal" step="any" min="0" ${req ? 'required' : ''} value="${v ?? ''}"></label>`;
+const numField = (label, name, v, req) => `<label class="f"><span>${label}</span><input type="text" name="${name}" inputmode="decimal" value="${v ?? ''}"></label>`;
 function openCustom(x, then) {
   openSheet(`<h2>${x && x.id ? 'マイ食品を編集' : 'マイ食品を登録'}<button type="button" class="text" data-act="close">閉じる</button></h2>
-    <label class="f"><span>名前</span><input type="text" name="name" required maxlength="60" value="${esc(x ? x.name : '')}"></label>
+    <label class="f"><span>名前</span><input type="text" name="name" maxlength="60" value="${esc(x ? x.name : '')}"></label>
     <div class="f"><span>栄養成分をどの量で入力するか</span><div class="seg">
       <label class="pick"><input type="radio" name="basis" value="100" checked><span>100gあたり</span></label>
       <label class="pick"><input type="radio" name="basis" value="unit"><span>1食分あたり</span></label></div></div>
@@ -534,7 +552,8 @@ function openCustom(x, then) {
     </div>
     <div class="two">${numField('エネルギー kcal', 'kcal', x && x.id ? r1(x.kcal) : '', true)}${numField('たんぱく質 g', 'p', x && x.id ? r1(x.p) : '')}</div>
     <div class="two">${numField('脂質 g', 'f', x && x.id ? r1(x.f) : '')}${numField('炭水化物 g', 'c', x && x.id ? r1(x.c) : '')}</div>
-    <p class="note">パッケージの栄養成分表示をそのまま写せます。「1食分あたり」で入力するときは、1食分の重さも入れてください。</p>
+    <div class="two">${numField('食物繊維 g（任意）', 'fib', x && x.id && x.fib ? r1(x.fib) : '')}${numField('食塩相当量 g（任意）', 'salt', x && x.id && x.salt ? Math.round(x.salt * 100) / 100 : '')}</div>
+    <p class="note">パッケージの栄養成分表示をそのまま写せます。「1食分あたり」で入力するときは、1食分の重さも入れてください。エネルギーを空欄にすると、たんぱく質・脂質・炭水化物から計算します。</p>
     <div class="acts">${x && x.id ? '<button type="button" class="text danger" data-act="del-custom">削除</button>' : ''}<button class="primary">保存する</button></div>`,
     { type: 'custom', id: x && x.id || null, then });
 }
@@ -544,8 +563,13 @@ submits.custom = (form, ctx) => {
   const name = String(form.get('name')).trim(), unitG = Math.max(0, numOr(form.get('unitG'), 0)), perUnit = form.get('basis') === 'unit';
   if (!name) { toast('名前を入力してください'); return; }
   if (perUnit && !(unitG > 0)) { toast('1食分の重さ（g）を入力してください'); return; }
+  const fields = [['kcal', 'エネルギー'], ['p', 'たんぱく質'], ['f', '脂質'], ['c', '炭水化物'], ['fib', '食物繊維'], ['salt', '食塩相当量'], ['unitG', '1食分の重さ']];
+  const wrong = fields.find(([n]) => String(form.get(n)).trim() !== '' && !(toNum(form.get(n)) >= 0));
+  if (wrong) { toast(`${wrong[1]}は数字で入力してください`); return; }
   const k = perUnit ? 100 / unitG : 1, v = n => Math.round(Math.max(0, numOr(form.get(n), 0)) * k * 100) / 100;
-  const x = { id: ctx.id || 'c:' + uid(), name, kcal: v('kcal'), p: v('p'), f: v('f'), c: v('c'), unitLabel: String(form.get('unitLabel')).trim(), unitG };
+  const given = n => String(form.get(n)).trim() !== '';
+  if (!given('kcal') && !given('p') && !given('f') && !given('c')) { toast('エネルギー（kcal）か、たんぱく質・脂質・炭水化物を入力してください'); return; }
+  const x = { id: ctx.id || 'c:' + uid(), name, kcal: given('kcal') ? v('kcal') : Math.round((v('p') * 4 + v('f') * 9 + v('c') * 4) * 100) / 100, p: v('p'), f: v('f'), c: v('c'), fib: v('fib'), salt: v('salt'), unitLabel: String(form.get('unitLabel')).trim(), unitG };
   const i = state.custom.findIndex(c => c.id === x.id);
   if (i >= 0) state.custom[i] = x; else state.custom.unshift(x);
   save(); render();
@@ -572,10 +596,10 @@ views.weight = el => {
     <span class="tx"><b>${md(x.d, true)}（${WD[dayDate(x.d).getDay()]}）</b>${prev ? `<small>前回から ${sg(x.w - prev.w)}kg</small>` : ''}</span>
     <span class="kc">${fmt(x.w)}<small>kg</small></span></button>`; }).join('');
   el.innerHTML = `
-    <form class="card pad stack" id="wForm" autocomplete="off">
+    <form class="card pad stack" id="wForm" autocomplete="off" novalidate>
       <div class="two">
         <label class="f"><span>日付</span><input type="date" name="d" id="wDay" value="${wDate}" max="${today}" required></label>
-        <label class="f"><span>体重（kg）</span><input type="number" name="w" inputmode="decimal" step="0.1" min="20" max="300" required value="${cur ?? ''}" placeholder="${last ? fmt(last.w) : '60.0'}"></label>
+        <label class="f"><span>体重（kg）</span><input type="text" name="w" inputmode="decimal" value="${cur ?? ''}" placeholder="${last ? fmt(last.w) : '60.0'}"></label>
       </div>
       <div class="acts">${cur != null ? '<button type="button" class="text danger" data-act="w-del">この日の記録を削除</button>' : ''}<button class="primary">${cur != null ? '上書きする' : '記録する'}</button></div>
     </form>
@@ -653,7 +677,7 @@ window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer
 views.settings = el => {
   const st = state.settings, days = Object.keys(state.meals).length, ws = Object.keys(state.weights).length;
   el.innerHTML = `
-    <form class="card pad stack" id="sForm" autocomplete="off">
+    <form class="card pad stack" id="sForm" autocomplete="off" novalidate>
       <div class="two">
         ${numField('1日の目標カロリー（kcal）', 'kcal', st.kcal, true)}
         ${numField('目標体重（kg・任意）', 'weightGoal', st.weightGoal ?? '')}
@@ -662,15 +686,20 @@ views.settings = el => {
         <div class="three">${numField('たんぱく質 P', 'p', st.pfc.p, true)}${numField('脂質 F', 'f', st.pfc.f, true)}${numField('炭水化物 C', 'c', st.pfc.c, true)}</div>
       </div>
       <p class="note num" id="pfcNote" aria-live="polite"></p>
+      <div class="two">
+        ${numField('食物繊維の目標（g以上）', 'fiber', st.fiber)}
+        ${numField('食塩相当量の目標（g未満）', 'salt', st.salt)}
+      </div>
+      <p class="note">目安（日本人の食事摂取基準）：食物繊維は成人男性21g以上・女性18g以上、食塩相当量は男性7.5g未満・女性6.5g未満。糖質は「炭水化物 − 食物繊維」で表示します。</p>
       <button class="primary wide">保存する</button>
     </form>
     <p class="sec">レシピ提案プロンプト</p>
-    <form class="card pad stack" id="rForm" autocomplete="off">
+    <form class="card pad stack" id="rForm" autocomplete="off" novalidate>
       <label class="f"><span>好み・苦手・条件（プロンプトに差し込まれます）</span>
         <textarea name="prefs" rows="3" maxlength="2000" placeholder="例：辛いものが好き。きのこは苦手。平日は15分以内、電子レンジ中心。1人分。">${esc(st.recipe.prefs)}</textarea></label>
       <label class="f"><span>プロンプトの文面</span>
         <textarea name="template" id="tplText" rows="10" maxlength="6000">${esc(st.recipe.template || DEFAULT_TEMPLATE)}</textarea></label>
-      <p class="note">{ } の部分は、そのときの記録で置き換わります：{meal} {date} {goal_kcal} {goal_p} {goal_f} {goal_c} {eaten_kcal} {eaten_p} {eaten_f} {eaten_c} {rest_kcal} {rest_p} {rest_f} {rest_c} {meal_kcal} {eaten_list} {favorites} {prefs}。「めしログ: 」で始まる行の形式を残すと、AIの回答をそのまま取り込めます。</p>
+      <p class="note">{ } の部分は、そのときの記録で置き換わります：{meal} {date} {goal_kcal} {goal_p} {goal_f} {goal_c} {eaten_kcal} {eaten_p} {eaten_f} {eaten_c} {rest_kcal} {rest_p} {rest_f} {rest_c} {eaten_fib} {goal_fib} {eaten_salt} {goal_salt} {meal_kcal} {eaten_list} {favorites} {prefs}。「めしログ: 」で始まる行の形式を残すと、AIの回答をそのまま取り込めます。</p>
       <div class="acts"><button type="button" class="text" data-act="tpl-reset">初期の文面に戻す</button><button class="primary">保存する</button></div>
     </form>
     <p class="sec">バックアップ</p>
@@ -686,7 +715,7 @@ views.settings = el => {
 };
 function readSettings() {
   const f = $('#sForm').elements, v = n => numOr(f[n].value, NaN);
-  return { kcal: v('kcal'), weightGoal: numOr(f.weightGoal.value, null), pfc: { p: v('p'), f: v('f'), c: v('c') } };
+  return { kcal: v('kcal'), weightGoal: numOr(f.weightGoal.value, null), pfc: { p: v('p'), f: v('f'), c: v('c') }, fiber: v('fiber'), salt: v('salt') };
 }
 function updatePfcNote() {
   const s = readSettings(), sum = s.pfc.p + s.pfc.f + s.pfc.c, note = $('#pfcNote');
@@ -705,7 +734,8 @@ document.addEventListener('submit', e => {
   if (!(s.kcal >= 500 && s.kcal <= 10000)) { toast('目標カロリーは500〜10000kcalで入力してください'); return; }
   if (s.weightGoal != null && !(s.weightGoal >= 20 && s.weightGoal <= 300)) { toast('目標体重は20〜300kgで入力してください'); return; }
   if ([s.pfc.p, s.pfc.f, s.pfc.c].some(n => !(n >= 0)) || !updatePfcNote()) { toast('PFCの比率は合計100%にしてください'); return; }
-  state.settings = { ...state.settings, kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc };
+  if (!(s.fiber >= 0 && s.fiber <= 100) || !(s.salt >= 0 && s.salt <= 50)) { toast('食物繊維と食塩相当量の目標を数字で入力してください'); return; }
+  state.settings = { ...state.settings, kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc, fiber: r1(s.fiber), salt: r1(s.salt) };
   save(); render(); toast('設定を保存しました');
 });
 acts.export = () => {
@@ -749,7 +779,7 @@ function suggest(meal, dayList) {
 }
 const amountShort = e => e.unit === 'g' ? `${fmt(e.grams)}g` : `${e.unit}${e.qty === 1 ? '' : '×' + fmt(e.qty)}`;
 // 栄養値は、食品データが今もあれば最新のものに合わせる（マイ食品を直したあとも正しく入る）
-const freshen = it => { const fd = foodById(it.foodId); return fd ? { ...it, name: fd.name, kcal: fd.kcal, p: fd.p, f: fd.f, c: fd.c } : it; };
+const freshen = it => { const fd = foodById(it.foodId); return fd ? { ...it, name: fd.name, ...nutOf(fd) } : it; };
 function addItems(meal, items, msg) {
   if (!items.length) return;
   snap();
@@ -772,7 +802,7 @@ acts['mem-add'] = el => {
   const r = memory().get(parseId(el.dataset.id)); if (!r) return;
   const meal = MEALS.map(m => m[0]).sort((a, b) => (r.by[b] ? r.by[b].n : 0) - (r.by[a] ? r.by[a].n : 0))[0], e = r.by[meal].e, fd = foodById(r.id);
   curDay = dayStr();
-  openAmount(fd || { id: e.foodId, name: e.name, official: '', kcal: e.kcal, p: e.p, f: e.f, c: e.c, units: e.unit === 'g' ? [] : [[e.unit, e.unitG]] }, { meal });
+  openAmount(fd || { id: e.foodId, name: e.name, official: '', ...nutOf(e), units: e.unit === 'g' ? [] : [[e.unit, e.unitG]] }, { meal });
 };
 
 /* ---------- マイセット（よくある組み合わせ） ---------- */
@@ -782,7 +812,7 @@ const setRow = act => x => { const t = sumEntries(x.items); return `<button clas
 function openSet(x, items) {
   const list = x ? x.items : items, t = sumEntries(list);
   openSheet(`<h2>${x ? 'マイセットを編集' : 'セットに保存'}<button type="button" class="text" data-act="close">閉じる</button></h2>
-    <label class="f"><span>セットの名前</span><input type="text" name="name" required maxlength="30" value="${esc(x ? x.name : '')}" placeholder="例：いつもの朝食"></label>
+    <label class="f"><span>セットの名前</span><input type="text" name="name" maxlength="30" value="${esc(x ? x.name : '')}" placeholder="例：いつもの朝食"></label>
     <div class="card">${list.map(i => `<div class="row"><span class="tx"><b>${esc(i.name)}</b><small>${esc(amountText(i))}</small></span><span class="kc">${kc(i.kcal * i.grams / 100)}<small>kcal</small></span></div>`).join('')}</div>
     <p class="note num">合計 ${kc(t.kcal)}kcal・${pfcText(t)}。食事を追加する画面の「マイセット」から、まとめて記録できます。</p>
     <div class="acts">${x ? '<button type="button" class="text danger" data-act="del-set">削除</button>' : ''}<button class="primary">保存する</button></div>`,
@@ -823,6 +853,7 @@ const DEFAULT_TEMPLATE = `あなたは管理栄養士の視点を持つ料理家
 - 1日の目標: {goal_kcal}kcal（たんぱく質{goal_p}g・脂質{goal_f}g・炭水化物{goal_c}g）
 - ここまでの摂取: {eaten_kcal}kcal（たんぱく質{eaten_p}g・脂質{eaten_f}g・炭水化物{eaten_c}g）
 - 残り: {rest_kcal}kcal（たんぱく質{rest_p}g・脂質{rest_f}g・炭水化物{rest_c}g）
+- 食物繊維: {eaten_fib}g / 目標{goal_fib}g以上、食塩相当量: {eaten_salt}g / 目標{goal_salt}g未満
 - きょう食べたもの: {eaten_list}
 
 # 好み・条件
@@ -834,7 +865,7 @@ const DEFAULT_TEMPLATE = `あなたは管理栄養士の視点を持つ料理家
 - きょう食べたものと重なりすぎないようにしてください
 - 各レシピに、材料と分量（1人前）、作り方（手短に）、所要時間を書いてください
 - 最後に、各レシピの1人前の栄養を次の形式で1行ずつ書いてください（アプリに取り込むので形式を守ってください）
-めしログ: 料理名 | 1人前の重さg | kcal | たんぱく質g | 脂質g | 炭水化物g`;
+めしログ: 料理名 | 1人前の重さg | kcal | たんぱく質g | 脂質g | 炭水化物g | 食物繊維g | 食塩相当量g`;
 function recipePrompt(meal) {
   const list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), rest = k => Math.max(0, Math.round(g[k] - t[k]));
   const open = ['breakfast', 'lunch', 'dinner'].filter(m => m === meal || !list.some(e => e.meal === m)).length || 1;
@@ -845,6 +876,7 @@ function recipePrompt(meal) {
     goal_kcal: Math.round(g.kcal), goal_p: Math.round(g.p), goal_f: Math.round(g.f), goal_c: Math.round(g.c),
     eaten_kcal: Math.round(t.kcal), eaten_p: Math.round(t.p), eaten_f: Math.round(t.f), eaten_c: Math.round(t.c),
     rest_kcal: rest('kcal'), rest_p: rest('p'), rest_f: rest('f'), rest_c: rest('c'),
+    eaten_fib: fmt(t.fib), eaten_salt: fmt(t.salt), goal_fib: fmt(g.fib), goal_salt: fmt(g.salt),
     meal_kcal: meal === 'snack' ? Math.min(rest('kcal'), 200) : Math.round(rest('kcal') / open),
     eaten_list: list.length ? list.map(e => `${e.name} ${fmt(e.grams)}g`).join('、') : 'まだありません',
     favorites: fav.length ? fav.join('、') : '（まだ記録が少ないのでおまかせ）',
@@ -889,7 +921,7 @@ function parseAI(text) {
     const m = line.match(/めしログ\s*:\s*(.+)/); if (!m) continue;
     const c = m[1].split('|').map(s => s.replace(/[*`]/g, '').trim());
     if (c.length < 3 || !c[0] || c[0] === '料理名') continue;
-    out.push({ name: c[0].slice(0, 60), g: n(c[1]) || 100, kcal: n(c[2]), p: n(c[3]), f: n(c[4]), c: n(c[5]) });
+    out.push({ name: c[0].slice(0, 60), g: n(c[1]) || 100, kcal: n(c[2]), p: n(c[3]), f: n(c[4]), c: n(c[5]), fib: n(c[6]), salt: n(c[7]) });
   }
   return out;
 }
@@ -897,7 +929,7 @@ function renderAI() {
   const items = sheetCtx.items = parseAI($('#aiText').value);
   $('#aiRes').innerHTML = items.length ? `<div class="card">${items.map((x, i) => `<label class="row"><input type="checkbox" name="pick" value="${i}" ${items.length === 1 ? 'checked' : ''} style="width:22px;height:22px;flex:none;accent-color:var(--p2)">
     <span class="tx"><b>${esc(x.name)}</b><small>1人前 ${fmt(x.g)}g・P${fmt(x.p)} F${fmt(x.f)} C${fmt(x.c)}</small></span><span class="kc">${kc(x.kcal)}<small>kcal</small></span></label>`).join('')}</div>`
-    : $('#aiText').value.trim() ? '<p class="note bad">「めしログ: 料理名 | 重さ | kcal | P | F | C」の形の行が見つかりませんでした。</p>' : '';
+    : $('#aiText').value.trim() ? '<p class="note bad">「めしログ: 料理名 | 重さ | kcal | P | F | C | 食物繊維 | 食塩」の形の行が見つかりませんでした。</p>' : '';
 }
 acts['ai-import'] = () => {
   const meal = sheetCtx && sheetCtx.meal || 'dinner';
@@ -913,7 +945,7 @@ function registerAI() { // 選んだ料理をマイ食品にする（同じ名�
   const picked = [...$('#sheetForm').querySelectorAll('[name=pick]:checked')].map(c => sheetCtx.items[+c.value]).filter(Boolean);
   return picked.map(x => {
     const k = 100 / x.g, r2 = v => Math.round(v * k * 100) / 100, old = state.custom.find(c => c.name === x.name);
-    const food = { id: old ? old.id : 'c:' + uid(), name: x.name, kcal: r2(x.kcal), p: r2(x.p), f: r2(x.f), c: r2(x.c), unitLabel: '1人前', unitG: x.g };
+    const food = { id: old ? old.id : 'c:' + uid(), name: x.name, kcal: r2(x.kcal), p: r2(x.p), f: r2(x.f), c: r2(x.c), fib: r2(x.fib), salt: r2(x.salt), unitLabel: '1人前', unitG: x.g };
     if (old) Object.assign(old, food); else state.custom.unshift(food);
     return food;
   });
@@ -924,7 +956,7 @@ acts['ai-reg'] = () => {
 };
 submits.ai = form => {
   const foods = registerAI(); if (!foods.length) { toast('取り込む料理を選んでください'); return; }
-  addItems(form.get('meal'), foods.map(x => ({ foodId: x.id, name: x.name, grams: x.unitG, qty: 1, unit: '1人前', unitG: x.unitG, kcal: x.kcal, p: x.p, f: x.f, c: x.c })), `${foods.length}品を${mealName(form.get('meal'))}に記録しました`);
+  addItems(form.get('meal'), foods.map(x => ({ foodId: x.id, name: x.name, grams: x.unitG, qty: 1, unit: '1人前', unitG: x.unitG, ...nutOf(x) })), `${foods.length}品を${mealName(form.get('meal'))}に記録しました`);
 };
 $('#sheetForm').addEventListener('input', e => {
   if (!sheetCtx) return;

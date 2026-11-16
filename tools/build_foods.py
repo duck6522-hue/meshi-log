@@ -12,13 +12,20 @@ src = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
 check = "--check" in sys.argv
 
 def num(v):
-    return 0 if v is None else round(float(v), 1)
+    # 元データには "14.0†" "(0.5)" "Tr" のような注記つきの値がある。数字の部分だけを使う
+    if v is None:
+        return 0
+    if isinstance(v, str):
+        m = re.search(r"\d+\.?\d*", v)
+        v = m.group(0) if m else 0
+    return round(float(v), 1)
 
 def clean(name):
     return re.sub(r"\s+", " ", name).strip()
 
 foods = [{"id": x["foodId"], "name": clean(x["foodName"]), "kcal": num(x["enercKcal"]),
-          "p": num(x["prot"]), "f": num(x["fat"]), "c": num(x["chocdf"])} for x in src]
+          "p": num(x["prot"]), "f": num(x["fat"]), "c": num(x["chocdf"]),
+          "fib": num(x["fib"]), "salt": num(x["naclEq"])} for x in src]
 
 common, problems = [], []
 for raw in (here / "common.txt").read_text(encoding="utf-8").splitlines():
@@ -68,18 +75,18 @@ for raw in (here / "dishes.txt").read_text(encoding="utf-8").splitlines():
     if not raw.strip() or raw.startswith("#"):
         continue
     label, kana, unit, recipe = [s.strip() for s in raw.split(";")]
-    tot = {"g": 0.0, "kcal": 0.0, "p": 0.0, "f": 0.0, "c": 0.0}
+    tot = {"g": 0.0, "kcal": 0.0, "p": 0.0, "f": 0.0, "c": 0.0, "fib": 0.0, "salt": 0.0}
     bad = False
     for part in recipe.split(","):
         ing, g = part.rsplit("=", 1)
         ing, g = ing.strip(), float(g)
-        f = {"kcal": 0, "p": 0, "f": 0, "c": 0} if ing == "水" else by_label.get(ing) or by_name.get(ing)
+        f = {"kcal": 0, "p": 0, "f": 0, "c": 0, "fib": 0, "salt": 0} if ing == "水" else by_label.get(ing) or by_name.get(ing)
         if f is None:
             problems.append(f"! {label}: 材料「{ing}」が見つかりません")
             bad = True
             continue
         tot["g"] += g
-        for k in ("kcal", "p", "f", "c"):
+        for k in ("kcal", "p", "f", "c", "fib", "salt"):
             tot[k] += f[k] * g / 100
     if bad:
         continue
@@ -88,16 +95,16 @@ for raw in (here / "dishes.txt").read_text(encoding="utf-8").splitlines():
     units = [[ulabel, round(tot["g"] / n, 1)]]
     if n > 1:
         units.append([f"1人前（{n}{ulabel[1:]}）", round(tot["g"], 1)])
-    per = {k: round(tot[k] * 100 / tot["g"], 1) for k in ("kcal", "p", "f", "c")}
+    per = {k: round(tot[k] * 100 / tot["g"], 2 if k == "salt" else 1) for k in ("kcal", "p", "f", "c", "fib", "salt")}
     extra.append({"id": "d:" + label, "n": label, "k": kana, "u": units, **per, "t": "d"})
     if check:
-        print(f"{label}\t{ulabel} {units[0][1]}g\t{round(tot['kcal'] / n)}kcal\tP{round(tot['p'] / n, 1)} F{round(tot['f'] / n, 1)} C{round(tot['c'] / n, 1)}")
+        print(f"{label}\t{ulabel} {units[0][1]}g\t{round(tot['kcal'] / n)}kcal\tP{round(tot['p'] / n, 1)} F{round(tot['f'] / n, 1)} C{round(tot['c'] / n, 1)} 繊維{round(tot['fib'] / n, 1)} 塩{round(tot['salt'] / n, 1)}")
 for raw in (here / "extra.txt").read_text(encoding="utf-8").splitlines():
     if not raw.strip() or raw.startswith("#"):
         continue
-    label, kana, kcal, pp, ff, cc, us = [s.strip() for s in raw.split(";")]
+    label, kana, kcal, pp, ff, cc, fib, salt, us = [s.strip() for s in raw.split(";")]
     units = [[u.rsplit("=", 1)[0].strip(), float(u.rsplit("=", 1)[1])] for u in us.split(",") if u.strip()]
-    extra.append({"id": "x:" + label, "n": label, "k": kana, "u": units, "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "t": "x"})
+    extra.append({"id": "x:" + label, "n": label, "k": kana, "u": units, "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": float(fib), "salt": float(salt), "t": "x"})
 names = [e["n"] for e in extra] + [cm["n"] for cm in common]
 for n in sorted(set(x for x in names if names.count(x) > 1)):
     problems.append(f"! {n}: 名前が重複しています")
@@ -107,8 +114,8 @@ print(f"extra={len(extra)} problems={sum(p.startswith('!') for p in problems)}",
 if not check:
     out = {
         "source": "日本食品標準成分表2020年版（八訂）",
-        "per": "可食部100gあたり。c は差引き法による炭水化物",
-        "foods": [[f["id"], f["name"], f["kcal"], f["p"], f["f"], f["c"]] for f in foods],
+        "per": "可食部100gあたり。並びは id, 名前, kcal, たんぱく質, 脂質, 炭水化物(差引き法), 食物繊維総量, 食塩相当量",
+        "foods": [[f["id"], f["name"], f["kcal"], f["p"], f["f"], f["c"], f["fib"], f["salt"]] for f in foods],
         "common": common,
         "extra": extra,
     }
