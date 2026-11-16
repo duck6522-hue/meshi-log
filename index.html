@@ -263,9 +263,14 @@ async function loadDB() {
     }
     for (const cm of j.common) {
       const fd = map.get(cm.id); if (!fd) continue;
-      fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + fd.official);
+      fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + fd.official); fd.alts = cm.k.split(/\s+/).map(norm);
     }
-    DB = { map, list, source: j.source };
+    // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
+    const extra = (j.extra || []).map(x => ({ id: x.id, name: x.n, official: x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
+      kcal: x.kcal, p: x.p, f: x.f, c: x.c, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
+    for (const fd of extra) map.set(fd.id, fd);
+    list.unshift(...extra);
+    DB = { map, list, source: j.source, official: j.foods.length, extra: extra.length };
   } catch (e) { dbError = true; }
   render();
 }
@@ -381,21 +386,22 @@ document.addEventListener('change', e => {
 });
 
 /* ---------- 食品をさがす ---------- */
-const parseId = s => s.startsWith('c:') ? s : +s;
+const parseId = s => /^\d+$/.test(s) ? +s : s;
 function searchFoods(q) {
   const toks = q.normalize('NFKC').trim().split(/\s+/).map(norm).filter(Boolean);
   if (!toks.length) return [];
   const hits = [];
   for (const fd of [...state.custom.map(customFood), ...(DB ? DB.list : [])]) {
     if (!toks.every(t => fd.key.includes(t))) continue;
-    const nm = norm(fd.name);
-    // マイ食品 → 通称つきの定番 → 成分表のその他、の順。名前の先頭で一致したものを上に
-    hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + (nm.startsWith(toks[0]) ? 0 : nm.includes(toks[0]) ? 1 : 2), fd.name.length, fd]);
+    const nm = norm(fd.name), q = toks[0], alts = fd.alts || [];
+    // マイ食品 → 通称つきの定番 → 成分表のその他、の順。その中では、名前や別名がぴったり合うもの、先頭で合うものを上に
+    const fit = nm === q || nm.replace(/（.*/, '') === q || alts.includes(q) ? 0 : nm.startsWith(q) ? 1 : alts.some(a => a.startsWith(q)) ? 2 : nm.includes(q) ? 3 : 4;
+    hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + fit, fd.name.length, fd]);
   }
   return hits.sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 60).map(h => h[2]);
 }
 const foodRow = fd => `<button class="row" data-act="pick-food" data-id="${esc(fd.id)}">
-  <span class="tx"><b>${esc(fd.name)}</b><small>${per100(fd)}</small></span>${fd.custom ? '<span class="tag">マイ食品</span>' : ''}</button>`;
+  <span class="tx"><b>${esc(fd.name)}</b><small>${per100(fd)}</small></span>${fd.custom ? '<span class="tag">マイ食品</span>' : fd.est ? '<span class="tag">目安</span>' : ''}</button>`;
 function renderResults() {
   const box = $('#qRes'); if (!box) return;
   const q = $('#q').value.trim();
@@ -674,7 +680,8 @@ views.settings = el => {
       <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
     <p class="sec">食品データについて</p>
-    <div class="card pad"><p class="note">同梱の食品データは、文部科学省「${esc(DB ? DB.source : '日本食品標準成分表2020年版（八訂）')}」の可食部100gあたりの値です${DB ? `（${DB.list.length.toLocaleString('ja-JP')}品目）` : ''}。炭水化物は差引き法による値を使っています。「1個」「茶碗1杯」などの重さは目安です。</p></div>`;
+    <div class="card pad"><p class="note">同梱の食品データは、文部科学省「${esc(DB ? DB.source : '日本食品標準成分表2020年版（八訂）')}」の可食部100gあたりの値です${DB ? `（${DB.official.toLocaleString('ja-JP')}品目）` : ''}。炭水化物は差引き法による値を使っています。「1個」「茶碗1杯」などの重さは目安です。</p>
+      <p class="note" style="margin-top:8px">検索結果に「目安」と付く${DB ? ` ${DB.extra}品` : 'もの'}は成分表にない料理や市販品です。料理は成分表の食材を一般的なレシピで組み合わせて計算した値、市販品は一般的な栄養成分表示をもとにした値で、お店や商品によって差があります。</p></div>`;
   updatePfcNote();
 };
 function readSettings() {

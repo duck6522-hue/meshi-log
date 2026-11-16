@@ -60,11 +60,56 @@ for cm in common:
     seen[cm["id"]] = cm["n"]
 print("\n".join(problems), file=sys.stderr)
 print(f"foods={len(foods)} common={len(common)} problems={sum(p.startswith('!') for p in problems)}", file=sys.stderr)
+# ---- 成分表にない料理（材料から計算）と市販品の目安
+by_label = {cm["n"]: next(f for f in foods if f["id"] == cm["id"]) for cm in common}
+by_name = {f["name"]: f for f in foods}
+extra = []
+for raw in (here / "dishes.txt").read_text(encoding="utf-8").splitlines():
+    if not raw.strip() or raw.startswith("#"):
+        continue
+    label, kana, unit, recipe = [s.strip() for s in raw.split(";")]
+    tot = {"g": 0.0, "kcal": 0.0, "p": 0.0, "f": 0.0, "c": 0.0}
+    bad = False
+    for part in recipe.split(","):
+        ing, g = part.rsplit("=", 1)
+        ing, g = ing.strip(), float(g)
+        f = {"kcal": 0, "p": 0, "f": 0, "c": 0} if ing == "水" else by_label.get(ing) or by_name.get(ing)
+        if f is None:
+            problems.append(f"! {label}: 材料「{ing}」が見つかりません")
+            bad = True
+            continue
+        tot["g"] += g
+        for k in ("kcal", "p", "f", "c"):
+            tot[k] += f[k] * g / 100
+    if bad:
+        continue
+    ulabel, _, split = unit.partition("/")
+    n = int(split) if split else 1
+    units = [[ulabel, round(tot["g"] / n, 1)]]
+    if n > 1:
+        units.append([f"1人前（{n}{ulabel[1:]}）", round(tot["g"], 1)])
+    per = {k: round(tot[k] * 100 / tot["g"], 1) for k in ("kcal", "p", "f", "c")}
+    extra.append({"id": "d:" + label, "n": label, "k": kana, "u": units, **per, "t": "d"})
+    if check:
+        print(f"{label}\t{ulabel} {units[0][1]}g\t{round(tot['kcal'] / n)}kcal\tP{round(tot['p'] / n, 1)} F{round(tot['f'] / n, 1)} C{round(tot['c'] / n, 1)}")
+for raw in (here / "extra.txt").read_text(encoding="utf-8").splitlines():
+    if not raw.strip() or raw.startswith("#"):
+        continue
+    label, kana, kcal, pp, ff, cc, us = [s.strip() for s in raw.split(";")]
+    units = [[u.rsplit("=", 1)[0].strip(), float(u.rsplit("=", 1)[1])] for u in us.split(",") if u.strip()]
+    extra.append({"id": "x:" + label, "n": label, "k": kana, "u": units, "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "t": "x"})
+names = [e["n"] for e in extra] + [cm["n"] for cm in common]
+for n in sorted(set(x for x in names if names.count(x) > 1)):
+    problems.append(f"! {n}: 名前が重複しています")
+print("\n".join(p for p in problems if "材料" in p or "重複" in p), file=sys.stderr)
+print(f"extra={len(extra)} problems={sum(p.startswith('!') for p in problems)}", file=sys.stderr)
+
 if not check:
     out = {
         "source": "日本食品標準成分表2020年版（八訂）",
         "per": "可食部100gあたり。c は差引き法による炭水化物",
         "foods": [[f["id"], f["name"], f["kcal"], f["p"], f["f"], f["c"]] for f in foods],
         "common": common,
+        "extra": extra,
     }
     (here.parent / "foods.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
