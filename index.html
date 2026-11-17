@@ -164,6 +164,24 @@
   .wd small { position: absolute; bottom: -20px; font-size: 11px; font-weight: 700; color: var(--muted); }
   .wd.on small { color: var(--pt); font-weight: 900; }
 
+  /* かんたん栄養診断 */
+  .diag .hd { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .diag .hd b { font-size: 16px; font-weight: 900; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 12px; background: var(--field); color: var(--muted); white-space: nowrap; }
+  .pill.ok { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+  .pill.low, .pill.high { color: var(--warn); background: color-mix(in srgb, var(--warn) 13%, transparent); }
+  .cmts { margin-top: 10px; display: flex; flex-direction: column; gap: 10px; }
+  .cmt { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.6; }
+  .cmt span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+  .cmt i { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 13px; font-weight: 900; margin-top: 1px; }
+  .cmt.t-good i { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
+  .cmt.t-warn i { color: var(--warn); background: color-mix(in srgb, var(--warn) 15%, transparent); }
+  .cmt.t-tip i { color: var(--pt); background: var(--tint); }
+  /* 運動 */
+  .excat { font-size: 12px; font-weight: 700; color: var(--muted); margin: 4px 0 -6px; }
+  .summary .sub2 { margin-top: 2px; font-size: 13px; font-weight: 700; }
+
   .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30;
     background: #23262f; color: #fff; border-radius: 14px; padding: 10px 10px 10px 16px; display: flex; align-items: center; gap: 10px; width: max-content; max-width: calc(100vw - 32px); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 6px 20px rgba(0,0,0,.25); font-size: 14px; }
   .toast button { background: rgba(255,255,255,.16); color: #fff; flex: none; }
@@ -174,6 +192,7 @@
   <div class="top gut"><h1>めしログ</h1></div>
   <div class="tabs gut" role="tablist">
     <button role="tab" data-act="tab" data-view="today" aria-selected="true">きょう</button>
+    <button role="tab" data-act="tab" data-view="exercise" aria-selected="false">運動</button>
     <button role="tab" data-act="tab" data-view="weight" aria-selected="false">体重</button>
     <button role="tab" data-act="tab" data-view="foods" aria-selected="false">マイ食品</button>
     <button role="tab" data-act="tab" data-view="settings" aria-selected="false">設定</button>
@@ -182,6 +201,7 @@
 
 <main class="gut">
   <section id="v-today"></section>
+  <section id="v-exercise" hidden></section>
   <section id="v-weight" hidden></section>
   <section id="v-foods" hidden></section>
   <section id="v-settings" hidden></section>
@@ -194,7 +214,7 @@
 'use strict';
 /* ---------- 共通 ---------- */
 const KEY = 'meshi.v1', VIEW_KEY = 'meshi.view';
-const VIEWS = ['today', 'weight', 'foods', 'settings'];
+const VIEWS = ['today', 'exercise', 'weight', 'foods', 'settings'];
 const MEALS = [['breakfast', '朝食'], ['lunch', '昼食'], ['dinner', '夕食'], ['snack', '間食']];
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -213,7 +233,7 @@ const toNum = v => { if (typeof v === 'number') return v; const s = String(v ?? 
 const numOr = (v, d) => { const n = toNum(v); return Number.isFinite(n) ? n : d; };
 
 /* ---------- 保存（この端末の localStorage だけ） ---------- */
-const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, fiber: 20, salt: 7.5, recipe: { prefs: '', template: '' } }, meals: {}, weights: {}, custom: [], sets: [], recent: [] });
+const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, fiber: 20, salt: 7.5, addExercise: true, recipe: { prefs: '', template: '' } }, meals: {}, exercise: {}, weights: {}, custom: [], sets: [], recent: [] });
 const item = e => ({ foodId: e.foodId ?? null, name: String(e.name), grams: +e.grams, qty: numOr(e.qty, +e.grams), unit: String(e.unit || 'g'), unitG: numOr(e.unitG, 1),
   kcal: numOr(e.kcal, 0), p: numOr(e.p, 0), f: numOr(e.f, 0), c: numOr(e.c, 0), fib: numOr(e.fib, null), salt: numOr(e.salt, null) });
 const validItem = e => e && e.name && numOr(e.grams, -1) >= 0;
@@ -223,6 +243,7 @@ function normalize(s) {
   const st = s.settings || {}, pfc = st.pfc || {};
   f.settings.kcal = Math.max(1, numOr(st.kcal, 2000));
   f.settings.fiber = Math.max(0, numOr(st.fiber, 20)); f.settings.salt = Math.max(0, numOr(st.salt, 7.5));
+  f.settings.addExercise = st.addExercise !== false;
   f.settings.weightGoal = numOr(st.weightGoal, null);
   const p = numOr(pfc.p, 20), ft = numOr(pfc.f, 25), c = numOr(pfc.c, 55);
   if (p >= 0 && ft >= 0 && c >= 0 && Math.round(p + ft + c) === 100) f.settings.pfc = { p, f: ft, c };
@@ -239,6 +260,12 @@ function normalize(s) {
   f.settings.recipe = { prefs: String(rc.prefs || '').slice(0, 2000), template: String(rc.template || '').slice(0, 6000) };
   f.sets = (Array.isArray(s.sets) ? s.sets : []).filter(x => x && x.name && Array.isArray(x.items))
     .map(x => ({ id: String(x.id || uid()), name: String(x.name), items: x.items.filter(validItem).map(item) })).filter(x => x.items.length);
+  for (const [d, list] of Object.entries(s.exercise || {})) {
+    if (!isDay(d) || !Array.isArray(list)) continue;
+    const ok = list.filter(x => x && x.name && numOr(x.kcal, -1) >= 0).map(x => ({ id: String(x.id || uid()), name: String(x.name).slice(0, 40),
+      mets: numOr(x.mets, null), min: numOr(x.min, null), steps: numOr(x.steps, null), kcal: Math.round(numOr(x.kcal, 0)) }));
+    if (ok.length) f.exercise[d] = ok;
+  }
   f.recent = (Array.isArray(s.recent) ? s.recent : []).filter(x => x && x.id != null).slice(0, 30);
   return f;
 }
@@ -362,8 +389,14 @@ const amountText = e => e.unit === 'g' ? `${fmt(e.grams)}g` : `${e.unit}×${fmt(
 const pfcText = t => `P${fmt(t.p)} F${fmt(t.f)} C${fmt(t.c)}`;
 const pct = (v, goal) => goal > 0 ? Math.min(100, Math.max(0, v / goal * 100)) : 0;
 
+const dayNav = () => { const today = dayStr(); return `<div class="dnav">
+      <button data-act="day" data-d="-1" aria-label="前の日">‹</button>
+      <div class="day">${dayLabel(curDay)}${curDay === today ? '<small>きょう</small>' : ''}<input type="date" id="dayPick" value="${curDay}" max="${today}" aria-label="日付を選ぶ"></div>
+      <button data-act="day" data-d="1" aria-label="次の日" ${curDay >= today ? 'disabled' : ''}>›</button>
+    </div>`; };
 views.today = el => {
-  const today = dayStr(), list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), rest = g.kcal - t.kcal;
+  const list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), burned = burnedOn(curDay), plus = state.settings.addExercise ? burned : 0;
+  const goalK = g.kcal + plus, rest = goalK - t.kcal;
   const tile = (label, v, goal, note) => `<div class="stat"><span>${label}</span><b>${fmt(v)}<small>g</small></b>
     <span class="meter" role="progressbar" aria-label="${label}" aria-valuemin="0" aria-valuemax="${Math.round(goal)}" aria-valuenow="${Math.round(v)}"><i style="width:${pct(v, goal)}%"></i></span>
     ${note || `<small>目標 ${Math.round(goal)}g</small>`}</div>`;
@@ -383,22 +416,20 @@ views.today = el => {
       ${chips ? `<div class="sug">${chips}</div>` : ''}</div>`;
   }).join('');
   el.innerHTML = `
-    <div class="dnav">
-      <button data-act="day" data-d="-1" aria-label="前の日">‹</button>
-      <div class="day">${dayLabel(curDay)}${curDay === today ? '<small>きょう</small>' : ''}<input type="date" id="dayPick" value="${curDay}" max="${today}" aria-label="日付を選ぶ"></div>
-      <button data-act="day" data-d="1" aria-label="次の日" ${curDay >= today ? 'disabled' : ''}>›</button>
-    </div>
+    ${dayNav()}
     <div class="summary">
-      <div class="lab"><span>摂取カロリー</span><span class="num">目標 ${kc(g.kcal)} kcal</span></div>
+      <div class="lab"><span>摂取カロリー</span><span class="num">目標 ${kc(g.kcal)}${plus ? ` + 運動 ${kc(plus)}` : ''} kcal</span></div>
       <div class="big">${kc(t.kcal)}<small>kcal</small></div>
-      <div class="bar" role="progressbar" aria-label="カロリー" aria-valuemin="0" aria-valuemax="${Math.round(g.kcal)}" aria-valuenow="${Math.round(t.kcal)}"><i style="width:${pct(t.kcal, g.kcal)}%"></i></div>
+      <div class="bar" role="progressbar" aria-label="カロリー" aria-valuemin="0" aria-valuemax="${Math.round(goalK)}" aria-valuenow="${Math.round(t.kcal)}"><i style="width:${pct(t.kcal, goalK)}%"></i></div>
       <div class="rest num">${rest >= 0 ? `あと ${kc(rest)} kcal` : `${kc(-rest)} kcal オーバー`}</div>
+      ${burned ? `<div class="sub2 num">🏃 運動で ${kc(burned)} kcal 消費${plus ? '（目標に加算）' : ''}</div>` : ''}
     </div>
     <div class="stats">${tile('たんぱく質', t.p, g.p)}${tile('脂質', t.f, g.f)}${tile('炭水化物', t.c, g.c)}</div>
     <div class="stats">${tile('糖質', sugar, sugarGoal, `<small>目安 ${Math.round(sugarGoal)}g</small>`)}${tile('食物繊維', t.fib, g.fib, `<small>目標 ${fmt(g.fib)}g以上</small>`)}${tile('食塩相当量', t.salt, g.salt, `<small${t.salt > g.salt ? ' class="bad"' : ''}>目標 ${fmt(g.salt)}g未満</small>`)}</div>
     ${meals}
     ${weekCard()}
-    <button class="wide" data-act="recipe" style="margin-top:20px;background:var(--card)">🍳 残りカロリーに合うレシピをAIに相談</button>`;
+    <button class="wide" data-act="recipe" style="margin-top:20px;background:var(--card)">🍳 残りカロリーに合うレシピをAIに相談</button>
+    ${diagCard(curDay)}`;
 };
 acts.day = el => { const d = addDays(curDay, +el.dataset.d); if (d <= dayStr()) { curDay = d; render(); } };
 document.addEventListener('change', e => {
@@ -693,6 +724,8 @@ views.settings = el => {
         ${numField('食塩相当量の目標（g未満）', 'salt', st.salt)}
       </div>
       <p class="note">目安（日本人の食事摂取基準）：食物繊維は成人男性21g以上・女性18g以上、食塩相当量は男性7.5g未満・女性6.5g未満。糖質は「炭水化物 − 食物繊維」で表示します。</p>
+      <label class="row" style="padding:4px 0;min-height:44px;border:0"><input type="checkbox" name="addExercise" ${st.addExercise ? 'checked' : ''} style="width:22px;height:22px;flex:none;accent-color:var(--p2)">
+        <span class="tx"><b>運動で消費した分を、その日の目標カロリーに足す</b><small>オフにすると、運動の消費カロリーは表示だけになります</small></span></label>
       <button class="primary wide">保存する</button>
     </form>
     <p class="sec">レシピ提案プロンプト</p>
@@ -701,12 +734,12 @@ views.settings = el => {
         <textarea name="prefs" rows="3" maxlength="2000" placeholder="例：辛いものが好き。きのこは苦手。平日は15分以内、電子レンジ中心。1人分。">${esc(st.recipe.prefs)}</textarea></label>
       <label class="f"><span>プロンプトの文面</span>
         <textarea name="template" id="tplText" rows="10" maxlength="6000">${esc(st.recipe.template || DEFAULT_TEMPLATE)}</textarea></label>
-      <p class="note">{ } の部分は、そのときの記録で置き換わります：{meal} {date} {goal_kcal} {goal_p} {goal_f} {goal_c} {eaten_kcal} {eaten_p} {eaten_f} {eaten_c} {rest_kcal} {rest_p} {rest_f} {rest_c} {eaten_fib} {goal_fib} {eaten_salt} {goal_salt} {meal_kcal} {eaten_list} {favorites} {prefs}。「めしログ: 」で始まる行の形式を残すと、AIの回答をそのまま取り込めます。</p>
+      <p class="note">{ } の部分は、そのときの記録で置き換わります：{meal} {date} {goal_kcal} {goal_p} {goal_f} {goal_c} {eaten_kcal} {eaten_p} {eaten_f} {eaten_c} {rest_kcal} {rest_p} {rest_f} {rest_c} {eaten_fib} {goal_fib} {eaten_salt} {goal_salt} {burned_kcal} {exercise_list} {meal_kcal} {eaten_list} {favorites} {prefs}。「めしログ: 」で始まる行の形式を残すと、AIの回答をそのまま取り込めます。</p>
       <div class="acts"><button type="button" class="text" data-act="tpl-reset">初期の文面に戻す</button><button class="primary">保存する</button></div>
     </form>
     <p class="sec">バックアップ</p>
     <div class="card pad stack">
-      <p class="note">記録はこの端末のブラウザの中だけに保存されます（食事 ${days}日分・体重 ${ws}件・マイ食品 ${state.custom.length}件・マイセット ${state.sets.length}件）。機種変更やブラウザのデータ削除に備えて、ときどき書き出しておくと安心です。</p>
+      <p class="note">記録はこの端末のブラウザの中だけに保存されます（食事 ${days}日分・体重 ${ws}件・マイ食品 ${state.custom.length}件・マイセット ${state.sets.length}件・運動 ${Object.keys(state.exercise).length}日分）。機種変更やブラウザのデータ削除に備えて、ときどき書き出しておくと安心です。</p>
       <div class="two"><button type="button" data-act="export">書き出す</button><button type="button" data-act="import">読み込む</button></div>
       <input type="file" id="importFile" accept="application/json,.json" hidden>
     </div>
@@ -717,7 +750,7 @@ views.settings = el => {
 };
 function readSettings() {
   const f = $('#sForm').elements, v = n => numOr(f[n].value, NaN);
-  return { kcal: v('kcal'), weightGoal: numOr(f.weightGoal.value, null), pfc: { p: v('p'), f: v('f'), c: v('c') }, fiber: v('fiber'), salt: v('salt') };
+  return { kcal: v('kcal'), weightGoal: numOr(f.weightGoal.value, null), pfc: { p: v('p'), f: v('f'), c: v('c') }, fiber: v('fiber'), salt: v('salt'), addExercise: f.addExercise.checked };
 }
 function updatePfcNote() {
   const s = readSettings(), sum = s.pfc.p + s.pfc.f + s.pfc.c, note = $('#pfcNote');
@@ -737,7 +770,7 @@ document.addEventListener('submit', e => {
   if (s.weightGoal != null && !(s.weightGoal >= 20 && s.weightGoal <= 300)) { toast('目標体重は20〜300kgで入力してください'); return; }
   if ([s.pfc.p, s.pfc.f, s.pfc.c].some(n => !(n >= 0)) || !updatePfcNote()) { toast('PFCの比率は合計100%にしてください'); return; }
   if (!(s.fiber >= 0 && s.fiber <= 100) || !(s.salt >= 0 && s.salt <= 50)) { toast('食物繊維と食塩相当量の目標を数字で入力してください'); return; }
-  state.settings = { ...state.settings, kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc, fiber: r1(s.fiber), salt: r1(s.salt) };
+  state.settings = { ...state.settings, kcal: Math.round(s.kcal), weightGoal: s.weightGoal == null ? null : r1(s.weightGoal), pfc: s.pfc, fiber: r1(s.fiber), salt: r1(s.salt), addExercise: s.addExercise };
   save(); render(); toast('設定を保存しました');
 });
 acts.export = () => {
@@ -856,6 +889,7 @@ const DEFAULT_TEMPLATE = `あなたは管理栄養士の視点を持つ料理家
 - ここまでの摂取: {eaten_kcal}kcal（たんぱく質{eaten_p}g・脂質{eaten_f}g・炭水化物{eaten_c}g）
 - 残り: {rest_kcal}kcal（たんぱく質{rest_p}g・脂質{rest_f}g・炭水化物{rest_c}g）
 - 食物繊維: {eaten_fib}g / 目標{goal_fib}g以上、食塩相当量: {eaten_salt}g / 目標{goal_salt}g未満
+- きょうの運動: {exercise_list}
 - きょう食べたもの: {eaten_list}
 
 # 好み・条件
@@ -869,7 +903,9 @@ const DEFAULT_TEMPLATE = `あなたは管理栄養士の視点を持つ料理家
 - 最後に、各レシピの1人前の栄養を次の形式で1行ずつ書いてください（アプリに取り込むので形式を守ってください）
 めしログ: 料理名 | 1人前の重さg | kcal | たんぱく質g | 脂質g | 炭水化物g | 食物繊維g | 食塩相当量g`;
 function recipePrompt(meal) {
-  const list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), rest = k => Math.max(0, Math.round(g[k] - t[k]));
+  const list = state.meals[curDay] || [], t = sumEntries(list), g = targets(), burned = burnedOn(curDay);
+  if (state.settings.addExercise) g.kcal += burned;
+  const rest = k => Math.max(0, Math.round(g[k] - t[k]));
   const open = ['breakfast', 'lunch', 'dinner'].filter(m => m === meal || !list.some(e => e.meal === m)).length || 1;
   const fav = [...memory().values()].sort((a, b) => b.n - a.n).slice(0, 12).map(r => r.name);
   const prefs = state.settings.recipe.prefs.trim();
@@ -878,7 +914,8 @@ function recipePrompt(meal) {
     goal_kcal: Math.round(g.kcal), goal_p: Math.round(g.p), goal_f: Math.round(g.f), goal_c: Math.round(g.c),
     eaten_kcal: Math.round(t.kcal), eaten_p: Math.round(t.p), eaten_f: Math.round(t.f), eaten_c: Math.round(t.c),
     rest_kcal: rest('kcal'), rest_p: rest('p'), rest_f: rest('f'), rest_c: rest('c'),
-    eaten_fib: fmt(t.fib), eaten_salt: fmt(t.salt), goal_fib: fmt(g.fib), goal_salt: fmt(g.salt),
+    eaten_fib: fmt(t.fib), eaten_salt: fmt(t.salt), goal_fib: fmt(g.fib), goal_salt: fmt(g.salt), burned_kcal: kc(burned),
+    exercise_list: (state.exercise[curDay] || []).map(x => `${x.name}${x.min ? ` ${fmt(x.min)}分` : ''}（${kc(x.kcal)}kcal）`).join('、') || 'なし',
     meal_kcal: meal === 'snack' ? Math.min(rest('kcal'), 200) : Math.round(rest('kcal') / open),
     eaten_list: list.length ? list.map(e => `${e.name} ${fmt(e.grams)}g`).join('、') : 'まだありません',
     favorites: fav.length ? fav.join('、') : '（まだ記録が少ないのでおまかせ）',
@@ -966,6 +1003,214 @@ $('#sheetForm').addEventListener('input', e => {
   if (sheetCtx.type === 'ai' && e.target.id === 'aiText') renderAI();
   if (sheetCtx.type === 'ai' && e.target.name === 'meal') sheetCtx.meal = e.target.value;
 });
+
+/* ---------- 運動 ---------- */
+// METs は国立健康・栄養研究所「改訂版 身体活動のメッツ（METs）表」をもとにした目安
+const EXERCISES = [
+  ['歩く', [['ゆっくり散歩', 2.8], ['ウォーキング（普通）', 3.5], ['早歩き', 4.3], ['犬の散歩', 3.0], ['階段をのぼる', 4.0], ['歩数から計算', 3.0, 'steps']]],
+  ['走る', [['ジョギング', 7.0], ['ランニング（時速8km）', 8.3], ['ランニング（時速10km）', 9.8], ['ランニング（時速11km以上）', 11.0]]],
+  ['自転車', [['自転車（ゆっくり・通勤）', 4.0], ['サイクリング（時速16〜19km）', 6.8], ['エアロバイク（軽め）', 3.5], ['エアロバイク（ふつう）', 6.8]]],
+  ['ジム・トレーニング', [['筋トレ（軽め〜ふつう）', 3.5], ['筋トレ（きつめ）', 6.0], ['自重トレーニング', 3.8], ['HIIT・サーキット', 8.0], ['縄跳び', 11.8], ['エアロビクス', 7.3], ['ヨガ', 2.5], ['ピラティス', 3.0], ['ストレッチ', 2.3]]],
+  ['泳ぐ', [['水泳（のんびり）', 6.0], ['クロール（ゆっくり）', 8.3], ['平泳ぎ', 5.3], ['水中ウォーキング', 4.5]]],
+  ['スポーツ', [['テニス', 7.3], ['バドミントン', 5.5], ['卓球', 4.0], ['ゴルフ（歩いてラウンド）', 4.3], ['ゴルフ（打ちっぱなし）', 3.0], ['サッカー・フットサル', 7.0], ['バスケットボール', 6.5], ['バレーボール', 4.0], ['野球・ソフトボール', 5.0], ['ボウリング', 3.8], ['ハイキング・登山', 6.5], ['ダンス', 5.0], ['スキー・スノーボード', 5.3]]],
+  ['家事・生活', [['掃除機・床掃除', 3.3], ['料理・皿洗い', 2.0], ['洗濯・片付け', 2.3], ['買い物', 2.3], ['庭仕事・草むしり', 3.5], ['子どもと遊ぶ（活発に）', 4.0]]],
+];
+const EX_FLAT = EXERCISES.flatMap(([, list]) => list);
+const burnedOn = d => (state.exercise[d] || []).reduce((a, x) => a + x.kcal, 0);
+// その日以前で最新の体重。記録がなければいちばん古い記録、それもなければ 60kg
+function weightOn(d) {
+  const ds = Object.keys(state.weights).sort(), before = ds.filter(x => x <= d);
+  const k = before.length ? before[before.length - 1] : ds[0];
+  return k ? { w: state.weights[k], est: false } : { w: 60, est: true };
+}
+const exKcal = (mets, min, w) => Math.round(mets * w * (min / 60) * 1.05);
+const stepsToMin = st => st / 100; // 1分あたり約100歩として時間に直す
+function exMemory() {
+  const m = new Map();
+  for (const [d, list] of Object.entries(state.exercise)) for (const x of list) {
+    if (x.mets == null) continue;
+    const r = m.get(x.name) || { name: x.name, n: 0, d: '', x }; r.n++; if (d >= r.d) { r.d = d; r.x = x; } m.set(x.name, r);
+  }
+  return [...m.values()].sort((a, b) => b.n - a.n || (a.d < b.d ? 1 : -1));
+}
+const exDetail = x => x.steps ? `${Math.round(x.steps).toLocaleString('ja-JP')}歩` : x.min ? `${fmt(x.min)}分` : '直接入力';
+views.exercise = el => {
+  const list = state.exercise[curDay] || [], burned = burnedOn(curDay), wo = weightOn(curDay);
+  const rows = list.map(x => `<button class="row" data-act="edit-ex" data-id="${esc(x.id)}"><span class="tx"><b>${esc(x.name)}</b>
+    <small>${exDetail(x)}${x.mets ? `・${fmt(x.mets)}メッツ` : ''}</small></span><span class="kc">${kc(x.kcal)}<small>kcal</small></span></button>`).join('');
+  const mem = exMemory().slice(0, 6).map(r => `<button class="chip mem" data-act="ex-quick" data-name="${esc(r.name)}">＋ ${esc(r.name)}<small>${exDetail(r.x)}</small></button>`).join('');
+  const days = [...Array(7)].map((_, i) => addDays(curDay, i - 6)), week = days.reduce((a, d) => a + burnedOn(d), 0), active = days.filter(d => burnedOn(d) > 0).length;
+  el.innerHTML = `${dayNav()}
+    <div class="summary">
+      <div class="lab"><span>運動の消費カロリー</span><span class="num">体重 ${fmt(wo.w)}kg で計算</span></div>
+      <div class="big">${kc(burned)}<small>kcal</small></div>
+      <div class="rest num">${state.settings.addExercise ? 'この分は「きょう」の目標カロリーに足されます' : '表示のみ（目標カロリーには足していません）'}</div>
+    </div>
+    ${wo.est ? '<p class="note" style="margin:-4px 4px 12px">体重の記録がないので 60kg で計算しています。「体重」タブで記録すると正確になります。</p>' : ''}
+    <button class="primary wide" data-act="add-ex">＋ 運動を記録</button>
+    ${mem ? `<p class="sec">よくする運動</p><div class="sug" style="padding-top:0">${mem}</div>` : ''}
+    <p class="sec">${curDay === dayStr() ? 'きょう' : md(curDay)}の運動</p>
+    <div class="card">${rows || '<div class="empty">まだ記録がありません</div>'}</div>
+    <div class="stats" style="margin-top:16px;grid-template-columns:1fr 1fr">
+      <div class="stat"><span>この7日間の合計</span><b>${kc(week)}<small>kcal</small></b><small>運動した日 ${active}日</small></div>
+      <div class="stat"><span>1日あたり</span><b>${kc(week / 7)}<small>kcal</small></b><small>7日間の平均</small></div>
+    </div>
+    <p class="note" style="margin:8px 4px 0">消費カロリー ＝ メッツ × 体重(kg) × 時間(h) × 1.05。メッツは国立健康・栄養研究所「身体活動のメッツ表」をもとにした目安で、運動中に使ったエネルギーの全体です。</p>`;
+};
+function openEx(x) {
+  const wo = weightOn(curDay), manual = x && x.mets == null;
+  const cur = x && !manual ? x.name : 'ウォーキング（普通）';
+  const chips = EXERCISES.map(([cat, list]) => `<p class="excat">${cat}</p><div class="chips">${list.map(([n]) =>
+    `<label class="pick"><input type="radio" name="ex" value="${esc(n)}" ${n === cur ? 'checked' : ''}><span>${esc(n)}</span></label>`).join('')}</div>`).join('');
+  openSheet(`<h2>${x ? '運動を編集' : '運動を記録'}<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <div class="seg"><label class="pick"><input type="radio" name="mode" value="menu" ${manual ? '' : 'checked'}><span>メニューから</span></label>
+      <label class="pick"><input type="radio" name="mode" value="manual" ${manual ? 'checked' : ''}><span>カロリーを直接入力</span></label></div>
+    <div id="exMenu" class="stack" ${manual ? 'hidden' : ''}>
+      <div class="f"><span id="exAmtLabel">時間（分）</span><div class="step">
+        <button type="button" data-act="ex-step" data-d="-1" aria-label="減らす">−</button>
+        <input type="text" name="amt" inputmode="numeric" value="${x && !manual ? (x.steps || x.min) : 30}" aria-label="時間">
+        <button type="button" data-act="ex-step" data-d="1" aria-label="増やす">＋</button></div></div>
+      <div class="calc" id="exCalc" aria-live="polite"></div>
+      <p class="note">体重 ${fmt(wo.w)}kg${wo.est ? '（記録がないため仮の値）' : ''}で計算します。下から運動を選んでください。</p>
+      ${chips}
+    </div>
+    <div id="exManual" class="stack" ${manual ? '' : 'hidden'}>
+      <label class="f"><span>運動の名前</span><input type="text" name="mname" maxlength="40" value="${esc(manual ? x.name : '')}" placeholder="例：リングフィット、スマートウォッチの記録"></label>
+      <div class="two">${numField('消費カロリー（kcal）', 'mkcal', manual ? x.kcal : '')}${numField('時間（分・任意）', 'mmin', manual && x.min ? x.min : '')}</div>
+      <p class="note">スマートウォッチやジムのマシンに出た消費カロリーをそのまま入れられます。</p>
+    </div>
+    <div class="acts">${x ? '<button type="button" class="text danger" data-act="del-ex">削除</button>' : ''}<button class="primary">${x ? '保存する' : '記録する'}</button></div>`,
+    { type: 'ex', id: x ? x.id : null, w: wo.w }, true);
+  updateEx();
+}
+function readEx() {
+  const f = $('#sheetForm').elements, name = f.ex.value, def = EX_FLAT.find(e => e[0] === name) || EX_FLAT[0];
+  const steps = def[2] === 'steps', amt = Math.max(0, numOr(f.amt.value, 0)), min = steps ? stepsToMin(amt) : amt;
+  return { name: def[0], mets: def[1], steps: steps ? amt : null, min, kcal: exKcal(def[1], min, sheetCtx.w), isSteps: steps };
+}
+function updateEx() {
+  const f = $('#sheetForm').elements, manual = f.mode.value === 'manual';
+  $('#exMenu').hidden = manual; $('#exManual').hidden = !manual;
+  if (manual) return;
+  const r = readEx();
+  $('#exAmtLabel').textContent = r.isSteps ? '歩数' : '時間（分）';
+  $('#exCalc').innerHTML = `<b>${kc(r.kcal)}<small>kcal</small></b><span><strong style="color:var(--text)">${esc(r.name)}</strong><br>${fmt(r.mets)}メッツ × ${fmt(sheetCtx.w)}kg × ${fmt(r.min)}分${r.isSteps ? '（1分100歩として）' : ''}</span>`;
+}
+$('#sheetForm').addEventListener('input', e => {
+  if (!sheetCtx || sheetCtx.type !== 'ex') return;
+  if (e.target.name === 'ex') { // 歩数と時間を切り替えたら、それぞれのよくある値にする
+    const def = EX_FLAT.find(x => x[0] === e.target.value), f = $('#sheetForm').elements, wasSteps = $('#exAmtLabel').textContent === '歩数';
+    if (def && (def[2] === 'steps') !== wasSteps) f.amt.value = def[2] === 'steps' ? 8000 : 30;
+  }
+  updateEx();
+});
+acts['ex-step'] = el => {
+  const f = $('#sheetForm').elements, r = readEx(), d = r.isSteps ? 1000 : 5;
+  f.amt.value = Math.max(0, Math.round(numOr(f.amt.value, 0) + d * +el.dataset.d)); updateEx();
+};
+acts['add-ex'] = () => openEx(null);
+acts['edit-ex'] = el => { const x = (state.exercise[curDay] || []).find(e => e.id === el.dataset.id); if (x) openEx(x); };
+acts['ex-quick'] = el => {
+  const r = exMemory().find(m => m.name === el.dataset.name); if (!r) return;
+  const w = weightOn(curDay).w, x = { id: uid(), name: r.x.name, mets: r.x.mets, min: r.x.min, steps: r.x.steps, kcal: exKcal(r.x.mets, r.x.min, w) };
+  snap(); (state.exercise[curDay] || (state.exercise[curDay] = [])).push(x);
+  save(); render(); toast(`${x.name}（${kc(x.kcal)}kcal）を記録しました`, true);
+};
+submits.ex = (form, ctx) => {
+  let x;
+  if (form.get('mode') === 'manual') {
+    const name = String(form.get('mname')).trim(), k = toNum(form.get('mkcal')), mm = String(form.get('mmin')).trim();
+    if (!name) { toast('運動の名前を入力してください'); return; }
+    if (!(k >= 0 && k <= 5000)) { toast('消費カロリーを数字で入力してください'); return; }
+    if (mm && !(toNum(mm) >= 0)) { toast('時間は数字で入力してください'); return; }
+    x = { name: name.slice(0, 40), mets: null, min: mm ? toNum(mm) : null, steps: null, kcal: Math.round(k) };
+  } else {
+    const r = readEx();
+    if (!(r.min > 0)) { toast(r.isSteps ? '歩数を入力してください' : '時間を入力してください'); return; }
+    if (r.min > 1440) { toast('1日の長さを超えています'); return; }
+    x = { name: r.name, mets: r.mets, min: r.min, steps: r.steps, kcal: r.kcal };
+  }
+  const list = state.exercise[curDay] || (state.exercise[curDay] = []), i = ctx.id ? list.findIndex(e => e.id === ctx.id) : -1;
+  if (i >= 0) list[i] = { id: ctx.id, ...x }; else list.push({ id: uid(), ...x });
+  save(); closeSheet(); render(); toast(ctx.id ? '保存しました' : `${x.name}（${kc(x.kcal)}kcal）を記録しました`);
+};
+acts['del-ex'] = () => {
+  const id = sheetCtx.id; snap();
+  state.exercise[curDay] = (state.exercise[curDay] || []).filter(e => e.id !== id);
+  if (!state.exercise[curDay].length) delete state.exercise[curDay];
+  save(); closeSheet(); render(); toast('運動の記録を削除しました', true);
+};
+
+/* ---------- かんたん栄養診断 ---------- */
+// 記録から機械的に出す目安。done=その日の食事が出そろっているか（夕食前は「ここまで」として見る）
+function diagnose(day) {
+  const list = state.meals[day] || []; if (!list.length) return null;
+  const t = sumEntries(list), g = targets(), burned = burnedOn(day), goalK = g.kcal + (state.settings.addExercise ? burned : 0);
+  const now = new Date(), done = day !== dayStr() || list.some(e => e.meal === 'dinner') || now.getHours() >= 21;
+  const top = k => { let best = null, v = 0; for (const e of list) { const x = (e[k] || 0) * e.grams / 100; if (x > v) { v = x; best = e; } } return best ? best.name : ''; };
+  const warn = [], tip = [], good = [], r = (a, b) => b > 0 ? a / b : 1;
+  const st = {
+    kcal: done ? (r(t.kcal, goalK) < 0.8 ? 'low' : r(t.kcal, goalK) > 1.1 ? 'high' : 'ok') : (r(t.kcal, goalK) > 1 ? 'high' : 'wait'),
+    p: r(t.p, g.p) >= (done ? 0.8 : 1) ? 'ok' : done ? 'low' : 'wait',
+    f: r(t.f, g.f) > 1.2 ? 'high' : done ? (r(t.f, g.f) < 0.6 ? 'low' : 'ok') : 'wait',
+    c: r(t.c, g.c) > 1.2 ? 'high' : done ? (r(t.c, g.c) < 0.6 ? 'low' : 'ok') : 'wait',
+    fib: t.fib >= g.fib ? 'ok' : done ? 'low' : 'wait',
+    salt: t.salt > g.salt ? 'high' : done ? 'ok' : 'wait',
+  };
+  if (done) {
+    if (st.kcal === 'high') warn.push(`カロリーが目標より ${kc(t.kcal - goalK)}kcal 多めでした。いちばん大きいのは「${top('kcal')}」。1日で取り戻そうとせず、数日かけて主食や間食を少し控えれば十分です。`);
+    if (st.kcal === 'low') warn.push(`カロリーが目標より ${kc(goalK - t.kcal)}kcal 少なめでした。食べなさすぎが続くと筋肉が落ちて代謝が下がりやすくなります。記録漏れがないかも確認してみてください。`);
+    if (st.p === 'low') warn.push(`たんぱく質があと ${Math.round(g.p - t.p)}g 足りません。卵1個で約6g、納豆1パックで約7g、鶏むね肉（皮なし）100gで約23g取れます。`);
+    if (st.f === 'high') warn.push(`脂質が ${Math.round(t.f)}g（目標 ${Math.round(g.f)}g）と多めです。いちばん多いのは「${top('f')}」。揚げ物を焼き・蒸し料理に、バラ肉をもも肉に替えると減らしやすいです。`);
+    if (st.c === 'high') warn.push(`炭水化物が ${Math.round(t.c)}g（目標 ${Math.round(g.c)}g）と多めです。いちばん多いのは「${top('c')}」。主食の量や甘い飲み物・お菓子を見直してみましょう。`);
+    if (st.c === 'low') warn.push(`炭水化物が少なめです（${Math.round(t.c)}g / 目標 ${Math.round(g.c)}g）。主食を抜きすぎると、たんぱく質がエネルギーに回ってしまい、だるさの原因にもなります。`);
+    if (st.f === 'low') tip.push(`脂質がかなり少なめです。脂質はホルモンや細胞膜の材料なので、魚やナッツ、オリーブオイルなどから適度に取りましょう。`);
+    if (st.salt === 'high') warn.push(`食塩が ${fmt(t.salt)}g（目標 ${fmt(g.salt)}g未満）です。いちばん多いのは「${top('salt')}」。汁物や麺のスープを残すだけでも1〜3g減らせます。`);
+    if (st.fib === 'low') warn.push(`食物繊維があと ${fmt(g.fib - t.fib)}g です。野菜・きのこ・海藻・豆のおかずを1品足すと届きやすくなります（ブロッコリー100gで約5g、納豆1パックで約3g）。`);
+    if (!list.some(e => e.meal === 'breakfast') && list.some(e => e.meal === 'lunch' || e.meal === 'dinner')) tip.push('朝食の記録がありません。朝を抜く日が続くと、昼や夜にまとめて食べすぎやすくなります。');
+    const okN = Object.values(st).filter(v => v === 'ok').length;
+    if (okN === 6) good.push('カロリー・PFC・食物繊維・食塩がすべて目安の範囲です。理想的な1日でした！');
+    else {
+      if (st.p === 'ok') good.push('たんぱく質はしっかり取れています。');
+      if (st.salt === 'ok') good.push('塩分は目標の範囲に収まっています。');
+      if (st.fib === 'ok') good.push('食物繊維が目標に届いています。');
+      if (st.kcal === 'ok') good.push('カロリーは目標の範囲内です。');
+    }
+  } else {
+    const restK = goalK - t.kcal, restP = g.p - t.p;
+    if (st.kcal === 'high') warn.push(`すでに目標を ${kc(-restK)}kcal 超えています。このあとは野菜やスープ中心の軽めの食事にすると調整しやすいです。`);
+    else tip.push(`あと ${kc(restK)}kcal 食べられます（${list.some(e => e.meal === 'lunch') ? '夕食' : '昼食と夕食'}で）。`);
+    if (restP > 25) tip.push(`たんぱく質はあと ${Math.round(restP)}g。鶏むね肉（皮なし）なら約${Math.round(restP / 0.233 / 10) * 10}g分、卵なら約${Math.ceil(restP / 6)}個分です。`);
+    if (st.f === 'high') warn.push(`脂質がすでに ${Math.round(t.f)}g（目標 ${Math.round(g.f)}g）です。このあとは揚げ物を避けて、焼き・蒸し・ゆで料理がおすすめです。`);
+    if (st.salt === 'high') warn.push(`食塩がすでに ${fmt(t.salt)}g で目標を超えています。このあとは汁物を控えめに、薄味を意識しましょう。`);
+    else if (t.salt >= g.salt * 0.75) warn.push(`食塩がすでに ${fmt(t.salt)}g です（目標 ${fmt(g.salt)}g未満）。このあとは薄味を意識すると目標内に収まります。`);
+    if (t.fib < g.fib * 0.5) tip.push(`食物繊維はここまで ${fmt(t.fib)}g。このあとの食事に野菜・きのこ・海藻を取り入れると目標に近づきます。`);
+  }
+  if (burned) good.push(`運動で ${kc(burned)}kcal 消費しました。おつかれさまです！`);
+  // この7日間の傾向（3日以上記録がある場合）
+  const days = [...Array(7)].map((_, i) => addDays(day, i - 6)).filter(d => (state.meals[d] || []).length);
+  if (days.length >= 3) {
+    const sums = days.map(d => sumEntries(state.meals[d])), avg = k => sums.reduce((a, x) => a + x[k], 0) / sums.length;
+    if (avg('p') < g.p * 0.8) tip.push(`この7日間（記録${days.length}日）のたんぱく質は平均 ${Math.round(avg('p'))}g/日で、少なめが続いています。毎食に卵・豆腐・肉・魚のどれかを1品入れるのがコツです。`);
+    else if (avg('salt') > g.salt) tip.push(`この7日間（記録${days.length}日）の食塩は平均 ${fmt(avg('salt'))}g/日で、目標を超えがちです。`);
+  }
+  const okN = Object.values(st).filter(v => v === 'ok').length;
+  const head = !done ? 'ここまでの記録からのひとこと' : okN >= 6 ? 'とてもバランスよく食べられました' : okN >= 4 ? 'おおむね良いバランスです' : '見直しポイントがあります';
+  let cm = [...warn.slice(0, 4).map(x => ['warn', x]), ...tip.map(x => ['tip', x]), ...good.map(x => ['good', x])].slice(0, 5);
+  if (good.length && !cm.some(c => c[0] === 'good')) cm[cm.length - 1] = ['good', good[0]];
+  return { head, done, okN, st, cm };
+}
+function diagCard(day) {
+  const d = diagnose(day);
+  const inner = !d ? '<div class="empty" style="padding:8px 0">食事を記録すると、ここに栄養のひとことが出ます</div>' : `
+    <div class="hd"><b>${d.head}</b>${d.done ? `<span class="note num">6項目中 ${d.okN}項目が目安の範囲</span>` : '<span class="note">夕食前なので途中の判定です</span>'}</div>
+    <div class="pills">${[['kcal', 'カロリー'], ['p', 'たんぱく質'], ['f', '脂質'], ['c', '炭水化物'], ['fib', '食物繊維'], ['salt', '食塩']].map(([k, l]) => {
+      const v = d.st[k], mark = { ok: '✓ 目安内', low: '↓ 少なめ', high: '↑ 多め', wait: '… 途中' }[v];
+      return `<span class="pill ${v}">${l} ${mark}</span>`; }).join('')}</div>
+    <div class="cmts">${d.cm.map(([tone, text]) => `<div class="cmt t-${tone}"><i aria-hidden="true">${tone === 'good' ? '✓' : tone === 'warn' ? '!' : '💡'}</i><span>${esc(text)}</span></div>`).join('')}</div>`;
+  return `<div class="grp"><h2><b>かんたん栄養診断</b></h2><div class="card pad diag">${inner}
+    <p class="note" style="margin-top:12px">記録した内容から自動で出している目安です。持病や体調に不安がある場合は、医師や管理栄養士に相談してください。</p></div></div>`;
+}
 
 /* ---------- 起動 ---------- */
 render();
