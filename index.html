@@ -415,7 +415,7 @@ function searchFoods(q) {
     if (!toks.every(t => fd.key.includes(t))) continue;
     const nm = norm(fd.name), q = toks[0], alts = fd.alts || [];
     // マイ食品 → 通称つきの定番 → 成分表のその他、の順。その中では、名前や別名がぴったり合うもの、先頭で合うものを上に
-    const fit = nm === q || nm.replace(/（.*/, '') === q || alts.includes(q) ? 0 : nm.startsWith(q) ? 1 : alts.some(a => a.startsWith(q)) ? 2 : nm.includes(q) ? 3 : 4;
+    const fit = nm === q || nm.replace(/（.*/, '') === q ? 0 : alts.includes(q) ? 1 : nm.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : nm.includes(q) ? 4 : 5;
     hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + fit, fd.name.length, fd]);
   }
   return hits.sort((a, b) => a[0] - b[0] || a[1] - b[1]).slice(0, 60).map(h => h[2]);
