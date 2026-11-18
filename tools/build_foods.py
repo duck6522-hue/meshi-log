@@ -105,6 +105,15 @@ for raw in (here / "extra.txt").read_text(encoding="utf-8").splitlines():
     label, kana, kcal, pp, ff, cc, fib, salt, us = [s.strip() for s in raw.split(";")]
     units = [[u.rsplit("=", 1)[0].strip(), float(u.rsplit("=", 1)[1])] for u in us.split(",") if u.strip()]
     extra.append({"id": "x:" + label, "n": label, "k": kana, "u": units, "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": float(fib), "salt": float(salt), "t": "x"})
+# ---- チェーン店の公式値（1食あたり）。重さがないので、100g を「1食」とみなして持つ
+for raw in (here / "chains.txt").read_text(encoding="utf-8").splitlines():
+    if not raw.strip() or raw.startswith("#"):
+        continue
+    shop, menu, size, kcal, pp, ff, cc, salt, kana = [s.strip() for s in raw.split(";")]
+    name = f"{shop} {menu}" + (f"（{size}）" if size != "-" else "")
+    unit = size if size != "-" else "1食"
+    extra.append({"id": f"s:{shop}:{menu}:{size}", "n": name, "k": f"{shop} {kana}", "u": [[unit, 100]],
+                  "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": 0, "salt": float(salt), "t": "s", "shop": shop})
 names = [e["n"] for e in extra] + [cm["n"] for cm in common]
 for n in sorted(set(x for x in names if names.count(x) > 1)):
     problems.append(f"! {n}: 名前が重複しています")
