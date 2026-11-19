@@ -298,7 +298,7 @@ async function loadDB() {
       fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + meat + fd.official); fd.alts = cm.k.split(/\s+/).map(norm);
     }
     // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
-    const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
+    const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。${x.note ? x.note + '。' : ''}食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
       kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
     for (const fd of extra) map.set(fd.id, fd);
     list.unshift(...extra);
@@ -451,7 +451,7 @@ function searchFoods(q) {
     const fit = nm === q || nm.replace(/（.*/, '') === q ? 0 : alts.includes(q) ? 1 : nm.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : nm.includes(q) ? 4 : 5;
     hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + fit, fd.name.length, fd]);
   }
-  return hits.sort((a, b) => a[0] - b[0] || (a[2].shop && a[2].shop === b[2].shop ? a[2].ord - b[2].ord : a[1] - b[1])).slice(0, 200).map(h => h[2]);
+  return hits.sort((a, b) => a[0] - b[0] || (a[2].shop && a[2].shop === b[2].shop ? a[2].ord - b[2].ord : a[1] - b[1])).slice(0, 400).map(h => h[2]);
 }
 const foodRow = fd => `<button class="row" data-act="pick-food" data-id="${esc(fd.id)}">
   <span class="tx"><b>${esc(fd.name)}</b><small>${per100(fd)}</small></span>${fd.custom ? '<span class="tag">マイ食品</span>' : fd.shop ? `<span class="tag">${esc(fd.shop)}</span>` : fd.est ? '<span class="tag">目安</span>' : ''}</button>`;

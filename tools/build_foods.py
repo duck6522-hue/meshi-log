@@ -109,11 +109,13 @@ for raw in (here / "extra.txt").read_text(encoding="utf-8").splitlines():
 for raw in (here / "chains.txt").read_text(encoding="utf-8").splitlines():
     if not raw.strip() or raw.startswith("#"):
         continue
-    shop, menu, size, kcal, pp, ff, cc, salt, kana = [s.strip() for s in raw.split(";")]
+    cols = [s.strip() for s in raw.split(";")]
+    shop, menu, size, kcal, pp, ff, cc, salt, kana = cols[:9]
+    note = cols[9] if len(cols) > 9 else ""
     name = f"{shop} {menu}" + (f"（{size}）" if size != "-" else "")
     unit = size if size != "-" else "1食"
     extra.append({"id": f"s:{shop}:{menu}:{size}", "n": name, "k": f"{shop} {kana}", "u": [[unit, 100]],
-                  "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": 0, "salt": float(salt), "t": "s", "shop": shop})
+                  "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": 0, "salt": float(salt), "t": "s", "shop": shop, **({"note": note} if note else {})})
 names = [e["n"] for e in extra] + [cm["n"] for cm in common]
 for n in sorted(set(x for x in names if names.count(x) > 1)):
     problems.append(f"! {n}: 名前が重複しています")
