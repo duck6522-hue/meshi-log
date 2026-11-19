@@ -51,6 +51,17 @@
   .appbar { position: sticky; top: 0; z-index: 10; background: var(--bg); padding-top: env(safe-area-inset-top, 0px); }
   .top { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; padding-bottom: 4px; min-height: 52px; }
   h1 { font-size: 22px; font-weight: 900; letter-spacing: -1px; color: var(--pt); }
+  .iconbtn { width: 44px; height: 44px; padding: 0; border-radius: 50%; background: transparent; display: grid; place-items: center; color: var(--muted); }
+  .iconbtn:hover { background: var(--field); }
+  /* 撮影中だけ：画像の中でも使える端末の標準フォントにそろえ、操作用の部品を消す */
+  html.shooting body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif; }
+  html.shooting #v-today .add, html.shooting #v-today .sug, html.shooting #v-today .dnav > button, html.shooting #v-today [data-act="recipe"] { display: none !important; }
+  html.shooting #v-today .dnav { justify-content: center; }
+  .shotimg { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
+  .shotbox { max-height: 55dvh; overflow: auto; border-radius: 14px; }
+  .shothead { display: flex; align-items: baseline; justify-content: space-between; padding: 4px 2px 10px; }
+  .shothead b { font-size: 20px; font-weight: 900; color: var(--pt); letter-spacing: -1px; }
+  .shothead span { font-size: 12px; color: var(--muted); }
   .tabs { display: flex; border-bottom: 1px solid var(--line); }
   .tabs button { flex: 1; background: none; border-radius: 0; padding: 11px 2px 10px; color: var(--muted); position: relative; font-size: 14px; white-space: nowrap; }
   .tabs button[aria-selected="true"] { color: var(--pt); font-weight: 900; }
@@ -189,7 +200,10 @@
 </head>
 <body>
 <div class="appbar">
-  <div class="top gut"><h1>めしログ</h1></div>
+  <div class="top gut"><h1>めしログ</h1>
+    <button class="iconbtn" id="shotBtn" data-act="shot" aria-label="きょうの画面を画像で保存" title="画像で保存">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></svg>
+    </button></div>
   <div class="tabs gut" role="tablist">
     <button role="tab" data-act="tab" data-view="today" aria-selected="true">きょう</button>
     <button role="tab" data-act="tab" data-view="exercise" aria-selected="false">運動</button>
@@ -342,6 +356,7 @@ const acts = {};    // data-act ごとの処理
 const submits = {}; // シートの種類ごとの送信処理
 function render() {
   document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.view === view));
+  $('#shotBtn').hidden = view !== 'today';
   for (const v of VIEWS) $('#v-' + v).hidden = v !== view;
   if (views[view]) views[view]($('#v-' + view));
 }
@@ -1218,6 +1233,55 @@ function diagCard(day) {
   return `<div class="grp"><h2><b>かんたん栄養診断</b></h2><div class="card pad diag">${inner}
     <p class="note" style="margin-top:12px">記録した内容から自動で出している目安です。持病や体調に不安がある場合は、医師や管理栄養士に相談してください。</p></div></div>`;
 }
+
+/* ---------- きょうの画面を画像で保存 ---------- */
+// html-to-image（vendor/ に同梱、MIT）で #v-today を丸ごと1枚の PNG にする。操作用のボタンや提案は写さない
+let h2iLoading = null;
+function loadH2I() {
+  if (window.htmlToImage) return Promise.resolve(window.htmlToImage);
+  return h2iLoading || (h2iLoading = new Promise((ok, ng) => {
+    const sc = document.createElement('script'); sc.src = 'vendor/html-to-image.js';
+    sc.onload = () => ok(window.htmlToImage); sc.onerror = () => { h2iLoading = null; ng(new Error('load')); };
+    document.head.append(sc);
+  }));
+}
+let shotUrl = '', shotBlob = null;
+acts.shot = async () => {
+  const btn = $('#shotBtn'); if (btn.disabled) return;
+  btn.disabled = true; toast('画像を作っています…');
+  const node = $('#v-today'), head = document.createElement('div');
+  head.className = 'shothead'; head.innerHTML = `<b>めしログ</b><span>${esc(dayLabel(curDay))}の記録</span>`;
+  node.prepend(head);
+  document.documentElement.classList.add('shooting');
+  try {
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    const lib = await loadH2I();
+    const bg = getComputedStyle(document.body).backgroundColor, w = node.offsetWidth, h = node.scrollHeight;
+    const opt = { backgroundColor: bg, pixelRatio: Math.min(2, window.devicePixelRatio || 1), skipFonts: true, cacheBust: true,
+      width: w + 32, height: h + 32, style: { padding: '16px', margin: '0', boxSizing: 'content-box', width: w + 'px' }, filter: el => !(el.id === 'dayPick') };
+    await lib.toBlob(node, opt); // Safari は1回目に描画が欠けることがあるので、2回目の結果を使う
+    shotBlob = await lib.toBlob(node, opt);
+    if (!shotBlob) throw new Error('empty');
+    if (shotUrl) URL.revokeObjectURL(shotUrl);
+    shotUrl = URL.createObjectURL(shotBlob);
+    $('#toast').hidden = true;
+    const canShare = !!(navigator.canShare && navigator.canShare({ files: [new File([shotBlob], 'x.png', { type: 'image/png' })] }));
+    openSheet(`<h2>画像で保存<button type="button" class="text" data-act="close">閉じる</button></h2>
+      <div class="shotbox"><img class="shotimg" src="${shotUrl}" alt="${esc(dayLabel(curDay))}の記録の画像"></div>
+      <p class="note">${canShare ? '「共有・保存」から写真アプリへ保存したり、LINE などに送ったりできます。' : ''}画像を長押しして保存することもできます。</p>
+      <div class="two">${canShare ? '<button type="button" class="primary" data-act="shot-share">共有・保存</button>' : ''}<button type="button" data-act="shot-dl"${canShare ? '' : ' class="primary" style="grid-column:1 / -1"'}>ダウンロード</button></div>`, { type: 'shot' }, true);
+  } catch (e) {
+    toast('画像を作れませんでした。もう一度お試しください');
+  } finally { document.documentElement.classList.remove('shooting'); head.remove(); btn.disabled = false; }
+};
+const shotName = () => `meshi-log-${curDay}.png`;
+acts['shot-share'] = async () => {
+  try { await navigator.share({ files: [new File([shotBlob], shotName(), { type: 'image/png' })], title: `${dayLabel(curDay)}の記録` }); }
+  catch (e) { if (e && e.name !== 'AbortError') toast('共有できませんでした。「ダウンロード」か長押しで保存してください'); }
+};
+acts['shot-dl'] = () => {
+  const a = document.createElement('a'); a.href = shotUrl; a.download = shotName(); document.body.append(a); a.click(); a.remove();
+};
 
 /* ---------- 起動 ---------- */
 render();

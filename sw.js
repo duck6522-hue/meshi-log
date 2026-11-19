@@ -1,6 +1,6 @@
 // オフラインでも開けるようにする。ネットワーク優先で、失敗したときだけ保存済みのコピーを使う。
-const CACHE = 'meshi-v1';
-const SHELL = ['./', 'index.html', 'foods.json', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const CACHE = 'meshi-v2';
+const SHELL = ['./', 'index.html', 'foods.json', 'manifest.webmanifest', 'icon.svg', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png', 'vendor/html-to-image.js'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
