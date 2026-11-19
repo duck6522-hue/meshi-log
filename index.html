@@ -324,8 +324,11 @@ function backfill() {
 const NUT = ['kcal', 'p', 'f', 'c', 'fib', 'salt'];
 const nutOf = fd => ({ kcal: fd.kcal, p: fd.p, f: fd.f, c: fd.c, fib: fd.fib ?? null, salt: fd.salt ?? null });
 // チェーン店の品目（id が s: で始まる）は公式値が1食あたりなので、100g を「1食」として持ち、g は表に出さない
-const isServ = x => typeof (x && (x.foodId ?? x.id)) === 'string' && String(x.foodId ?? x.id).startsWith('s:');
-const per100 = fd => `${isServ(fd) ? '1食あたり' : '100gあたり'} ${kc(fd.kcal)}kcal・P${fmt(fd.p)} F${fmt(fd.f)} C${fmt(fd.c)}`;
+const idOf = x => String(x && (x.foodId ?? x.id));
+const isServ = x => /^[sn]:/.test(idOf(x));
+// PFC が公表されていない店の料理（id が n: で始まる）。カロリーと食塩だけを持つ
+const noPFC = x => idOf(x).startsWith('n:');
+const per100 = fd => `${isServ(fd) ? '1食あたり' : '100gあたり'} ${kc(fd.kcal)}kcal・${noPFC(fd) ? `PFC公表なし・食塩${fmt(fd.salt)}g` : `P${fmt(fd.p)} F${fmt(fd.f)} C${fmt(fd.c)}`}`;
 
 /* ---------- 目標 ---------- */
 function targets() {
@@ -410,7 +413,7 @@ views.today = el => {
       + (prev.length ? `<button class="chip" data-act="copy-prev" data-meal="${m}">前日の${name}をコピー<small>${prev.length}品</small></button>` : '')
       + (items.length >= 2 ? `<button class="chip" data-act="save-set" data-meal="${m}">この組み合わせをセットに保存</button>` : '');
     const rows = items.map(e => { const et = sumEntries([e]); return `<button class="row" data-act="edit-entry" data-id="${esc(e.id)}">
-      <span class="tx"><b>${esc(e.name)}</b><small>${esc(amountText(e))}・${pfcText(et)}</small></span>
+      <span class="tx"><b>${esc(e.name)}</b><small>${esc(amountText(e))}・${noPFC(e) ? 'PFC公表なし' : pfcText(et)}</small></span>
       <span class="kc">${kc(et.kcal)}<small>kcal</small></span></button>`; }).join('');
     return `<div class="grp"><h2><b>${name}</b><span class="num">${items.length ? kc(mt.kcal) + ' kcal' : ''}</span><span class="sp"></span>
       <button class="add" data-act="add-food" data-meal="${m}" aria-label="${name}に追加">＋</button></h2>
@@ -451,7 +454,7 @@ function searchFoods(q) {
     const fit = nm === q || nm.replace(/（.*/, '') === q ? 0 : alts.includes(q) ? 1 : nm.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : nm.includes(q) ? 4 : 5;
     hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + fit, fd.name.length, fd]);
   }
-  return hits.sort((a, b) => a[0] - b[0] || (a[2].shop && a[2].shop === b[2].shop ? a[2].ord - b[2].ord : a[1] - b[1])).slice(0, 400).map(h => h[2]);
+  return hits.sort((a, b) => a[0] - b[0] || (a[2].shop && a[2].shop === b[2].shop ? a[2].ord - b[2].ord : a[1] - b[1])).slice(0, 800).map(h => h[2]);
 }
 const foodRow = fd => `<button class="row" data-act="pick-food" data-id="${esc(fd.id)}">
   <span class="tx"><b>${esc(fd.name)}</b><small>${per100(fd)}</small></span>${fd.custom ? '<span class="tag">マイ食品</span>' : fd.shop ? `<span class="tag">${esc(fd.shop)}</span>` : fd.est ? '<span class="tag">目安</span>' : ''}</button>`;
@@ -516,7 +519,7 @@ function readAmount() {
 }
 function updateCalc() {
   const a = readAmount(), fd = sheetCtx.fd, k = a.grams / 100;
-  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${isServ(fd) || fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
+  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${noPFC(fd) ? 'PFC公表なし' : pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${isServ(fd) || fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
 }
 acts.qty = el => {
   const inp = $('#sheetForm').elements.qty, a = readAmount(), stepSize = a.unit === 'g' ? 10 : 0.5;
@@ -1200,6 +1203,8 @@ function diagnose(day) {
   const head = !done ? 'ここまでの記録からのひとこと' : okN >= 6 ? 'とてもバランスよく食べられました' : okN >= 4 ? 'おおむね良いバランスです' : '見直しポイントがあります';
   let cm = [...warn.slice(0, 4).map(x => ['warn', x]), ...tip.map(x => ['tip', x]), ...good.map(x => ['good', x])].slice(0, 5);
   if (good.length && !cm.some(c => c[0] === 'good')) cm[cm.length - 1] = ['good', good[0]];
+  const np = list.filter(noPFC);
+  if (np.length) cm = [['tip', `「${np[0].name}」${np.length > 1 ? `など${np.length}品` : ''}はたんぱく質・脂質・炭水化物が公表されていないため、PFCの判定には入っていません（カロリーと食塩は入っています）。`], ...cm].slice(0, 5);
   return { head, done, okN, st, cm };
 }
 function diagCard(day) {
