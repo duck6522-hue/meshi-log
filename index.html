@@ -464,9 +464,15 @@ function searchFoods(q) {
   const hits = [];
   for (const fd of [...state.custom.map(customFood), ...(DB ? DB.list : [])]) {
     if (!toks.every(t => fd.key.includes(t))) continue;
-    const nm = norm(fd.name), q = toks[0], alts = fd.alts || [];
-    // マイ食品 → 通称つきの定番 → 成分表のその他、の順。その中では、名前や別名がぴったり合うもの、先頭で合うものを上に
-    const fit = nm === q || nm.replace(/（.*/, '') === q ? 0 : alts.includes(q) ? 1 : nm.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : nm.includes(q) ? 4 : 5;
+    // マイ食品 → 通称つきの定番 → 成分表のその他、の順。その中では、名前や別名がぴったり合うもの、先頭で合うものを上に。
+    // 「まるがめ かけうどん」のように店名と料理名を並べたときは、店名を除いた料理名でいちばん合う語を使う
+    const alts = fd.alts || [], shopN = fd.shop ? norm(fd.shop) : '';
+    const isShopTok = q => shopN && (shopN.includes(q) || alts.slice(0, 3).includes(q));
+    const named = shopN && toks.some(isShopTok), rest = named ? toks.filter(q => !isShopTok(q)) : [toks[0]];
+    const score = name => { const n = norm(name), base = n.replace(/[（(].*/, '');
+      return rest.length ? Math.min(...rest.map(q => n === q || base === q ? 0 : alts.includes(q) ? 1 : n.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : n.includes(q) ? 4 : 5)) : 2; };
+    // 店名を入れていなくても、店名を除いた料理名でも比べる（そのときは一般の料理より少しだけ後ろに）
+    const fit = named ? score(fd.name.replace(fd.shop, '')) : Math.min(score(fd.name), shopN ? score(fd.name.replace(fd.shop, '')) + 1 : 9);
     hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + fit, fd.name.length, fd]);
   }
   return hits.sort((a, b) => a[0] - b[0] || (a[2].shop && a[2].shop === b[2].shop ? a[2].ord - b[2].ord : a[1] - b[1])).slice(0, 800).map(h => h[2]);
