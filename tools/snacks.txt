@@ -1,0 +1,863 @@
+# 市販のお菓子。メーカー公式サイトの栄養成分表示（2026年11月19日に取得）。値は表示の基準量あたりのまま持ち、作成時に100gあたりへ換算する
+# メーカー ; 商品名 ; よみ ; 基準量g ; kcal ; たんぱく質 ; 脂質 ; 炭水化物 ; 食物繊維（- は表示なし） ; 食塩相当量 ; 単位=g,... ; 出典URL
+江崎グリコ ; 十六穀プリッツうす塩味＜6袋＞ ; ぐりこ ぷりっつ プリッツ ; 10 ; 46 ; 1.3 ; 2.1 ; 6.3 ; 2.1 ; 0.18 ; 1袋=10,全量=60 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/43229/
+江崎グリコ ; 十六穀プリッツやきのり味＜6袋＞ ; ぐりこ ぷりっつ プリッツ ; 10 ; 45 ; 1.3 ; 2 ; 6.3 ; 2.1 ; 0.19 ; 1袋=10,全量=60 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/43233/
+江崎グリコ ; おつまみプリッツ＜燻製ベーコン味＞ ; ぐりこ ぷりっつ プリッツ ; 24 ; 118 ; 2.9 ; 5 ; 15.3 ; - ; 0.49 ; 1袋=24 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/45589/
+江崎グリコ ; おつまみプリッツ＜燻製チーズ味＞ ; ぐりこ ぷりっつ プリッツ ; 24 ; 118 ; 3.1 ; 5.2 ; 14.8 ; - ; 0.49 ; 1袋=24 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/45593/
+江崎グリコ ; プリッツ＜ロースト 塩バター＞ ; ぐりこ ぷりっつ プリッツ ; 28.5 ; 141 ; 2.3 ; 6.5 ; 18.9 ; 1 ; 0.36 ; 1袋=28.5,全量=57 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/45930/
+江崎グリコ ; プリッツ＜旨サラダ＞ ; ぐりこ ぷりっつ プリッツ ; 32 ; 158 ; 3 ; 7.3 ; 20.7 ; 0.99 ; 0.45 ; 1袋=32,全量=64 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/45931/
+江崎グリコ ; トマトプリッツ ; ぐりこ ぷりっつ プリッツ ; 26.5 ; 132 ; 2.3 ; 6.1 ; 17.3 ; 0.92 ; 0.41 ; 1袋=26.5,全量=53 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/46436/
+江崎グリコ ; 超カリカリプリッツ＜和風だし香る ホタテ醤油味＞ ; ぐりこ ぷりっつ プリッツ ; 27.5 ; 132 ; 3.2 ; 5.6 ; 17.9 ; 1.6 ; 0.5 ; 1袋=27.5,全量=55 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/46975/
+江崎グリコ ; 超カリカリプリッツ＜ハーブ香る 香味チキン味＞ ; ぐりこ ぷりっつ プリッツ ; 27.5 ; 131 ; 3.1 ; 5.5 ; 18 ; 1.6 ; 0.49 ; 1袋=27.5,全量=55 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/46976/
+江崎グリコ ; プリッツ＜日本味めぐり＞ ; ぐりこ ぷりっつ プリッツ ; 23 ; 115 ; 2.2 ; 5 ; 15.2 ; - ; 0.29 ; 1箱=23 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/47079/
+江崎グリコ ; プリッツ旨サラダ＜8袋＞ ; ぐりこ ぷりっつ プリッツ ; 14.7 ; 73 ; 1.4 ; 3.4 ; 9.5 ; 0.46 ; 0.21 ; 1袋=14.7,全量=118 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/47782/
+江崎グリコ ; トマトプリッツ＜8袋＞ ; ぐりこ ぷりっつ プリッツ ; 13.7 ; 68 ; 1.2 ; 3.1 ; 9 ; 0.48 ; 0.21 ; 1袋=13.7,全量=110 ; https://www.glico.com/jp/product/snack_biscuit_cookie/pretz/47783/
+江崎グリコ ; クリームコロン大袋＜あっさりミルク＞ ; ぐりこ ころん ; 13.5 ; 76 ; 0.6 ; 4.6 ; 8 ; - ; 0.025 ; 1袋=13.5,全量（9袋）=121.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/collon/42737/
+江崎グリコ ; 宇治抹茶コロン ; ぐりこ ころん ; 14 ; 80 ; 0.7 ; 5 ; 8 ; - ; 0.024 ; 1袋=14,全量（18袋）=252 ; https://www.glico.com/jp/product/snack_biscuit_cookie/collon/44801/
+江崎グリコ ; クリームコロン＜いちご＞ ; ぐりこ ころん ; 13.5 ; 76 ; 0.6 ; 4.6 ; 8 ; - ; 0.023 ; 1袋=13.5,全量（6袋）=81 ; https://www.glico.com/jp/product/snack_biscuit_cookie/collon/45565/
+江崎グリコ ; 抹茶ミルクコロン8袋入 ; ぐりこ ころん ; 14 ; 79 ; 0.71 ; 5 ; 7.9 ; - ; 0.03 ; 1袋=14,全量（8袋）=112 ; https://www.glico.com/jp/product/snack_biscuit_cookie/collon/46058/
+江崎グリコ ; クリームコロン＜大人のミルク＞ ; ぐりこ ころん ; 48 ; 275 ; 2.4 ; 17.4 ; 27.1 ; - ; 0.11 ; 1箱=48 ; https://www.glico.com/jp/product/snack_biscuit_cookie/collon/46837/
+江崎グリコ ; ビスコ保存缶 ; ぐりこ びすこ ; 20.6 ; 97 ; 1.1 ; 4 ; 14.6 ; 1 ; 0.11 ; 1パック=20.6 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/46935/
+江崎グリコ ; ビスコミニパック＜発酵バター＞ ; ぐりこ びすこ ; 20.6 ; 101 ; 1.4 ; 4.8 ; 13.4 ; 0.9 ; 0.19 ; 1パック=20.6 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47542/
+江崎グリコ ; ビスコミニパック ; ぐりこ びすこ ; 21.5 ; 105 ; 1.1 ; 4.9 ; 14.6 ; 1 ; 0.11 ; 1パック=21.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47543/
+江崎グリコ ; ビスコミニパック＜いちご＞ ; ぐりこ びすこ ; 21.5 ; 105 ; 1.1 ; 4.9 ; 14.6 ; 1 ; 0.1 ; 1パック=21.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47544/
+江崎グリコ ; ビスコミニパック＜メープル＞ ; ぐりこ びすこ ; 21.5 ; 105 ; 1.2 ; 5 ; 14.4 ; 1 ; 0.11 ; 1パック=21.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47545/
+江崎グリコ ; ビスコ ; ぐりこ びすこ ; 21.5 ; 105 ; 1.1 ; 4.9 ; 14.6 ; 1 ; 0.11 ; 1パック=21.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47546/
+江崎グリコ ; ビスコ＜発酵バター＞ ; ぐりこ びすこ ; 20.6 ; 101 ; 1.4 ; 4.8 ; 13.4 ; 0.9 ; 0.19 ; 1パック=20.6 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47547/
+江崎グリコ ; ビスコ＜いちご＞ ; ぐりこ びすこ ; 21.5 ; 105 ; 1.1 ; 4.9 ; 14.6 ; 1 ; 0.1 ; 1パック=21.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47548/
+江崎グリコ ; ビスコ＜メープル＞ ; ぐりこ びすこ ; 21.5 ; 105 ; 1.2 ; 5 ; 14.4 ; 1 ; 0.11 ; 1パック=21.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47549/
+江崎グリコ ; ビスコ＜焼きりんご＞ ; ぐりこ びすこ ; 20.55 ; 100 ; 1.2 ; 4.6 ; 13.9 ; 0.97 ; 0.18 ; 1パック=20.55 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47550/
+江崎グリコ ; ビスコ大袋＜アソートパック＞ ; ぐりこ びすこ ; 8.6 ; 42 ; 0.44 ; 2 ; 5.8 ; 0.4 ; 0.044 ; 1パック=8.6 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47551/
+江崎グリコ ; ビスコ大袋＜発酵バター＞アソートパック ; ぐりこ びすこ ; 8.22 ; 40 ; 0.55 ; 1.9 ; 5.4 ; 0.36 ; 0.077 ; 1パック=8.22 ; https://www.glico.com/jp/product/snack_biscuit_cookie/bisco/47552/
+江崎グリコ ; 糖質オフチーザ＜ダブルチーズの黒胡椒仕立て＞ ; ぐりこ ちーざ ; 36 ; 189 ; 6.7 ; 12.2 ; 15.4 ; 4.6 ; 0.9 ; 1袋=36 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cheeza/45917/
+江崎グリコ ; チーザ＜チェダーチーズ＞ ; ぐりこ ちーざ ; 32 ; 173 ; 4.9 ; 10.2 ; 15.4 ; 0 ; 0.8 ; 1袋=32 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cheeza/47109/
+江崎グリコ ; チーザ＜カマンベール＞ ; ぐりこ ちーざ ; 32 ; 168 ; 4.4 ; 9.2 ; 16.8 ; 0 ; 0.99 ; 1袋=32 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cheeza/47110/
+江崎グリコ ; 糖質オフクラッツミニタイプ＜チキンの黒胡椒仕立て＞ ; ぐりこ くらっつ ; 14 ; 70 ; 1.3 ; 3.8 ; 8.2 ; 2.3 ; 0.31 ; 1袋=14 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/41409/
+江崎グリコ ; クラッツミニタイプ＜ペッパーベーコン＞ ; ぐりこ くらっつ ; 14 ; 73 ; 1.5 ; 3.8 ; 8.1 ; - ; 0.31 ; 1袋=14 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/46518/
+江崎グリコ ; クラッツ＜ペッパーベーコン＞リクローズタイプ ; ぐりこ くらっつ ; 63 ; 325 ; 6.5 ; 16.6 ; 37.3 ; - ; 1.43 ; 1袋=63 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/46520/
+江崎グリコ ; クラッツ＜ペッパーベーコン＞6袋 ; ぐりこ くらっつ ; 16 ; 82 ; 1.7 ; 4.2 ; 9.4 ; - ; 0.36 ; 1袋=16,全量=96 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/47466/
+江崎グリコ ; クラッツ＜枝豆＞ ; ぐりこ くらっつ ; 42 ; 217 ; 4.4 ; 11.4 ; 24.3 ; - ; 0.88 ; 1袋=42 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/47618/
+江崎グリコ ; 糖質オフクラッツ＜チキンの黒胡椒仕立て＞ ; ぐりこ くらっつ ; 42 ; 204 ; 3.9 ; 11.6 ; 24.7 ; 7.6 ; 0.96 ; 1袋=42 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/47619/
+江崎グリコ ; クラッツ＜ペッパーベーコン＞ ; ぐりこ くらっつ ; 42 ; 216 ; 4.4 ; 11.1 ; 24.7 ; - ; 0.95 ; 1袋=42 ; https://www.glico.com/jp/product/snack_biscuit_cookie/cratz/47621/
+江崎グリコ ; かるじゃが うましお味 ; ぐりこ かるじゃが ; 41 ; 216 ; 2.8 ; 11.3 ; 25.7 ; - ; 0.49 ; 1箱=41 ; https://www.glico.com/jp/product/snack_biscuit_cookie/karujaga/46403/
+江崎グリコ ; かるさつま＜紫いも味＞ ; ぐりこ かるじゃが ; 36 ; 190 ; 2.4 ; 9.9 ; 22.7 ; - ; 0.38 ; 1箱=36 ; https://www.glico.com/jp/product/snack_biscuit_cookie/karujaga/47736/
+江崎グリコ ; コメッコ＜ホタテ味＞ ; ぐりこ こめっこ ; 26 ; 121 ; 1.7 ; 4 ; 19.5 ; - ; 0.38 ; 1袋=26 ; https://www.glico.com/jp/product/snack_biscuit_cookie/komekko/46886/
+江崎グリコ ; コメッコ＜のりわさび味＞ ; ぐりこ こめっこ ; 26 ; 120 ; 1.7 ; 4 ; 19.4 ; - ; 0.37 ; 1袋=26 ; https://www.glico.com/jp/product/snack_biscuit_cookie/komekko/46887/
+江崎グリコ ; シャルウィ?＜茶葉が薫る濃厚抹茶クッキー＞ ; ぐりこ しゃるうぃ クッキー ; 9.5 ; 50 ; 0.54 ; 2.6 ; 6 ; - ; 0.047 ; 1枚=9.5,全量（11枚）=104.5 ; https://www.glico.com/jp/product/snack_biscuit_cookie/shallwe/46696/
+江崎グリコ ; シャルウィ?＜発酵バターが薫るショートブレッド＞ ; ぐりこ しゃるうぃ クッキー ; 9.1 ; 51 ; 0.52 ; 3.1 ; 5.3 ; - ; 0.041 ; 1枚=9.1,全量（11枚）=100.1 ; https://www.glico.com/jp/product/snack_biscuit_cookie/shallwe/47459/
+江崎グリコ ; シャルウィ?エクセレント＜発酵バター＞ ; ぐりこ しゃるうぃ クッキー ; 11.7 ; 67 ; 0.73 ; 4.4 ; 6.2 ; - ; 0.051 ; 1枚=11.7,全量（8枚）=93.6 ; https://www.glico.com/jp/product/snack_biscuit_cookie/shallwe/47460/
+江崎グリコ ; ジャイアントポッキー ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.72 ; 2.2 ; 5.4 ; - ; 0.037 ; 1袋=8.4,全量（16袋）=134.4 ; https://www.glico.com/jp/product/chocolate/pocky/45923/
+江崎グリコ ; いちごポッキー ; ぐりこ ぽっきー ポッキー ; 11.7 ; 60 ; 0.8 ; 2.7 ; 8 ; - ; 0.047 ; 1袋=11.7,全量（8袋）=93.6 ; https://www.glico.com/jp/product/chocolate/pocky/46320/
+江崎グリコ ; ポッキー＜あまおう苺＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.55 ; 2.2 ; 5.5 ; - ; 0.035 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46351/
+江崎グリコ ; ポッキー＜宇治抹茶＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.61 ; 2.2 ; 5.5 ; - ; 0.036 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46352/
+江崎グリコ ; ポッキー＜五郎島金時＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.56 ; 2.1 ; 5.6 ; - ; 0.036 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46353/
+江崎グリコ ; ポッキー＜佐藤錦＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.56 ; 2.1 ; 5.6 ; - ; 0.035 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46354/
+江崎グリコ ; ポッキー＜信州巨峰＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.55 ; 2.1 ; 5.6 ; - ; 0.035 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46355/
+江崎グリコ ; ポッキー＜瀬戸内伊予柑＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.56 ; 2.1 ; 5.6 ; - ; 0.035 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46356/
+江崎グリコ ; ポッキー＜東京あまざけ＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.58 ; 2.2 ; 5.5 ; - ; 0.036 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46357/
+江崎グリコ ; ポッキー＜夕張メロン＞ ; ぐりこ ぽっきー ポッキー ; 8.4 ; 44 ; 0.57 ; 2.1 ; 5.6 ; - ; 0.035 ; 1袋=8.4,全量（13袋）=109.2 ; https://www.glico.com/jp/product/chocolate/pocky/46358/
+江崎グリコ ; ポッキー贅沢仕立て＜ミルクショコラ＞ ; ぐりこ ぽっきー ポッキー ; 12 ; 65 ; 1 ; 3.6 ; 7.1 ; - ; 0.072 ; 1袋=12 ; https://www.glico.com/jp/product/chocolate/pocky/47071/
+江崎グリコ ; ポッキー2層仕立て＜薫るカカオ＞ ; ぐりこ ぽっきー ポッキー ; 25.1 ; 141 ; 2.1 ; 8.5 ; 13.9 ; - ; 0.067 ; 1袋=25.1,全量（2袋）=50.2 ; https://www.glico.com/jp/product/chocolate/pocky/47294/
+江崎グリコ ; ポッキーチョコレート(2袋入) ; ぐりこ ぽっきー ポッキー ; 29 ; 142 ; 2.6 ; 6.3 ; 19.4 ; 1.4 ; 0.15 ; 1袋=29,全量（2袋）=58 ; https://www.glico.com/jp/product/chocolate/pocky/47776/
+江崎グリコ ; ポッキー＜極細＞ ; ぐりこ ぽっきー ポッキー ; 30 ; 149 ; 2.7 ; 6.9 ; 19.6 ; 1.4 ; 0.13 ; 1袋=30,全量（2袋）=60 ; https://www.glico.com/jp/product/chocolate/pocky/47777/
+江崎グリコ ; ポッキーチョコレート(8袋入) ; ぐりこ ぽっきー ポッキー ; 11 ; 54 ; 0.99 ; 2.4 ; 7.4 ; 0.5 ; 0.055 ; 1袋=11,全量（8袋）=88 ; https://www.glico.com/jp/product/chocolate/pocky/47781/
+江崎グリコ ; ポッキー 大人の琥珀 ; ぐりこ ぽっきー ポッキー ; 33.9 ; 169 ; 3 ; 7.3 ; 22.8 ; - ; 0.26 ; 1袋=33.9,全量（5袋）=169.5 ; https://www.glico.com/jp/product/chocolate/pocky/47787/
+江崎グリコ ; ポッキー 女神のルビー ; ぐりこ ぽっきー ポッキー ; 33.9 ; 172 ; 3.8 ; 8 ; 21.1 ; - ; 0.4 ; 1袋=33.9,全量（5袋）=169.5 ; https://www.glico.com/jp/product/chocolate/pocky/47788/
+江崎グリコ ; アーモンドクラッシュポッキー ; ぐりこ ぽっきー ポッキー ; 21.1 ; 115 ; 2.4 ; 6.9 ; 11.2 ; 0.9 ; 0.085 ; 1袋=21.1,全量（2袋）=42.2 ; https://www.glico.com/jp/product/chocolate/pocky/47920/
+江崎グリコ ; ポッキーカカオ60% ; ぐりこ ぽっきー ポッキー ; 27.3 ; 133 ; 3 ; 6.5 ; 17 ; 2.7 ; 0.15 ; 1袋=27.3,全量（2袋）=54.6 ; https://www.glico.com/jp/product/chocolate/pocky/47921/
+江崎グリコ ; つぶつぶいちごポッキー ; ぐりこ ぽっきー ポッキー ; 25.5 ; 129 ; 1.9 ; 6.3 ; 16.8 ; 1.1 ; 0.13 ; 1袋=25.5,全量（2袋）=51 ; https://www.glico.com/jp/product/chocolate/pocky/47922/
+江崎グリコ ; アーモンドピーク＜ミルク＞ ; ぐりこ あーもんどぴーく チョコ ; 29.8 ; 173 ; 2.8 ; 11.4 ; 14.7 ; - ; 0.048 ; 6粒=29.8 ; https://www.glico.com/jp/product/chocolate/almondpeak/40657/
+江崎グリコ ; カプリコのあたま＜いちごあつめ＞ ; ぐりこ かぷりこ チョコ ; 30 ; 171 ; 1.6 ; 10.9 ; 16.7 ; - ; 0.038 ; 1袋=30 ; https://www.glico.com/jp/product/chocolate/caplico/46649/
+江崎グリコ ; カプリコのあたま＜ミルクの星あつめ＞ ; ぐりこ かぷりこ チョコ ; 30 ; 172 ; 1.5 ; 11.1 ; 16.4 ; - ; 0.04 ; 1袋=30 ; https://www.glico.com/jp/product/chocolate/caplico/46650/
+江崎グリコ ; カプリコミニ大袋 ; ぐりこ かぷりこ チョコ ; 9.1 ; 47 ; 0.61 ; 2.5 ; 5.6 ; - ; 0.018 ; 1本=9.1,全量（10本）=91 ; https://www.glico.com/jp/product/chocolate/caplico/47309/
+江崎グリコ ; ジャイアントカプリコ＜いちご＞ ; ぐりこ かぷりこ チョコ ; 35.4 ; 198 ; 1.9 ; 12 ; 20.5 ; - ; 0.054 ; 1本=35.4 ; https://www.glico.com/jp/product/chocolate/caplico/47664/
+江崎グリコ ; ジャイアントカプリコ＜ミルク＞ ; ぐりこ かぷりこ チョコ ; 35.4 ; 200 ; 1.8 ; 12.6 ; 19.9 ; - ; 0.055 ; 1本=35.4 ; https://www.glico.com/jp/product/chocolate/caplico/47665/
+江崎グリコ ; メンタルバランスチョコレートGABA＜ビター＞スタンドパウチ ; ぐりこ ぎゃば チョコ ; 10 ; 58 ; 0.58 ; 3.8 ; 5.4 ; - ; 0.007 ; 全量=51 ; https://www.glico.com/jp/product/chocolate/gaba/47710/
+江崎グリコ ; メンタルバランスチョコレートGABA＜ミルク＞スタンドパウチ ; ぐりこ ぎゃば チョコ ; 10 ; 58 ; 0.78 ; 3.7 ; 5.3 ; - ; 0.019 ; 全量=51 ; https://www.glico.com/jp/product/chocolate/gaba/47711/
+江崎グリコ ; メンタルバランスチョコレートGABAミルク＜小袋＞ ; ぐりこ ぎゃば チョコ ; 10 ; 58 ; 0.78 ; 3.7 ; 5.3 ; - ; 0.019 ;  ; https://www.glico.com/jp/product/chocolate/gaba/47712/
+江崎グリコ ; メンタルバランスチョコレートGABAフォースリープ＜まろやかミルク＞ ; ぐりこ ぎゃば チョコ ; 12.5 ; 71 ; 0.82 ; 4.4 ; 7 ; - ; 0.017 ; 3粒=12.5 ; https://www.glico.com/jp/product/chocolate/gaba/47713/
+江崎グリコ ; メンタルバランスチョコレートGABAフォースリープ＜甘さひかえめビター＞ ; ぐりこ ぎゃば チョコ ; 11.75 ; 67 ; 0.93 ; 4.3 ; 6.2 ; - ; 0.007 ; 3粒=11.75 ; https://www.glico.com/jp/product/chocolate/gaba/47714/
+江崎グリコ ; 神戸ローストショコラ バンホーテンブレンド＜クリーミーミルク＞ ; ぐりこ こうべろーすとしょこら チョコ ; 53 ; 300 ; 4 ; 18.8 ; 28.7 ; - ; 0.081 ; 1箱=53 ; https://www.glico.com/jp/product/chocolate/koberoast/45661/
+江崎グリコ ; 神戸ローストショコラ バンホーテンブレンド＜深みカカオ＞ ; ぐりこ こうべろーすとしょこら チョコ ; 53 ; 301 ; 4.4 ; 19.2 ; 27.7 ; - ; 0.072 ; 1箱=53 ; https://www.glico.com/jp/product/chocolate/koberoast/45665/
+江崎グリコ ; 神戸ローストショコラ＜濃厚ミルク＞ ; ぐりこ こうべろーすとしょこら チョコ ; 7.4 ; 43 ; 0.57 ; 2.8 ; 3.9 ; - ; 0.013 ; 1粒=7.4,全量=104 ; https://www.glico.com/jp/product/chocolate/koberoast/46775/
+江崎グリコ ; 神戸ローストショコラ＜ゴーフル＞ ; ぐりこ こうべろーすとしょこら チョコ ; 6.8 ; 37 ; 0.42 ; 2.2 ; 4 ; - ; 0.012 ; 1粒=6.8,全量=109 ; https://www.glico.com/jp/product/chocolate/koberoast/46776/
+江崎グリコ ; 神戸ローストショコラ＜芳醇カカオ＞ ; ぐりこ こうべろーすとしょこら チョコ ; 7.2 ; 41 ; 0.53 ; 2.5 ; 4 ; - ; 0.003 ; 1粒=7.2,全量=108 ; https://www.glico.com/jp/product/chocolate/koberoast/46777/
+江崎グリコ ; PetitQ(プティキュ) ; ぐりこ ぷてぃきゅ チョコ ; 7.5 ; 41 ; 0.51 ; 2.4 ; 4.4 ; - ; 0.009 ; 1粒=7.5,全量=30 ; https://www.glico.com/jp/product/chocolate/petitq/46462/
+江崎グリコ ; ビッテ＜ミルクショコラ＞ ; ぐりこ びって チョコ ; 16 ; 87 ; 0.96 ; 4.9 ; 9.7 ; - ; 0.042 ; 1枚=16,全量（6枚）=96 ; https://www.glico.com/jp/product/chocolate/bitte/46689/
+江崎グリコ ; ビッテ＜抹茶ショコラ＞ ; ぐりこ びって チョコ ; 16 ; 86 ; 0.89 ; 4.7 ; 10.1 ; - ; 0.043 ; 1枚=16,全量（6枚）=96 ; https://www.glico.com/jp/product/chocolate/bitte/46690/
+江崎グリコ ; LIBERA＜ミルク＞ ; ぐりこ りべら チョコ ; 38 ; 194 ; 2.8 ; 13.3 ; 20.8 ; 7.1 ; 0.04 ; 1袋=38 ; https://www.glico.com/jp/product/chocolate/libera/47932/
+江崎グリコ ; LIBERA＜ビター＞ ; ぐりこ りべら チョコ ; 40 ; 200 ; 3.3 ; 13.9 ; 21.4 ; 8.8 ; 0.025 ; 1袋=40 ; https://www.glico.com/jp/product/chocolate/libera/47933/
+江崎グリコ ; LIBERA素材たっぷり＜香ばしパフ&アーモンド＞ ; ぐりこ りべら チョコ ; 36 ; 187 ; 2.7 ; 13.8 ; 18.3 ; 7.3 ; 0.055 ; 1袋=36 ; https://www.glico.com/jp/product/chocolate/libera/47934/
+江崎グリコ ; ペロティ(19g入) ; ぐりこ ぺろてぃ チョコ ; 19 ; 110 ; 1.3 ; 7.1 ; 10.2 ; - ; 0.027 ; 2本=19 ; https://www.glico.com/jp/product/chocolate/peroti/45485/
+江崎グリコ ; ペロティ(20g入) ; ぐりこ ぺろてぃ チョコ ; 20 ; 116 ; 1.4 ; 7.5 ; 10.8 ; - ; 0.028 ; 1本=20 ; https://www.glico.com/jp/product/chocolate/peroti/45493/
+ロッテ ; ガーナミルク ; ろって ; 50 ; 278 ; 3.8 ; 16.6 ; 28.3 ; - ; 0.06 ; 1箱=50 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail01.html
+ロッテ ; ガーナブラック ; ろって ; 50 ; 286 ; 3.2 ; 18.1 ; 27.6 ; - ; 0.008 ; 1箱=50 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail03.html
+ロッテ ; ガーナホワイト ; ろって ; 45 ; 279 ; 3.6 ; 20.9 ; 19.2 ; - ; 0.1 ; 1箱=45 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail05.html
+ロッテ ; ガーナ抹茶チョコレート ; ろって ; 45 ; 279 ; 3.6 ; 20.9 ; 19.3 ; - ; 0.1 ; 1箱=45 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail188.html
+ロッテ ; プレミアムガーナ ダークミルク ; ろって ; 70 ; 405 ; 7.1 ; 26.9 ; 33.8 ; - ; 0.09 ; 1箱=70 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail118.html
+ロッテ ; プレミアムガーナ キャラメルミルク ; ろって ; 70 ; 407 ; 5 ; 27 ; 36.1 ; - ; 0.13 ; 1箱=70 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail191.html
+ロッテ ; プレミアムガーナ 濃厚生チョコレート＜芳醇ミルク＞ ; ろって ; 5.7 ; 31 ; 0.3 ; 2 ; 2.8 ; - ; 0.009 ; 1枚=5.7,全量（12枚）=68.4 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail172.html
+ロッテ ; プレミアムガーナ 濃厚生チョコレート＜芳醇カカオ＞ ; ろって ; 5.7 ; 31 ; 0.32 ; 2.1 ; 2.8 ; - ; 0.006 ; 1枚=5.7,全量（12枚）=68.4 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail173.html
+ロッテ ; ガーナミルクエクセレント ; ろって ; 4.6 ; 26 ; 0.35 ; 1.5 ; 2.6 ; - ; 0.006 ; 1枚=4.6 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail02.html
+ロッテ ; ガーナブラックエクセレント ; ろって ; 4.6 ; 26 ; 0.3 ; 1.7 ; 2.5 ; - ; 0.001 ; 1枚=4.6 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail04.html
+ロッテ ; ガーナローストミルクエクセレント ; ろって ; 4.6 ; 27 ; 0.3 ; 1.8 ; 2.4 ; - ; 0.007 ; 1枚=4.6 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail67.html
+ロッテ ; プレミアムガーナ 濃厚ショコラ ; ろって ; 7.8 ; 46 ; 0.5 ; 3.2 ; 3.7 ; - ; 0.014 ; 1粒=7.8,全量=60 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail209.html
+ロッテ ; プレミアムガーナ ナッツショコラ＜キャンディングヘーゼルナッツ＞ ; ろって ; 42 ; 246 ; 3.5 ; 16.5 ; 20.8 ; - ; 0.047 ; 1箱=42 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail210.html
+ロッテ ; プレミアムガーナ ティーショコラ＜芳醇アールグレイ＞ ; ろって ; 8.2 ; 43 ; 0.5 ; 2.6 ; 4.5 ; - ; 0.009 ; 1粒=8.2,全量=65 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail211.html
+ロッテ ; プレミアムガーナ フルーツショコラ＜濃熟ブラッドオレンジ＞ ; ろって ; 8.2 ; 43 ; 0.5 ; 2.6 ; 4.5 ; - ; 0.01 ; 1粒=8.2,全量=65 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail212.html
+ロッテ ; プレミアムガーナ ショコラセレクション ; ろって ; 8.2 ; 43 ; 0.5 ; 2.6 ; 4.5 ; - ; 0.009 ; 1粒=8.2,全量=126 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail213.html
+ロッテ ; 大粒で味わうガーナ ; ろって おおつぶ ; 7.7 ; 44 ; 0.6 ; 2.7 ; 4.2 ; - ; 0.01 ; 1粒=7.7,全量（9粒）=69.3 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail165.html
+ロッテ ; ガーナスリムパック ; ろって ; 4 ; 22 ; 0.3 ; 1.3 ; 2.3 ; - ; 0.005 ; 1枚=4 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail06.html
+ロッテ ; ガーナリップル ; ろって ; 58 ; 322 ; 4.4 ; 19.3 ; 32.8 ; - ; 0.08 ; 1箱=58 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail07.html
+ロッテ ; ガーナミルクボトル ; ろって ; 118 ; 674 ; 8.5 ; 42.8 ; 63.6 ; - ; 0.14 ; 1パック=118 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail12.html
+ロッテ ; ガーナミルクトットプチパック ; ろって ; 45 ; 250 ; 3.4 ; 14.9 ; 25.5 ; - ; 0.06 ; 1袋=45 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail171.html
+ロッテ ; ガーナ＜特濃ガトーショコラ＞ ; ろって ; 29 ; 133 ; 2.1 ; 7.6 ; 15 ; - ; 0.1 ; 1個=29 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail130.html
+ロッテ ; ガーナポップジョイ ; ろって ; 37 ; 211 ; 2.7 ; 13.4 ; 19.9 ; - ; 0.045 ; 1袋=37 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail14.html
+ロッテ ; ガーナ&クランキーシェアパック ; ろって ; 4 ; 22 ; 0.3 ; 1.3 ; 2.3 ; - ; 0.005 ; 1枚=4 ; https://www.lotte.co.jp/products/catalogue/choco/01/detail115.html
+ロッテ ; クランキー ; ろって ; 45 ; 244 ; 3.1 ; 13.9 ; 26.7 ; - ; 0.11 ; 1枚=45 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail01.html
+ロッテ ; ザクザクやみつきクランキー板 ; ろって ; 47 ; 251 ; 3.2 ; 13.8 ; 28.6 ; - ; 0.25 ; 1枚=47 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail82.html
+ロッテ ; クランキービッツ ; ろって ; 63 ; 352 ; 4.3 ; 21.4 ; 35.3 ; - ; 0.2 ; 1箱=63 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail42.html
+ロッテ ; クランキーエクセレント ; ろって ; 3.75 ; 20 ; 0.26 ; 1.2 ; 2.2 ; - ; 0.008 ; 1枚=3.75,全量（26枚）=97.5 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail08.html
+ロッテ ; クランキースリムパック ; ろって ; 3.3 ; 18 ; 0.23 ; 1.1 ; 1.9 ; - ; 0.009 ; 1枚=3.3,全量（10枚）=33 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail04.html
+ロッテ ; クランキービッグパウチ ; ろって ; 72 ; 400 ; 4.9 ; 24.2 ; 40.7 ; - ; 0.2 ; 1袋=72 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail48.html
+ロッテ ; サクマシクランキービッグパウチ ; ろって ; 48 ; 255 ; 3.7 ; 14.2 ; 28.2 ; - ; 0.19 ; 1袋=48 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail86.html
+ロッテ ; クランキーアーモンドチョコレートプチパック ; ろって ; 45 ; 255 ; 4.7 ; 16.2 ; 22.5 ; - ; 0.08 ; 1袋=45 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail27.html
+ロッテ ; クランキーポップジョイ ; ろって ; 44 ; 247 ; 3 ; 15.3 ; 24.4 ; - ; 0.12 ; 1袋=44 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail09.html
+ロッテ ; クランキーポップジョイ やみつきラスク ; ろって ; 32 ; 172 ; 2.4 ; 9.5 ; 19.1 ; - ; 0.16 ; 1袋=32 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail85.html
+ロッテ ; クランキーポップジョイ＜ストロベリー＞ ; ろって ; 32 ; 180 ; 1.3 ; 11.2 ; 18.7 ; - ; 0.1 ; 1袋=32 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail10.html
+ロッテ ; クランキーボールポップジョイ＜クッキー&クリーム＞ ; ろって ; 37 ; 202 ; 2.1 ; 11.6 ; 22.2 ; - ; 0.18 ; 1袋=37 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail69.html
+ロッテ ; ザクザクやみつきクランキービッグパウチ ; ろって ; 67 ; 358 ; 4.8 ; 19.8 ; 40 ; - ; 0.5 ; 1袋=67 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail83.html
+ロッテ ; ザクザクやみつきクランキーシェアパック ; ろって ; 9.1 ; 49 ; 0.6 ; 2.7 ; 5.6 ; - ; 0.036 ; 1本=9.1 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail59.html
+ロッテ ; ザクザクやみつきクランキースナックインシェアパック ; ろって ; 8.6 ; 45 ; 0.6 ; 2.4 ; 5.3 ; - ; 0.06 ; 1本=8.6 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail81.html
+ロッテ ; クランキー3種アソートパック ; ろって ; 3.3 ; 18 ; 0.23 ; 1 ; 2 ; - ; 0.007 ; 1枚=3.3 ; https://www.lotte.co.jp/products/catalogue/choco/02/detail84.html
+ロッテ ; パイの実 ; ろって ; 73 ; 395 ; 3.9 ; 22.6 ; 43.9 ; - ; 0.5 ; 1箱=73 ; https://www.lotte.co.jp/products/catalogue/choco/03/detail01.html
+ロッテ ; パイの実シェアパック ; ろって ; 4.3 ; 23 ; 0.24 ; 1.3 ; 2.6 ; - ; 0.03 ; 1粒=4.3 ; https://www.lotte.co.jp/products/catalogue/choco/03/detail03.html
+ロッテ ; チョコを味わうパイの実シェアパック＜深みショコラ＞ ; ろって ; 4.3 ; 23 ; 0.3 ; 1.4 ; 2.5 ; - ; 0.032 ; 1粒=4.3 ; https://www.lotte.co.jp/products/catalogue/choco/03/detail17.html
+ロッテ ; パイの実シェアパック＜宇治抹茶＞ ; ろって ; 4.3 ; 23 ; 0.24 ; 1.3 ; 2.6 ; - ; 0.03 ; 1粒=4.3 ; https://www.lotte.co.jp/products/catalogue/choco/03/detail46.html
+ロッテ ; 旅するパイの実＜アメリカンアップルパイ＞ ; ろって ; 73 ; 401 ; 3.4 ; 23.6 ; 43.7 ; - ; 0.49 ; 1箱=73 ; https://www.lotte.co.jp/products/catalogue/choco/03/detail49.html
+ロッテ ; パイの実＜苺の収穫＞ ; ろって ; 69 ; 381 ; 3.3 ; 22.8 ; 40.6 ; - ; 0.5 ; 1箱=69 ; https://www.lotte.co.jp/products/catalogue/choco/03/detail48.html
+ロッテ ; コアラのマーチ＜チョコ＞ ; ろって ; 48 ; 252 ; 2.4 ; 13.8 ; 29.7 ; - ; 0.28 ; 1箱=48 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail01.html
+ロッテ ; コアラのマーチ＜いちご＞ ; ろって ; 46 ; 244 ; 1.8 ; 13.5 ; 28.8 ; - ; 0.3 ; 1箱=46 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail10.html
+ロッテ ; コアラのマーチ＜きゅーてぃーいちご＞ ; ろって ; 46 ; 244 ; 1.8 ; 13.5 ; 28.8 ; - ; 0.3 ; 1箱=46 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail71.html
+ロッテ ; コアラのマーチ＜全粒粉in旨ビス＞ ; ろって ; 46 ; 243 ; 2.3 ; 13.4 ; 28.3 ; - ; 0.27 ; 1箱=46 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail64.html
+ロッテ ; オリジナルコアラのマーチ ; ろって ; 12 ; 63 ; 0.6 ; 3.5 ; 7.4 ; - ; 0.07 ; 1袋=12 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail56.html
+ロッテ ; コアラのマーチ ミニパック ; ろって ; 12 ; 63 ; 0.6 ; 3.5 ; 7.4 ; - ; 0.07 ; 1袋=12 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail06.html
+ロッテ ; コアラのマーチシェアパック ; ろって ; 12 ; 63 ; 0.6 ; 3.5 ; 7.4 ; - ; 0.07 ; 1袋=12 ; https://www.lotte.co.jp/products/catalogue/choco/04/detail05.html
+ロッテ ; トッポ ; ろって ; 36 ; 190 ; 2.6 ; 10.1 ; 22.2 ; - ; 0.3 ; 1袋=36,全量（2袋）=72 ; https://www.lotte.co.jp/products/catalogue/choco/05/detail01.html
+ロッテ ; トッポ＜ザ・ストロベリー＞ ; ろって ; 36 ; 193 ; 1.8 ; 10.4 ; 22.9 ; - ; 0.25 ; 1袋=36,全量（2袋）=72 ; https://www.lotte.co.jp/products/catalogue/choco/05/detail57.html
+ロッテ ; トッポ＜厳選香る抹茶＞ ; ろって ; 36 ; 192 ; 2 ; 10.3 ; 22.7 ; - ; 0.24 ; 1袋=36,全量（2袋）=72 ; https://www.lotte.co.jp/products/catalogue/choco/05/detail56.html
+ロッテ ; トッポ＜ザ・ショコラ＞ ; ろって ; 36 ; 190 ; 2.6 ; 10.1 ; 22.2 ; - ; 0.23 ; 1袋=36,全量（2袋）=72 ; https://www.lotte.co.jp/products/catalogue/choco/05/detail43.html
+ロッテ ; トッポ袋 ; ろって ; 12 ; 63 ; 0.9 ; 3.4 ; 7.4 ; - ; 0.09 ; 1袋=12,全量（7袋）=84 ; https://www.lotte.co.jp/products/catalogue/choco/05/detail06.html
+ロッテ ; アーモンドチョコレート ; ろって ; 86 ; 500 ; 8.9 ; 33.3 ; 41.1 ; - ; 0.08 ; 1箱=86 ; https://www.lotte.co.jp/products/catalogue/choco/06/detail02.html
+ロッテ ; アーモンドチョコレート＜クリスプ＞ ; ろって ; 80 ; 451 ; 8.2 ; 28.4 ; 40.7 ; - ; 0.16 ; 1箱=80 ; https://www.lotte.co.jp/products/catalogue/choco/06/detail01.html
+ロッテ ; アーモンドチョコレート＜カリッと香ばしアーモンド＞ポップジョイ ; ろって ; 43 ; 250 ; 4.5 ; 16.8 ; 20.4 ; - ; 0.045 ; 1袋=43 ; https://www.lotte.co.jp/products/catalogue/choco/06/detail07.html
+ロッテ ; リッチアーモンドチョコレートポップジョイ ; ろって ; 35 ; 204 ; 3.75 ; 13.8 ; 16.2 ; - ; 0.06 ; 1袋=35 ; https://www.lotte.co.jp/products/catalogue/choco/06/detail25.html
+ロッテ ; アーモンドチョコレートシェアパック ; ろって ; 19.5 ; 113 ; 2 ; 7.5 ; 9.3 ; - ; 0.018 ; 1袋=19.5 ; https://www.lotte.co.jp/products/catalogue/choco/06/detail03.html
+ロッテ ; 糖質オフアーモンドチョコレートシェアパック ; ろって ; 19.6 ; 110 ; 2.1 ; 8.3 ; 8.5 ; 3.2 ; 0.02 ; 1袋=19.6 ; https://www.lotte.co.jp/products/catalogue/choco/06/detail17.html
+ロッテ ; マカダミアチョコレート ; ろって ; 67 ; 411 ; 4.3 ; 29.9 ; 31 ; - ; 0.08 ; 1箱=67 ; https://www.lotte.co.jp/products/catalogue/choco/07/detail01.html
+ロッテ ; マカダミアチョコレートポップジョイ＜カラメリゼ＞ ; ろって ; 34 ; 201 ; 2.3 ; 13.6 ; 17.3 ; - ; 0.03 ; 1袋=34 ; https://www.lotte.co.jp/products/catalogue/choco/07/detail02.html
+ロッテ ; 紗々 ; ろって さしゃ ; 4.4 ; 25 ; 0.3 ; 1.5 ; 2.5 ; - ; 0.005 ; 1枚=4.4 ; https://www.lotte.co.jp/products/catalogue/choco/19/detail02.html
+ロッテ ; 紗々＜芳醇抹茶＞ ; ろって さしゃ ; 4.4 ; 25 ; 0.3 ; 1.5 ; 2.5 ; - ; 0.004 ; 1枚=4.4 ; https://www.lotte.co.jp/products/catalogue/choco/19/detail24.html
+ロッテ ; 紗々＜芳醇いちご＞ ; ろって さしゃ ; 4.4 ; 25 ; 0.3 ; 1.5 ; 2.5 ; - ; 0.004 ; 1枚=4.4 ; https://www.lotte.co.jp/products/catalogue/choco/19/detail15.html
+ロッテ ; ゼロ ; ろって ; 10 ; 48 ; 0.8 ; 4 ; 5 ; 1 ; 0.011 ; 1本=10 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail01.html
+ロッテ ; ゼロ＜カカオ70%＞ ; ろって ; 10 ; 52 ; 1 ; 4.4 ; 4.3 ; 1.3 ; 0.004 ; 1本=10 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail06.html
+ロッテ ; ゼロ シュガーフリーチョコレート ; ろって ; 40 ; 197 ; 3.2 ; 15.8 ; 20.1 ; 4.2 ; 0.04 ; 1袋=40 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail03.html
+ロッテ ; ゼロ シュガーフリーチョコレートクリスプ ; ろって ; 28 ; 131 ; 2.1 ; 9.1 ; 16.2 ; 2.7 ; 0.115 ; 1袋=28 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail04.html
+ロッテ ; ゼロ チョコレート＜袋＞ ; ろって ; 4.1 ; 20 ; 0.33 ; 1.6 ; 2.1 ; 0.43 ; 0.005 ; 1粒=4.1,全量=84 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail05.html
+ロッテ ; ゼロ グラノーラチョコバー ; ろって ; 32 ; 139 ; 6.8 ; 8.2 ; 15.5 ; 2.3 ; 0.2 ; 1本=32 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail10.html
+ロッテ ; ゼロ プロテインチョコバー ; ろって ; 38.3 ; 171 ; 15.1 ; 9.7 ; 11.6 ; 2.8 ; 0.36 ; 1本=38.3 ; https://www.lotte.co.jp/products/catalogue/choco/11/detail09.html
+ロッテ ; かわいいビックリマンチョコ ; ろって ; 23 ; 115 ; 1.3 ; 5.1 ; 15.9 ; - ; 0.06 ; 1枚=23 ; https://www.lotte.co.jp/products/catalogue/choco/13/detail74.html
+ロッテ ; ポケモンウエハースチョコ ; ろって ; 23 ; 115 ; 1.3 ; 5.1 ; 15.9 ; - ; 0.06 ; 1枚=23 ; https://www.lotte.co.jp/products/catalogue/choco/33/detail06.html
+ロッテ ; いちごつみ ; ろって ; 3.8 ; 21 ; 0.19 ; 1.3 ; 2.2 ; - ; 0.005 ; 1本=3.8 ; https://www.lotte.co.jp/products/catalogue/choco/14/detail01.html
+ロッテ ; カカオの恵み72%箱 ; ろって ; 3.9 ; 24 ; 0.4 ; 1.7 ; 1.7 ; - ; 0.001 ; 1枚=3.9,全量=45 ; https://www.lotte.co.jp/products/catalogue/choco/61/detail02.html
+ロッテ ; カカオの恵み72%シェアパック ; ろって ; 3.9 ; 24 ; 0.4 ; 1.7 ; 1.7 ; - ; 0.001 ; 1枚=3.9,全量=103 ; https://www.lotte.co.jp/products/catalogue/choco/61/detail06.html
+ロッテ ; カカオの恵み72%3種ブレンドシェアパック ; ろって ; 3.9 ; 25 ; 0.3 ; 1.9 ; 1.6 ; - ; 0 ; 1枚=3.9,全量=103 ; https://www.lotte.co.jp/products/catalogue/choco/61/detail08.html
+ロッテ ; カカオの恵み＜砂糖ゼロ・糖類ゼロ＞70%シェアパック ; ろって ; 4 ; 22 ; 0.4 ; 1.8 ; 1.7 ; 0.5 ; 0.002 ; 1粒=4,全量=84 ; https://www.lotte.co.jp/products/catalogue/choco/61/detail07.html
+ロッテ ; ラミー ; ろって ; 26 ; 136 ; 1.5 ; 8.3 ; 12.4 ; - ; 0.027 ; 1本=26,全量（3本）=78 ; https://www.lotte.co.jp/products/catalogue/choco/20/detail01.html
+ロッテ ; バッカス ; ろって ; 5.7 ; 29 ; 0.24 ; 1.7 ; 2.9 ; - ; 0.004 ; 1粒=5.7,全量（10粒）=57 ; https://www.lotte.co.jp/products/catalogue/choco/20/detail02.html
+ロッテ ; 洋酒薫る大人のスイーツ ザッハトルテ ; ろって ; 26 ; 138 ; 1.6 ; 8.6 ; 13.3 ; - ; 0.05 ; 1本=26,全量（3本）=78 ; https://www.lotte.co.jp/products/catalogue/choco/20/detail33.html
+ロッテ ; 洋酒薫る大人のスイーツ ティラミス ; ろって ; 5.7 ; 32 ; 0.27 ; 2.1 ; 2.9 ; - ; 0.006 ; 1粒=5.7,全量（10粒）=57 ; https://www.lotte.co.jp/products/catalogue/choco/20/detail20.html
+ロッテ ; LATTE MILK ; ろって ; 4 ; 23 ; 0.3 ; 1.6 ; 2 ; - ; 0.008 ; 1枚=4,全量=135 ; https://www.lotte.co.jp/products/catalogue/choco/64/detail01.html
+ロッテ ; ドラえもんウエハースチョコ ; ろって ; 23 ; 115 ; 1.3 ; 5.1 ; 15.9 ; - ; 0.06 ; 1枚=23 ; https://www.lotte.co.jp/products/catalogue/choco/66/detail01.html
+ロッテ ; チョコパイ ; ろって ; 30 ; 152 ; 1.7 ; 9.1 ; 15.7 ; - ; 0.12 ; 1個=30,全量（6個）=180 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail01.html
+ロッテ ; 冬のチョコパイ ; ろって ; 30 ; 149 ; 1.7 ; 8.7 ; 15.9 ; - ; 0.12 ; 1個=30,全量（6個）=180 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail127.html
+ロッテ ; 白いチョコパイプレミアム ; ろって ; 34 ; 162 ; 1.4 ; 8.7 ; 19.7 ; - ; 0.15 ; 1個=34,全量（6個）=204 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail143.html
+ロッテ ; 小さなチョコパイ ; ろって ; 14.3 ; 74 ; 0.8 ; 4.6 ; 7.3 ; - ; 0.058 ; 1個=14.3,全量（8個）=114.4 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail04.html
+ロッテ ; 小さなチョコパイ＜濃厚仕立て＞ ; ろって ; 14.3 ; 73 ; 0.8 ; 4.5 ; 7.3 ; - ; 0.062 ; 1個=14.3,全量（8個）=114.4 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail45.html
+ロッテ ; ことりっぷ 小さなチョコパイ＜馬車道十番館のティラミス＞ ; ろって ; 14.3 ; 74 ; 0.8 ; 4.6 ; 7.2 ; - ; 0.048 ; 1個=14.3,全量（8個）=114.4 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail156.html
+ロッテ ; サクサクチョコパイ＜たっぷりチョコ＞ ; ろって ; 13.8 ; 79 ; 0.9 ; 5.3 ; 7.2 ; - ; 0.057 ; 1個=13.8,全量（8個）=110.4 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail100.html
+ロッテ ; チョコパイパーティーパック ; ろって ; 30 ; 152 ; 1.7 ; 9.1 ; 15.7 ; - ; 0.12 ; 1個=30,全量（9個）=270 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail02.html
+ロッテ ; エンジョイハロウィンチョコパイパーティーパック ; ろって ; 30 ; 152 ; 1.7 ; 9.1 ; 15.7 ; - ; 0.12 ; 1個=30,全量（9個）=270 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail153.html
+ロッテ ; チョコパイパーティーパック＜茶匠の逸品 濃い抹茶＞ ; ろって ; 30 ; 151 ; 1.7 ; 8.9 ; 15.8 ; - ; 0.12 ; 1個=30,全量（9個）=270 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail139.html
+ロッテ ; チョコパイパーソナルパック ; ろって ; 30 ; 152 ; 1.7 ; 9.1 ; 15.7 ; - ; 0.12 ; 1個=30,全量（2個）=60 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail03.html
+ロッテ ; チョコパイ＜クリームシュー＞個売り ; ろって ; 30 ; 152 ; 1.7 ; 9.2 ; 15.5 ; - ; 0.12 ; 1個=30 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail154.html
+ロッテ ; チョコパイ＜ビターエクレア＞個売り ; ろって ; 30 ; 149 ; 1.8 ; 8.8 ; 15.9 ; - ; 0.13 ; 1個=30 ; https://www.lotte.co.jp/products/catalogue/biscuit/01/detail155.html
+ロッテ ; カスタードケーキ ; ろって ; 27 ; 121 ; 1.4 ; 6.3 ; 14.8 ; - ; 0.084 ; 1個=27,全量（6個）=162 ; https://www.lotte.co.jp/products/catalogue/biscuit/02/detail01.html
+ロッテ ; 半熟カスタードケーキ ; ろって ; 28.5 ; 120 ; 1.5 ; 6 ; 15.4 ; - ; 0.12 ; 1個=28.5,全量（3個）=85.5 ; https://www.lotte.co.jp/products/catalogue/biscuit/02/detail60.html
+ロッテ ; カスタードケーキパーティーパック ; ろって ; 27 ; 121 ; 1.4 ; 6.3 ; 14.8 ; - ; 0.084 ; 1個=27,全量（9個）=243 ; https://www.lotte.co.jp/products/catalogue/biscuit/02/detail03.html
+ロッテ ; The BUTTER ; ろって ; 28.5 ; 131 ; 1.9 ; 7.2 ; 14.4 ; - ; 0.18 ; 1個=28.5,全量（3個）=85.5 ; https://www.lotte.co.jp/products/catalogue/biscuit/08/detail01.html
+ロッテ ; The CARAMEL ; ろって ; 28.5 ; 122 ; 1.8 ; 5.8 ; 15.6 ; - ; 0.18 ; 1個=28.5,全量（3個）=85.5 ; https://www.lotte.co.jp/products/catalogue/biscuit/08/detail02.html
+ロッテ ; ことりっぷ ふんわりプチケーキ＜元町ケーキの苺とピスタチオのショートケーキ＞ ; ろって ; 8 ; 39 ; 0.5 ; 2.2 ; 4.4 ; - ; 0.023 ; 1個=8,全量（8個）=64 ; https://www.lotte.co.jp/products/catalogue/biscuit/03/detail14.html
+ロッテ ; チョココ ; ろって ; 5.8 ; 32 ; 0.4 ; 1.8 ; 3.4 ; - ; 0.028 ; 1枚=5.8,全量（17枚）=98.6 ; https://www.lotte.co.jp/products/catalogue/biscuit/05/detail01.html
+ロッテ ; ゼロ シュガーフリービスケット ; ろって ; 26 ; 106 ; 1.7 ; 4.7 ; 19.1 ; 3.6 ; 0.16 ; 1袋=26 ; https://www.lotte.co.jp/products/catalogue/biscuit/07/detail01.html
+ロッテ ; 生サブレ ; ろって ; 11.3 ; 56 ; 0.5 ; 3.1 ; 6.4 ; - ; 0.041 ; 1個=11.3,全量（8個）=90.4 ; https://www.lotte.co.jp/products/catalogue/biscuit/09/detail01.html
+明治 ; 明治ミルクチョコレート 50g ; めいじ めいじ ; 50 ; 283 ; 3.8 ; 18.4 ; 26.7 ; 2.2 ; 0.065 ; 1枚=50 ; https://www.meiji.co.jp/products/chocolate/04777.html
+明治 ; 明治ブラックチョコレート 50g ; めいじ めいじ ; 50 ; 288 ; 3.3 ; 19.7 ; 26.1 ; 3.3 ; 0.013 ; 1枚=50 ; https://www.meiji.co.jp/products/chocolate/04500.html
+明治 ; 明治ハイミルク 50g ; めいじ めいじ ; 50 ; 289 ; 4.8 ; 19.5 ; 24.4 ; 1.4 ; 0.11 ; 1枚=50 ; https://www.meiji.co.jp/products/chocolate/4902777234939.html
+明治 ; 明治ホワイトチョコレート 40g ; めいじ めいじ ; 40 ; 235 ; 3.4 ; 15.9 ; 19.7 ; - ; 0.1 ; 1枚=40 ; https://www.meiji.co.jp/products/chocolate/05630.html
+明治 ; 明治ミルクチョコレート BOX (26枚) ; めいじ めいじ ; 4.65 ; 26 ; 0.35 ; 1.71 ; 2.48 ; 0.2 ; 0.006 ; 1枚=4.65 ; https://www.meiji.co.jp/products/chocolate/03975.html
+明治 ; 明治ミルクチョコレート BOX 花より男子(26枚) ; めいじ めいじ ; 4.65 ; 26 ; 0.35 ; 1.71 ; 2.48 ; 0.2 ; 0.006 ; 1枚=4.65 ; https://www.meiji.co.jp/products/chocolate/4902777261331.html
+明治 ; 明治ブラックチョコレート BOX (26枚) ; めいじ めいじ ; 4.65 ; 27 ; 0.31 ; 1.83 ; 2.42 ; 0.3 ; 0.001 ; 1枚=4.65 ; https://www.meiji.co.jp/products/chocolate/03340.html
+明治 ; 明治ブラックチョコレート BOX 花より男子(26枚) ; めいじ めいじ ; 4.65 ; 27 ; 0.31 ; 1.83 ; 2.42 ; 0.3 ; 0.001 ; 1枚=4.65 ; https://www.meiji.co.jp/products/chocolate/4902777261416.html
+明治 ; 明治ハイミルク BOX (26枚) ; めいじ めいじ ; 4.65 ; 27 ; 0.45 ; 1.81 ; 2.27 ; 0.13 ; 0.01 ; 1枚=4.65 ; https://www.meiji.co.jp/products/chocolate/4902777234946.html
+明治 ; 明治ハイミルク BOX 花より男子(26枚) ; めいじ めいじ ; 4.65 ; 27 ; 0.45 ; 1.81 ; 2.27 ; 0.13 ; 0.01 ; 1枚=4.65 ; https://www.meiji.co.jp/products/chocolate/4902777261409.html
+明治 ; 明治ストロベリーチョコレート BOX (26枚) ; めいじ めいじ ; 4.6 ; 27 ; 0.26 ; 1.85 ; 2.39 ; - ; 0.006 ; 1枚=4.6,全量（26枚）=119.6 ; https://www.meiji.co.jp/products/chocolate/04840.html
+明治 ; 明治抹茶チョコレート BOX (26枚) ; めいじ めいじ ; 4.6 ; 27 ; 0.28 ; 1.88 ; 2.36 ; - ; 0.006 ; 1枚=4.6,全量（26枚）=119.6 ; https://www.meiji.co.jp/products/chocolate/07560.html
+明治 ; 明治ミルクチョコレートミニキューブ 250g ; めいじ めいじ ; 100 ; 566 ; 7.6 ; 36.8 ; 53.3 ; 4.3 ; 0.13 ; 全量=250 ; https://www.meiji.co.jp/products/chocolate/20021.html
+明治 ; 明治ミルクチョコレートビッグパック 152g ; めいじ めいじ ; 4 ; 23 ; 0.3 ; 1.5 ; 2.1 ; 0.2 ; 0.006 ; 1枚=4,全量=152 ; https://www.meiji.co.jp/products/chocolate/4902777250113.html
+明治 ; 明治ミルクチョコレートスティックパック 10枚 ; めいじ めいじ ; 4.1 ; 23 ; 0.31 ; 1.51 ; 2.19 ; 0.18 ; 0.005 ; 1枚=4.1 ; https://www.meiji.co.jp/products/chocolate/06381.html
+明治 ; 明治ブラックチョコレートスティックパック 10枚 ; めいじ めいじ ; 4.1 ; 24 ; 0.27 ; 1.62 ; 2.14 ; 0.27 ; 0.001 ; 1枚=4.1 ; https://www.meiji.co.jp/products/chocolate/06382.html
+明治 ; 明治ストロベリーチョコレートスティックパック 10枚 ; めいじ めいじ ; 4.2 ; 25 ; 0.24 ; 1.69 ; 2.18 ; - ; 0.006 ; 1枚=4.2 ; https://www.meiji.co.jp/products/chocolate/04825.html
+明治 ; 生のときしっとりミルク 4枚 ; めいじ ; 10.8 ; 57 ; 0.8 ; 3.6 ; 5.4 ; - ; 0.013 ; 1枚=10.8,全量（4枚）=43.2 ; https://www.meiji.co.jp/products/chocolate/4902777237268.html
+明治 ; 生のときなごり抹茶 4枚 ; めいじ ; 11 ; 59 ; 0.8 ; 3.5 ; 5.9 ; - ; 0.012 ; 1枚=11,全量（4枚）=44 ; https://www.meiji.co.jp/products/chocolate/4902777242866.html
+明治 ; 明治 ザ・カカオ ナッティカカオ 42g ; めいじ めいじ ; 3.5 ; 21 ; 0.3 ; 1.5 ; 1.6 ; - ; 0 ; 1枚=3.5,全量=42 ; https://www.meiji.co.jp/products/chocolate/4902777136288.html
+明治 ; 明治 ザ・カカオ フルーティカカオ 42g ; めいじ めいじ ; 3.5 ; 21 ; 0.3 ; 1.6 ; 1.5 ; - ; 0 ; 1枚=3.5,全量=42 ; https://www.meiji.co.jp/products/chocolate/4902777144603.html
+明治 ; 明治 ザ・カカオ フローラルカカオ・ラテ 42g ; めいじ めいじ ; 3.5 ; 21 ; 0.3 ; 1.5 ; 1.6 ; - ; 0.005 ; 1枚=3.5,全量=42 ; https://www.meiji.co.jp/products/chocolate/4902777116129.html
+明治 ; 明治 ザ・カカオ フルーティカカオ・ラテ 42g ; めいじ めいじ ; 3.5 ; 21 ; 0.3 ; 1.5 ; 1.6 ; - ; 0.007 ; 1枚=3.5,全量=42 ; https://www.meiji.co.jp/products/chocolate/4902777124148.html
+明治 ; 明治 ザ・カカオ カカオの果汁チョコレート 44g ; めいじ めいじ ; 44 ; 263 ; 1.5 ; 18.8 ; 22.8 ; - ; 0 ; 1枚=44 ; https://www.meiji.co.jp/products/chocolate/4902777208213.html
+明治 ; 明治 ザ・カカオ サクショコラ ナッティカカオ 40g ; めいじ めいじ ; 4 ; 23 ; 0.3 ; 1.6 ; 2 ; - ; 0.01 ; 1枚=4,全量=40 ; https://www.meiji.co.jp/products/chocolate/4902777235288.html
+明治 ; 明治 ザ・カカオ ショコラビスキュイ 32g ; めいじ めいじ ; 4 ; 24 ; 0.34 ; 1.6 ; 1.9 ; - ; 0.012 ; 1枚=4,全量=32 ; https://www.meiji.co.jp/products/chocolate/4902777261256.html
+明治 ; 明治 ザ・カカオ ショコラビスキュイ フランボワーズ 32g ; めいじ めいじ ; 4 ; 24 ; 0.3 ; 1.6 ; 2 ; - ; 0.008 ; 1枚=4,全量=32 ; https://www.meiji.co.jp/products/chocolate/4902777261195.html
+明治 ; アーモンドチョコレート 79g ; めいじ ; 79 ; 449 ; 9.2 ; 30.2 ; 37.1 ; 4 ; 0.1 ; 1箱=79 ; https://www.meiji.co.jp/products/chocolate/20472.html
+明治 ; アーモンドチョコレート大箱 243g ; めいじ ; 4.2 ; 24 ; 0.5 ; 1.6 ; 2 ; 0.2 ; 0.005 ; 1粒=4.2,全量=243 ; https://www.meiji.co.jp/products/chocolate/12900.html
+明治 ; アーモンドチョコレート香るカカオ 75g ; めいじ ; 75 ; 433 ; 8.9 ; 30.4 ; 33.7 ; 5.4 ; 0.015 ; 1箱=75 ; https://www.meiji.co.jp/products/chocolate/19872.html
+明治 ; アーモンドチョコレート抹茶 67g ; めいじ ; 67 ; 393 ; 6.4 ; 26.3 ; 32.6 ; - ; 0.05 ; 1箱=67 ; https://www.meiji.co.jp/products/chocolate/4902777221571.html
+明治 ; アーモンドチョコレートビッグパック 151g ; めいじ ; 4.2 ; 24 ; 0.5 ; 1.6 ; 2 ; 0.2 ; 0.005 ; 1粒=4.2,全量=151 ; https://www.meiji.co.jp/products/chocolate/21508.html
+明治 ; アーモンドチョコレートビッグパック 花より男子 151g ; めいじ ; 4.2 ; 24 ; 0.5 ; 1.6 ; 2 ; 0.2 ; 0.005 ; 1粒=4.2,全量=151 ; https://www.meiji.co.jp/products/chocolate/4902777266480.html
+明治 ; アーモンドチョコレートシンプル包装大容量パウチ 231g ; めいじ ; 100 ; 568 ; 11.7 ; 38.2 ; 47 ; 5.1 ; 0.11 ; 全量=231 ; https://www.meiji.co.jp/products/chocolate/20680.html
+明治 ; マカダミアチョコレート 9粒 ; めいじ ; 64 ; 388 ; 4.5 ; 28.1 ; 30.2 ; 2 ; 0.08 ; 1箱=64 ; https://www.meiji.co.jp/products/chocolate/06331.html
+明治 ; マカダミアチョコレート大箱 180g ; めいじ ; 7.2 ; 44 ; 0.5 ; 3.2 ; 3.4 ; 0.2 ; 0.009 ; 1粒=7.2,全量=180 ; https://www.meiji.co.jp/products/chocolate/12010.html
+明治 ; マカダミア北海道フロマージュ 9粒 ; めいじ ; 63 ; 383 ; 3.4 ; 27.6 ; 30.7 ; - ; 0.17 ; 1箱=63 ; https://www.meiji.co.jp/products/chocolate/4902777258515.html
+明治 ; マカダミアチョコレートビッグパック 115g ; めいじ ; 7.2 ; 44 ; 0.5 ; 3.2 ; 3.4 ; 0.2 ; 0.009 ; 1粒=7.2,全量=115 ; https://www.meiji.co.jp/products/chocolate/21512.html
+明治 ; マカダミアチョコレートビッグパック 花より男子 115g ; めいじ ; 7.2 ; 44 ; 0.5 ; 3.2 ; 3.4 ; 0.2 ; 0.009 ; 1粒=7.2,全量=115 ; https://www.meiji.co.jp/products/chocolate/4902777266510.html
+明治 ; マカダミアチョコレート抹茶ビッグパック 112g ; めいじ ; 7 ; 42 ; 0.3 ; 3 ; 3.6 ; - ; 0.006 ; 1粒=7,全量=112 ; https://www.meiji.co.jp/products/chocolate/4902777237404.html
+明治 ; ピスタチオチョコレート 35g ; めいじ ; 35 ; 202 ; 4.1 ; 13.8 ; 16.2 ; 1.5 ; 0.06 ; 1箱=35 ; https://www.meiji.co.jp/products/chocolate/08018.html
+明治 ; きのこの山 66g ; めいじ きのこのやま ; 66 ; 378 ; 5.6 ; 23.8 ; 35.2 ; - ; 0.22 ; 1箱=66 ; https://www.meiji.co.jp/products/chocolate/4902777237596.html
+明治 ; きのこの山いちご&ショコラ 64g ; めいじ きのこのやま ; 64 ; 363 ; 4.1 ; 22.3 ; 36.4 ; - ; 0.23 ; 1箱=64 ; https://www.meiji.co.jp/products/chocolate/04930.html
+明治 ; きのこの山北海道ミルク 16g×10袋 ; めいじ きのこのやま ; 16 ; 93 ; 1.4 ; 6.1 ; 8.2 ; - ; 0.07 ; 1袋=16 ; https://www.meiji.co.jp/products/chocolate/4902777241708.html
+明治 ; たけのこの里 63g ; めいじ たけのこのさと ; 63 ; 345 ; 4.9 ; 20.5 ; 35 ; - ; 0.3 ; 1箱=63 ; https://www.meiji.co.jp/products/chocolate/4902777237022.html
+明治 ; たけのこの里いちご&ショコラ 61g ; めいじ たけのこのさと ; 61 ; 340 ; 3.8 ; 20.9 ; 34.3 ; - ; 0.3 ; 1箱=61 ; https://www.meiji.co.jp/products/chocolate/04090.html
+明治 ; たけのこの里シンプル包装大容量パウチ 188g ; めいじ たけのこのさと ; 100 ; 547 ; 7.8 ; 32.6 ; 55.5 ; - ; 0.5 ; 全量=188 ; https://www.meiji.co.jp/products/chocolate/4902777247571.html
+明治 ; チョコレート効果 カカオ72% 65g ; めいじ ; 5 ; 28 ; 0.5 ; 2 ; 2.2 ; 0.6 ; 0 ; 1枚=5,全量=65 ; https://www.meiji.co.jp/products/chocolate/4902777227771.html
+明治 ; チョコレート効果 カカオ86% 60g ; めいじ ; 5 ; 29 ; 0.7 ; 2.3 ; 1.8 ; 0.8 ; 0 ; 1枚=5,全量=60 ; https://www.meiji.co.jp/products/chocolate/4902777205410.html
+明治 ; チョコレート効果 カカオ95% 60g ; めいじ ; 5 ; 31 ; 0.7 ; 2.6 ; 1.4 ; 0.8 ; 0 ; 1枚=5,全量=60 ; https://www.meiji.co.jp/products/chocolate/06128.html
+明治 ; チョコレート効果 カカオ72%26枚入り 130g ; めいじ ; 5 ; 28 ; 0.5 ; 2 ; 2.2 ; 0.6 ; 0 ; 1枚=5 ; https://www.meiji.co.jp/products/chocolate/07223.html
+明治 ; チョコレート効果 カカオ86%26枚入り 130g ; めいじ ; 5 ; 29 ; 0.7 ; 2.3 ; 1.8 ; 0.8 ; 0 ; 1枚=5 ; https://www.meiji.co.jp/products/chocolate/07224.html
+明治 ; チョコレート効果 カカオ72%パウチ 40g ; めいじ ; 40 ; 226 ; 4.4 ; 16.2 ; 17.8 ; 4.7 ; 0 ; 1袋=40 ; https://www.meiji.co.jp/products/chocolate/06648.html
+明治 ; チョコレート効果 カカオ86%パウチ 37g ; めいじ ; 37 ; 216 ; 5 ; 17.1 ; 13 ; 5.3 ; 0 ; 1袋=37 ; https://www.meiji.co.jp/products/chocolate/06655.html
+明治 ; チョコレート効果カカオ72%袋 110g ; めいじ ; 5 ; 28 ; 0.5 ; 2 ; 2.2 ; 0.6 ; 0 ; 1枚=5,全量=110 ; https://www.meiji.co.jp/products/chocolate/4902777124636.html
+明治 ; チョコレート効果 カカオ72%大袋 225g ; めいじ ; 5 ; 28 ; 0.5 ; 2 ; 2.2 ; 0.6 ; 0 ; 1枚=5,全量=225 ; https://www.meiji.co.jp/products/chocolate/07230.html
+明治 ; チョコレート効果 カカオ86%大袋 210g ; めいじ ; 5 ; 29 ; 0.7 ; 2.3 ; 1.8 ; 0.8 ; 0 ; 1枚=5,全量=210 ; https://www.meiji.co.jp/products/chocolate/07232.html
+明治 ; チョコレート効果 カカオ95%大袋 180g ; めいじ ; 5 ; 31 ; 0.7 ; 2.6 ; 1.4 ; 0.8 ; 0 ; 1枚=5,全量=180 ; https://www.meiji.co.jp/products/chocolate/04248.html
+明治 ; チョコレート効果 カカオ72%素焼きアーモンド袋 92g ; めいじ ; 3.7 ; 22 ; 0.5 ; 1.7 ; 1.3 ; 0.4 ; 0 ; 1粒=3.7,全量=92 ; https://www.meiji.co.jp/products/chocolate/4902777142395.html
+明治 ; チョコレート効果 カカオ72%カカオクランチ袋 120g ; めいじ ; 120 ; 624 ; 10.4 ; 36.5 ; 68.8 ; 10.7 ; 0.5 ; 1袋=120 ; https://www.meiji.co.jp/products/chocolate/4902777137841.html
+明治 ; チョコレート効果 カカオ72% 1kg ; めいじ ; 5 ; 28 ; 0.5 ; 2 ; 2.2 ; 0.6 ; 0 ; 1枚=5,全量=1000 ; https://www.meiji.co.jp/products/chocolate/20961.html
+明治 ; チョコレート効果 カカオ72%カカオクランチ小袋 30g ; めいじ ; 30 ; 156 ; 2.6 ; 9.1 ; 17.2 ; 2.7 ; 0.12 ; 1袋=30 ; https://www.meiji.co.jp/products/chocolate/4902777149820.html
+明治 ; チョコレート効果 カカオ86% 940g ; めいじ ; 5 ; 29 ; 0.7 ; 2.3 ; 1.8 ; 0.8 ; 0 ; 1枚=5,全量=940 ; https://www.meiji.co.jp/products/chocolate/20969.html
+明治 ; チョコレート効果 カカオ95% 800g ; めいじ ; 5 ; 31 ; 0.7 ; 2.6 ; 1.4 ; 0.8 ; 0 ; 1枚=5,全量=800 ; https://www.meiji.co.jp/products/chocolate/20970.html
+明治 ; チョコレート効果 カカオクランチ 720g ; めいじ ; 180 ; 954 ; 14.4 ; 59.2 ; 98.5 ; 15.7 ; 0.96 ; 1袋=180 ; https://www.meiji.co.jp/products/chocolate/4902777122571.html
+明治 ; 明治オリゴ糖ミルクチョコレート50大袋 200g ; めいじ めいじ ; 25 ; 137 ; 2.6 ; 9.9 ; 11.7 ; 0.85 ; 0.054 ; 5枚=25,全量=200 ; https://www.meiji.co.jp/products/chocolate/21409.html
+明治 ; カカオボーテ 60g ; めいじ ; 5 ; 30 ; 0.5 ; 2.1 ; 2.2 ; 0.3 ; 0.005 ; 1枚=5,全量=60 ; https://www.meiji.co.jp/products/chocolate/4902777242880.html
+明治 ; メルティーキッスプレミアムショコラ 52g ; めいじ ; 4 ; 25 ; 0.3 ; 1.9 ; 1.7 ; - ; 0.004 ; 1粒=4,全量=52 ; https://www.meiji.co.jp/products/chocolate/4902777260693.html
+明治 ; メルティーキッスフルーティー濃いちご 53g ; めいじ ; 4.1 ; 26 ; 0.2 ; 2 ; 1.8 ; - ; 0.005 ; 1粒=4.1,全量=53 ; https://www.meiji.co.jp/products/chocolate/4902777260754.html
+明治 ; メルティーキッスコク深キャラメル 53g ; めいじ ; 4.1 ; 26 ; 0.2 ; 2 ; 1.8 ; - ; 0.005 ; 1粒=4.1,全量=53 ; https://www.meiji.co.jp/products/chocolate/4902777260761.html
+明治 ; メルティーキッスふくよかな旨み抹茶 53g ; めいじ ; 4.1 ; 26 ; 0.3 ; 2 ; 1.8 ; - ; 0.004 ; 1粒=4.1,全量=53 ; https://www.meiji.co.jp/products/chocolate/4902777261317.html
+明治 ; メルティーキッスプレミアムショコラ袋 124g ; めいじ ; 4 ; 25 ; 0.3 ; 1.9 ; 1.7 ; - ; 0.004 ; 1粒=4,全量=124 ; https://www.meiji.co.jp/products/chocolate/4902777260778.html
+明治 ; メルティーキッスストロベリーマーブル 10枚 ; めいじ ; 4.1 ; 25 ; 0.2 ; 1.8 ; 2.1 ; - ; 0.006 ; 1枚=4.1 ; https://www.meiji.co.jp/products/chocolate/4902777260990.html
+明治 ; メルティーキッスプレミアムショコラ 10枚 ; めいじ ; 4.1 ; 25 ; 0.3 ; 1.8 ; 1.9 ; - ; 0.005 ; 1枚=4.1 ; https://www.meiji.co.jp/products/chocolate/4902777260679.html
+明治 ; ガルボチョコポケットパック 38g ; めいじ ; 38 ; 222 ; 2.7 ; 14.6 ; 20 ; - ; 0.04 ; 1袋=38 ; https://www.meiji.co.jp/products/chocolate/21342.html
+明治 ; ガルボチョコパウチ 59g ; めいじ ; 59 ; 344 ; 4.1 ; 22.6 ; 31 ; - ; 0.06 ; 1袋=59 ; https://www.meiji.co.jp/products/chocolate/21151.html
+明治 ; ガルボつぶ練り苺ポケットパック 37g ; めいじ ; 37 ; 217 ; 2.3 ; 14.4 ; 19.6 ; - ; 0.04 ; 1袋=37 ; https://www.meiji.co.jp/products/chocolate/21357.html
+明治 ; ガルボつぶ練り苺パウチ 58g ; めいじ ; 58 ; 340 ; 3.5 ; 22.5 ; 30.8 ; - ; 0.07 ; 1袋=58 ; https://www.meiji.co.jp/products/chocolate/21159.html
+明治 ; ガルボほろにがブラックポケットパック 38g ; めいじ ; 38 ; 223 ; 2.8 ; 14.9 ; 19.5 ; - ; 0.05 ; 1袋=38 ; https://www.meiji.co.jp/products/chocolate/21358.html
+明治 ; ガルボプリン味ポケットパック 38g ; めいじ ; 38 ; 225 ; 2.4 ; 15.2 ; 19.7 ; - ; 0.05 ; 1袋=38 ; https://www.meiji.co.jp/products/chocolate/4902777261096.html
+明治 ; プッカチョコレート 39g ; めいじ ; 39 ; 202 ; 3.4 ; 10.1 ; 24.5 ; - ; 0.18 ; 1箱=39 ; https://www.meiji.co.jp/products/chocolate/20880.html
+明治 ; プッカ塩ミルク 39g ; めいじ ; 39 ; 199 ; 3.5 ; 9.7 ; 24.6 ; - ; 0.37 ; 1箱=39 ; https://www.meiji.co.jp/products/chocolate/4902777222585.html
+明治 ; アグロフォレストリーミルクチョコレート 40g ; めいじ ; 4.5 ; 27 ; 0.4 ; 1.8 ; 2.2 ; - ; 0.006 ; 1枚=4.5,全量=40 ; https://www.meiji.co.jp/products/chocolate/4902777245287.html
+明治 ; アポロ 46g ; めいじ ; 46 ; 261 ; 2.7 ; 16.1 ; 26.5 ; - ; 0.06 ; 1箱=46 ; https://www.meiji.co.jp/products/chocolate/05079.html
+明治 ; アポロ袋 12袋 ; めいじ ; 8.4 ; 48 ; 0.5 ; 2.9 ; 4.8 ; - ; 0.011 ; 1袋=8.4 ; https://www.meiji.co.jp/products/chocolate/21557.html
+明治 ; アポロシンプル包装大容量パウチ 226g ; めいじ ; 100 ; 567 ; 5.8 ; 34.9 ; 57.5 ; - ; 0.13 ; 全量=226 ; https://www.meiji.co.jp/products/chocolate/20664.html
+明治 ; 富士山アポロ濃いいちご 144g ; めいじ ; 6 ; 36 ; 0.3 ; 2.5 ; 3.1 ; - ; 0.007 ; 1粒=6,全量=144 ; https://www.meiji.co.jp/products/chocolate/4902777244099.html
+明治 ; 富士山アポロ抹茶 144g ; めいじ ; 6 ; 36 ; 0.3 ; 2.4 ; 3.2 ; - ; 0.005 ; 1粒=6,全量=144 ; https://www.meiji.co.jp/products/chocolate/4902777244846.html
+明治 ; アポロマイスタイル 41g ; めいじ ; 41 ; 244 ; 2.4 ; 16.6 ; 21.1 ; - ; 0.04 ; 1袋=41 ; https://www.meiji.co.jp/products/chocolate/4902777261911.html
+明治 ; マーブル 32g ; めいじ ; 32 ; 161 ; 1.8 ; 7.4 ; 21.8 ; - ; 0.04 ; 1本=32 ; https://www.meiji.co.jp/products/chocolate/06409.html
+明治 ; マーブルパウチ 39g ; めいじ ; 39 ; 196 ; 2.2 ; 9 ; 26.5 ; - ; 0.05 ; 1袋=39 ; https://www.meiji.co.jp/products/chocolate/19730.html
+明治 ; チョコベビー 32g ; めいじ ; 32 ; 173 ; 2.5 ; 9.7 ; 19 ; - ; 0.05 ; 1容器=32 ; https://www.meiji.co.jp/products/chocolate/04559.html
+明治 ; コーヒービート 32g ; めいじ ; 32 ; 163 ; 1.8 ; 7.7 ; 21.7 ; - ; 0.05 ; 1本=32 ; https://www.meiji.co.jp/products/chocolate/05591.html
+明治 ; コーヒービートパウチ 39g ; めいじ ; 39 ; 199 ; 2.2 ; 9.4 ; 26.5 ; - ; 0.06 ; 1袋=39 ; https://www.meiji.co.jp/products/chocolate/15350.html
+明治 ; バナナチョコ 37g ; めいじ ; 37 ; 184 ; 2.1 ; 8.2 ; 25.5 ; - ; 0.04 ; 1箱=37 ; https://www.meiji.co.jp/products/chocolate/04892.html
+明治 ; 濃いちょこれえと抹茶チョコサンド 6枚 ; めいじ ; 32 ; 168 ; 2 ; 8.7 ; 20.3 ; - ; 0.12 ; 1袋=32 ; https://www.meiji.co.jp/products/chocolate/21797.html
+明治 ; 濃いちょこれえといちごチョコサンド 6枚 ; めいじ ; 32 ; 168 ; 1.9 ; 8.8 ; 20.3 ; - ; 0.12 ; 1袋=32 ; https://www.meiji.co.jp/products/chocolate/22058.html
+明治 ; 濃密果しゃりしゃり林檎 32g ; めいじ ; 3.2 ; 19 ; 0.1 ; 1.2 ; 1.9 ; - ; 0.002 ; 1粒=3.2,全量=32 ; https://www.meiji.co.jp/products/chocolate/4902777257136.html
+明治 ; チョコレート効果カカオ72%袋(宅配専用) 175g ; めいじ ; 5 ; 28 ; 0.5 ; 2 ; 2.2 ; 0.6 ; 0 ; 1枚=5,全量=175 ; https://www.meiji.co.jp/products/chocolate/1101175.html
+明治 ; 果汁グミぶどう 54g ; めいじ ; 54 ; 179 ; 3.3 ; 0 ; 41.4 ; - ; 0.02 ; 1袋=54 ; https://www.meiji.co.jp/products/candy_gum/13974.html
+明治 ; 果汁グミ温州みかん 54g ; めいじ ; 54 ; 177 ; 3 ; 0.3 ; 40.4 ; - ; 0.016 ; 1袋=54 ; https://www.meiji.co.jp/products/candy_gum/13212.html
+明治 ; 果汁グミマスカット 54g ; めいじ ; 54 ; 177 ; 3.3 ; 0 ; 41 ; - ; 0.038 ; 1袋=54 ; https://www.meiji.co.jp/products/candy_gum/14007.html
+明治 ; 果汁グミスマートパックぶどう 163g ; めいじ ; 13.6 ; 45 ; 0.8 ; 0 ; 10.4 ; - ; 0.005 ; 1袋=13.6 ; https://www.meiji.co.jp/products/candy_gum/21291.html
+明治 ; FRUBI ブルーベリー&ザクロ 57g ; めいじ ; 57 ; 184 ; 4.4 ; 0 ; 42 ; - ; 0.006 ; 1袋=57 ; https://www.meiji.co.jp/products/candy_gum/4902777201917.html
+明治 ; FRUBI レモン&キウイ 57g ; めいじ ; 57 ; 183 ; 4.3 ; 0 ; 43.1 ; - ; 0.004 ; 1袋=57 ; https://www.meiji.co.jp/products/candy_gum/4902777146997.html
+明治 ; ポイフル 53g ; めいじ ; 53 ; 190 ; 2.5 ; 0 ; 44.7 ; - ; 0.016 ; 1箱=53 ; https://www.meiji.co.jp/products/candy_gum/04439.html
+明治 ; ポイフルパウチ 76g ; めいじ ; 76 ; 273 ; 3.6 ; 0 ; 64.1 ; - ; 0.023 ; 1袋=76 ; https://www.meiji.co.jp/products/candy_gum/4902777251424.html
+明治 ; コーラアップ 100g ; めいじ ; 100 ; 335 ; 9.6 ; 0 ; 73.8 ; - ; 0.03 ; 1袋=100 ; https://www.meiji.co.jp/products/candy_gum/02929.html
+明治 ; ラムネアップ 100g ; めいじ ; 100 ; 335 ; 9.9 ; 0 ; 73.8 ; - ; 0.03 ; 1袋=100 ; https://www.meiji.co.jp/products/candy_gum/12936.html
+明治 ; メロンソーダアップ 100g ; めいじ ; 100 ; 324 ; 9.3 ; 0 ; 73.2 ; - ; 0.03 ; 1袋=100 ; https://www.meiji.co.jp/products/candy_gum/4902777234502.html
+明治 ; ピーチソーダアップ 75g ; めいじ ; 75 ; 249 ; 7.2 ; 0 ; 54.8 ; - ; 0.015 ; 1袋=75 ; https://www.meiji.co.jp/products/candy_gum/4902777216713.html
+明治 ; ブラッドオレンジソーダアップ 75g ; めいじ ; 75 ; 249 ; 7.1 ; 0 ; 55.2 ; - ; 0.023 ; 1袋=75 ; https://www.meiji.co.jp/products/candy_gum/4902777257808.html
+森永製菓 ; チョコボール＜ダブルチョコレート＞ ; もりなが ; 25 ; 137 ; 1 ; 7.8 ; 15.6 ; - ; 0.05 ; 1箱=25 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-10-0007
+森永製菓 ; もちもちチョコボール＜ちょこもち＞ ; もりなが ; 39 ; 183 ; 2.2 ; 8.1 ; 25.4 ; - ; 0.04 ; 1袋=39 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-07-0014
+森永製菓 ; もちもちチョコボール＜金のきなこもち＞ ; もりなが ; 39 ; 185 ; 2.1 ; 8.3 ; 25.5 ; - ; 0.04 ; 1袋=39 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-07-0013
+森永製菓 ; ザクザクチョコボール＜ピーナッツ＞ ; もりなが ; 39 ; 220 ; 3.5 ; 13.7 ; 20.7 ; - ; 0.09 ; 1袋=39 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-01-0009
+森永製菓 ; チョコボール＜ピーナッツ＞大袋 ; もりなが ; 11.7 ; 67 ; 1.3 ; 4.4 ; 5.6 ; - ; 0.015 ; 1小袋=11.7,全量=102 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2024-09-0004
+森永製菓 ; チョコボール＜ピーナッツ＞ ; もりなが ; 28 ; 162 ; 3.1 ; 10.6 ; 13.5 ; - ; 0.036 ; 1箱=28 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2018-10-0054
+森永製菓 ; チョコボール＜キャラメル＞ ; もりなが ; 28 ; 137 ; 1.1 ; 6.1 ; 19.3 ; - ; 0.05 ; 1箱=28 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0028
+森永製菓 ; チョコボール＜いちご＞ ; もりなが ; 25 ; 139 ; 1 ; 8.1 ; 15.4 ; - ; 0.05 ; 1箱=25 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2013-01-0209
+森永製菓 ; チョコボールでっかいパック＜ピーナッツ＞ ; もりなが ; 99 ; 573 ; 11 ; 37.6 ; 47.6 ; - ; 0.13 ; 1箱=99 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-04-0002
+森永製菓 ; 半熟ダースミルクショコラ ; もりなが ; 7.7 ; 41 ; 0.5 ; 2.5 ; 4 ; - ; 0.012 ; 1本=7.7,全量（5本）=38.5 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-09-0007
+森永製菓 ; 半熟ダースストロベリーショコラ ; もりなが ; 7.7 ; 40 ; 0.5 ; 2.4 ; 4 ; - ; 0.015 ; 1本=7.7,全量（5本）=38.5 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-09-0001
+森永製菓 ; ダースプレミアム＜プラリネ＜アーモンド＞＞ ; もりなが ; 3.9 ; 24 ; 0.2 ; 1.7 ; 1.9 ; - ; 0.005 ; 1粒=3.9,全量=46 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0009
+森永製菓 ; ダースプレミアム＜ホワイトバニラ＞ ; もりなが ; 4 ; 24 ; 0.12 ; 1.7 ; 2.1 ; - ; 0.005 ; 1粒=4,全量=47 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0008
+森永製菓 ; 苺のダース ; もりなが ; 3.9 ; 23 ; 0.13 ; 1.6 ; 2.1 ; - ; 0.006 ; 1粒=3.9 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0083
+森永製菓 ; ダース＜ミルク＞ ; もりなが ; 3.9 ; 23 ; 0.3 ; 1.5 ; 2 ; - ; 0.01 ; 1粒=3.9 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0013
+森永製菓 ; 白いダース ; もりなが ; 3.9 ; 23 ; 0.3 ; 1.6 ; 1.9 ; - ; 0.012 ; 1粒=3.9 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0015
+森永製菓 ; カレ・ド・ショコラ＜フィアンティーヌ＞ ; もりなが ; 4.7 ; 28 ; 0.3 ; 2 ; 2.3 ; - ; 0.012 ; 1枚=4.7,全量（18枚）=84.6 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0002
+森永製菓 ; カレ・ド・ショコラ＜ドゥーブルナッツ＞ ; もりなが ; 4.8 ; 28 ; 0.36 ; 1.8 ; 2.5 ; - ; 0.012 ; 1枚=4.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0001
+森永製菓 ; カレ・ド・ショコラ＜カカオ70ストロベリー＞ ; もりなが ; 4.8 ; 28 ; 0.4 ; 1.9 ; 2.4 ; - ; 0.001 ; 1枚=4.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-03-0037
+森永製菓 ; カレ・ド・ショコラ＜フレンチミルク＞ ; もりなが ; 4.9 ; 27 ; 0.4 ; 1.7 ; 2.6 ; - ; 0.01 ; 1枚=4.9 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0016
+森永製菓 ; カレ・ド・ショコラ＜カカオ70＞ ; もりなが ; 4.8 ; 27 ; 0.4 ; 1.9 ; 2.3 ; 0.5 ; 0.001 ; 1枚=4.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0020
+森永製菓 ; カレ・ド・ショコラ＜カカオ88＞ ; もりなが ; 4.8 ; 28 ; 0.6 ; 2.2 ; 1.8 ; 0.7 ; 0.001 ; 1枚=4.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-04-0016
+森永製菓 ; カレ・ド・ショコラ＜マダガスカルホワイト＞ ; もりなが ; 4.9 ; 29 ; 0.4 ; 1.9 ; 2.5 ; - ; 0.016 ; 1枚=4.9 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0021
+森永製菓 ; 小枝＜ロイヤルミルクティー＞ ; もりなが こえだ ; 5.4 ; 30 ; 0.2 ; 1.7 ; 3.4 ; - ; 0.008 ; 1小袋=5.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-03-0007
+森永製菓 ; 白樺の小枝 ; もりなが こえだ しらかば ; 5.4 ; 29 ; 0.2 ; 1.7 ; 3.3 ; - ; 0.009 ; 1小袋=5.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2024-08-0008
+森永製菓 ; 白樺の小枝ティータイムパック ; もりなが こえだ しらかば ; 5.4 ; 29 ; 0.2 ; 1.7 ; 3.3 ; - ; 0.009 ; 1小袋=5.4,全量=100 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2024-08-0006
+森永製菓 ; あまおう苺の小枝ティータイムパック ; もりなが こえだ ; 5.4 ; 30 ; 0.2 ; 1.7 ; 3.4 ; - ; 0.01 ; 1小袋=5.4,全量=100 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2021-10-0011
+森永製菓 ; あまおう苺の小枝 ; もりなが こえだ ; 5.4 ; 30 ; 0.2 ; 1.7 ; 3.4 ; - ; 0.01 ; 1小袋=5.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2021-10-0010
+森永製菓 ; 小枝＜ミルク＞ ; もりなが こえだ ; 5.4 ; 29 ; 0.3 ; 1.7 ; 3.2 ; - ; 0.009 ; 1小袋=5.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-03-0008
+森永製菓 ; 小枝＜ミルク＞ティータイムパック ; もりなが こえだ ; 5.4 ; 29 ; 0.3 ; 1.7 ; 3.2 ; - ; 0.009 ; 1小袋=5.4,全量=101 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2011-05-0016
+森永製菓 ; ベイク＜ショコラ＞大袋 ; もりなが ; 4 ; 22 ; 0.26 ; 1.3 ; 2.3 ; - ; 0.003 ; 1粒=4,全量=101 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2021-02-0009
+森永製菓 ; カカオの力ピーナッツチョコレート ; もりなが ; 31 ; 184 ; 4 ; 12.8 ; 13.3 ; - ; 0 ; 2小袋=31,全量=123 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-09-0006
+森永製菓 ; ムーンライト＜安納芋＞ ; もりなが ; 8.1 ; 43 ; 0.5 ; 2.2 ; 5.2 ; - ; 0.05 ; 1枚=8.1,全量（14枚）=113.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-09-0005
+森永製菓 ; ブラックムーン ; もりなが ; 8.1 ; 42 ; 0.5 ; 2.2 ; 5.1 ; - ; 0.04 ; 1枚=8.1,全量（14枚）=113.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2022-09-0008
+森永製菓 ; ホワイトチョコチップクッキー ; もりなが ; 8.8 ; 46 ; 0.45 ; 2.4 ; 5.7 ; - ; 0.04 ; 1枚=8.8,全量（12枚）=105.6 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2020-09-0017
+森永製菓 ; ミニチョコチップ大袋 ; もりなが ; 17.4 ; 90 ; 1 ; 4.5 ; 11.4 ; - ; 0.07 ; 1小袋=17.4,全量=139 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2020-09-0050
+森永製菓 ; ミニムーンライト大袋 ; もりなが ; 16.2 ; 84 ; 1 ; 4.2 ; 10.5 ; - ; 0.08 ; 1小袋=16.2,全量=129 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2020-09-0016
+森永製菓 ; マリー ; もりなが ; 5.4 ; 24 ; 0.4 ; 0.6 ; 4.2 ; - ; 0.05 ; 1枚=5.4,全量（21枚）=113.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-12-0003
+森永製菓 ; チョイス ; もりなが ; 8.7 ; 45 ; 0.6 ; 2.1 ; 5.8 ; - ; 0.04 ; 1枚=8.7,全量（14枚）=121.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-12-0004
+森永製菓 ; ムーンライト ; もりなが ; 8.1 ; 42 ; 0.5 ; 2.2 ; 5.1 ; - ; 0.04 ; 1枚=8.1,全量（14枚）=113.4 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-12-0005
+森永製菓 ; チョコチップクッキー ; もりなが ; 9.3 ; 48 ; 0.5 ; 2.5 ; 5.9 ; - ; 0.04 ; 1枚=9.3,全量（12枚）=111.6 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-12-0006
+森永製菓 ; アーモンドクッキー ; もりなが ; 8.3 ; 45 ; 0.6 ; 2.6 ; 4.9 ; - ; 0.05 ; 1枚=8.3,全量（12枚）=99.6 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0177
+森永製菓 ; ミニデビルズパイ＜ココア＞ ; もりなが ; 9.5 ; 40 ; 0.4 ; 1.4 ; 6.4 ; - ; 0.02 ; 1個=9.5,全量（8個）=76 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0003
+森永製菓 ; エンゼルパイ＜苺＞ティータイムパック ; もりなが ; 30 ; 130 ; 1.6 ; 4.7 ; 20.2 ; - ; 0.035 ; 1個=30,全量（8個）=240 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2020-10-0008
+森永製菓 ; ミニエンゼルパイ＜バニラ＞ ; もりなが ; 9.5 ; 41 ; 0.5 ; 1.5 ; 6.3 ; - ; 0.027 ; 1個=9.5,全量（8個）=76 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0303
+森永製菓 ; エンゼルパイティータイムパック ; もりなが ; 30 ; 128 ; 1.5 ; 4.7 ; 20 ; - ; 0.09 ; 1個=30,全量（8個）=240 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2013-05-0009
+森永製菓 ; ブラックムーンガレットサンド ; もりなが ; 26 ; 129 ; 1.5 ; 7 ; 14.9 ; - ; 0.08 ; 1個=26,全量（6個）=156 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2023-09-0007
+森永製菓 ; ミニガトーショコラ ; もりなが ; 11 ; 55 ; 0.5 ; 3.1 ; 6.2 ; - ; 0.017 ; 1個=11,全量（8個）=88 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2023-01-0010
+森永製菓 ; あまおう苺ケーキ ; もりなが ; 31 ; 150 ; 1.3 ; 8.4 ; 17.3 ; - ; 0.06 ; 1個=31,全量（6個）=186 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2019-11-0005
+森永製菓 ; ガトーショコラ ; もりなが ; 31 ; 151 ; 1.6 ; 8.5 ; 16.9 ; - ; 0.06 ; 1個=31,全量（6個）=186 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-05-0001
+森永製菓 ; ムーンライトガレットサンド ; もりなが ; 26 ; 130 ; 1.3 ; 7.2 ; 14.9 ; - ; 0.13 ; 1個=26,全量（6個）=156 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-09-0051
+森永製菓 ; マンナウェファー ; もりなが ; 15.3 ; 77 ; 0.9 ; 4 ; 9.3 ; - ; 0.04 ; 3袋=15.3 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0356
+森永製菓 ; マンナビスケットおやつパック ; もりなが ; 1.7 ; 7.4 ; 0.11 ; 0.19 ; 1.3 ; - ; 0.012 ; 1枚=1.7 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0360
+森永製菓 ; パックンチョ＜プリン＞ ; もりなが ; 41 ; 205 ; 2.1 ; 9 ; 28.8 ; - ; 0.15 ; 1箱=41 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-10-0006
+森永製菓 ; パックンチョ＜チョコ＞ ; もりなが ; 43 ; 218 ; 3.1 ; 9.9 ; 29 ; - ; 0.14 ; 1箱=43 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0170
+森永製菓 ; パックンチョ＜イチゴ＞ ; もりなが ; 41 ; 203 ; 2.2 ; 8.7 ; 28.9 ; - ; 0.14 ; 1箱=41 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2011-05-0015
+森永製菓 ; パックンチョ＜チョコ＞大袋 ; もりなが ; 11.3 ; 57 ; 0.8 ; 2.6 ; 7.6 ; - ; 0.04 ; 1小袋=11.3,全量=101 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-08-0015
+森永製菓 ; リトルパックンチョ＜チョコ＞ ; もりなが ; 15 ; 76 ; 1.1 ; 3.5 ; 10.1 ; - ; 0.05 ; 1袋=15 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2019-05-0014
+森永製菓 ; 小枝クッキー ; もりなが こえだ ; 25 ; 132 ; 1.5 ; 6.8 ; 16.1 ; - ; 0.04 ; 1袋=25,全量=48 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-09-0004
+森永製菓 ; ザ・ガレット＜ショコラ＞ ; もりなが ; 11.3 ; 60 ; 0.5 ; 3.3 ; 7 ; - ; 0.08 ; 1枚=11.3,全量（10枚）=113 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0005
+森永製菓 ; ザ・ガレット ; もりなが ; 11.3 ; 61 ; 0.5 ; 3.3 ; 7.2 ; - ; 0.1 ; 1枚=11.3,全量（10枚）=113 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0004
+森永製菓 ; ナチュリス＜アーモンドとクランベリー＞ ; もりなが ; 50 ; 260 ; 4.8 ; 14.7 ; 28.2 ; 2.4 ; 0.06 ; 1袋=50 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-08-0101
+森永製菓 ; ナチュリス＜ヘーゼルナッツとカカオ＞ ; もりなが ; 50 ; 268 ; 4.8 ; 16.5 ; 26.4 ; 2.8 ; 0.06 ; 1袋=50 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-08-0100
+森永製菓 ; 小麦胚芽のクラッカー ; もりなが ; 76 ; 364 ; 8.6 ; 15.7 ; 49 ; - ; 0 ; 4パック=76 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-09-0067
+森永製菓 ; 全粒粉仕立てのビスケット ; もりなが ; 10.7 ; 51 ; 1 ; 2.1 ; 7.3 ; 0.6 ; 0.09 ; 1枚=10.7,全量（14枚）=149.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-12-0031
+森永製菓 ; 堅焼きおっとっと＜コクうまコンソメ味＞ ; もりなが ; 22 ; 97 ; 0.9 ; 2.8 ; 17.1 ; - ; 0.5 ; 1袋=22 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0007
+森永製菓 ; 堅焼きおっとっとおやつパック＜コクうまコンソメ味＞ ; もりなが ; 12 ; 53 ; 0.5 ; 1.5 ; 9.3 ; - ; 0.25 ; 1袋=12 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0006
+森永製菓 ; おっとっと＜うすしお味＞(46g(23g×2袋)) ; もりなが ; 23 ; 101 ; 1.3 ; 2.9 ; 17.5 ; - ; 0 ; 1袋=23 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-09-0053
+森永製菓 ; おっとっと＜うすしお味＞5袋入 ; もりなが ; 15 ; 66 ; 0.8 ; 1.9 ; 11.4 ; - ; 0 ; 1小袋=15 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0187
+森永製菓 ; おっとっと＜うすしお味＞(30g) ; もりなが ; 30 ; 131 ; 1.6 ; 3.7 ; 22.8 ; - ; 0 ; 1カップ=30 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-01-0029
+森永製菓 ; おっとっとおやつパック＜うすしお味＞ ; もりなが ; 10 ; 44 ; 0.6 ; 1.2 ; 7.6 ; - ; 0 ; 1袋=10 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-01-0028
+森永製菓 ; ポテロング＜柚子こしょう味＞ ; もりなが ; 43 ; 203 ; 2.7 ; 8 ; 30 ; - ; 0.6 ; 1カップ=43 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-09-0013
+森永製菓 ; ポテロング＜しお味＞ ; もりなが ; 45 ; 212 ; 3 ; 8.4 ; 31.1 ; - ; 0.6 ; 1カップ=45 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-06-0031
+森永製菓 ; 焦がしミルクキャラメル ; もりなが ; 4.9 ; 21 ; 0.2 ; 0.5 ; 3.8 ; - ; 0.012 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-04-0009
+森永製菓 ; ミルクキャラメル ; もりなが ; 4.9 ; 21 ; 0.19 ; 0.51 ; 3.8 ; - ; 0.012 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0300
+森永製菓 ; ミルクキャラメル袋 ; もりなが ; 4.6 ; 19 ; 0.18 ; 0.48 ; 3.6 ; - ; 0.011 ; 1粒=4.6,全量=88 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-10-0020
+森永製菓 ; ひとつぶブレイク ; もりなが ; 4.6 ; 20 ; 0.16 ; 0.65 ; 3.4 ; - ; 0.014 ; 1粒=4.6,全量=60 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0012
+森永製菓 ; 塩キャラメル＜バター味＞袋 ; もりなが ; 4.6 ; 19 ; 0.2 ; 0.5 ; 3.5 ; - ; 0.05 ; 1粒=4.6,全量=69 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-09-0038
+森永製菓 ; ハイソフト＜ミルク＞ ; もりなが ; 4.9 ; 21 ; 0.2 ; 0.5 ; 3.8 ; - ; 0.01 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2016-07-0125
+森永製菓 ; 塩キャラメル ; もりなが ; 4.9 ; 21 ; 0.2 ; 0.5 ; 3.8 ; - ; 0.044 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2013-01-0207
+森永製菓 ; 塩キャラメル袋 ; もりなが ; 4.6 ; 19 ; 0.2 ; 0.48 ; 3.5 ; - ; 0.04 ; 1粒=4.6,全量=83 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2013-01-0208
+森永製菓 ; ハイチュウプレミアム＜ラ・フランス＞ ; もりなが ; 32 ; 127 ; 0.4 ; 2.2 ; 26.5 ; - ; 0.008 ; 1袋=32 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0015
+森永製菓 ; うまイチュウアソート ; もりなが ; 4.3 ; 18 ; 0.05 ; 0.3 ; 3.7 ; - ; 0 ; 1粒=4.3,全量=68 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0013
+森永製菓 ; ハイチュウ＜シャリシャリフルーツミックス＞ ; もりなが ; 4.9 ; 20 ; 0.06 ; 0.34 ; 4.2 ; - ; 0 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0011
+森永製菓 ; すッパイチュウプレミアム＜レモン＞ ; もりなが ; 32 ; 124 ; 0.3 ; 1.4 ; 27.5 ; - ; 0.006 ; 1袋=32 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-01-0014
+森永製菓 ; ハイチュウ＜グレープ＞ ; もりなが ; 4.6 ; 19 ; 0.07 ; 0.4 ; 3.8 ; - ; 0 ; 1粒=4.6,全量（12粒）=55.2 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2022-01-0030
+森永製菓 ; ハイチュウ＜ストロベリー＞ ; もりなが ; 4.6 ; 19 ; 0.07 ; 0.4 ; 3.8 ; - ; 0 ; 1粒=4.6,全量（12粒）=55.2 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2022-01-0031
+森永製菓 ; すッパイチュウ＜レモン味＞ ; もりなが ; 4.9 ; 20 ; 0.07 ; 0.3 ; 4.2 ; - ; 0 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2013-01-0001
+森永製菓 ; うまイチュウ＜青りんご味＞ ; もりなが ; 4.9 ; 20 ; 0.06 ; 0.3 ; 4.2 ; - ; 0 ; 1粒=4.9,全量（12粒）=58.8 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2022-04-0002
+森永製菓 ; ハイチュウプレミアム＜巨峰＞ ; もりなが ; 32 ; 127 ; 0.4 ; 2.1 ; 26.5 ; - ; 0.008 ; 1袋=32 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-10-0004
+森永製菓 ; ハイチュウアソート ; もりなが ; 4.3 ; 18 ; 0.07 ; 0.34 ; 3.6 ; - ; 0 ; 1粒=4.3,全量=86 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2013-02-0002
+森永製菓 ; ハイチュウミニ大袋 ; もりなが ; 10 ; 41 ; 0.09 ; 0.7 ; 8.5 ; - ; 0 ; 1小袋=10,全量=120 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-04-0001
+森永製菓 ; ハイチュウミニパウチ ; もりなが ; 60 ; 247 ; 0.5 ; 4.4 ; 51.3 ; - ; 0 ; 1袋=60 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-07-0008
+森永製菓 ; コロコロハイチュウ ; もりなが ; 40 ; 167 ; 0.35 ; 3.6 ; 33.4 ; - ; 0 ; 1箱=40 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2018-09-0003
+森永製菓 ; 大粒ラムネRefresh＜レモンライム味＞ ; もりなが おおつぶ ; 28 ; 106 ; 0 ; 0.3 ; 25.7 ; - ; 0 ; 1袋=28 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-08-0014
+森永製菓 ; 大粒ラムネSUPER＜ピーチ味＞ ; もりなが おおつぶ ; 35 ; 130 ; 0 ; 0.3 ; 31.7 ; - ; 0.002 ; 1袋=35 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-02-0011
+森永製菓 ; ラムネPlus＜鉄分＞ ; もりなが ; 5.1 ; 19 ; 0 ; 0.06 ; 4.6 ; - ; 0.001 ; 3粒=5.1,全量=34 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2026-02-0010
+森永製菓 ; 大粒ラムネ＜強炭酸シュワコーラ＞ ; もりなが おおつぶ ; 25 ; 90 ; 0 ; 0.3 ; 21.7 ; - ; 0.9 ; 1袋=25 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-06-0001
+森永製菓 ; ラムネ＜ブルーハワイ＞ ; もりなが ; 27 ; 101 ; 0 ; 0.3 ; 24.5 ; - ; 0 ; 1本=27 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2024-06-0012
+森永製菓 ; 生ラムネ玉 ; もりなが ; 32 ; 123 ; 0.4 ; 1.6 ; 26.7 ; - ; 0 ; 1袋=32 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2023-08-0006
+森永製菓 ; 超大粒ラムネ ; もりなが おおつぶ ; 3 ; 11 ; 0 ; 0.035 ; 2.7 ; - ; 0 ; 1粒=3,全量=60 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2023-06-0010
+森永製菓 ; 大粒ラムネ＜強炭酸シュワソーダ＞ ; もりなが おおつぶ ; 25 ; 90 ; 0 ; 0.3 ; 21.8 ; - ; 0.9 ; 1袋=25 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2022-02-0001
+森永製菓 ; ラムネ ; もりなが ; 29 ; 108 ; 0 ; 0.34 ; 26.3 ; - ; 0 ; 1本=29 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2009-08-0326
+森永製菓 ; 大粒ラムネ ; もりなが おおつぶ ; 41 ; 154 ; 0 ; 0.5 ; 37.3 ; - ; 0 ; 1袋=41 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2010-02-0001
+森永製菓 ; ミルクキャラメルキャンディ ; もりなが ; 4 ; 17 ; 0.05 ; 0.45 ; 3.3 ; - ; 0.02 ; 1粒=4,全量=74 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-08-0089
+森永製菓 ; シールド乳酸菌タブレット ; もりなが ; 1.6 ; 6 ; 0 ; 0.07 ; 1.4 ; - ; 0.04 ; 1粒=1.6,全量=33 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2016-08-0025
+森永製菓 ; 糖質90%オフのど飴 ; もりなが ; 9 ; 18 ; 0 ; 0 ; 8.3 ; 7.8 ; 0 ; 3粒=9,全量=58 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2014-08-0006
+森永製菓 ; ミルクキャラメルクランチバー ; もりなが ; 23.5 ; 122 ; 2.9 ; 6.7 ; 12.5 ; - ; 0.16 ; 1本=23.5 ; https://www.morinaga.co.jp/products/detail.php?id=PRD2025-08-0091
+ブルボン ; アルフォートあまおう苺 ; ぶるぼん ; 10.1 ; 54 ; 0.5 ; 3.1 ; 6.1 ; 0.2 ; 0.06 ; 1枚=10.1 ; https://www.bourbon.co.jp/product/detail/36920.html
+ブルボン ; アルフォートバニラホワイトチョコ ; ぶるぼん ; 10.1 ; 54 ; 0.6 ; 3.1 ; 6.1 ; 0.2 ; 0.06 ; 1枚=10.1 ; https://www.bourbon.co.jp/product/detail/36879.html
+ブルボン ; ディズニー/沖縄アルフォート久米島の紅いも ; ぶるぼん ; 10.1 ; 53 ; 0.5 ; 2.9 ; 6.4 ; 0.2 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/35376-04.html
+ブルボン ; ディズニー/栃木アルフォート とちあいか ; ぶるぼん ; 10.1 ; 54 ; 0.6 ; 3 ; 6.3 ; 0.2 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/36053-02.html
+ブルボン ; アルフォートミニチョコレート ; ぶるぼん ; 55 ; 287 ; 4.6 ; 15.7 ; 32.9 ; 2.1 ; 0.2 ; 12個=55 ; https://www.bourbon.co.jp/product/detail/35360-04.html
+ブルボン ; アルフォートミニチョコレートショコラサブレ ; ぶるぼん ; 52 ; 279 ; 3 ; 15.9 ; 31.8 ; 1.7 ; 0.2 ; 12個=52 ; https://www.bourbon.co.jp/product/detail/36218-01.html
+ブルボン ; アルフォートミニチョコレートリッチミルク ; ぶるぼん ; 55 ; 294 ; 4.6 ; 16.6 ; 32.1 ; 1.2 ; 0.2 ; 12個=55 ; https://www.bourbon.co.jp/product/detail/36416-01.html
+ブルボン ; アルフォートミニチョコレート柚子抹茶 ; ぶるぼん ; 60 ; 326 ; 2.8 ; 19 ; 36.5 ; 1 ; 0.2 ; 12個=60 ; https://www.bourbon.co.jp/product/detail/36857.html
+ブルボン ; アルフォートミニチョコレートストロベリー ; ぶるぼん ; 55 ; 294 ; 2.9 ; 16.4 ; 34.2 ; 0.9 ; 0.2 ; 12個=55 ; https://www.bourbon.co.jp/product/detail/35363-03.html
+ブルボン ; アルフォートミニチョコレートバニラホワイト ; ぶるぼん ; 55 ; 294 ; 3.5 ; 16.6 ; 33.2 ; 1.1 ; 0.3 ; 12個=55 ; https://www.bourbon.co.jp/product/detail/35362-03.html
+ブルボン ; アルフォートミニチョコレート濃抹茶 ; ぶるぼん ; 60 ; 324 ; 3 ; 18.5 ; 36.9 ; 1.2 ; 0.2 ; 12個=60 ; https://www.bourbon.co.jp/product/detail/36096-02.html
+ブルボン ; ディズニー/北海道アルフォートチーズケーキ風味 ; ぶるぼん ; 10.1 ; 55 ; 0.6 ; 3.1 ; 6.2 ; 0.2 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/35371-04.html
+ブルボン ; ディズニー/九州アルフォートあまおう苺 ; ぶるぼん ; 10.1 ; 54 ; 0.5 ; 3 ; 6.3 ; 0.2 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/35375-03.html
+ブルボン ; アルフォートミニチョコレート濃チーズ ; ぶるぼん ; 60 ; 326 ; 4.5 ; 19.1 ; 34.4 ; 0.7 ; 0.5 ; 12個=60 ; https://www.bourbon.co.jp/product/detail/36699.html
+ブルボン ; ディズニー/北陸アルフォート五郎島金時 ; ぶるぼん ; 10.1 ; 55 ; 0.6 ; 3 ; 6.4 ; 0.2 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/35372-03.html
+ブルボン ; ディズニー/関西アルフォート宇治抹茶 ; ぶるぼん ; 10.1 ; 55 ; 0.6 ; 3.1 ; 6.2 ; 0.2 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/35374-03.html
+ブルボン ; 富士山アルフォート ; ぶるぼん ; 10.1 ; 53 ; 0.8 ; 2.9 ; 6.1 ; 0.3 ; 0.07 ; 1枚=10.1,全量（14枚）=141.4 ; https://www.bourbon.co.jp/product/detail/35331-04.html
+ブルボン ; アルフォート ; ぶるぼん ; 10.1 ; 53 ; 0.8 ; 2.9 ; 6 ; 0.3 ; 0.07 ; 1枚=10.1,全量（9枚）=90.9 ; https://www.bourbon.co.jp/product/detail/36079-01.html
+ブルボン ; ディズニー/ミニルマンド(クリスマス) ; ぶるぼん ; 4.8 ; 25 ; 0.3 ; 1.1 ; 3.4 ; 0.1 ; 0.02 ; 1本=4.8 ; https://www.bourbon.co.jp/product/detail/36904.html
+ブルボン ; ブルボンCafe ルマンド仕立て ; ぶるぼん ; 25 ; 97 ; 1.3 ; 0.7 ; 21.6 ; 0.3 ; 0.2 ; 1杯=25,全量=200 ; https://www.bourbon.co.jp/product/detail/36453.html
+ブルボン ; ひとくちルマンド ; ぶるぼん ; 47 ; 247 ; 2.5 ; 13.4 ; 29.6 ; 0.8 ; 0.1 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/35519-03.html
+ブルボン ; ひとくちラングレイス ; ぶるぼん ; 47 ; 258 ; 2.6 ; 15.3 ; 27.9 ; 1 ; 0.2 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/36220-01.html
+ブルボン ; ラングレイス ; ぶるぼん ; 7.4 ; 39 ; 0.3 ; 2.1 ; 4.8 ; 0.1 ; 0.04 ; 1本=7.4,全量（11本）=81.4 ; https://www.bourbon.co.jp/product/detail/35993-01.html
+ブルボン ; ルマンド ; ぶるぼん ; 7.4 ; 37 ; 0.4 ; 1.6 ; 5.3 ; 0.1 ; 0.02 ; 1本=7.4,全量（12本）=88.8 ; https://www.bourbon.co.jp/product/detail/35417-03.html
+ブルボン ; 111gミニルマンドキャラメル ; ぶるぼん ; 4.8 ; 24 ; 0.2 ; 1.1 ; 3.4 ; 0.1 ; 0.01 ; 1本=4.8 ; https://www.bourbon.co.jp/product/detail/36087.html
+ブルボン ; プチえび ; ぶるぼん ; 33 ; 156 ; 1.8 ; 5.7 ; 24.5 ; 0.4 ; 0.5 ; 1袋=33 ; https://www.bourbon.co.jp/product/detail/35169-06.html
+ブルボン ; プチチョコチップ ; ぶるぼん ; 47 ; 237 ; 2.8 ; 11.6 ; 31 ; 1.3 ; 0.3 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/35831-04.html
+ブルボン ; プチえんどう ; ぶるぼん ; 35 ; 198 ; 3.8 ; 13.7 ; 15.9 ; 2 ; 0.4 ; 1袋=35 ; https://www.bourbon.co.jp/product/detail/36910.html
+ブルボン ; プチザク丸BBQ味 ; ぶるぼん ; 32 ; 132 ; 2 ; 2.6 ; 25.8 ; 1.4 ; 0.9 ; 1袋=32 ; https://www.bourbon.co.jp/product/detail/36912.html
+ブルボン ; プチチョコラングドシャ ; ぶるぼん ; 40 ; 216 ; 2.2 ; 12.6 ; 23.9 ; 0.8 ; 0.2 ; 1袋=40 ; https://www.bourbon.co.jp/product/detail/36908.html
+ブルボン ; プチいちごサンド ; ぶるぼん ; 46 ; 237 ; 2.8 ; 11.7 ; 30.4 ; 0.7 ; 0.2 ; 1袋=46 ; https://www.bourbon.co.jp/product/detail/36948.html
+ブルボン ; プチサラダせんうましお味 ; ぶるぼん ; 21 ; 106 ; 1.1 ; 5.2 ; 13.9 ; 0.2 ; 0.5 ; 1袋=21 ; https://www.bourbon.co.jp/product/detail/36173-01.html
+ブルボン ; プチあまじょっパウダーせん ; ぶるぼん ; 22 ; 109 ; 1.1 ; 4.9 ; 15.3 ; 0.2 ; 0.4 ; 1袋=22 ; https://www.bourbon.co.jp/product/detail/36175-01.html
+ブルボン ; プチコーヒーサンド ; ぶるぼん ; 47 ; 240 ; 2.4 ; 11.7 ; 31.7 ; 0.7 ; 0.3 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/36707.html
+ブルボン ; プチサクふわせん ; ぶるぼん ; 18 ; 83 ; 0.6 ; 2.8 ; 14 ; 0.1 ; 0.3 ; 1袋=18 ; https://www.bourbon.co.jp/product/detail/36692.html
+ブルボン ; プチホワイトラングドシャ ; ぶるぼん ; 40 ; 218 ; 1.8 ; 12.6 ; 24.5 ; 0.4 ; 0.2 ; 1袋=40 ; https://www.bourbon.co.jp/product/detail/36274-01.html
+ブルボン ; プチキャラメルサブレ ; ぶるぼん ; 46 ; 239 ; 2.4 ; 11.8 ; 31.1 ; 0.6 ; 0.2 ; 1袋=46 ; https://www.bourbon.co.jp/product/detail/36469.html
+ブルボン ; プチしっとりクッキー ; ぶるぼん ; 47 ; 221 ; 1.9 ; 9.9 ; 31.4 ; 0.8 ; 0.2 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/36461.html
+ブルボン ; プチうす焼 ; ぶるぼん ; 30 ; 127 ; 2 ; 2.5 ; 24.2 ; 0.3 ; 0.5 ; 1袋=30 ; https://www.bourbon.co.jp/product/detail/35823-02.html
+ブルボン ; プチポテトサワークリームオニオン味 ; ぶるぼん ; 35 ; 194 ; 2.1 ; 12.9 ; 18.1 ; 1.5 ; 0.5 ; 1袋=35 ; https://www.bourbon.co.jp/product/detail/35941-01.html
+ブルボン ; プチポテトうすしお味 ; ぶるぼん ; 35 ; 196 ; 2 ; 13.2 ; 18 ; 1.6 ; 0.4 ; 1袋=35 ; https://www.bourbon.co.jp/product/detail/35837-01.html
+ブルボン ; プチポテトコンソメ味 ; ぶるぼん ; 35 ; 197 ; 2.3 ; 13.5 ; 17.4 ; 1.5 ; 0.5 ; 1袋=35 ; https://www.bourbon.co.jp/product/detail/35839-01.html
+ブルボン ; プチベジチップス ; ぶるぼん ; 30 ; 135 ; 0.4 ; 3.9 ; 24.6 ; 0.2 ; 0.6 ; 1袋=30 ; https://www.bourbon.co.jp/product/detail/36235.html
+ブルボン ; プチバニラクラッカー ; ぶるぼん ; 38 ; 201 ; 2.3 ; 10.8 ; 23.9 ; 0.5 ; 0.3 ; 1袋=38 ; https://www.bourbon.co.jp/product/detail/36290.html
+ブルボン ; プチココア ; ぶるぼん ; 47 ; 224 ; 3 ; 9.2 ; 33 ; 1.4 ; 0.5 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/36282.html
+ブルボン ; プチうましおプレッツェル ; ぶるぼん ; 40 ; 192 ; 3.4 ; 8.3 ; 26.4 ; 1 ; 1 ; 1袋=40 ; https://www.bourbon.co.jp/product/detail/35146-04.html
+ブルボン ; プチチーズ ; ぶるぼん ; 38 ; 203 ; 2.7 ; 11.5 ; 22.3 ; 0.5 ; 0.6 ; 1袋=38 ; https://www.bourbon.co.jp/product/detail/36288.html
+ブルボン ; プチバタークッキー ; ぶるぼん ; 42 ; 212 ; 2.5 ; 10.3 ; 27.6 ; 0.6 ; 0.4 ; 1袋=42 ; https://www.bourbon.co.jp/product/detail/35948.html
+ブルボン ; プチあげ丸まろやかしょうゆ味 ; ぶるぼん ; 26 ; 140 ; 1.2 ; 8.5 ; 14.7 ; 0.3 ; 0.5 ; 1袋=26 ; https://www.bourbon.co.jp/product/detail/35158-03.html
+ブルボン ; フェットチーネグミシャインマスカット味 ; ぶるぼん ; 50 ; 172 ; 3.2 ; 0.1 ; 39.6 ; - ; 0.06 ; 1袋=50 ; https://www.bourbon.co.jp/product/detail/36855.html
+ブルボン ; フェットチーネグミコーラ味 ; ぶるぼん ; 50 ; 173 ; 3.4 ; 0.1 ; 39.5 ; - ; 0.07 ; 1袋=50 ; https://www.bourbon.co.jp/product/detail/35216-03.html
+ブルボン ; フェットチーネグミイタリアンレモン味 ; ぶるぼん ; 50 ; 182 ; 4 ; 0.1 ; 41.3 ; - ; 0.07 ; 1袋=50 ; https://www.bourbon.co.jp/product/detail/35215-01.html
+ブルボン ; フェットチーネグミレッドキウイ味 ; ぶるぼん ; 47 ; 161 ; 3.1 ; 0 ; 37.2 ; - ; 0.05 ; 1袋=47 ; https://www.bourbon.co.jp/product/detail/36854.html
+ブルボン ; フェットチーネグミソーダ味 ; ぶるぼん ; 50 ; 173 ; 3.2 ; 0.1 ; 39.9 ; - ; 0.06 ; 1袋=50 ; https://www.bourbon.co.jp/product/detail/35217-01.html
+ブルボン ; フェットチーネグミイタリアングレープ味 ; ぶるぼん ; 50 ; 178 ; 3.4 ; 0 ; 41.2 ; - ; 0.06 ; 1袋=50 ; https://www.bourbon.co.jp/product/detail/35214-01.html
+ブルボン ; ミニ濃厚チョコブラウニーショコラキャラメル ; ぶるぼん ; 12.8 ; 62 ; 0.9 ; 3.5 ; 6.9 ; 0.3 ; 0.05 ; 1個=12.8 ; https://www.bourbon.co.jp/product/detail/36844.html
+ブルボン ; 106gミニ濃厚チョコブラウニー ; ぶるぼん ; 12.8 ; 62 ; 0.8 ; 3.7 ; 6.7 ; 0.5 ; 0.04 ; 1個=12.8 ; https://www.bourbon.co.jp/product/detail/36443-02.html
+ブルボン ; 濃厚チョコブラウニーリッチミルク ; ぶるぼん ; 40 ; 193 ; 3.2 ; 11.1 ; 20.6 ; 1 ; 0.2 ; 1個=40 ; https://www.bourbon.co.jp/product/detail/36812.html
+ブルボン ; 濃厚チョコブラウニー ; ぶるぼん ; 40 ; 197 ; 2.5 ; 12.1 ; 20.4 ; 1.7 ; 0.1 ; 1個=40 ; https://www.bourbon.co.jp/product/detail/35395-04.html
+ブルボン ; シルベーヌ巨峰のショートケーキ ; ぶるぼん ; 21 ; 108 ; 1 ; 6.5 ; 11.3 ; 0 ; 0.04 ; 1個=21,全量（6個）=126 ; https://www.bourbon.co.jp/product/detail/36843.html
+ブルボン ; 113gミニシルベーヌバニラ ; ぶるぼん ; 9 ; 45 ; 0.6 ; 2.7 ; 4.6 ; 0.2 ; 0.01 ; 1個=9 ; https://www.bourbon.co.jp/product/detail/36447.html
+ブルボン ; シルベーヌ ; ぶるぼん ; 19 ; 97 ; 1.3 ; 6.2 ; 9.3 ; 0.5 ; 0.03 ; 1個=19,全量（6個）=114 ; https://www.bourbon.co.jp/product/detail/36002-01.html
+ブルボン ; シルベーヌバー ; ぶるぼん ; 40 ; 205 ; 2.8 ; 13.1 ; 19.5 ; 0.9 ; 0.06 ; 1個=40 ; https://www.bourbon.co.jp/product/detail/35399-02.html
+ブルボン ; 贅沢ルマンド北海道ミルク ; ぶるぼん ; 12.8 ; 65 ; 0.6 ; 2.9 ; 9.2 ; 0.1 ; 0.04 ; 1本=12.8,全量（9本）=115.2 ; https://www.bourbon.co.jp/product/detail/36828.html
+ブルボン ; 贅沢ルマンド ; ぶるぼん ; 12.8 ; 66 ; 0.8 ; 3.1 ; 8.7 ; 0.2 ; 0.05 ; 1本=12.8,全量（9本）=115.2 ; https://www.bourbon.co.jp/product/detail/35554-02.html
+ブルボン ; ミルファス ; ぶるぼん ; 17.4 ; 95 ; 0.9 ; 5.5 ; 10.6 ; 0.4 ; 0.08 ; 1個=17.4,全量（5個）=87 ; https://www.bourbon.co.jp/product/detail/36241-01.html
+ブルボン ; クロワパイ ; ぶるぼん ; 14.2 ; 80 ; 1.1 ; 5.1 ; 7.5 ; 0.3 ; 0.1 ; 1本=14.2,全量（6本）=85.2 ; https://www.bourbon.co.jp/product/detail/36903.html
+ブルボン ; ラシュクーレ ; ぶるぼん ; 12.5 ; 69 ; 1 ; 4.2 ; 6.9 ; 0.2 ; 0.08 ; 1枚=12.5,全量（7枚）=87.5 ; https://www.bourbon.co.jp/product/detail/36889.html
+ブルボン ; レザンヌ ; ぶるぼん ; 19.2 ; 95 ; 0.8 ; 5 ; 11.9 ; 0.3 ; 0.05 ; 1個=19.2,全量（6個）=115.2 ; https://www.bourbon.co.jp/product/detail/35369-02.html
+ブルボン ; レーズンサンド ; ぶるぼん ; 8.2 ; 34 ; 0.4 ; 1.1 ; 5.7 ; 0.2 ; 0.03 ; 1個=8.2 ; https://www.bourbon.co.jp/product/detail/36442-01.html
+ブルボン ; ホワイトロリータ ; ぶるぼん ; 7 ; 38 ; 0.3 ; 2.1 ; 4.5 ; 0.1 ; 0.02 ; 1本=7,全量（14本）=98 ; https://www.bourbon.co.jp/product/detail/35420-01.html
+ブルボン ; バームロール ; ぶるぼん ; 13 ; 67 ; 0.7 ; 4 ; 7 ; 0.1 ; 0.06 ; 1本=13,全量（7本）=91 ; https://www.bourbon.co.jp/product/detail/35418-01.html
+ブルボン ; ルーベラ ; ぶるぼん ; 5.2 ; 28 ; 0.3 ; 1.6 ; 3.1 ; 0.1 ; 0.03 ; 1本=5.2,全量（8本）=41.6 ; https://www.bourbon.co.jp/product/detail/36394-01.html
+ブルボン ; チョコダイジェスティブビスケット ; ぶるぼん ; 5.8 ; 29 ; 0.4 ; 1.4 ; 3.8 ; 0.2 ; 0.06 ; 1枚=5.8,全量（16枚）=92.8 ; https://www.bourbon.co.jp/product/detail/36494.html
+ブルボン ; チョコチップクッキー ; ぶるぼん ; 10.1 ; 50 ; 0.6 ; 2.3 ; 6.8 ; 0.2 ; 0.05 ; 1枚=10.1,全量（9枚）=90.9 ; https://www.bourbon.co.jp/product/detail/35933-02.html
+ブルボン ; 塩キャラメルクッキー ; ぶるぼん ; 9.1 ; 47 ; 0.5 ; 2.4 ; 6 ; 0.1 ; 0.08 ; 1枚=9.1,全量（9枚）=81.9 ; https://www.bourbon.co.jp/product/detail/35413-01.html
+ブルボン ; バタークッキー ; ぶるぼん ; 9.6 ; 50 ; 0.5 ; 2.7 ; 6 ; 0.2 ; 0.07 ; 1枚=9.6,全量（9枚）=86.4 ; https://www.bourbon.co.jp/product/detail/35410-01.html
+ブルボン ; ショコロワール ; ぶるぼん ; 17.1 ; 91 ; 1 ; 5.5 ; 9.6 ; 0.5 ; 0.04 ; 1個=17.1,全量（5個）=85.5 ; https://www.bourbon.co.jp/product/detail/35578-01.html
+ブルボン ; あじわいたまごのサブレー ; ぶるぼん ; 10.8 ; 50 ; 0.8 ; 1.7 ; 8 ; 0.2 ; 0.06 ; 1枚=10.8,全量（8枚）=86.4 ; https://www.bourbon.co.jp/product/detail/35764.html
+ブルボン ; しゃりもにグミ ヨーグルト味 ; ぶるぼん ; 57 ; 202 ; 2.5 ; 0.1 ; 47.7 ; - ; 0.2 ; 1袋=57 ; https://www.bourbon.co.jp/product/detail/35388-02.html
+ブルボン ; しゃりもにグミ ピーチ味 ; ぶるぼん ; 57 ; 203 ; 2.3 ; 0.1 ; 48.1 ; - ; 0.3 ; 1袋=57 ; https://www.bourbon.co.jp/product/detail/36649-01.html
+ブルボン ; しゃりもにグミ グレープ味 ; ぶるぼん ; 57 ; 200 ; 2.3 ; 0.1 ; 47.4 ; - ; 0.3 ; 1袋=57 ; https://www.bourbon.co.jp/product/detail/35389-02.html
+ブルボン ; しゃりもにグミ 和梨味 ; ぶるぼん ; 57 ; 203 ; 1.9 ; 0.1 ; 48.6 ; - ; 0.2 ; 1袋=57 ; https://www.bourbon.co.jp/product/detail/36851.html
+ブルボン ; クリームあ~んぱんおさつバター風味袋 ; ぶるぼん ; 38 ; 172 ; 3.1 ; 7.5 ; 23.4 ; 0.7 ; 0.2 ; 1袋=38 ; https://www.bourbon.co.jp/product/detail/36849.html
+ブルボン ; クリームあ~んぱんおさつバター風味 ; ぶるぼん ; 38 ; 172 ; 3.1 ; 7.5 ; 23.4 ; 0.7 ; 0.2 ; 1箱=38 ; https://www.bourbon.co.jp/product/detail/36848.html
+ブルボン ; チョコあ~んぱん袋 ; ぶるぼん ; 40 ; 181 ; 3.5 ; 8.1 ; 24 ; 1.1 ; 0.2 ; 1袋=40 ; https://www.bourbon.co.jp/product/detail/35305-03.html
+ブルボン ; チョコあ~んぱん ; ぶるぼん ; 40 ; 181 ; 3.5 ; 8.1 ; 24 ; 1.1 ; 0.2 ; 1箱=40 ; https://www.bourbon.co.jp/product/detail/35304-03.html
+ブルボン ; エブリバーガー袋 ; ぶるぼん ; 42 ; 214 ; 3.4 ; 11.2 ; 25.5 ; 1.4 ; 0.2 ; 1袋=42 ; https://www.bourbon.co.jp/product/detail/36890.html
+ブルボン ; きこりの切株 ; ぶるぼん ; 66 ; 354 ; 5.3 ; 20.7 ; 37.6 ; 1.8 ; 0.3 ; 1箱=66 ; https://www.bourbon.co.jp/product/detail/35359-03.html
+ブルボン ; エブリバーガー ; ぶるぼん ; 66 ; 336 ; 5.3 ; 17.6 ; 40.1 ; 2.2 ; 0.3 ; 1箱=66 ; https://www.bourbon.co.jp/product/detail/35358-03.html
+ブルボン ; ビットクランチ ; ぶるぼん ; 13 ; 75 ; 1.2 ; 5.1 ; 6.3 ; 0.5 ; 0.02 ; 1個=13 ; https://www.bourbon.co.jp/product/detail/35391-01.html
+ブルボン ; ビットさわやか苺 ; ぶるぼん ; 15 ; 89 ; 1 ; 6.2 ; 7.4 ; 0.3 ; 0.02 ; 1個=15 ; https://www.bourbon.co.jp/product/detail/35392-01.html
+ブルボン ; ビットコクミルク ; ぶるぼん ; 15 ; 86 ; 1.1 ; 5.7 ; 7.7 ; 0.5 ; 0.02 ; 1個=15 ; https://www.bourbon.co.jp/product/detail/35390.html
+ブルボン ; アーモンドラッシュ ; ぶるぼん ; 33 ; 198 ; 4.9 ; 15 ; 11.9 ; 2.3 ; 0.04 ; 1枚=33 ; https://www.bourbon.co.jp/product/detail/36642.html
+ブルボン ; 雪室ショコラまろみミルク ; ぶるぼん ; 3.8 ; 22 ; 0.3 ; 1.4 ; 2 ; 0.1 ; 0.006 ; 1枚=3.8,全量=45 ; https://www.bourbon.co.jp/product/detail/34966-01.html
+ブルボン ; 雪室ショコラ熟成カカオ73 ; ぶるぼん ; 3.8 ; 23 ; 0.4 ; 1.8 ; 1.5 ; 0.4 ; 0.001 ; 1枚=3.8,全量=45 ; https://www.bourbon.co.jp/product/detail/34967-01.html
+ブルボン ; チーズおかきジェノベーゼ風味 ; ぶるぼん ; 3.8 ; 17 ; 0.3 ; 0.5 ; 2.8 ; 0.02 ; 0.07 ; 1枚=3.8 ; https://www.bourbon.co.jp/product/detail/36858.html
+ブルボン ; チーズおかき ; ぶるぼん ; 3.7 ; 16 ; 0.3 ; 0.5 ; 2.7 ; 0.04 ; 0.05 ; 1枚=3.7 ; https://www.bourbon.co.jp/product/detail/36557-01.html
+ブルボン ; ミニカマンベールチーズおかきジェノベーゼ風味CH ; ぶるぼん ; 26 ; 120 ; 2.1 ; 4.1 ; 18.7 ; 0.2 ; 0.5 ; 1袋=26 ; https://www.bourbon.co.jp/product/detail/36859.html
+ブルボン ; ミニチーズおかきCH ; ぶるぼん ; 28 ; 130 ; 2.3 ; 4.7 ; 19.8 ; 0.3 ; 0.4 ; 1袋=28 ; https://www.bourbon.co.jp/product/detail/34450-06.html
+ブルボン ; 210gチーズおかき ; ぶるぼん ; 3.7 ; 16 ; 0.3 ; 0.5 ; 2.7 ; 0.04 ; 0.05 ; 1枚=3.7 ; https://www.bourbon.co.jp/product/detail/36559.html
+ブルボン ; 羽衣あられ香るしょうが味 ; ぶるぼん ; 33 ; 137 ; 2 ; 2 ; 27.9 ; 0.3 ; 0.7 ; 1袋=33 ; https://www.bourbon.co.jp/product/detail/36863.html
+ブルボン ; アルミ羽衣あられ ; ぶるぼん ; 36 ; 151 ; 2.2 ; 2.4 ; 30.3 ; 0.4 ; 0.6 ; 1袋=36 ; https://www.bourbon.co.jp/product/detail/36566-01.html
+ブルボン ; おやつで栄養習慣バナナパウンドケーキ ; ぶるぼん ; 15 ; 71 ; 1.7 ; 5 ; 6.1 ; 2.6 ; 0.1 ; 1個=15,全量（6個）=90 ; https://www.bourbon.co.jp/product/detail/36704.html
+ブルボン ; のせて焼くメロンパンシート ; ぶるぼん ; 15 ; 72 ; 0.2 ; 4.3 ; 8.1 ; 0 ; 0.05 ; 1枚=15 ; https://www.bourbon.co.jp/product/detail/35516-04.html
+ブルボン ; 魅惑のシュガーバタートースト風シート ; ぶるぼん ; 18 ; 117 ; 0.2 ; 10.1 ; 6.2 ; 0 ; 0.1 ; 1枚=18 ; https://www.bourbon.co.jp/product/detail/36871.html
+ブルボン ; スライス生チョコレート ; ぶるぼん ; 16.5 ; 77 ; 1.2 ; 4.9 ; 7.2 ; 0.5 ; 0.02 ; 1枚=16.5 ; https://www.bourbon.co.jp/product/detail/36402-01.html
+ブルボン ; のせて焼くフレンチトースト風シート ; ぶるぼん ; 15 ; 74 ; 0.3 ; 5.2 ; 6.6 ; 0 ; 0.04 ; 1枚=15 ; https://www.bourbon.co.jp/product/detail/35518-02.html
+ブルボン ; バター風味シート ; ぶるぼん ; 10 ; 77 ; 0.1 ; 8.2 ; 0.7 ; 0 ; 0.1 ; 1枚=10 ; https://www.bourbon.co.jp/product/detail/36651.html
+ブルボン ; スローバーベイクドショコラケーキ ; ぶるぼん ; 37 ; 177 ; 2.1 ; 10.3 ; 20.9 ; 3.7 ; 0.06 ;  ; https://www.bourbon.co.jp/product/detail/36439.html
+ブルボン ; スローバーベイクドチーズケーキ ; ぶるぼん ; 37 ; 174 ; 2.1 ; 8.9 ; 22 ; 1.2 ; 0.2 ;  ; https://www.bourbon.co.jp/product/detail/36143-01.html
+ブルボン ; スローバーチョコバナナクッキー ; ぶるぼん ; 41 ; 184 ; 2 ; 7.8 ; 28 ; 3.1 ; 0.1 ;  ; https://www.bourbon.co.jp/product/detail/36153.html
+ブルボン ; セノビックバーココア味 ; ぶるぼん ; 37 ; 175 ; 2.4 ; 8.3 ; 23.1 ; 1.1 ; 0.1 ;  ; https://www.bourbon.co.jp/product/detail/36157.html
+ブルボン ; セノビックバーミニソフトクッキーココア味 ; ぶるぼん ; 18.8 ; 83 ; 1 ; 3.7 ; 11.7 ; 0.6 ; 0.09 ; 2本=18.8 ; https://www.bourbon.co.jp/product/detail/36144.html
+ブルボン ; プロテインバーBCAA+キャラメルクッキー ; ぶるぼん ; 40 ; 191 ; 15.6 ; 9.4 ; 11.2 ; 0.6 ; 0.3 ;  ; https://www.bourbon.co.jp/product/detail/36156.html
+ブルボン ; プロテインバーBCAA+チョコレートクッキー ; ぶるぼん ; 40 ; 190 ; 15.2 ; 9.5 ; 11.3 ; 1 ; 0.3 ;  ; https://www.bourbon.co.jp/product/detail/36155.html
+ブルボン ; スローバーチョコレートクッキー ; ぶるぼん ; 41 ; 192 ; 2.4 ; 9.3 ; 26.1 ; 2.9 ; 0.1 ;  ; https://www.bourbon.co.jp/product/detail/36152.html
+ブルボン ; スローバー濃厚ココナッツミルク ; ぶるぼん ; 41 ; 197 ; 2.3 ; 10.5 ; 24.9 ; 3.4 ; 0.1 ;  ; https://www.bourbon.co.jp/product/detail/36154.html
+ブルボン ; ハイカーボ300 ; ぶるぼん ; 180 ; 300 ; 0 ; 0 ; 75.2 ; 0.4 ; 0.3 ; 1袋=180 ; https://www.bourbon.co.jp/product/detail/35347.html
+ブルボン ; 肌サポココア ; ぶるぼん ; 20 ; 69 ; 0.8 ; 0.9 ; 17.3 ; 6 ; 0.1 ; 1杯=20,全量=180 ; https://www.bourbon.co.jp/product/detail/36021-01.html
+ブルボン ; ミルクココア ; ぶるぼん ; 20 ; 79 ; 1.1 ; 1 ; 16.8 ; 1 ; 0.1 ; 1杯=20,全量=200 ; https://www.bourbon.co.jp/product/detail/35992-02.html
+ブルボン ; 牛乳でおいしくこだわりココア缶180 ; ぶるぼん ; 100 ; 40 ; 0.7 ; 0.6 ; 8.2 ; 0.5 ; 0.06 ; 全量=180 ; https://www.bourbon.co.jp/product/detail/36004-01.html
+亀田製菓 ; 70g 亀田の柿の種 ミルク&ホワイトチョコレート ; かめだ かきのたね かめだ ; 100 ; 511 ; 5.8 ; 24.9 ; 66 ; - ; 0.56 ; 1個包装=17.6 ; https://www.kamedaseika.co.jp/product/2020/
+亀田製菓 ; 60g ハッピーターン フライドポテト仕立て ; かめだ ; 60 ; 301 ; 2.6 ; 14.5 ; 40.1 ; - ; 1.28 ; 1袋=60 ; https://www.kamedaseika.co.jp/product/2218/
+亀田製菓 ; 35g ハッピーターン フライドポテト仕立て ; かめだ ; 35 ; 176 ; 1.5 ; 8.5 ; 23.4 ; - ; 0.75 ; 1袋=35 ; https://www.kamedaseika.co.jp/product/2217/
+亀田製菓 ; 40g 技のこだ割り プレミアム ; かめだ ; 40 ; 149 ; 4 ; 0.3 ; 32.6 ; - ; 1.29 ; 1袋=40 ; https://www.kamedaseika.co.jp/product/2222/
+亀田製菓 ; 180g 亀田の柿の種 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 453 ; 12 ; 14.1 ; 69.6 ; - ; 1.28 ; 1個包装=30 ; https://www.kamedaseika.co.jp/product/1025/
+亀田製菓 ; 164g 亀田の柿の種 わさび 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 457 ; 11.8 ; 15.3 ; 67.9 ; - ; 1.98 ; 1個包装=27.4 ; https://www.kamedaseika.co.jp/product/1026/
+亀田製菓 ; 164g 亀田の柿の種 梅しそ 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 454 ; 12.4 ; 14.9 ; 67.5 ; - ; 2.17 ; 1個包装=27.5 ; https://www.kamedaseika.co.jp/product/1027/
+亀田製菓 ; 164g 減塩 亀田の柿の種 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 455 ; 11.6 ; 14.1 ; 70.4 ; - ; 0.85 ; 1個包装=27.5 ; https://www.kamedaseika.co.jp/product/1379/
+亀田製菓 ; 150g 亀田の柿の種 うましお ; かめだ かきのたね かめだ ; 100 ; 465 ; 12 ; 16.9 ; 66.2 ; - ; 1.75 ; 1個包装=24.9 ; https://www.kamedaseika.co.jp/product/2080/
+亀田製菓 ; 75g 亀田の柿の種 トレイルミックス ; かめだ かきのたね かめだ ; 100 ; 491 ; 9.9 ; 21.8 ; 63.9 ; - ; 0.7 ; 1個包装=18.9 ; https://www.kamedaseika.co.jp/product/2128/
+亀田製菓 ; 33g 亀田の柿の種 トレイルミックス ; かめだ かきのたね かめだ ; 33 ; 161 ; 3.2 ; 6.9 ; 21.5 ; - ; 0.24 ; 1袋=33 ; https://www.kamedaseika.co.jp/product/2183/
+亀田製菓 ; 135g 亀田の柿の種 ピーナッツなし 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 387 ; 6.2 ; 1.4 ; 87.3 ; - ; 1.58 ; 1個包装=22.5 ; https://www.kamedaseika.co.jp/product/1608/
+亀田製菓 ; 105g 亀田の柿の種 ピーナッツなし うましお 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 400 ; 6.1 ; 4.2 ; 84.4 ; - ; 2.18 ; 1個包装=17.5 ; https://www.kamedaseika.co.jp/product/2155/
+亀田製菓 ; 172g 亀田の柿の種 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 453 ; 12 ; 14.1 ; 69.6 ; - ; 1.28 ; 1個包装=28.7 ; https://www.kamedaseika.co.jp/product/1328/
+亀田製菓 ; 161g 亀田の柿の種 超わさび 6袋詰 ; かめだ かきのたね かめだ ; 100 ; 454 ; 12.4 ; 14.9 ; 67.6 ; - ; 2.01 ; 1個包装=26.9 ; https://www.kamedaseika.co.jp/product/2102/
+亀田製菓 ; 63g 亀田の柿の種 ; かめだ かきのたね かめだ ; 63 ; 286 ; 7.6 ; 8.9 ; 43.8 ; - ; 0.81 ; 1袋=63 ; https://www.kamedaseika.co.jp/product/1031/
+亀田製菓 ; 57g 亀田の柿の種 わさび ; かめだ かきのたね かめだ ; 57 ; 260 ; 6.7 ; 8.7 ; 38.7 ; - ; 1.13 ; 1袋=57 ; https://www.kamedaseika.co.jp/product/1033/
+亀田製菓 ; 57g 亀田の柿の種 梅しそ ; かめだ かきのたね かめだ ; 57 ; 259 ; 7.1 ; 8.5 ; 38.5 ; - ; 1.24 ; 1袋=57 ; https://www.kamedaseika.co.jp/product/1034/
+亀田製菓 ; 57g 減塩 亀田の柿の種 ; かめだ かきのたね かめだ ; 57 ; 259 ; 6.6 ; 8 ; 40.1 ; - ; 0.48 ; 1袋=57 ; https://www.kamedaseika.co.jp/product/1380/
+亀田製菓 ; 100g 亀田の柿の種 ピーナッツなし ; かめだ かきのたね かめだ ; 100 ; 387 ; 6.2 ; 1.4 ; 87.3 ; - ; 1.58 ;  ; https://www.kamedaseika.co.jp/product/241/
+亀田製菓 ; 91g 亀田の柿の種 ピーナッツなしわさび ; かめだ かきのたね かめだ ; 91 ; 353 ; 5.3 ; 1.7 ; 79 ; - ; 2.28 ; 1袋=91 ; https://www.kamedaseika.co.jp/product/827/
+亀田製菓 ; 91g 亀田の柿の種 ピーナッツなし梅しそ ; かめだ かきのたね かめだ ; 91 ; 348 ; 6 ; 1.2 ; 78.4 ; - ; 2.52 ; 1袋=91 ; https://www.kamedaseika.co.jp/product/704/
+亀田製菓 ; 73g 亀田の柿の種 ピーナッツなし うましお ; かめだ かきのたね かめだ ; 73 ; 292 ; 4.5 ; 3.1 ; 61.6 ; - ; 1.59 ; 1袋=73 ; https://www.kamedaseika.co.jp/product/2154/
+亀田製菓 ; 360g 亀田の柿の種 12袋詰 ; かめだ かきのたね かめだ ; 100 ; 453 ; 12 ; 14.1 ; 69.6 ; - ; 1.28 ; 1個包装=30 ; https://www.kamedaseika.co.jp/product/2068/
+亀田製菓 ; 532g 亀田の柿の種 たっぷりピーナッツ 16袋詰 ; かめだ かきのたね かめだ ; 100 ; 553 ; 20.4 ; 33.7 ; 42 ; - ; 0.94 ; 1個包装=33.3 ; https://www.kamedaseika.co.jp/product/1307/
+亀田製菓 ; 35g ハッピーターン 大人がハマる香味スパイス ; かめだ ; 35 ; 179 ; 1.8 ; 8.7 ; 23.4 ; - ; 0.53 ; 1袋=35 ; https://www.kamedaseika.co.jp/product/2211/
+亀田製菓 ; 96g ハッピーターン ; かめだ ; 100 ; 520 ; 4.7 ; 26.1 ; 66.6 ; - ; 1.46 ; 1個包装=3.8 ; https://www.kamedaseika.co.jp/product/1415/
+亀田製菓 ; 79g ハッピーターン ; かめだ ; 100 ; 520 ; 4.7 ; 26.1 ; 66.6 ; - ; 1.46 ; 1個包装=3.8 ; https://www.kamedaseika.co.jp/product/2041/
+亀田製菓 ; 53g パウダー250%ハッピーターン ; かめだ ; 53 ; 267 ; 2.9 ; 12.8 ; 35 ; - ; 1.41 ; 1袋=53 ; https://www.kamedaseika.co.jp/product/978/
+亀田製菓 ; 83g 減塩ハッピーターン ; かめだ ; 100 ; 521 ; 4.8 ; 26.2 ; 66.5 ; - ; 1 ; 1個包装=3.8 ; https://www.kamedaseika.co.jp/product/1575/
+亀田製菓 ; 73g ハッピーターン スパイス ; かめだ ; 73 ; 373 ; 3.8 ; 18.1 ; 48.8 ; - ; 1.1 ; 1袋=73 ; https://www.kamedaseika.co.jp/product/2039/
+亀田製菓 ; 67g ハッピーターン ; かめだ ; 67 ; 348 ; 3.1 ; 17.5 ; 44.6 ; - ; 0.98 ; 1袋=67 ; https://www.kamedaseika.co.jp/product/974/
+亀田製菓 ; 60g ハッピーターンミニ4連 ; かめだ ; 15 ; 78 ; 0.7 ; 4 ; 9.9 ; - ; 0.22 ; 1袋=15 ; https://www.kamedaseika.co.jp/product/1182/
+亀田製菓 ; 52g ハッピーターンミニ スパイス4連 ; かめだ ; 13 ; 67 ; 0.7 ; 3.3 ; 8.6 ; - ; 0.2 ; 1袋=13 ; https://www.kamedaseika.co.jp/product/2133/
+亀田製菓 ; 28g ハッピーターン ; かめだ ; 28 ; 145 ; 1.3 ; 7.3 ; 18.6 ; - ; 0.41 ; 1袋=28 ; https://www.kamedaseika.co.jp/product/976/
+亀田製菓 ; 30g ハッピーターンミニ 濃厚うめ味 ; かめだ ; 30 ; 153 ; 1.3 ; 7.8 ; 19.4 ; - ; 1.2 ; 1袋=30 ; https://www.kamedaseika.co.jp/product/2090/
+亀田製菓 ; 120g ハッピーターンミニ 6パックハロウィン ; かめだ ; 100 ; 523 ; 4.8 ; 26.8 ; 65.7 ; - ; 1.44 ; 1個包装=20.1 ; https://www.kamedaseika.co.jp/product/2209/
+亀田製菓 ; 120g 亀田のつまみ種 ; かめだ かめだ ; 100 ; 507 ; 6.7 ; 24.5 ; 64.9 ; - ; 1.48 ; 1個包装=19.9 ; https://www.kamedaseika.co.jp/product/1160/
+亀田製菓 ; 95g 午後のつまみ種 ; かめだ ; 100 ; 526 ; 6.2 ; 28 ; 62.2 ; - ; 0.95 ; 1個包装=15.8 ; https://www.kamedaseika.co.jp/product/2015/
+亀田製菓 ; 53g 無限エビ 海老マヨ風味 ; かめだ ; 100 ; 582 ; 4.1 ; 39.2 ; 53.1 ; - ; 1.96 ; 1個包装=4.6 ; https://www.kamedaseika.co.jp/product/2220/
+亀田製菓 ; 58g 無限エビ ; かめだ ; 100 ; 578 ; 3.5 ; 38.6 ; 54.2 ; - ; 1.85 ; 1個包装=4.5 ; https://www.kamedaseika.co.jp/product/2025/
+亀田製菓 ; 58g 無限のり ; かめだ ; 100 ; 579 ; 3.2 ; 38.6 ; 54.7 ; - ; 1.71 ; 1個包装=4.5 ; https://www.kamedaseika.co.jp/product/2030/
+亀田製菓 ; 31g 無限エビ ; かめだ ; 31 ; 180 ; 1.1 ; 12 ; 16.8 ; - ; 0.57 ; 1袋=31 ; https://www.kamedaseika.co.jp/product/2156/
+亀田製菓 ; 31g 無限のり ; かめだ ; 31 ; 180 ; 1 ; 12 ; 17 ; - ; 0.53 ; 1袋=31 ; https://www.kamedaseika.co.jp/product/2157/
+亀田製菓 ; 35g 無限エビ 海老マヨ風味 ; かめだ ; 35 ; 208 ; 1.5 ; 14.5 ; 17.8 ; - ; 0.83 ; 1袋=35 ; https://www.kamedaseika.co.jp/product/2219/
+亀田製菓 ; 35g すんごい香ばしい 無限エビ ; かめだ ; 35 ; 208 ; 1.3 ; 14.4 ; 18.2 ; - ; 0.58 ; 1袋=35 ; https://www.kamedaseika.co.jp/product/2212/
+亀田製菓 ; 16枚 亀田のまがりせんべい ; かめだ かめだ ; 100 ; 389 ; 6.7 ; 2.8 ; 84.3 ; - ; 2.31 ;  ; https://www.kamedaseika.co.jp/product/1448/
+亀田製菓 ; 8枚 手塩屋 ; かめだ ; 100 ; 417 ; 7.1 ; 7 ; 81.5 ; - ; 1.48 ; 1個包装=13.4 ; https://www.kamedaseika.co.jp/product/1450/
+亀田製菓 ; 8枚 手塩屋 完熟だし梅味 ; かめだ ; 100 ; 420 ; 7.3 ; 7.1 ; 81.7 ; - ; 1.49 ; 1個包装=13.6 ; https://www.kamedaseika.co.jp/product/1595/
+亀田製菓 ; 60g 手塩屋ミニ ; かめだ ; 60 ; 254 ; 4.4 ; 4.7 ; 48.6 ; - ; 1 ; 1袋=60 ; https://www.kamedaseika.co.jp/product/1459/
+亀田製菓 ; 20枚 ぽたぽた焼 ; かめだ ; 100 ; 436 ; 4.5 ; 12.1 ; 77.2 ; - ; 2.05 ;  ; https://www.kamedaseika.co.jp/product/1471/
+亀田製菓 ; 48g ひとくちぽたぽた焼おもち ; かめだ ; 100 ; 481 ; 4.7 ; 19.7 ; 71.1 ; - ; 1.33 ; 1個包装=12.1 ; https://www.kamedaseika.co.jp/product/2213/
+亀田製菓 ; 20枚 ソフトサラダ ; かめだ ; 100 ; 468 ; 4.3 ; 17 ; 74.5 ; - ; 1.65 ;  ; https://www.kamedaseika.co.jp/product/1470/
+亀田製菓 ; 18枚 ソフトサラダ 塩とごま油風味 ; かめだ ; 100 ; 460 ; 5.4 ; 15.7 ; 74.2 ; - ; 1.39 ;  ; https://www.kamedaseika.co.jp/product/1462/
+亀田製菓 ; 100g こつぶっこ ; かめだ ; 100 ; 520 ; 4.9 ; 29.1 ; 59.7 ; - ; 1.9 ; 1個包装=25 ; https://www.kamedaseika.co.jp/product/1318/
+亀田製菓 ; 72g こつぶっこ ビターキャラメル風味 ; かめだ ; 100 ; 538 ; 3.1 ; 30.9 ; 61.8 ; - ; 0.93 ; 1個包装=18 ; https://www.kamedaseika.co.jp/product/2057/
+亀田製菓 ; 60g こつぶっこ4連 ; かめだ ; 15 ; 78 ; 0.7 ; 4.4 ; 9 ; - ; 0.29 ; 1袋=15 ; https://www.kamedaseika.co.jp/product/1319/
+亀田製菓 ; 80g 亀田のうす焼 サラダ ; かめだ かめだ ; 100 ; 429 ; 6.3 ; 8.1 ; 82.6 ; - ; 1.92 ; 1パック=26.8 ; https://www.kamedaseika.co.jp/product/1476/
+亀田製菓 ; 70g 亀田のうす焼 えび ; かめだ かめだ ; 100 ; 425 ; 8 ; 7.8 ; 80.6 ; - ; 1.57 ; 1パック=23.3 ; https://www.kamedaseika.co.jp/product/1475/
+亀田製菓 ; 70g 亀田のうす焼 梅 ; かめだ かめだ ; 100 ; 418 ; 7.2 ; 6.8 ; 81.9 ; - ; 1.63 ; 1パック=23.4 ; https://www.kamedaseika.co.jp/product/2187/
+亀田製菓 ; 26g 亀田のうす焼 サラダ ; かめだ かめだ ; 26 ; 111 ; 1.6 ; 2.1 ; 21.5 ; - ; 0.5 ; 1袋=26 ; https://www.kamedaseika.co.jp/product/1473/
+亀田製菓 ; 40g ハイハイン ; かめだ ; 100 ; 376 ; 3.8 ; 1.2 ; 87.4 ; - ; 0.47 ;  ; https://www.kamedaseika.co.jp/product/1372/
+亀田製菓 ; 40g 野菜ハイハイン ; かめだ ; 100 ; 383 ; 3.9 ; 1 ; 89.5 ; - ; 0.43 ;  ; https://www.kamedaseika.co.jp/product/1373/
+亀田製菓 ; 80g ハイハイン白がゆ ; かめだ ; 80 ; 41 ; 0.6 ; 0.1 ; 9.3 ; - ; 0.04 ; 1袋=80 ; https://www.kamedaseika.co.jp/product/2207/
+亀田製菓 ; 110g 技のこだ割り ; かめだ ; 100 ; 375 ; 9.5 ; 1 ; 81.9 ; - ; 3.07 ;  ; https://www.kamedaseika.co.jp/product/320/
+亀田製菓 ; 100g 技のこだ割り 旨辛唐辛子 ; かめだ ; 100 ; 367 ; 8.5 ; 0.8 ; 81.4 ; - ; 3.84 ;  ; https://www.kamedaseika.co.jp/product/1221/
+亀田製菓 ; 100g 技のこだ割り 濃厚梅だれ ; かめだ ; 100 ; 366 ; 9 ; 1.1 ; 80 ; - ; 4.3 ; 1袋=100 ; https://www.kamedaseika.co.jp/product/2118/
+亀田製菓 ; 40g 技のこだ割り ; かめだ ; 40 ; 150 ; 3.8 ; 0.4 ; 32.8 ; - ; 1.23 ; 1袋=40 ; https://www.kamedaseika.co.jp/product/1154/
+亀田製菓 ; 40g 技のこだ割り 旨辛唐辛子 ; かめだ ; 40 ; 147 ; 3.4 ; 0.3 ; 32.6 ; - ; 1.54 ; 1袋=40 ; https://www.kamedaseika.co.jp/product/1220/
+亀田製菓 ; 45g 技のこだ割り たまり醤油だれ ; かめだ ; 45 ; 169 ; 4.2 ; 0.5 ; 36.9 ; - ; 1.33 ; 1袋=45 ; https://www.kamedaseika.co.jp/product/1270/
+不二家 ; 8枚ハートクッキー(ストロベリーチョコ) ; ふじや ; 7 ; 40 ; 0.3 ; 2.5 ; 4.1 ; - ; 0.018 ; 1枚=7,全量（8枚）=56 ; https://www.fujiya-peko.co.jp/sweets/item/27072.html
+不二家 ; 8枚ハートクッキー(チョコアーモンド) ; ふじや ; 7 ; 40 ; 0.5 ; 2.6 ; 3.7 ; - ; 0.018 ; 1枚=7,全量（8枚）=56 ; https://www.fujiya-peko.co.jp/sweets/item/27856.html
+不二家 ; 108gハートクッキー(バターアーモンド) ; ふじや ; 7 ; 41 ; 0.5 ; 2.7 ; 3.7 ; - ; 0.036 ; 1枚=7 ; https://www.fujiya-peko.co.jp/sweets/item/27836.html
+不二家 ; 10枚ハートクッキー(バターアーモンド) ; ふじや ; 7 ; 41 ; 0.5 ; 2.7 ; 3.7 ; - ; 0.036 ; 1枚=7,全量（10枚）=70 ; https://www.fujiya-peko.co.jp/sweets/item/27755.html
+不二家 ; 12枚カントリーマアム(特撰バター) ; ふじや ; 10 ; 48 ; 0.5 ; 2.4 ; 6.2 ; - ; 0.068 ; 1枚=10,全量（12枚）=120 ; https://www.fujiya-peko.co.jp/sweets/item/60102.html
+不二家 ; 12枚カントリーマアム(あまおう苺ショコラ) ; ふじや ; 10 ; 49 ; 0.5 ; 2.4 ; 6.3 ; - ; 0.043 ; 1枚=10,全量（12枚）=120 ; https://www.fujiya-peko.co.jp/sweets/item/60101.html
+不二家 ; 16枚カントリーマアム(バニラ&はちみつバター) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.3 ; - ; 0.044 ; 1枚=10,全量（16枚）=160 ; https://www.fujiya-peko.co.jp/sweets/item/60015.html
+不二家 ; 124gカントリーマアムマイスターズ(チョコブラウニー) ; ふじや ; 11 ; 57 ; 0.6 ; 3.4 ; 6 ; - ; 0.011 ; 1枚=11 ; https://www.fujiya-peko.co.jp/sweets/item/27992.html
+不二家 ; 7枚カントリーマアムマイスターズ(チョコブラウニー) ; ふじや ; 11 ; 57 ; 0.6 ; 3.4 ; 6 ; - ; 0.011 ; 1枚=11,全量（7枚）=77 ; https://www.fujiya-peko.co.jp/sweets/item/27990.html
+不二家 ; 107gカントリーマアムマイスターズ(NYチーズケーキ) ; ふじや ; 9.6 ; 48 ; 0.4 ; 2.5 ; 5.9 ; - ; 0.018 ; 1枚=9.6 ; https://www.fujiya-peko.co.jp/sweets/item/27991.html
+不二家 ; 7枚カントリーマアムマイスターズ(NYチーズケーキ) ; ふじや ; 9.6 ; 48 ; 0.4 ; 2.5 ; 5.9 ; - ; 0.018 ; 1枚=9.6,全量（7枚）=67.2 ; https://www.fujiya-peko.co.jp/sweets/item/27988.html
+不二家 ; 6枚カントリーマアムマイスターズ(バターフィナンシェ) ; ふじや ; 9.6 ; 49 ; 0.7 ; 2.8 ; 5.3 ; - ; 0.071 ; 1枚=9.6,全量（6枚）=57.6 ; https://www.fujiya-peko.co.jp/sweets/item/27989.html
+不二家 ; 112gカントリーマアムまみれさん続・続・追いかけて雪国ミドルパック ; ふじや ; 10 ; 52 ; 0.6 ; 2.9 ; 5.8 ; - ; 0.028 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/27161.html
+不二家 ; 122gカントリーマアムチョコまみれミドルパック ; ふじや ; 10 ; 51 ; 0.6 ; 3 ; 5.5 ; - ; 0.037 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/27807.html
+不二家 ; 86gホームパイチョコだらけぶらり日本の旅(島根編) ; ふじや ; 10.9 ; 62 ; 0.8 ; 3.9 ; 5.9 ; - ; 0.021 ; 1枚=10.9 ; https://www.fujiya-peko.co.jp/sweets/item/27087.html
+不二家 ; 82gカントリーマアムシロじわーる ; ふじや ; 10.5 ; 54 ; 0.6 ; 3.2 ; 5.7 ; - ; 0.084 ; 1枚=10.5 ; https://www.fujiya-peko.co.jp/sweets/item/60077.html
+不二家 ; 107gカントリーマアムシロじわーるミドルパック ; ふじや ; 10.5 ; 54 ; 0.6 ; 3.2 ; 5.7 ; - ; 0.084 ; 1枚=10.5 ; https://www.fujiya-peko.co.jp/sweets/item/27162.html
+不二家 ; 92gカントリーマアムチョコまみれザ・ワールド(アラスカ編) ; ふじや ; 10 ; 52 ; 0.6 ; 2.9 ; 5.8 ; - ; 0.024 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/27092.html
+不二家 ; 75gホームパイチョコだらけ ; ふじや ; 10.9 ; 63 ; 0.8 ; 4 ; 5.9 ; - ; 0.021 ; 1枚=10.9 ; https://www.fujiya-peko.co.jp/sweets/item/27824.html
+不二家 ; 82gカントリーマアムチョコまみれ ; ふじや ; 10 ; 51 ; 0.6 ; 3 ; 5.5 ; - ; 0.037 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/27823.html
+不二家 ; 168gペコちゃんミルキードーナツクッキー(あまおう苺) ; ふじや ; 12 ; 58 ; 0.5 ; 2.8 ; 7.6 ; - ; 0.082 ; 1枚=12 ; https://www.fujiya-peko.co.jp/sweets/item/27105.html
+不二家 ; 110gペコちゃんミルキーパイ ; ふじや ; 9.2 ; 47 ; 0.6 ; 2.5 ; 5.6 ; - ; 0.03 ; 1枚=9.2 ; https://www.fujiya-peko.co.jp/sweets/item/27897.html
+不二家 ; 168gペコちゃんミルキードーナツクッキー ; ふじや ; 12 ; 57 ; 0.5 ; 2.8 ; 7.4 ; - ; 0.078 ; 1枚=12 ; https://www.fujiya-peko.co.jp/sweets/item/27896.html
+不二家 ; 146gホームパイ(アーモンドクッキー) ; ふじや ; 7 ; 38 ; 0.5 ; 2.1 ; 4.3 ; - ; 0.034 ; 1枚=7 ; https://www.fujiya-peko.co.jp/sweets/item/27756.html
+不二家 ; 90gミルキーチョコビスケット6P ; ふじや ; 15 ; 77 ; 1 ; 3.6 ; 10.1 ; - ; 0.072 ; 1小袋=15,全量=90 ; https://www.fujiya-peko.co.jp/sweets/item/27993.html
+不二家 ; 84gアンパンマン幼児用ビスケット ; ふじや ; 42 ; 190 ; 3.1 ; 5.8 ; 31.3 ; - ; 0.387 ; 1袋=42,全量=84 ; https://www.fujiya-peko.co.jp/sweets/item/17046.html
+不二家 ; 72gアンパンマンひとくちビスケット ; ふじや ; 36 ; 179 ; 2.4 ; 8.1 ; 24 ; - ; 0.102 ; 1袋=36,全量=72 ; https://www.fujiya-peko.co.jp/sweets/item/17047.html
+不二家 ; 50gアンパンマンコロコロビスケットボーロ ; ふじや ; 25 ; 109 ; 1.7 ; 2.7 ; 19.4 ; - ; 0.138 ; 1袋=25,全量=50 ; https://www.fujiya-peko.co.jp/sweets/item/17048.html
+不二家 ; 80gアンパンマンひとくちビスケット4連 ; ふじや ; 20 ; 99 ; 1.3 ; 4.5 ; 13.3 ; - ; 0.057 ; 1袋=20 ; https://www.fujiya-peko.co.jp/sweets/item/17049.html
+不二家 ; 112gパレッティエ(静岡県産紅ほっぺ) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.2 ; - ; 0.041 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/60021.html
+不二家 ; 112gパレッティエ(静岡県産温州みかん) ; ふじや ; 10 ; 48 ; 0.5 ; 2.4 ; 6.2 ; - ; 0.041 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/60022.html
+不二家 ; 88gスーパーハイウェイ(銀座窯出しブラウニー) ; ふじや ; 11 ; 56 ; 0.7 ; 3.2 ; 6.1 ; - ; 0.027 ; 1枚=11 ; https://www.fujiya-peko.co.jp/sweets/item/17064.html
+不二家 ; 88gスーパーハイウェイ(銀座窯出しチーズケーキ) ; ふじや ; 11 ; 54 ; 0.5 ; 2.8 ; 6.8 ; - ; 0.021 ; 1枚=11 ; https://www.fujiya-peko.co.jp/sweets/item/17063.html
+不二家 ; 88gスーパーハイウェイ(銀座窯出しフィナンシェ) ; ふじや ; 11 ; 53 ; 0.8 ; 2.9 ; 6 ; - ; 0.087 ; 1枚=11 ; https://www.fujiya-peko.co.jp/sweets/item/17062.html
+不二家 ; 11枚ホロル(カマンベール) ; ふじや ; 8 ; 47 ; 0.5 ; 3.2 ; 4 ; - ; 0.093 ; 1枚=8,全量（11枚）=88 ; https://www.fujiya-peko.co.jp/sweets/item/27794.html
+不二家 ; 11枚ホロル(ショートブレッド) ; ふじや ; 8 ; 44 ; 0.4 ; 2.7 ; 4.6 ; - ; 0.053 ; 1枚=8,全量（11枚）=88 ; https://www.fujiya-peko.co.jp/sweets/item/27795.html
+不二家 ; 51gレモンスカッシュキャンディ袋 ; ふじや ; 3.9 ; 16 ; 0 ; 0.2 ; 3.5 ; - ; 0.086 ; 1粒=3.9 ; https://www.fujiya-peko.co.jp/sweets/item/12135.html
+不二家 ; 62gミルキー(あまおう苺の生クリームパルフェ)袋 ; ふじや ; 4.8 ; 20 ; 0.1 ; 0.4 ; 3.9 ; - ; 0.003 ; 1粒=4.8 ; https://www.fujiya-peko.co.jp/sweets/item/11929.html
+不二家 ; 32gミルキー(はちみつ&バター) ; ふじや ; 3.6 ; 15 ; 0.1 ; 0.4 ; 2.8 ; - ; 0.015 ; 1粒=3.6 ; https://www.fujiya-peko.co.jp/sweets/item/11930.html
+不二家 ; 7粒ミルキー ; ふじや ; 3.6 ; 15 ; 0.1 ; 0.3 ; 3 ; - ; 0.017 ; 1粒=3.6,全量（7粒）=25.2 ; https://www.fujiya-peko.co.jp/sweets/item/11092.html
+不二家 ; 100gミルキー袋 ; ふじや ; 3.6 ; 15 ; 0.1 ; 0.3 ; 3 ; - ; 0.017 ; 1粒=3.6 ; https://www.fujiya-peko.co.jp/sweets/item/11090.html
+不二家 ; 72gカッチコチミルキー袋 ; ふじや ; 3.4 ; 15 ; 0.1 ; 0.5 ; 2.6 ; - ; 0.027 ; 1粒=3.4 ; https://www.fujiya-peko.co.jp/sweets/item/11087.html
+不二家 ; 93gソフトエクレア袋 ; ふじや ; 4.8 ; 22 ; 0.2 ; 0.7 ; 3.6 ; - ; 0.016 ; 1粒=4.8 ; https://www.fujiya-peko.co.jp/sweets/item/12648.html
+不二家 ; 1本デラックスポップキャンディ ; ふじや ; 9.6 ; 38 ; 0 ; 0 ; 9.4 ; - ; 0 ; 1本=9.6 ; https://www.fujiya-peko.co.jp/sweets/item/12736.html
+不二家 ; 20本ポップキャンディ袋 ; ふじや ; 6.4 ; 25 ; 0 ; 0 ; 6.3 ; - ; 0 ; 1本=6.4,全量（20本）=128 ; https://www.fujiya-peko.co.jp/sweets/item/12727.html
+不二家 ; 469gポップキャンディパーティーパック ; ふじや ; 6.4 ; 25 ; 0 ; 0 ; 6.2 ; - ; 0 ; 1本=6.4 ; https://www.fujiya-peko.co.jp/sweets/item/12596.html
+不二家 ; 8本ポップキャンディ袋 ; ふじや ; 6.4 ; 25 ; 0 ; 0 ; 6.2 ; - ; 0 ; 1本=6.4,全量（8本）=51.2 ; https://www.fujiya-peko.co.jp/sweets/item/12594.html
+不二家 ; 6粒アンパンマングミ(もも) ; ふじや ; 19 ; 61 ; 1.4 ; 0 ; 13.9 ; - ; 0.003 ; 1袋=19 ; https://www.fujiya-peko.co.jp/sweets/item/12418.html
+不二家 ; 6粒アンパンマングミ(ぶどう) ; ふじや ; 19 ; 62 ; 1.5 ; 0 ; 14 ; - ; 0.002 ; 1袋=19 ; https://www.fujiya-peko.co.jp/sweets/item/12711.html
+不二家 ; 6本アンパンマンスティックキャンディ ; ふじや ; 5.8 ; 23 ; 0 ; 0 ; 0 ; - ; 0 ; 1本=5.8,全量（6本）=34.8 ; https://www.fujiya-peko.co.jp/sweets/item/12472.html
+不二家 ; 6粒プリンセスキラキラシールグミ ; ふじや ; 24 ; 78 ; 1.7 ; 0 ; 17.9 ; - ; 0.001 ; 1袋=24 ; https://www.fujiya-peko.co.jp/sweets/item/12739.html
+不二家 ; 6粒ペコ×サンリオキャラクターズうるつやシールグミ ; ふじや ; 19 ; 63 ; 1.3 ; 0 ; 14.4 ; - ; 0.001 ; 1袋=19 ; https://www.fujiya-peko.co.jp/sweets/item/12726.html
+不二家 ; 6粒アニメちいかわグミ(むちゃうまヨーグルト味) ; ふじや ; 19 ; 67 ; 1.4 ; 0.8 ; 13.5 ; - ; 0.005 ; 1袋=19 ; https://www.fujiya-peko.co.jp/sweets/item/12693.html
+不二家 ; 41gプレミアムルック(特撰バター)パウチ ; ふじや ; 7.2 ; 42 ; 0.4 ; 2.9 ; 3.6 ; - ; 0.009 ; 1粒=7.2 ; https://www.fujiya-peko.co.jp/sweets/item/26933.html
+不二家 ; 12粒ルック(いちごめぐり) ; ふじや ; 42 ; 238 ; 2.2 ; 15.6 ; 22.1 ; - ; 0.033 ; 1箱=42 ; https://www.fujiya-peko.co.jp/sweets/item/26931.html
+不二家 ; 12粒ルック(ア・ラ・モード) ; ふじや ; 46 ; 261 ; 2.5 ; 17.3 ; 23.9 ; - ; 0.044 ; 1箱=46 ; https://www.fujiya-peko.co.jp/sweets/item/26928.html
+不二家 ; 45gプレミアムルック(生キャラメル)パウチ ; ふじや ; 7.6 ; 41 ; 0.3 ; 2.5 ; 4.2 ; - ; 0.011 ; 1粒=7.6 ; https://www.fujiya-peko.co.jp/sweets/item/26922.html
+不二家 ; 12個ショコラウェファース(熟成蜜芋)袋 ; ふじや ; 5.3 ; 29 ; 0.3 ; 1.8 ; 3 ; - ; 0.011 ; 1個=5.3,全量（12個）=63.6 ; https://www.fujiya-peko.co.jp/sweets/item/26942.html
+不二家 ; 71gハートチョコレート(クリスピー)袋 ; ふじや ; 4.8 ; 27 ; 0.4 ; 1.7 ; 2.6 ; - ; 0.007 ; 1枚=4.8 ; https://www.fujiya-peko.co.jp/sweets/item/26860.html
+不二家 ; 15枚ハートチョコレート(ピーナッツ)袋 ; ふじや ; 6.3 ; 38 ; 0.9 ; 2.7 ; 2.6 ; 0.3 ; 0.005 ; 1枚=6.3,全量（15枚）=94.5 ; https://www.fujiya-peko.co.jp/sweets/item/26859.html
+不二家 ; 12本ショコラウェファース袋 ; ふじや ; 7.5 ; 41 ; 0.5 ; 2.3 ; 4.5 ; - ; 0.014 ; 1本=7.5,全量（12本）=90 ; https://www.fujiya-peko.co.jp/sweets/item/26861.html
+不二家 ; 12粒ミルキーチョコレート ; ふじや ; 41 ; 250 ; 2.5 ; 17.7 ; 20.1 ; - ; 0.044 ; 1箱=41 ; https://www.fujiya-peko.co.jp/sweets/item/26846.html
+不二家 ; 13粒ミルキーチョコレート(プリン味)袋 ; ふじや ; 4.4 ; 27 ; 0.2 ; 1.9 ; 2.3 ; - ; 0.004 ; 1粒=4.4,全量（13粒）=57.2 ; https://www.fujiya-peko.co.jp/sweets/item/26919.html
+不二家 ; 14粒ミルキーチョコレート袋 ; ふじや ; 4.4 ; 25 ; 0.2 ; 1.7 ; 2.2 ; - ; 0.004 ; 1粒=4.4,全量（14粒）=61.6 ; https://www.fujiya-peko.co.jp/sweets/item/26727.html
+不二家 ; 88gペコポコクランチチョコレート袋 ; ふじや ; 6.4 ; 36 ; 0.5 ; 2.2 ; 3.5 ; - ; 0.022 ; 1個=6.4 ; https://www.fujiya-peko.co.jp/sweets/item/26943.html
+不二家 ; 15粒アンパンマンミニミニチョコレート ; ふじや ; 40 ; 243 ; 2.5 ; 17.2 ; 19.5 ; - ; 0.045 ; 1箱=40 ; https://www.fujiya-peko.co.jp/sweets/item/26848.html
+不二家 ; 5粒サンリオキャラクターズシールチョコレート ; ふじや ; 4.4 ; 25 ; 0.2 ; 1.7 ; 2.2 ; - ; 0.005 ; 1粒=4.4,全量（5粒）=22 ; https://www.fujiya-peko.co.jp/sweets/item/16028.html
+不二家 ; 1枚ピーナッツ&チョコレート ; ふじや ; 38 ; 222 ; 3.9 ; 14.8 ; 18.4 ; - ; 0.037 ; 1枚=38 ; https://www.fujiya-peko.co.jp/sweets/item/16040.html
+不二家 ; 1枚アーモンド&チョコレート ; ふじや ; 38 ; 220 ; 3.7 ; 14.3 ; 19.2 ; - ; 0.037 ; 1枚=38 ; https://www.fujiya-peko.co.jp/sweets/item/16039.html
+不二家 ; 12枚カントリーマアム(プリン味) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.3 ; - ; 0.046 ; 1枚=10,全量（12枚）=120 ; https://www.fujiya-peko.co.jp/sweets/item/27073.html
+不二家 ; 7枚カントリーマアムひとくちレモンケーキ ; ふじや ; 8.5 ; 44 ; 0.5 ; 2.6 ; 4.7 ; - ; 0.054 ; 1枚=8.5,全量（7枚）=59.5 ; https://www.fujiya-peko.co.jp/sweets/item/27909.html
+不二家 ; 14枚カントリーマアム(バニラ&ココア) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.3 ; - ; 0.044 ; 1枚=10,全量（14枚）=140 ; https://www.fujiya-peko.co.jp/sweets/item/27963.html
+不二家 ; 18枚カントリーマアム(バニラ&ココア) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.3 ; - ; 0.044 ; 1枚=10,全量（18枚）=180 ; https://www.fujiya-peko.co.jp/sweets/item/17089.html
+不二家 ; 163gカントリーマアムクリスピー(バニラ&ショコラ) ; ふじや ; 10 ; 46 ; 0.4 ; 2.3 ; 5.8 ; - ; 0.061 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/17092.html
+不二家 ; 12枚カントリーマアム(厳選バニラ) ; ふじや ; 10.6 ; 51 ; 0.5 ; 2.5 ; 6.7 ; - ; 0.047 ; 1枚=10.6,全量（12枚）=127.2 ; https://www.fujiya-peko.co.jp/sweets/item/27775.html
+不二家 ; 12枚カントリーマアム(厳選チョコ) ; ふじや ; 10.6 ; 52 ; 0.6 ; 2.7 ; 6.4 ; - ; 0.056 ; 1枚=10.6,全量（12枚）=127.2 ; https://www.fujiya-peko.co.jp/sweets/item/27776.html
+不二家 ; 1枚カントリーマアム(バニラ) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.3 ; - ; 0.044 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/27154.html
+不二家 ; 1枚カントリーマアム(ココア) ; ふじや ; 10 ; 48 ; 0.5 ; 2.3 ; 6.4 ; - ; 0.043 ; 1枚=10 ; https://www.fujiya-peko.co.jp/sweets/item/27153.html
+不二家 ; 121gホームパイチョコだらけミドルパック ; ふじや ; 10.9 ; 63 ; 0.8 ; 4 ; 5.9 ; - ; 0.021 ; 1枚=10.9 ; https://www.fujiya-peko.co.jp/sweets/item/27804.html
+不二家 ; 40gプレミアムルック(ルビーロマン)パウチ ; ふじや ; 6.8 ; 37 ; 0.3 ; 2.4 ; 3.6 ; - ; 0.009 ; 1粒=6.8 ; https://www.fujiya-peko.co.jp/sweets/item/26923.html
+有楽製菓 ; ブラックサンダー ; ゆうらく ; 21 ; 111 ; 1.3 ; 6 ; 13 ; - ; 0.2 ; 1本=21 ; https://www.yurakuseika.co.jp/product/7047/
+有楽製菓 ; ブラックサンダーひとくちサイズ ; ゆうらく ; 43 ; 230 ; 3 ; 12.7 ; 25.8 ; - ; 0.3 ; 1袋=43 ; https://www.yurakuseika.co.jp/product/7057/
+有楽製菓 ; ブラックサンダーひとくちサイズパウチ ; ゆうらく ; 62 ; 332 ; 4.3 ; 18.4 ; 37.3 ; - ; 0.4 ; 1袋=62 ; https://www.yurakuseika.co.jp/product/7067/
+有楽製菓 ; ブラックサンダーミニバー ; ゆうらく ; 11 ; 58 ; 0.7 ; 3.1 ; 6.8 ; - ; 0.09 ; 1本=11 ; https://www.yurakuseika.co.jp/product/7064/
+有楽製菓 ; ブラックサンダーミニバー ハロウィン ; ゆうらく ; 11 ; 59 ; 0.7 ; 3.2 ; 6.8 ; - ; 0.09 ; 1本=11 ; https://www.yurakuseika.co.jp/product/6884/
+有楽製菓 ; 白いブラックサンダー ; ゆうらく ; 14 ; 77 ; 1 ; 4.6 ; 8 ; - ; 0.1 ; 1袋=14 ; https://www.yurakuseika.co.jp/product/4086/
+有楽製菓 ; ホワイトサンダー ; ゆうらく ; 16 ; 91 ; 1.4 ; 5.9 ; 8 ; - ; 0.08 ; 1袋=16 ; https://www.yurakuseika.co.jp/product/319/
+有楽製菓 ; ピンクなブラックサンダー ; ゆうらく ; 15 ; 82 ; 1 ; 4.8 ; 8.8 ; - ; 0.1 ; 1袋=15,全量（10袋）=150 ; https://www.yurakuseika.co.jp/product/326/
+有楽製菓 ; メロンなブラックサンダー ; ゆうらく ; 15 ; 82 ; 0.9 ; 4.7 ; 9 ; - ; 0.1 ; 1袋=15,全量（10袋）=150 ; https://www.yurakuseika.co.jp/product/332/
+有楽製菓 ; 京都ブラックサンダー ; ゆうらく ; 13 ; 71 ; 0.9 ; 4.1 ; 7.6 ; - ; 0.1 ; 1袋=13 ; https://www.yurakuseika.co.jp/product/337/
+有楽製菓 ; 京都ブラックサンダーお濃茶 ; ゆうらく ; 14 ; 75 ; 1 ; 4.2 ; 8.2 ; - ; 0.1 ; 1袋=14,全量（8袋）=112 ; https://www.yurakuseika.co.jp/product/343/
+有楽製菓 ; 大阪ブラックサンダー ; ゆうらく ; 12 ; 67 ; 0.7 ; 4.1 ; 6.9 ; - ; 0.07 ; 1袋=12 ; https://www.yurakuseika.co.jp/product/348/
+有楽製菓 ; 沖縄ブラックサンダー ; ゆうらく ; 13 ; 71 ; 0.9 ; 4.2 ; 7.5 ; - ; 0.07 ; 1袋=13 ; https://www.yurakuseika.co.jp/product/355/
+有楽製菓 ; デラックスミルクチョコレート ; ゆうらく ; 100 ; 570 ; 9.6 ; 36.7 ; 50.3 ; - ; 0.4 ;  ; https://www.yurakuseika.co.jp/product/1705/
+有楽製菓 ; デラックスミルクチョコレート 薄板 ; ゆうらく ; 5.5 ; 31 ; 0.5 ; 2 ; 2.8 ; - ; 0.02 ; 1枚=5.5 ; https://www.yurakuseika.co.jp/product/376/
+有楽製菓 ; デラックスチョコレート 薄板ビター ; ゆうらく ; 5.5 ; 33 ; 0.4 ; 2.2 ; 2.8 ; - ; 0.001 ; 1枚=5.5 ; https://www.yurakuseika.co.jp/product/377/
+有楽製菓 ; デラックスチョコレート 薄板いちご ; ゆうらく ; 5.3 ; 31 ; 0.4 ; 2.1 ; 2.6 ; - ; 0.02 ; 1枚=5.3 ; https://www.yurakuseika.co.jp/product/378/
+有楽製菓 ; デラックスチョコレート 薄板抹茶 ; ゆうらく ; 5.5 ; 31 ; 0.5 ; 2.1 ; 2.6 ; - ; 0.02 ; 1枚=5.5 ; https://www.yurakuseika.co.jp/product/1783/
+有楽製菓 ; デラックスチョコレート 薄板ホワイト ; ゆうらく ; 5.5 ; 32 ; 0.5 ; 2.2 ; 2.6 ; - ; 0.02 ; 1枚=5.5 ; https://www.yurakuseika.co.jp/product/1692/
+有楽製菓 ; YURAKUショコラボール ミルク×アップル ; ゆうらく ; 60 ; 306 ; 3.4 ; 16.8 ; 35.3 ; - ; 0.1 ; 1箱=60 ; https://www.yurakuseika.co.jp/product/1686/
+有楽製菓 ; YURAKUショコラボール ダーク×レーズン ; ゆうらく ; 65 ; 324 ; 4.1 ; 16.8 ; 39.2 ; - ; 0.04 ; 1箱=65 ; https://www.yurakuseika.co.jp/product/1675/
+有楽製菓 ; YURAKUショコラボール いちご×ビスケット ; ゆうらく ; 55 ; 302 ; 4.5 ; 18.5 ; 29.4 ; - ; 0.3 ; 1箱=55 ; https://www.yurakuseika.co.jp/product/1716/
+有楽製菓 ; YURAKUショコラボール 抹茶×ビスケット ; ゆうらく ; 55 ; 301 ; 4.2 ; 18.3 ; 29.9 ; - ; 0.2 ; 1箱=55 ; https://www.yurakuseika.co.jp/product/1683/
+有楽製菓 ; YURAKUショコラボール ミルク×アーモンド ; ゆうらく ; 60 ; 356 ; 6.7 ; 25.1 ; 25.8 ; - ; 0.1 ; 1箱=60 ; https://www.yurakuseika.co.jp/product/1468/
+有楽製菓 ; YURAKUショコラボール ミルク×マカダミア ; ゆうらく ; 60 ; 374 ; 4.9 ; 28.5 ; 24.5 ; - ; 0.1 ; 1箱=60 ; https://www.yurakuseika.co.jp/product/1473/
+有楽製菓 ; トースト専用ブラックサンダーきなこ ; ゆうらく ; 29 ; 171 ; 2.4 ; 11.6 ; 14.2 ; - ; 0.1 ; 1枚=29 ; https://www.yurakuseika.co.jp/product/1673/
+有楽製菓 ; トースト専用ブラックサンダー ; ゆうらく ; 32 ; 187 ; 1.9 ; 12.6 ; 16.6 ; - ; 0.2 ; 1枚=32 ; https://www.yurakuseika.co.jp/product/384/
+有楽製菓 ; ブラックサンダーケーキ ; ゆうらく ; 100 ; 391 ; 5 ; 24.3 ; 38 ; - ; 0.3 ;  ; https://www.yurakuseika.co.jp/product/1587/
+カルビー ; ポテトチップス うすしお味 ; かるびー ; 55 ; 308 ; 2.8 ; 19.8 ; 29.7 ; - ; 0.5 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20220909090902
+カルビー ; ポテトチップス コンソメパンチ ; かるびー ; 55 ; 306 ; 3 ; 19.3 ; 30 ; - ; 0.5 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20211224105439
+カルビー ; ポテトチップス コンソメWパンチ ; かるびー ; 61 ; 337 ; 3.5 ; 21 ; 33.4 ; - ; 0.8 ; 1袋=61 ; https://www.calbee.co.jp/products/detail/?p=20100826144152
+カルビー ; ポテトチップス のりしお ; かるびー ; 55 ; 307 ; 2.9 ; 19.7 ; 29.5 ; - ; 0.7 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20230908102402
+カルビー ; ポテトチップス のりしおW ; かるびー ; 60 ; 332 ; 3.3 ; 21 ; 32.4 ; - ; 0.8 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260911200235
+カルビー ; ポテトチップス しあわせバタ~ ; かるびー ; 55 ; 305 ; 3 ; 19.2 ; 30 ; - ; 0.6 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20190722170423
+カルビー ; ポテトチップス しあわせバタ~W ; かるびー ; 62 ; 342 ; 3.5 ; 21.6 ; 33.5 ; - ; 1 ; 1袋=62 ; https://www.calbee.co.jp/products/detail/?p=20260815193935
+カルビー ; ポテトチップス フレンチサラダ ; かるびー ; 55 ; 306 ; 2.8 ; 19.4 ; 30 ; - ; 0.6 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20130314131739
+カルビー ; ポテトチップス トムヤムクン味 ; かるびー ; 53 ; 293 ; 2.9 ; 18.5 ; 28.7 ; - ; 0.7 ; 1袋=53 ; https://www.calbee.co.jp/products/detail/?p=20260729212523
+カルビー ; ポテトチップス しょうゆWマヨ ; かるびー ; 55 ; 303 ; 3.1 ; 19 ; 30 ; - ; 0.7 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20260413191912
+カルビー ; ポテトチップス 北海道バターしょうゆ味 ; かるびー ; 53 ; 294 ; 2.9 ; 18.6 ; 28.8 ; - ; 0.6 ; 1袋=53 ; https://www.calbee.co.jp/products/detail/?p=20260604161954
+カルビー ; ポテトチップス のりしおパンチ ; かるびー ; 53 ; 293 ; 2.9 ; 18.6 ; 28.6 ; - ; 0.7 ; 1袋=53 ; https://www.calbee.co.jp/products/detail/?p=20140123120928
+カルビー ; ポテトチップス 東海えびしお味 ; かるびー ; 53 ; 294 ; 2.9 ; 18.6 ; 28.8 ; - ; 0.5 ; 1袋=53 ; https://www.calbee.co.jp/products/detail/?p=20250228143656
+カルビー ; ポテトチップス 関西だししょうゆ ; かるびー ; 53 ; 294 ; 3 ; 18.5 ; 28.8 ; - ; 0.6 ; 1袋=53 ; https://www.calbee.co.jp/products/detail/?p=20100830143904
+カルビー ; ポテトチップス シークヮーサー味 ; かるびー ; 53 ; 293 ; 2.8 ; 18.3 ; 29.3 ; - ; 0.6 ; 1袋=53 ; https://www.calbee.co.jp/products/detail/?p=20131011102034
+カルビー ; ポテトチップス 宇都宮焼餃子味 ; かるびー ; 25 ; 138 ; 1.4 ; 8.7 ; 13.6 ; - ; 0.3 ; 1袋=25 ; https://www.calbee.co.jp/products/detail/?p=20120312152300
+カルビー ; ポテトチップスザ厚切り のためのうすしお味 ; かるびー ; 55 ; 308 ; 2.9 ; 19.8 ; 29.5 ; - ; 0.6 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20240301170644
+カルビー ; ポテトチップスザ厚切り のためののりしお味 ; かるびー ; 55 ; 305 ; 2.9 ; 19.3 ; 29.9 ; - ; 0.7 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20250924113754
+カルビー ; ポテトチップスザ厚切り のためのコンソメ味 ; かるびー ; 55 ; 304 ; 3.2 ; 19.2 ; 29.7 ; - ; 0.7 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20241226154115
+カルビー ; ポテトチップス超薄切り うすしお味 ; かるびー ; 50 ; 279 ; 2.4 ; 18 ; 26.8 ; - ; 0.5 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260729200543
+カルビー ; ポテトチップス超薄切り のりしお味 ; かるびー ; 50 ; 276 ; 2.4 ; 17.6 ; 27.1 ; - ; 0.5 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260729201841
+カルビー ; ポテトチップス濃厚キング 旨辛ゴッドチリ味 ; かるびー ; 50 ; 274 ; 2.9 ; 17.1 ; 27.1 ; - ; 0.9 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20250307140015
+カルビー ; ポテトチップス濃厚キング バーベキュー味 ; かるびー ; 50 ; 274 ; 2.8 ; 17 ; 27.4 ; - ; 0.8 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260828134114
+カルビー ; ポテトチップス 一風堂赤丸新味仕立て ; かるびー ; 63 ; 347 ; 3.9 ; 21.9 ; 33.6 ; - ; 1.1 ; 1袋=63 ; https://www.calbee.co.jp/products/detail/?p=20260927003558
+カルビー ; ポテトチップス 雪印北海道バター味 ; かるびー ; 65 ; 360 ; 3.4 ; 22.8 ; 35.3 ; - ; 0.8 ; 1袋=65 ; https://www.calbee.co.jp/products/detail/?p=20260927004255
+カルビー ; ポテトチップス プロ野球スピリッツA うすしお味 ; かるびー ; 22 ; 123 ; 1.1 ; 7.9 ; 11.9 ; - ; 0.2 ; 1袋=22 ; https://www.calbee.co.jp/products/detail/?p=20260927001416
+カルビー ; ポテトチップス関西味自慢 鰹と昆布のだし塩味 ; かるびー ; 57 ; 317 ; 3 ; 20.1 ; 31.1 ; - ; 0.6 ; 1袋=57 ; https://www.calbee.co.jp/products/detail/?p=20250228130909
+カルビー ; ポテトチップス関西味自慢 味付けのり風味 兵庫県播磨灘産のり使用 ; かるびー ; 57 ; 314 ; 3.3 ; 19.5 ; 31.2 ; - ; 0.7 ; 1袋=57 ; https://www.calbee.co.jp/products/detail/?p=20250228133352
+カルビー ; ポテトチップス九州味自慢 五島灘の塩味 長崎県産あご使用 ; かるびー ; 57 ; 318 ; 3 ; 20.4 ; 30.6 ; - ; 0.6 ; 1袋=57 ; https://www.calbee.co.jp/products/detail/?p=20240412111720
+カルビー ; ポテトチップス九州味自慢 有明海産佐賀のり味 ; かるびー ; 57 ; 315 ; 3.1 ; 19.6 ; 31.5 ; - ; 0.6 ; 1袋=57 ; https://www.calbee.co.jp/products/detail/?p=20230404110854
+カルビー ; ポテトチップス九州味自慢 甘口しょうゆ味 鹿児島県産黒さつま鶏仕立て ; かるびー ; 55 ; 304 ; 3.1 ; 19.1 ; 29.9 ; - ; 0.7 ; 1袋=55 ; https://www.calbee.co.jp/products/detail/?p=20260925151139
+カルビー ; じゃがりこ サラダ ; かるびー ; 57 ; 285 ; 4.2 ; 13.7 ; 36.1 ; - ; 0.7 ; 1カップ=57 ; https://www.calbee.co.jp/products/detail/?p=20211224132631
+カルビー ; じゃがりこ サラダ Lサイズ ; かるびー ; 68 ; 339 ; 5 ; 16.3 ; 43.1 ; - ; 0.8 ; 1カップ=68 ; https://www.calbee.co.jp/products/detail/?p=20120924153557
+カルビー ; じゃがりこ細いやつ サラダ ; かるびー ; 52 ; 260 ; 3.8 ; 12.5 ; 33 ; - ; 0.6 ; 1カップ=52 ; https://www.calbee.co.jp/products/detail/?p=20230407143712
+カルビー ; じゃがりこ サラダbits ; かるびー ; 34 ; 170 ; 2.5 ; 8.2 ; 21.5 ; - ; 0.4 ; 1袋=34 ; https://www.calbee.co.jp/products/detail/?p=20190221102357
+カルビー ; じゃがりこ サラダbits4 ; かるびー ; 14 ; 70 ; 1 ; 3.4 ; 8.8 ; - ; 0.2 ; 1袋=14 ; https://www.calbee.co.jp/products/detail/?p=20120727150406
+カルビー ; じゃがりこ チーズ ; かるびー ; 55 ; 277 ; 4.2 ; 13.8 ; 34 ; - ; 0.6 ; 1カップ=55 ; https://www.calbee.co.jp/products/detail/?p=20230906111322
+カルビー ; じゃがりこ チーズ Lサイズ ; かるびー ; 66 ; 332 ; 5.1 ; 16.5 ; 40.8 ; - ; 0.7 ; 1カップ=66 ; https://www.calbee.co.jp/products/detail/?p=20120924154429
+カルビー ; じゃがりこ じゃがバター ; かるびー ; 55 ; 277 ; 3.1 ; 13.8 ; 35.2 ; - ; 0.6 ; 1カップ=55 ; https://www.calbee.co.jp/products/detail/?p=20230906112144
+カルビー ; じゃがりこ じゃがバター Lサイズ ; かるびー ; 66 ; 333 ; 3.8 ; 16.5 ; 42.2 ; - ; 0.8 ; 1カップ=66 ; https://www.calbee.co.jp/products/detail/?p=20250527133225
+カルビー ; じゃがりこ たらこバター ; かるびー ; 52 ; 259 ; 3.8 ; 12.5 ; 32.9 ; - ; 0.9 ; 1カップ=52 ; https://www.calbee.co.jp/products/detail/?p=20210304150030
+カルビー ; じゃがりこ 明太チーズもんじゃ味 Lサイズ ; かるびー ; 66 ; 328 ; 4.4 ; 15.8 ; 42.1 ; - ; 1 ; 1カップ=66 ; https://www.calbee.co.jp/products/detail/?p=20160714110909
+カルビー ; じゃがりこ ベベベベベーコンジャーマンポテト味 ; かるびー ; 52 ; 257 ; 4.1 ; 12.5 ; 32.1 ; - ; 1.1 ; 1カップ=52 ; https://www.calbee.co.jp/products/detail/?p=20260926112919
+カルビー ; じゃがりこ ジェノベーゼピザ味 Lサイズ ; かるびー ; 66 ; 327 ; 4.5 ; 15.8 ; 41.6 ; - ; 1.3 ; 1カップ=66 ; https://www.calbee.co.jp/products/detail/?p=20260604192118
+カルビー ; じゃがりこ 肉みそ味 ; かるびー ; 52 ; 259 ; 3.7 ; 12.5 ; 32.9 ; - ; 0.9 ; 1カップ=52 ; https://www.calbee.co.jp/products/detail/?p=20260604120026
+カルビー ; じゃがりこ 九州しょうゆ味 ; かるびー ; 52 ; 259 ; 4.7 ; 12.5 ; 31.8 ; - ; 0.9 ; 1カップ=52 ; https://www.calbee.co.jp/products/detail/?p=20170914104241
+カルビー ; じゃがりこ 牛たん味 ; かるびー ; 20 ; 99 ; 1.4 ; 4.8 ; 12.5 ; - ; 0.4 ; 1袋=20 ; https://www.calbee.co.jp/products/detail/?p=20170116092454
+カルビー ; じゃがりこ 野沢菜こんぶ味 ; かるびー ; 20 ; 99 ; 1.4 ; 4.8 ; 12.5 ; - ; 0.4 ; 1袋=20 ; https://www.calbee.co.jp/products/detail/?p=20131122121310
+カルビー ; じゃがりこ 手羽先味 ; かるびー ; 20 ; 100 ; 1.5 ; 4.8 ; 12.6 ; - ; 0.3 ; 1袋=20 ; https://www.calbee.co.jp/products/detail/?p=20080214140751
+カルビー ; じゃがりこ たこ焼き味 ; かるびー ; 20 ; 100 ; 1.4 ; 4.8 ; 12.7 ; - ; 0.4 ; 1袋=20 ; https://www.calbee.co.jp/products/detail/?p=20090928135716
+カルビー ; じゃがりこ 明太子味 ; かるびー ; 20 ; 99 ; 1.5 ; 4.8 ; 12.5 ; - ; 0.4 ; 1袋=20 ; https://www.calbee.co.jp/products/detail/?p=20040318221143
+カルビー ; じゃがりこ タコライス味 ; かるびー ; 20 ; 99 ; 1.2 ; 4.8 ; 12.8 ; - ; 0.4 ; 1袋=20 ; https://www.calbee.co.jp/products/detail/?p=20200131145957
+カルビー ; じゃがりこ辛いやつ わさび醤油味 ; かるびー ; 38 ; 187 ; 2.3 ; 8.9 ; 24.3 ; - ; 0.8 ; 1袋=38 ; https://www.calbee.co.jp/products/detail/?p=20230928163206
+カルビー ; じゃがりこ辛いやつ 旨辛明太チーズ味 ; かるびー ; 38 ; 186 ; 2.8 ; 8.9 ; 23.6 ; - ; 0.9 ; 1袋=38 ; https://www.calbee.co.jp/products/detail/?p=20250221164651
+カルビー ; 旅するじゃがりこ 贅沢だし味 ; かるびー ; 38 ; 189 ; 2.7 ; 9.1 ; 24 ; - ; 0.7 ; 1袋=38 ; https://www.calbee.co.jp/products/detail/?p=20230721122007
+カルビー ; かっぱえびせん ; かるびー ; 77 ; 380 ; 5.1 ; 17 ; 51.6 ; - ; 1.7 ; 1袋=77 ; https://www.calbee.co.jp/products/detail/?p=20230410102049
+カルビー ; かっぱえびせん ミニ4(ミニよん) ; かるびー ; 12 ; 59 ; 0.8 ; 2.6 ; 8.1 ; - ; 0.3 ; 1袋=12 ; https://www.calbee.co.jp/products/detail/?p=20230410104232
+カルビー ; 1才からのかっぱえびせん ; かるびー ; 8 ; 30 ; 0.3 ; 0.09 ; 7.1 ; - ; 0.09 ; 1袋=8 ; https://www.calbee.co.jp/products/detail/?p=20230410104025
+カルビー ; かっぱえびせん 塩分35%カット ; かるびー ; 68 ; 339 ; 3.7 ; 15 ; 47.3 ; - ; 0.6 ; 1袋=68 ; https://www.calbee.co.jp/products/detail/?p=20200122154715
+カルビー ; かっぱえびせん 白えび ; かるびー ; 50 ; 253 ; 3 ; 12.5 ; 32.1 ; - ; 1 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260926223137
+カルビー ; かっぱえびせん ガーリックバター味 ; かるびー ; 64 ; 313 ; 4.4 ; 13.7 ; 43.1 ; - ; 1.5 ; 1袋=64 ; https://www.calbee.co.jp/products/detail/?p=20260830015707
+カルビー ; かっぱえびせん 甘えび ; かるびー ; 50 ; 258 ; 2.9 ; 13.5 ; 31.3 ; - ; 1 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260519181303
+カルビー ; かっぱえびせん 北海道ほたてバター醤油味 ; かるびー ; 59 ; 289 ; 4.2 ; 12.6 ; 39.6 ; - ; 1.4 ; 1袋=59 ; https://www.calbee.co.jp/products/detail/?p=20220302172114
+カルビー ; かっぱえびせん にんにく醤油味 ; かるびー ; 64 ; 314 ; 4.5 ; 13.7 ; 43.2 ; - ; 1.2 ; 1袋=64 ; https://www.calbee.co.jp/products/detail/?p=20130412134905
+カルビー ; かっぱえびせん 関西だししょうゆ味 ; かるびー ; 64 ; 314 ; 4.5 ; 13.7 ; 43.1 ; - ; 1.3 ; 1袋=64 ; https://www.calbee.co.jp/products/detail/?p=20160317092912
+カルビー ; かっぱえびせん 九州しょうゆ味 ; かるびー ; 64 ; 313 ; 4.5 ; 13.6 ; 43.2 ; - ; 1.4 ; 1袋=64 ; https://www.calbee.co.jp/products/detail/?p=20120220104101
+カルビー ; かっぱえびせん たこ焼き味 ; かるびー ; 12 ; 58 ; 0.9 ; 2.5 ; 8 ; - ; 0.3 ; 1袋=12 ; https://www.calbee.co.jp/products/detail/?p=20140320153454
+カルビー ; カープかっぱえびせん カープソース味 ; かるびー ; 12 ; 59 ; 0.8 ; 2.6 ; 8.1 ; - ; 0.3 ; 1袋=12 ; https://www.calbee.co.jp/products/detail/?p=20250221134538
+カルビー ; かっぱえびせん 明太子味 ; かるびー ; 12 ; 58 ; 0.9 ; 2.5 ; 8 ; - ; 0.3 ; 1袋=12 ; https://www.calbee.co.jp/products/detail/?p=20131122130008
+カルビー ; 絶品かっぱえびせん 鳴門の塩とわさび味 ; かるびー ; 50 ; 244 ; 3.9 ; 10.9 ; 32.6 ; - ; 1.2 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260413185837
+カルビー ; 絶品かっぱえびせん 九州柚子胡椒と焼きあごだし味 ; かるびー ; 50 ; 244 ; 4.1 ; 10.8 ; 32.5 ; - ; 1.2 ; 1袋=50 ; https://www.calbee.co.jp/products/detail/?p=20260729215115
+カルビー ; かっぱえびせん匠海(たくみ) 海人の藻塩味(あまびとのもしお) ; かるびー ; 3.3 ; 14 ; 0.4 ; 0.4 ; 2.2 ; - ; 0.07 ; 1枚=3.3,全量（8枚）=26.4 ; https://www.calbee.co.jp/products/detail/?p=20210913103135
+カルビー ; かっぱえびせん匠海(たくみ) かどやのごま油味 ; かるびー ; 3.4 ; 14 ; 0.4 ; 0.4 ; 2.3 ; - ; 0.08 ; 1枚=3.4,全量（13枚）=44.2 ; https://www.calbee.co.jp/products/detail/?p=20210913103935
+カルビー ; かっぱえびせん匠海(たくみ) 瀬戸内レモン味 ; かるびー ; 3.4 ; 14 ; 0.4 ; 0.4 ; 2.3 ; - ; 0.09 ; 1枚=3.4,全量（13枚）=44.2 ; https://www.calbee.co.jp/products/detail/?p=20210913105038
+カルビー ; かっぱえびせん匠海(たくみ) 海人の藻塩味&かどやのごま油味 二種詰め合わせ ; かるびー ; 3.3 ; 14 ; 0.4 ; 0.4 ; 2.2 ; - ; 0.07 ; 1枚=3.3,全量（30枚）=99 ; https://www.calbee.co.jp/products/detail/?p=20210913105732
+カルビー ; かっぱえびせん匠海(たくみ)さくさく小町 海人の藻塩味(あまびとのもしお) ; かるびー ; 18 ; 78 ; 2 ; 2.3 ; 12.3 ; - ; 0.4 ; 1袋=18 ; https://www.calbee.co.jp/products/detail/?p=20211027163233
+カルビー ; かっぱえびせん匠海(たくみ)さくさく小町 瀬戸内レモン味 ; かるびー ; 18 ; 78 ; 2 ; 2.3 ; 12.3 ; - ; 0.5 ; 1袋=18 ; https://www.calbee.co.jp/products/detail/?p=20230220160309
+カルビー ; ピザポテト ; かるびー ; 60 ; 331 ; 3.3 ; 20.8 ; 32.7 ; - ; 0.8 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20210513141859
+カルビー ; ピザポテト ほりにし味 ; かるびー ; 62 ; 342 ; 3.5 ; 21.5 ; 33.5 ; - ; 1 ; 1袋=62 ; https://www.calbee.co.jp/products/detail/?p=20261106232447
+カルビー ; ピザポテト ジェノベーゼ味 ; かるびー ; 57 ; 314 ; 3.1 ; 19.7 ; 31.1 ; - ; 0.9 ; 1袋=57 ; https://www.calbee.co.jp/products/detail/?p=20260926130641
+カルビー ; ピザポテト 肉NIKUガーリック味 ; かるびー ; 62 ; 341 ; 3.4 ; 21.4 ; 33.8 ; - ; 1 ; 1袋=62 ; https://www.calbee.co.jp/products/detail/?p=20260829190712
+カルビー ; ピザポテト 明太マヨ風味 ; かるびー ; 57 ; 314 ; 3.3 ; 19.7 ; 30.9 ; - ; 0.9 ; 1袋=57 ; https://www.calbee.co.jp/products/detail/?p=20260519171006
+カルビー ; 堅あげポテト うすしお味 ; かるびー かたあげ ; 65 ; 333 ; 3.9 ; 17.4 ; 40.2 ; - ; 0.5 ; 1袋=65 ; https://www.calbee.co.jp/products/detail/?p=20221101163812
+カルビー ; 堅あげポテト うすしお味 プッチ4 ; かるびー かたあげ ; 15 ; 77 ; 0.9 ; 4 ; 9.3 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20070808095521
+カルビー ; 堅あげポテト ブラックペッパー ; かるびー かたあげ ; 65 ; 330 ; 3.9 ; 16.9 ; 40.6 ; - ; 0.6 ; 1袋=65 ; https://www.calbee.co.jp/products/detail/?p=20231019100648
+カルビー ; 堅あげポテト ブラックペッパー プッチ4 ; かるびー かたあげ ; 15 ; 76 ; 0.9 ; 3.9 ; 9.4 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20190805132603
+カルビー ; 堅あげポテト 鬼旨ブラックペッパー ; かるびー かたあげ ; 65 ; 328 ; 4 ; 16.7 ; 40.5 ; - ; 0.7 ; 1袋=65 ; https://www.calbee.co.jp/products/detail/?p=20240405125820
+カルビー ; 堅あげポテト 焼きのり味 ; かるびー かたあげ ; 65 ; 331 ; 4 ; 17.1 ; 40.2 ; - ; 0.7 ; 1袋=65 ; https://www.calbee.co.jp/products/detail/?p=20210304141924
+カルビー ; 堅あげポテト 贅沢海鮮だし味 ; かるびー かたあげ ; 60 ; 304 ; 3.8 ; 15.5 ; 37.2 ; - ; 0.7 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260926202000
+カルビー ; 堅あげポテト 柚子こしょう味 ; かるびー かたあげ ; 60 ; 304 ; 3.7 ; 15.6 ; 37.2 ; - ; 0.8 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260830011434
+カルビー ; 堅あげポテト ねぎ塩だれ味 ; かるびー かたあげ ; 60 ; 304 ; 3.8 ; 15.5 ; 37.2 ; - ; 0.8 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260508120402
+カルビー ; 堅あげポテト匠味 北海道金色バター味 ; かるびー かたあげ ; 60 ; 304 ; 3.7 ; 15.5 ; 37.4 ; - ; 0.7 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260926105611
+カルビー ; 堅あげポテト 北海道バターしょうゆ味 ; かるびー かたあげ ; 63 ; 320 ; 3.9 ; 16.4 ; 39.1 ; - ; 0.7 ; 1袋=63 ; https://www.calbee.co.jp/products/detail/?p=20260604165054
+カルビー ; 堅あげポテト 白えび味 ; かるびー かたあげ ; 63 ; 319 ; 4.1 ; 16.3 ; 39 ; - ; 0.8 ; 1袋=63 ; https://www.calbee.co.jp/products/detail/?p=20171019111032
+カルビー ; 堅あげポテト 関西だししょうゆ ; かるびー かたあげ ; 63 ; 319 ; 4.1 ; 16.3 ; 39 ; - ; 0.7 ; 1袋=63 ; https://www.calbee.co.jp/products/detail/?p=20171025161007
+カルビー ; 堅あげポテト 九州しょうゆ ; かるびー かたあげ ; 63 ; 320 ; 4 ; 16.3 ; 39.3 ; - ; 0.6 ; 1袋=63 ; https://www.calbee.co.jp/products/detail/?p=20171025155851
+カルビー ; 堅あげポテト 牛たんしお味 ; かるびー かたあげ ; 15 ; 76 ; 1 ; 3.9 ; 9.2 ; - ; 0.2 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20260604173038
+カルビー ; 堅あげポテト 桜えびのかき揚げ味 ; かるびー かたあげ ; 15 ; 76 ; 1 ; 3.9 ; 9.3 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20171130101737
+カルビー ; 堅あげポテト 味噌カツ味 ; かるびー かたあげ ; 15 ; 76 ; 1 ; 3.9 ; 9.2 ; - ; 0.2 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20251125150959
+カルビー ; 堅あげポテト 串かつソース味 ; かるびー かたあげ ; 15 ; 76 ; 0.9 ; 3.9 ; 9.3 ; - ; 0.2 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20161028093443
+カルビー ; 堅あげポテト 焼き蟹味 ; かるびー かたあげ ; 15 ; 76 ; 1 ; 3.9 ; 9.3 ; - ; 0.2 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20230313110933
+カルビー ; 堅あげポテト 瀬戸内レモンと海苔味 ; かるびー かたあげ ; 15 ; 76 ; 0.9 ; 3.9 ; 9.4 ; - ; 0.2 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20230303164527
+カルビー ; 堅あげポテト 沖縄シークヮーサー味 ; かるびー かたあげ ; 15 ; 76 ; 0.9 ; 3.9 ; 9.4 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20180219140404
+カルビー ; 堅あげポテト でーじまーさんアーサそば味 ; かるびー かたあげ ; 15 ; 76 ; 1 ; 3.9 ; 9.2 ; - ; 0.2 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20230217135840
+カルビー ; Jagabee(じゃがビー) うすしお味 ; かるびー ; 38 ; 221 ; 2.2 ; 15.1 ; 19 ; - ; 0.2 ; 1袋=38 ; https://www.calbee.co.jp/products/detail/?p=20230619104730
+カルビー ; Jagabee(じゃがビー) バターしょうゆ味 ; かるびー ; 38 ; 219 ; 2.3 ; 14.8 ; 19.1 ; - ; 0.3 ; 1袋=38 ; https://www.calbee.co.jp/products/detail/?p=20230619133826
+カルビー ; Jagabee(じゃがビー) プレーン ; かるびー ; 38 ; 223 ; 2.25 ; 15.2 ; 19.2 ; - ; 0.01 ; 1袋=38 ; https://www.calbee.co.jp/products/detail/?p=20250121145024
+カルビー ; Jagabee(じゃがビー) 紀州産完熟梅味 ; かるびー ; 15 ; 86 ; 0.9 ; 5.8 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20250328133328
+カルビー ; Jagabee(じゃがビー) しあわせバタ~ ; かるびー ; 15 ; 87 ; 0.9 ; 5.9 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20260926205538
+カルビー ; 太~いJagabee (じゃがビー) たらこバター味 ; かるびー ; 35 ; 201 ; 2.1 ; 13.6 ; 17.6 ; - ; 0.3 ; 1袋=35 ; https://www.calbee.co.jp/products/detail/?p=20260926204019
+カルビー ; Jagabee(じゃがビー) 北海道ほたてバター味 ; かるびー ; 36 ; 207 ; 2.1 ; 14 ; 18.2 ; - ; 0.3 ; 1袋=36 ; https://www.calbee.co.jp/products/detail/?p=20260824165237
+カルビー ; 細ーいJagabee(じゃがビー) サワークリームオニオン味 ; かるびー ; 35 ; 202 ; 2.1 ; 13.6 ; 17.7 ; - ; 0.2 ; 1袋=35 ; https://www.calbee.co.jp/products/detail/?p=20260626213820
+カルビー ; Jagabee(じゃがビー) ずんだ味 ; かるびー ; 15 ; 86 ; 0.9 ; 5.8 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20200511164045
+カルビー ; Jagabee(じゃがビー) 東京カリー味 ; かるびー ; 15 ; 86 ; 0.9 ; 5.8 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20200323105338
+カルビー ; Jagabee(じゃがビー) わさび醤油味 ; かるびー ; 15 ; 87 ; 0.9 ; 5.9 ; 7.5 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20150824122433
+カルビー ; Jagabee(じゃがビー) 手羽先味 ; かるびー ; 15 ; 86 ; 0.9 ; 5.8 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20140812120939
+カルビー ; Jagabee(じゃがビー) たこ焼き味 ; かるびー ; 15 ; 86 ; 0.9 ; 5.8 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20150630103121
+カルビー ; Jagabee(じゃがビー) 瀬戸内レモン味 ; かるびー ; 15 ; 87 ; 0.9 ; 5.9 ; 7.5 ; - ; 0.09 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20260216135223
+カルビー ; Jagabee(じゃがビー) ゆず明太子味 ; かるびー ; 15 ; 87 ; 0.9 ; 5.9 ; 7.5 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20170316153437
+カルビー ; Jagabee(じゃがビー) 旨辛島とうがらし味 ; かるびー ; 15 ; 86 ; 0.9 ; 5.8 ; 7.6 ; - ; 0.1 ; 1袋=15 ; https://www.calbee.co.jp/products/detail/?p=20260216132508
+カルビー ; サッポロポテト つぶつぶベジタブル ; かるびー ; 72 ; 350 ; 4.4 ; 15.1 ; 49 ; - ; 1 ; 1袋=72 ; https://www.calbee.co.jp/products/detail/?p=20220512143049
+カルビー ; サッポロポテト つぶつぶベジタブル ミニ4 ; かるびー ; 9 ; 44 ; 0.5 ; 1.9 ; 6.1 ; - ; 0.1 ; 1袋=9 ; https://www.calbee.co.jp/products/detail/?p=20151022164331
+カルビー ; 1才からのサッポロポテト つぶつぶベジタブル ; かるびー ; 8 ; 31 ; 0.2 ; 0.1 ; 7.4 ; - ; 0.1 ; 1袋=8 ; https://www.calbee.co.jp/products/detail/?p=20210304154015
+カルビー ; サッポロポテト バーベQあじ ; かるびー ; 72 ; 368 ; 4.5 ; 18.7 ; 45.4 ; - ; 1.3 ; 1袋=72 ; https://www.calbee.co.jp/products/detail/?p=20240523143145
+カルビー ; サッポロポテト バーベQあじ ミニ4 ; かるびー ; 9 ; 46 ; 0.6 ; 2.3 ; 5.7 ; - ; 0.2 ; 1袋=9 ; https://www.calbee.co.jp/products/detail/?p=20151022165133
+カルビー ; サッポロポテトロング やみつきチーズ味 ; かるびー ; 45 ; 221 ; 2.2 ; 10.4 ; 29.6 ; - ; 0.8 ; 1袋=45 ; https://www.calbee.co.jp/products/detail/?p=20260926100845
+カルビー ; ア・ラ・ポテト うすしお味 ; かるびー ; 60 ; 336 ; 3.2 ; 21.5 ; 32.3 ; - ; 0.5 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260815204147
+カルビー ; ア・ラ・ポテト じゃがバター味 ; かるびー ; 60 ; 332 ; 3.3 ; 20.9 ; 32.7 ; - ; 0.7 ; 1袋=60 ; https://www.calbee.co.jp/products/detail/?p=20260815205217
+カルビー ; フルグラ ; かるびー ; 50 ; 221 ; 3.7 ; 7.8 ; 36.2 ; 4.5 ; 0.3 ; 1食分=50 ; https://www.calbee.co.jp/products/detail/?p=20240126125035
+カルビー ; フルグラ糖質オフ ; かるびー ; 50 ; 238 ; 9.3 ; 12.7 ; 25.1 ; 6.9 ; 0.2 ; 1食分=50 ; https://www.calbee.co.jp/products/detail/?p=20240129134111
+カルビー ; フルグラ糖質オフ カカオ&ストロベリーテイスト ; かるびー ; 50 ; 229 ; 10.6 ; 11.1 ; 25.2 ; 7.3 ; 0.2 ; 1食分=50,全量=550 ; https://www.calbee.co.jp/products/detail/?p=20260730203030
+カルビー ; フルグラ チョコバナナ味 ; かるびー ; 50 ; 215 ; 3.4 ; 6.6 ; 37.8 ; 4.5 ; 0.3 ; 1食分=50 ; https://www.calbee.co.jp/products/detail/?p=20230203142734
+カルビー ; フルグラ おさつとりんごのメープル味 ; かるびー ; 50 ; 225 ; 3.7 ; 8.5 ; 35.6 ; 4.5 ; 0.3 ; 1食分=50,全量=550 ; https://www.calbee.co.jp/products/detail/?p=20260829192500
+カルビー ; フルグラボール ; かるびー ; 26 ; 116 ; 2 ; 4.1 ; 18.8 ; 2.3 ; 0.1 ; 1袋=26 ; https://www.calbee.co.jp/products/detail/?p=20240731140616
+カルビー ; フルグラボール アーモンドチョコ味 ; かるびー ; 26 ; 117 ; 2 ; 4.4 ; 18.4 ; 2.3 ; 0.1 ; 1袋=26 ; https://www.calbee.co.jp/products/detail/?p=20240731143454
+カルビー ; フルグラボール アールグレイミルクティー風味 ; かるびー ; 26 ; 114 ; 1.8 ; 3.8 ; 19.3 ; 2.3 ; 0.1 ; 1袋=26 ; https://www.calbee.co.jp/products/detail/?p=20260815201636
+カルビー ; フルグラボール いちごみるくTM味 ; かるびー ; 26 ; 114 ; 1.8 ; 3.8 ; 19.3 ; 2.3 ; 0.1 ; 1袋=26 ; https://www.calbee.co.jp/products/detail/?p=20260212163514
+カルビー ; じゃがポックル オホーツクの塩味 ; かるびー ; 18 ; 105 ; 0.8 ; 7.2 ; 9.3 ; - ; 0.1 ; 1袋=18 ; https://www.calbee.co.jp/products/detail/?p=20141009145502
+カルビー ; じゃがポックル ほたて塩味 ; かるびー ; 17 ; 100 ; 0.8 ; 6.8 ; 8.8 ; - ; 0.1 ; 1袋=17 ; https://www.calbee.co.jp/products/detail/?p=20250228163846
+カルビー ; じゃがポックル 北海道とうきび味 ; かるびー ; 17 ; 100 ; 0.8 ; 6.8 ; 8.8 ; - ; 0.1 ; 1袋=17 ; https://www.calbee.co.jp/products/detail/?p=20260212150322

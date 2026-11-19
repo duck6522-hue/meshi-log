@@ -298,8 +298,8 @@ async function loadDB() {
       fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + meat + fd.official); fd.alts = cm.k.split(/\s+/).map(norm);
     }
     // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
-    const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。${x.note ? x.note + '。' : ''}食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
-      kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
+    const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 'b' ? `${x.shop}の公式サイトの栄養成分表示（${x.basis}あたり）を、100gあたりに換算した値です` : x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。${x.note ? x.note + '。' : ''}食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
+      kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, fibNA: x.fib == null, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
     for (const fd of extra) map.set(fd.id, fd);
     list.unshift(...extra);
     DB = { map, list, source: j.source, official: j.foods.length, extra: extra.length };
@@ -516,7 +516,7 @@ function readAmount() {
 }
 function updateCalc() {
   const a = readAmount(), fd = sheetCtx.fd, k = a.grams / 100;
-  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${isServ(fd) ? '公表なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
+  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${isServ(fd) || fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
 }
 acts.qty = el => {
   const inp = $('#sheetForm').elements.qty, a = readAmount(), stepSize = a.unit === 'g' ? 10 : 0.5;

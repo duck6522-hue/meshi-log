@@ -116,6 +116,20 @@ for raw in (here / "chains.txt").read_text(encoding="utf-8").splitlines():
     unit = size if size != "-" else "1食"
     extra.append({"id": f"s:{shop}:{menu}:{size}", "n": name, "k": f"{shop} {kana}", "u": [[unit, 100]],
                   "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": 0, "salt": float(salt), "t": "s", "shop": shop, **({"note": note} if note else {})})
+# ---- 市販のお菓子（メーカー公式の栄養成分表示。基準量あたりの値を100gあたりに換算）
+for raw in (here / "snacks.txt").read_text(encoding="utf-8").splitlines():
+    if not raw.strip() or raw.startswith("#"):
+        continue
+    maker, name, kana, g, kcal, pp, ff, cc, fib, salt, us, url = [s.strip() for s in raw.split(" ; ")]
+    g = float(g)
+    k100 = lambda v: round(float(v) * 100 / g, 2)
+    units = [[u.rsplit("=", 1)[0], float(u.rsplit("=", 1)[1])] for u in us.split(",") if u.strip()]
+    basis = next((u for u, x in units if abs(x - g) < 0.01), None)
+    if name in {cm["n"] for cm in common} | {e["n"] for e in extra}:
+        name = f"{name}（{maker}）"  # 成分表の通称や他の品目と同じ名前なら、メーカー名を添える
+    extra.append({"id": f"b:{maker}:{name}", "n": name, "k": f"{maker} {kana}", "u": units,
+                  "kcal": k100(kcal), "p": k100(pp), "f": k100(ff), "c": k100(cc), "fib": None if fib == "-" else k100(fib), "salt": round(float(salt) * 100 / g, 3),
+                  "t": "b", "shop": maker, "basis": f"{basis}（{g:g}g）" if basis else f"{g:g}g"})
 names = [e["n"] for e in extra] + [cm["n"] for cm in common]
 for n in sorted(set(x for x in names if names.count(x) > 1)):
     problems.append(f"! {n}: 名前が重複しています")
