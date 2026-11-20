@@ -55,7 +55,7 @@
   .iconbtn:hover { background: var(--field); }
   /* 撮影中だけ：画像の中でも使える端末の標準フォントにそろえ、操作用の部品を消す */
   html.shooting body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, sans-serif; }
-  html.shooting #v-today .add, html.shooting #v-today .sug, html.shooting #v-today .dnav > button, html.shooting #v-today [data-act="recipe"] { display: none !important; }
+  html.shooting #v-today .add, html.shooting #v-today .sug, html.shooting #v-today .dnav > button, html.shooting #v-today [data-act="recipe"], html.shooting #v-today [data-act="month"] { display: none !important; }
   html.shooting #v-today .dnav { justify-content: center; }
   .shotimg { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
   .shotbox { max-height: 55dvh; overflow: auto; border-radius: 14px; }
@@ -174,6 +174,9 @@
   .wd.on .bar { background: linear-gradient(180deg, var(--p1), var(--p2)); }
   .wd small { position: absolute; bottom: -20px; font-size: 11px; font-weight: 700; color: var(--muted); }
   .wd.on small { color: var(--pt); font-weight: 900; }
+  .week.month { gap: 2px; }
+  .week.month .wd .bar { border-radius: 2px 2px 0 0; }
+  .wd:disabled { opacity: 1; }
 
   /* かんたん栄養診断 */
   .diag .hd { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
@@ -668,6 +671,7 @@ views.weight = el => {
       <div class="stat"><span>目標まで</span><b>${goal != null && last ? sg(goal - last.w) : '—'}<small>kg</small></b><small>${goal != null ? `目標 ${fmt(goal)}kg` : '設定で入力'}</small></div>
       <div class="stat"><span>期間の変化</span><b>${pts.length > 1 ? sg(pts[pts.length - 1].w - pts[0].w) : '—'}<small>kg</small></b><small>${pts.length > 1 ? md(pts[0].d) + ' から' : '記録2件から'}</small></div>
     </div>
+    ${forecastCard(all, goal)}
     <div class="card pad">
       <div class="seg" role="group" aria-label="表示する期間">${RANGES.map(([n, l]) => `<label class="pick"><input type="radio" name="wr" value="${n}" ${n === wRange ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div>
       <p class="note" style="margin:12px 0 4px">体重の推移（kg）</p>
@@ -677,6 +681,44 @@ views.weight = el => {
     <div class="card">${rows || '<div class="empty">まだ記録がありません</div>'}</div>`;
   drawWeightChart($('#wChart'), pts, goal);
 };
+// 直近4週間の体重に直線を当てはめて、1日あたりの変化（kg）と最新日の推定体重を出す
+function weightTrend(all) {
+  if (all.length < 2) return null;
+  const last = all[all.length - 1], pts = all.filter(x => x.d >= addDays(last.d, -27));
+  const t = x => Math.round((dayDate(x.d) - dayDate(pts[0].d)) / 864e5), span = t(last);
+  if (pts.length < 3 || span < 7) return { short: true, n: pts.length, span };
+  const n = pts.length, mx = pts.reduce((a, p) => a + t(p), 0) / n, my = pts.reduce((a, p) => a + p.w, 0) / n;
+  let sxy = 0, sxx = 0; for (const p of pts) { sxy += (t(p) - mx) * (p.w - my); sxx += (t(p) - mx) ** 2; }
+  const slope = sxy / sxx;
+  return { slope, now: my + slope * (span - mx), from: pts[0].d, to: last.d, n, span };
+}
+function forecastCard(all, goal) {
+  const tr = weightTrend(all);
+  const box = body => `<p class="sec">このペースだと</p><div class="card pad stack">${body}</div>`;
+  if (!tr) return box('<p class="note">体重を何日か記録すると、最近のペースから今後の見通しを出します。</p>');
+  if (tr.short) return box(`<p class="note">見通しには、直近4週間で3回以上・1週間以上の期間の記録が必要です（いまは${tr.n}回・${tr.span}日分）。</p>`);
+  const week = tr.slope * 7, flat = Math.abs(week) < 0.05, lines = [];
+  lines.push(`<p class="num">直近${tr.span + 1}日（${tr.n}回の記録）のペース：<b>${flat ? 'ほぼ横ばい' : `1週間で ${sg(week)}kg`}</b></p>`);
+  if (!flat) lines.push(`<p class="num">このまま続くと、4週間後は <b>約${fmt(tr.now + tr.slope * 28)}kg</b>（いまの推定 ${fmt(tr.now)}kg）</p>`);
+  if (goal != null) {
+    const diff = goal - tr.now;
+    if (Math.abs(diff) < 0.3) lines.push('<p>🎉 目標体重のあたりにいます。</p>');
+    else if (flat || diff * tr.slope <= 0) lines.push(`<p>目標 ${fmt(goal)}kg まで ${sg(diff)}kg。いまのペースでは近づいていません。</p>`);
+    else {
+      const days = Math.ceil(diff / tr.slope);
+      lines.push(days > 730 ? `<p>目標 ${fmt(goal)}kg まで ${sg(diff)}kg。このペースだと2年以上かかります。</p>`
+        : `<p class="num">目標 ${fmt(goal)}kg には <b>${dayLabel(addDays(tr.to, days)).replace(/（.）$/, '')}ごろ</b>（あと約${days >= 60 ? Math.round(days / 30) + 'か月' : days + '日'}）</p>`);
+    }
+  }
+  // 同じ期間の食事の記録が十分あれば、体重の変化と合わせて「維持できるカロリー」の目安を出す（脂肪1kg ≒ 7,200kcal）
+  const ds = [...Array(tr.span + 1)].map((_, i) => addDays(tr.from, i)).filter(d => (state.meals[d] || []).length);
+  if (ds.length >= 10) {
+    const intake = ds.reduce((a, d) => a + sumEntries(state.meals[d]).kcal, 0) / ds.length, keep = intake - tr.slope * 7200;
+    lines.push(`<p class="num">この期間の食事の平均は ${kc(intake)}kcal。体重の動きから見ると、<b>維持できるカロリーは約${kc(Math.round(keep / 10) * 10)}kcal</b> です。</p>`);
+  }
+  lines.push('<p class="note">直近4週間の体重から引いた直線による目安です。水分などで日々ぶれるので、記録が増えるほど正確になります。</p>');
+  return box(lines.join(''));
+}
 function drawWeightChart(box, pts, goal) {
   if (!pts.length) { box.innerHTML = '<div class="empty">この期間の記録はありません</div>'; return; }
   const W = Math.max(280, box.clientWidth || 340), H = 220, m = { l: 38, r: 16, t: 16, b: 26 };
@@ -904,9 +946,71 @@ function weekCard() {
     <div class="card pad"><div class="week"><i class="goal" style="bottom:${20 + g / top * 90}px"></i>
       ${days.map((d, i) => `<button class="wd${d === curDay ? ' on' : ''}" data-act="goto" data-d="${d}" title="${md(d)} ${kc(vals[i])}kcal" aria-label="${dayLabel(d)} ${kc(vals[i])}キロカロリー">
         <span class="bar" style="height:${vals[i] / top * 100}%"></span><small>${WD[dayDate(d).getDay()]}</small></button>`).join('')}</div>
-      <p class="note num" style="margin-top:8px">点線は目標 ${kc(g)}kcal。棒をタップするとその日を開きます。${streak > 1 ? `連続記録 ${streak}日。` : ''}</p></div></div>`;
+      <p class="note num" style="margin-top:8px">点線は目標 ${kc(g)}kcal。棒をタップするとその日を開きます。${streak > 1 ? `連続記録 ${streak}日。` : ''}</p>
+      <button type="button" class="wide" data-act="month" style="margin-top:12px">📅 月のふり返り</button></div></div>`;
 }
 acts.goto = el => { curDay = el.dataset.d; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+/* ---------- 月のふり返り ---------- */
+let curMonth = null;
+const monthDays = ym => { const [y, m] = ym.split('-').map(Number); return [...Array(new Date(y, m, 0).getDate())].map((_, i) => `${ym}-${pad(i + 1)}`); };
+const addMonths = (ym, n) => { const [y, m] = ym.split('-').map(Number), d = new Date(y, m - 1 + n, 1); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}`; };
+function monthStats(ym) {
+  const today = dayStr(), all = monthDays(ym), days = all.filter(d => d <= today), g = targets();
+  const logged = days.filter(d => (state.meals[d] || []).length), sums = logged.map(d => sumEntries(state.meals[d]));
+  const avg = k => sums.length ? sums.reduce((a, x) => a + x[k], 0) / sums.length : 0;
+  const goalOn = d => g.kcal + (state.settings.addExercise ? burnedOn(d) : 0);
+  const within = logged.filter((d, i) => sums[i].kcal <= goalOn(d) * 1.05).length; // 目標の+5%までは「目標内」とみなす
+  const foods = new Map();
+  for (const d of logged) for (const e of state.meals[d]) {
+    const r = foods.get(e.name) || { name: e.name, n: 0, kcal: 0, days: new Set() };
+    r.n++; r.kcal += e.kcal * e.grams / 100; r.days.add(d); foods.set(e.name, r);
+  }
+  const total = sums.reduce((a, x) => a + x.kcal, 0);
+  const ws = days.filter(d => state.weights[d] != null).map(d => ({ d, w: state.weights[d] }));
+  return { all, days, logged, sums, avg, within, g, total, foods: [...foods.values()], ws,
+    burned: days.reduce((a, d) => a + burnedOn(d), 0), exDays: days.filter(d => burnedOn(d) > 0).length };
+}
+function openMonth(ym) {
+  curMonth = ym;
+  const now = dayStr().slice(0, 7), [y, m] = ym.split('-').map(Number), s = monthStats(ym), g = s.g;
+  const prev = monthStats(addMonths(ym, -1));
+  const nav = `<div class="dnav" style="margin:0 0 12px"><button type="button" data-act="month-step" data-n="-1" aria-label="前の月">‹</button>
+    <div class="day">${y}年${m}月</div><button type="button" data-act="month-step" data-n="1" aria-label="次の月" ${ym >= now ? 'disabled' : ''}>›</button></div>`;
+  const head = `<h2>月のふり返り<button type="button" class="text" data-act="close">閉じる</button></h2>${nav}`;
+  if (!s.logged.length) { openSheet(head + '<div class="card"><div class="empty">この月の食事の記録はありません</div></div>', { type: 'month' }, true); return; }
+  const kcalAvg = s.avg('kcal'), diff = kcalAvg - g.kcal, pk = s.avg('p') * 4, fk = s.avg('f') * 9, ck = s.avg('c') * 4, pfcSum = pk + fk + ck || 1;
+  const ratio = v => Math.round(v / pfcSum * 100);
+  const tile = (label, v, unit, note) => `<div class="stat"><span>${label}</span><b>${v}<small>${unit}</small></b><small>${note}</small></div>`;
+  const vals = s.all.map(d => d <= dayStr() ? sumEntries(state.meals[d] || []).kcal : 0), top = Math.max(g.kcal * 1.25, ...vals);
+  const bars = `<div class="week month"><i class="goal" style="bottom:${20 + g.kcal / top * 90}px"></i>${s.all.map((d, i) => {
+    const n = i + 1; return `<button type="button" class="wd" data-act="month-day" data-d="${d}" ${d > dayStr() ? 'disabled' : ''} aria-label="${dayLabel(d)} ${kc(vals[i])}キロカロリー"><span class="bar" style="height:${vals[i] / top * 100}%"></span>${n === 1 || n % 5 === 0 ? `<small>${n}</small>` : ''}</button>`; }).join('')}</div>`;
+  const byN = s.foods.slice().sort((a, b) => b.n - a.n || b.kcal - a.kcal).slice(0, 10);
+  const byK = s.foods.slice().sort((a, b) => b.kcal - a.kcal).slice(0, 5);
+  const rowN = (r, i) => `<div class="row"><span class="tx"><b>${i + 1}. ${esc(r.name)}</b><small>${r.n}回（${r.days.size}日）</small></span><span class="kc num">${kc(r.kcal)}<small>kcal</small></span></div>`;
+  const rowK = r => `<div class="row"><span class="tx"><b>${esc(r.name)}</b><small>この月のカロリーの ${Math.round(r.kcal / (s.total || 1) * 100)}%</small></span><span class="kc num">${kc(r.kcal)}<small>kcal</small></span></div>`;
+  const w0 = s.ws[0], w1 = s.ws[s.ws.length - 1];
+  const notes = [];
+  if (prev.logged.length) { const pd = kcalAvg - prev.avg('kcal'); notes.push(`平均カロリーは前の月より ${Math.abs(pd) < 20 ? 'ほぼ同じ' : (pd > 0 ? `${kc(pd)}kcal 多め` : `${kc(-pd)}kcal 少なめ`)}です。`); }
+  if (s.avg('p') < g.p * 0.8) notes.push(`たんぱく質は平均 ${Math.round(s.avg('p'))}g/日で、目標（${Math.round(g.p)}g）より少なめでした。`);
+  if (s.avg('salt') > g.salt) notes.push(`食塩は平均 ${fmt(s.avg('salt'))}g/日で、目標（${fmt(g.salt)}g未満）を超えていました。`);
+  if (s.avg('fib') < g.fib * 0.8) notes.push(`食物繊維は平均 ${fmt(s.avg('fib'))}g/日で、目標（${fmt(g.fib)}g以上）に届いていません。`);
+  openSheet(head + `
+    <div class="stats">${tile('記録した日', s.logged.length, '日', `${s.days.length}日中`)}${tile('平均カロリー', kc(kcalAvg), 'kcal', `目標${diff >= 0 ? 'より +' : 'より −'}${kc(Math.abs(diff))}`)}${tile('目標内の日', s.within, '日', '目標の+5%まで')}</div>
+    <div class="card pad">${bars}<p class="note num" style="margin-top:8px">日ごとの摂取カロリー。点線は目標 ${kc(g.kcal)}kcal。棒をタップするとその日を開きます。</p></div>
+    <p class="sec">栄養のバランス（記録した日の平均）</p>
+    <div class="stats">${tile('たんぱく質', fmt(s.avg('p')), 'g', `目標 ${Math.round(g.p)}g・${ratio(pk)}%`)}${tile('脂質', fmt(s.avg('f')), 'g', `目標 ${Math.round(g.f)}g・${ratio(fk)}%`)}${tile('炭水化物', fmt(s.avg('c')), 'g', `目標 ${Math.round(g.c)}g・${ratio(ck)}%`)}</div>
+    <div class="stats">${tile('食物繊維', fmt(s.avg('fib')), 'g', `目標 ${fmt(g.fib)}g以上`)}${tile('食塩相当量', fmt(s.avg('salt')), 'g', `目標 ${fmt(g.salt)}g未満`)}${tile('運動', kc(s.burned), 'kcal', `${s.exDays}日`)}</div>
+    <p class="note num">PFCの割合（目標 ${state.settings.pfc.p}:${state.settings.pfc.f}:${state.settings.pfc.c}）は ${ratio(pk)}:${ratio(fk)}:${ratio(ck)} でした。</p>
+    <p class="sec">体重</p>
+    <div class="card pad"><p class="num">${w0 ? (s.ws.length > 1 ? `${md(w0.d)} ${fmt(w0.w)}kg → ${md(w1.d)} ${fmt(w1.w)}kg（<b>${sg(w1.w - w0.w)}kg</b>）` : `${md(w0.d)} ${fmt(w0.w)}kg（この月の記録は1件）`) : 'この月の体重の記録はありません'}</p></div>
+    ${notes.length ? `<p class="sec">ひとこと</p><div class="card pad stack">${notes.map(n => `<p>${n}</p>`).join('')}</div>` : ''}
+    <p class="sec">よく食べたもの</p><div class="card">${byN.map(rowN).join('')}</div>
+    <p class="sec">カロリーの多かったもの</p><div class="card">${byK.map(rowK).join('')}</div>`, { type: 'month' }, true);
+}
+acts.month = () => openMonth(curMonth && curMonth <= dayStr().slice(0, 7) ? curMonth : curDay.slice(0, 7));
+acts['month-step'] = el => { const ym = addMonths(curMonth, +el.dataset.n); if (ym <= dayStr().slice(0, 7)) openMonth(ym); };
+acts['month-day'] = el => { closeSheet(); curDay = el.dataset.d; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
 /* ---------- レシピ提案プロンプト ---------- */
 const DEFAULT_TEMPLATE = `あなたは管理栄養士の視点を持つ料理家です。{meal}のレシピを3つ提案してください。
