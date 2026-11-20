@@ -861,3 +861,55 @@
 カルビー ; じゃがポックル オホーツクの塩味 ; かるびー ; 18 ; 105 ; 0.8 ; 7.2 ; 9.3 ; - ; 0.1 ; 1袋=18 ; https://www.calbee.co.jp/products/detail/?p=20141009145502
 カルビー ; じゃがポックル ほたて塩味 ; かるびー ; 17 ; 100 ; 0.8 ; 6.8 ; 8.8 ; - ; 0.1 ; 1袋=17 ; https://www.calbee.co.jp/products/detail/?p=20250228163846
 カルビー ; じゃがポックル 北海道とうきび味 ; かるびー ; 17 ; 100 ; 0.8 ; 6.8 ; 8.8 ; - ; 0.1 ; 1袋=17 ; https://www.calbee.co.jp/products/detail/?p=20260212150322
+# ケンタッキーフライドチキン（外食）。公式「栄養成分表」（2026年版、11月4日更新のPDF）。1個（1食）あたりの値と平均重量
+ケンタッキー ; オリジナルチキン ; けんたっきー ケンタ KFC ; 87 ; 218 ; 16.5 ; 12.8 ; 9.1 ; 0.4 ; 1.5 ; 1食=87 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 生姜香る温辛チキン ; けんたっきー ケンタ KFC ; 91 ; 253 ; 17.9 ; 15.8 ; 9.8 ; 0.6 ; 1.4 ; 1食=91 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; にんにく醤油チキン ; けんたっきー ケンタ KFC ; 102 ; 275 ; 18.8 ; 17.2 ; 11.1 ; 0.7 ; 1.5 ; 1食=102 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 超にんにく醤油マヨ ; けんたっきー ケンタ KFC ; 10 ; 61 ; 0.2 ; 6.4 ; 0.7 ; 0.0 ; 0.4 ; 1食=10 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; レッドホットチキン ; けんたっきー ケンタ KFC ; 90 ; 247 ; 17.5 ; 15.2 ; 10.1 ; 0.5 ; 1.2 ; 1食=90 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 骨なしオリジナルチキン ; けんたっきー ケンタ KFC ; 119 ; 271 ; 18.2 ; 16.9 ; 11.6 ; 0.5 ; 2.6 ; 1食=119 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; まるかじりケンタ ; けんたっきー ケンタ KFC ; 54 ; 134 ; 9.1 ; 7.9 ; 6.9 ; 0.3 ; 1.5 ; 1食=54 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; グリーンホットウイング ; けんたっきー ケンタ KFC ; 52 ; 136 ; 7.1 ; 7.9 ; 9.1 ; 0.0 ; 1.2 ; 1食=52 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; カーネルクリスピー ; けんたっきー ケンタ KFC ; 42 ; 119 ; 6.8 ; 6.6 ; 8.2 ; 0.3 ; 0.6 ; 1食=42 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; クレイジーディップチキン 4ピース ; けんたっきー ケンタ KFC ; 89 ; 243 ; 16.8 ; 11.7 ; 17.6 ; 0.8 ; 1.2 ; 1食=89 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; オリジナルソース（KFC特製ソース） ; けんたっきー ケンタ KFC ; 20 ; 85 ; 0.3 ; 7.6 ; 3.5 ; 0.1 ; 0.6 ; 1食=20 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; バーベキューソース ; けんたっきー ケンタ KFC ; 20 ; 30 ; 0.1 ; 0.4 ; 6.8 ; 0.2 ; 0.9 ; 1食=20 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; マスタードソース ; けんたっきー ケンタ KFC ; 20 ; 70 ; 0.2 ; 5.8 ; 4.1 ; 0.0 ; 0.6 ; 1食=20 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ナゲット 5ピース ; けんたっきー ケンタ KFC ; 94 ; 222 ; 13.3 ; 13.4 ; 11.8 ; 0.3 ; 1.5 ; 1食=94 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ケチャップ ; けんたっきー ケンタ KFC ; 9 ; 11 ; 0.1 ; 0.0 ; 2.6 ; - ; 0.2 ; 1食=9 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; オリジナルチキンバーガー ; けんたっきー ケンタ KFC ; 192 ; 480 ; 22.5 ; 28.0 ; 35.0 ; 1.9 ; 3.5 ; 1食=192 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; オリジナルチキンチーズバーガー ; けんたっきー ケンタ KFC ; 204 ; 525 ; 24.9 ; 31.6 ; 35.4 ; 1.9 ; 3.9 ; 1食=204 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; オリジナルチキンてりやきバーガー ; けんたっきー ケンタ KFC ; 212 ; 518 ; 22.9 ; 28.0 ; 43.6 ; 2.0 ; 4.1 ; 1食=212 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; オリジナルチキンレッドホットバーガー ; けんたっきー ケンタ KFC ; 192 ; 450 ; 22.7 ; 24.1 ; 36.5 ; 2.0 ; 3.5 ; 1食=192 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; プレミアバーガー ; けんたっきー ケンタ KFC ; 260 ; 634 ; 28.8 ; 39.7 ; 40.3 ; 2.0 ; 4.5 ; 1食=260 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; プレミアチーズバーガー ; けんたっきー ケンタ KFC ; 272 ; 678 ; 31.3 ; 43.4 ; 40.8 ; 2.0 ; 4.9 ; 1食=272 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 背徳バーガーズ マッケンチーズチキンバーガー ; けんたっきー ケンタ KFC ; 210 ; 493 ; 24.9 ; 25.4 ; 41.5 ; 2.3 ; 4.5 ; 1食=210 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 背徳バーガーズ ガリマヨ厚切りベーコンチキンバーガー ; けんたっきー ケンタ KFC ; 198 ; 583 ; 25.0 ; 37.9 ; 35.5 ; 1.8 ; 4.5 ; 1食=198 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; とろ~り月見和風カツバーガーこぼれタルタル ; けんたっきー ケンタ KFC ; 222 ; 506 ; 20.6 ; 25.8 ; 48.3 ; 1.9 ; 3.2 ; 1食=222 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; とろ~りトリプル月見和風カツバーガーこぼれタルタル ; けんたっきー ケンタ KFC ; 316 ; 585 ; 27.9 ; 27.4 ; 57.0 ; 1.9 ; 4.3 ; 1食=316 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 和風チキンカツバーガー ; けんたっきー ケンタ KFC ; 165 ; 426 ; 16.0 ; 22.3 ; 40.5 ; 2.1 ; 2.0 ; 1食=165 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ペッパーマヨツイスター ; けんたっきー ケンタ KFC ; 143 ; 302 ; 10.8 ; 14.8 ; 32.0 ; 1.7 ; 1.9 ; 1食=143 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; てりやきツイスター ; けんたっきー ケンタ KFC ; 143 ; 360 ; 11.2 ; 19.1 ; 35.8 ; 1.6 ; 2.1 ; 1食=143 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; フライドポテト S ; けんたっきー ケンタ KFC ; 80 ; 195 ; 2.6 ; 7.8 ; 28.7 ; 2.4 ; 1.2 ; 1食=80 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; フライドポテト L ; けんたっきー ケンタ KFC ; 160 ; 390 ; 5.3 ; 15.5 ; 57.4 ; 4.8 ; 2.4 ; 1食=160 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; フライドポテト BOX ; けんたっきー ケンタ KFC ; 372 ; 908 ; 12.3 ; 36.1 ; 133.5 ; 11.2 ; 5.6 ; 1食=372 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; コールスローS ; けんたっきー ケンタ KFC ; 75 ; 79 ; 0.9 ; 5.9 ; 5.9 ; 1.1 ; 0.5 ; 1食=75 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; コールスローM ; けんたっきー ケンタ KFC ; 120 ; 127 ; 1.5 ; 9.5 ; 9.5 ; 1.8 ; 0.9 ; 1食=120 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ビスケット ; けんたっきー ケンタ KFC ; 56 ; 211 ; 3.2 ; 12.5 ; 21.3 ; 0.1 ; 1.1 ; 1食=56 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ハニーメイプル ; けんたっきー ケンタ KFC ; 10 ; 30 ; 0.0 ; 0.0 ; 7.0 ; 0.0 ; 0.0 ; 1食=10 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; おもちと濃厚カスタードの月見パイ ; けんたっきー ケンタ KFC ; 52 ; 187 ; 2.5 ; 8.7 ; 24.6 ; 0.6 ; 0.3 ; 1食=52 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; チョコパイ ; けんたっきー ケンタ KFC ; 53 ; 270 ; 3.1 ; 15.8 ; 29.0 ; 1.5 ; 0.3 ; 1食=53 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; クリスピーチキンバーガー（限定店舗） ; けんたっきー ケンタ KFC ; 110 ; 329 ; 11.1 ; 17.7 ; 31.6 ; 1.7 ; 1.4 ; 1食=110 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 柑橘 鶏竜田バーガー（限定店舗） ; けんたっきー ケンタ KFC ; 187 ; 496 ; 18.6 ; 27.4 ; 43.9 ; 1.5 ; 3.3 ; 1食=187 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ケンタライスBOX（限定店舗） ; けんたっきー ケンタ KFC ; 299 ; 562 ; 23.9 ; 20.4 ; 68.0 ; 1.2 ; 4.2 ; 1食=299 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; チョコレートムースケーキ ; けんたっきー ケンタ KFC ; 236 ; 765 ; 11.8 ; 47.4 ; 72.7 ; 1.7 ; 0.4 ; 1食=236 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 濃厚マッケンチーズグラタン ; けんたっきー ケンタ KFC ; 350 ; 476 ; 21.0 ; 21.4 ; 50.1 ; 3.2 ; 4.1 ; 1食=350 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 五穀味鶏 ローストレッグ ; けんたっきー ケンタ KFC ; 200 ; 412 ; 32.8 ; 27.7 ; 8.1 ; 0.0 ; 2.8 ; 1食=200 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 五穀味鶏 胸肉ロースト ; けんたっきー ケンタ KFC ; 291 ; 381 ; 46.9 ; 17.9 ; 11.0 ; 0.0 ; 4.1 ; 1食=291 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; ホワイトソース ; けんたっきー ケンタ KFC ; 15 ; 17 ; 0.5 ; 1.1 ; 1.2 ; 0.0 ; 0.1 ; 1食=15 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; チキンテンダー ; けんたっきー ケンタ KFC ; 39 ; 98 ; 6.3 ; 5.0 ; 6.8 ; 0.0 ; 0.8 ; 1食=39 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; バーベキューチキン ; けんたっきー ケンタ KFC ; 167 ; 326 ; 33.6 ; 15.9 ; 12.0 ; 1.3 ; 3.8 ; 1食=167 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; スモークチキン スタンダード ; けんたっきー ケンタ KFC ; 310 ; 707 ; 92.7 ; 37.2 ; 0.6 ; 0.0 ; 1.9 ; 1食=310 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; スモークチキン パストラミ ; けんたっきー ケンタ KFC ; 310 ; 719 ; 93.0 ; 37.5 ; 2.5 ; 0.0 ; 1.9 ; 1食=310 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 11スパイスチキン ; けんたっきー ケンタ KFC ; 38 ; 103 ; 6.7 ; 5.9 ; 5.9 ; 0.2 ; 0.8 ; 1食=38 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+ケンタッキー ; 辛口ローストレッグ ; けんたっきー ケンタ KFC ; 135 ; 270 ; 29.1 ; 16.4 ; 1.2 ; 0.3 ; 2.6 ; 1食=135 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
