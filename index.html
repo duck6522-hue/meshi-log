@@ -313,7 +313,7 @@ async function loadDB() {
     }
     // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
     const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 'b' ? `${x.shop}の公式サイトの栄養成分表示（${x.basis}あたり）を、100gあたりに換算した値です` : x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。${x.note ? x.note + '。' : ''}食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
-      kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, fibNA: x.fib == null, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
+      kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, fibNA: x.fib == null, saltNA: x.salt == null, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
     for (const fd of extra) map.set(fd.id, fd);
     list.unshift(...extra);
     DB = { map, list, source: j.source, official: j.foods.length, extra: extra.length };
@@ -342,7 +342,7 @@ const idOf = x => String(x && (x.foodId ?? x.id));
 const isServ = x => /^[sn]:/.test(idOf(x));
 // PFC が公表されていない店の料理（id が n: で始まる）。カロリーと食塩だけを持つ
 const noPFC = x => idOf(x).startsWith('n:');
-const per100 = fd => `${isServ(fd) ? '1食あたり' : '100gあたり'} ${kc(fd.kcal)}kcal・${noPFC(fd) ? `PFC公表なし・食塩${fmt(fd.salt)}g` : `P${fmt(fd.p)} F${fmt(fd.f)} C${fmt(fd.c)}`}`;
+const per100 = fd => `${isServ(fd) ? '1食あたり' : '100gあたり'} ${kc(fd.kcal)}kcal・${noPFC(fd) ? `PFC${fd.saltNA ? '・食塩' : ''}公表なし${fd.saltNA ? '' : `・食塩${fmt(fd.salt)}g`}` : `P${fmt(fd.p)} F${fmt(fd.f)} C${fmt(fd.c)}`}`;
 
 /* ---------- 目標 ---------- */
 function targets() {
@@ -541,7 +541,7 @@ function readAmount() {
 }
 function updateCalc() {
   const a = readAmount(), fd = sheetCtx.fd, k = a.grams / 100;
-  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${noPFC(fd) ? 'PFC公表なし' : pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
+  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${noPFC(fd) ? 'PFC公表なし' : pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fd.saltNA ? '公表なし' : fmt((fd.salt || 0) * k) + 'g'}</span>`;
 }
 acts.qty = el => {
   const inp = $('#sheetForm').elements.qty, a = readAmount(), stepSize = a.unit === 'g' ? 10 : 0.5;
@@ -1226,7 +1226,7 @@ function diagnose(day) {
   let cm = [...warn.slice(0, 4).map(x => ['warn', x]), ...tip.map(x => ['tip', x]), ...good.map(x => ['good', x])].slice(0, 5);
   if (good.length && !cm.some(c => c[0] === 'good')) cm[cm.length - 1] = ['good', good[0]];
   const np = list.filter(noPFC);
-  if (np.length) cm = [['tip', `「${np[0].name}」${np.length > 1 ? `など${np.length}品` : ''}はたんぱく質・脂質・炭水化物が公表されていないため、PFCの判定には入っていません（カロリーと食塩は入っています）。`], ...cm].slice(0, 5);
+  if (np.length) cm = [['tip', `「${np[0].name}」${np.length > 1 ? `など${np.length}品` : ''}はたんぱく質・脂質・炭水化物が公表されていないため、PFCの判定には入っていません（${np.some(e => (foodById(e.foodId) || {}).saltNA) ? 'カロリーは入っています。食塩も公表されていない品があり、その分は食塩に入っていません' : 'カロリーと食塩は入っています'}）。`], ...cm].slice(0, 5);
   return { head, done, okN, st, cm };
 }
 function diagCard(day) {

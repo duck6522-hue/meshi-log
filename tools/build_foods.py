@@ -117,7 +117,7 @@ for raw in (here / "chains.txt").read_text(encoding="utf-8").splitlines():
     unit = size if size != "-" else "1食"
     nopfc = pp == "-"  # PFC が公表されていない店（n: で始まる id にして、アプリで「公表なし」と表示する）
     extra.append({"id": f"{'n' if nopfc else 's'}:{shop}:{menu}:{size}", "n": name, "k": f"{shop} {kana}", "u": [[unit, 100]],
-                  "kcal": float(kcal), "p": 0.0 if nopfc else float(pp), "f": 0.0 if nopfc else float(ff), "c": 0.0 if nopfc else float(cc), "fib": fib, "salt": float(salt), "t": "s", "shop": shop, **({"note": note} if note else {})})
+                  "kcal": float(kcal), "p": 0.0 if nopfc else float(pp), "f": 0.0 if nopfc else float(ff), "c": 0.0 if nopfc else float(cc), "fib": fib, "salt": None if salt == "-" else float(salt), "t": "s", "shop": shop, **({"note": note} if note else {})})
 # ---- 市販のお菓子（メーカー公式の栄養成分表示。基準量あたりの値を100gあたりに換算）
 for raw in (here / "snacks.txt").read_text(encoding="utf-8").splitlines():
     if not raw.strip() or raw.startswith("#"):
