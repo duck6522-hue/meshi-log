@@ -1190,3 +1190,163 @@
 コカ・コーラ ; やかんの麦茶 from 爽健美茶 ; こかこーら コカコーラ じはんき 自販機 のみもの ドリンク そうけんびちゃ むぎちゃ やかん ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.coca-cola.com/jp/ja/brands/yakan
 コカ・コーラ ; やかんの麦茶 from 爽健美茶(ホット専用) ; こかこーら コカコーラ じはんき 自販機 のみもの ドリンク そうけんびちゃ むぎちゃ やかん ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.coca-cola.com/jp/ja/brands/yakan
 コカ・コーラ ; やかんの麦茶 濃い味 from 爽健美茶 ; こかこーら コカコーラ じはんき 自販機 のみもの ドリンク そうけんびちゃ むぎちゃ やかん こい ; 600 ; 0 ; 0 ; 0 ; 10.2 ; - ; 0.2 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://www.coca-cola.com/jp/ja/brands/yakan
+
+# アサヒ飲料の飲料。公式「アレルギー・原料・栄養成分一覧」（2026年11月20日に取得） https://www.asahiinryo.co.jp/products/list/nutrition/
+# 表示単位（100ml・1本など）あたりの値。ml は g と同じとみなす。幅のある表示は中央値。希釈タイプは希釈後の値
+アサヒ飲料 ; ワンダ モーニングアメリカーノ ブラック ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 0 ; 0 ; 0 ; 0.3 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ モーニングアメリカーノ ラテ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 32 ; 0.7 ; 0.5 ; 6.1 ; - ; 0.14 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ モーニングショット ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 34 ; 0.6 ; 0.4 ; 7.1 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ 金の微糖 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ びとう ; 100 ; 19 ; 0.6 ; 0.5 ; 3.1 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ ブラック ザ アロマ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ 特製カフェオレ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 39 ; 0.8 ; 0.7 ; 7.4 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ プレミアムゼロ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 11 ; 0.5 ; 0 ; 1.6 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ アイスマウンテン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 22 ; 0.5 ; 0.6 ; 3.7 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ ディープマウンテン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 20 ; 0.7 ; 0.5 ; 3.1 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ コクの微糖 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ びとう ; 100 ; 18 ; 0.5 ; 0.4 ; 3 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ 喫茶店のウインナーコーヒー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 36 ; 0.7 ; 0.7 ; 6.7 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ コクのブラック ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 0 ; 0 ; 0 ; 0.6 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ワンダ コクのカフェオレ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク わんだ ; 100 ; 27 ; 1.1 ; 0.8 ; 3.8 ; - ; 0.13 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ドトール カフェ・オ・レ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 37 ; 0.6 ; 0.5 ; 7.4 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ドトール ブラック ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.05 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢サイダー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 42 ; 0 ; 0 ; 11 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢サイダーZERO ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢サイダー W ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 485 ; 0 ; 0 ; 0 ; 7.25 ; - ; 0.19 ; 1本(485ml)=485,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢さわやかレモン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 28 ; 0 ; 0 ; 7 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢特濃オレンジスカッシュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 50 ; 0 ; 0 ; 12 ; - ; 0.2 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢特濃ピーチスカッシュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 52 ; 0 ; 0 ; 13 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢特濃グレープスカッシュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 53 ; 0 ; 0 ; 13 ; - ; 0.08 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢特濃アップルスカッシュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 53 ; 0 ; 0 ; 13 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢ウルトラストロングレモン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 38 ; 0 ; 0 ; 9.8 ; - ; 0.19 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢ハチレモ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 52 ; 0 ; 0 ; 13 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢爽快コーラ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 46 ; 0 ; 0 ; 12 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢実りの洋梨mix ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 41 ; 0 ; 0 ; 10 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢ブドウ糖ソーダ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 55 ; 0 ; 0 ; 14 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 三ツ矢ほっこりみかん ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク みつや みつやさいだー ; 100 ; 48 ; 0 ; 0 ; 12 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; green cola ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン タンサン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン タンサン レモン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン タンサン エクストラ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 490 ; 0 ; 0 ; 0 ; 7.45 ; - ; 0 ; 1本(490ml)=490,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン ジンジャエール ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん じんじゃーえーる じんじゃえーる からくち 辛口 ; 100 ; 37 ; 0 ; 0 ; 9.3 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン トニック ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 100 ; 38 ; 0 ; 0 ; 9.4 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン ドライジンジャエール ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん じんじゃーえーる じんじゃえーる ; 100 ; 39 ; 0 ; 0 ; 9.5 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン タンサン マスカットスカッシュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 100 ; 0 ; 0 ; 0 ; 0.6 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン タンサン クラフトグレープ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ウィルキンソン タンサン グレフルスカッシュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うぃるきんそん ; 100 ; 0 ; 0 ; 0 ; 0.6 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 十六茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク じゅうろくちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 十六茶麦茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク じゅうろくちゃ むぎちゃ ; 100 ; 0 ; 0 ; 0 ; 0.3 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ ぎゅっと濃い十六茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク じゅうろくちゃ ; 660 ; 24 ; 0 ; 0 ; 8.7 ; - ; 0.14 ; 1本(660ml)=660,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 十六茶ルイボスブレンド ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク じゅうろくちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ ほっと十六茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク じゅうろくちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 台湾烏龍茶〜四季春茶〜 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うーろん ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 颯 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ旨みの日本茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 和の紅茶 無糖アイスティー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク こうちゃ むとう ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 和の紅茶 ストレートティー〜国産はちみつ仕立て〜 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク こうちゃ ; 100 ; 14 ; 0 ; 0 ; 3.5 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 和の紅茶 ミルクティー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク こうちゃ ; 100 ; 30 ; 0.7 ; 0.2 ; 6.3 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 六条麦茶 ラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ろくじょうむぎちゃ むぎちゃ むぎちゃ ; 100 ; 0 ; 0 ; 0 ; 0.4 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 緑茶ラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク りょくちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ ほうじ茶 ラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ ルイボスティーラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ ジャスミンティーラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 食事の脂にこの1杯。 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 食事の脂にこの1本。 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 食事の脂にこの1杯。緑茶ブレンド ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク りょくちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 食事の脂にこの1本。緑茶ブレンド ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク りょくちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 一級茶葉烏龍茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うーろん ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ 一級茶葉烏龍茶 ラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク うーろん ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; なだ万監修 ほうじ茶 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ ロイヤルミルクティー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 40 ; 0.8 ; 0.5 ; 8 ; - ; 0.075 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 富士山 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水天然水 六甲 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水富士山のバナジウム天然水 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.002 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水天然水 自販機用 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水天然水 長期保存水(防災備蓄用) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水天然水 ラベルレスボトル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 シンプルecoラベル(富士山) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 シンプルecoラベル(六甲) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 白湯 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 ピングレソルティ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 28 ; 0 ; 0 ; 7 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 ソルティグレフル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 100 ; 28 ; 0 ; 0 ; 7 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 レモン水 無糖 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず むとう てんねんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おいしい水 天然水 Ladyサポート ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク おいしいみず てんねんすい ; 200 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; 1本(200ml)=200,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R)睡眠・腸活ケア(希釈用)」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 200 ; 35 ; 0.3 ; 0 ; 8.4 ; - ; 0.23 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R)免疫サポート(希釈用)」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 200 ; 35 ; 0.3 ; 0 ; 8.4 ; - ; 0.24 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R) 睡眠・腸活ケア」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 200 ; 114 ; 1.9 ; 0 ; 26.6 ; - ; 0.18 ; 1本(200ml)=200,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R) 免疫サポート」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 200 ; 112 ; 1.8 ; 0 ; 26 ; - ; 0.19 ; 1本(200ml)=200,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R) 体脂肪ケア」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 200 ; 34 ; 1.4 ; 0 ; 7.2 ; - ; 0.1 ; 1本(200ml)=200,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R)ほっと免疫サポート&疲労感ケア」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 300 ; 70 ; 0.9 ; 0 ; 18 ; - ; 0.21 ; 1本(300ml)=300,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス(R)カラダクレンジング」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 500 ; 28 ; 1 ; 0 ; 6 ; - ; 0.17 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「ぐんぐんグルトα 快眠・快腸ケア」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 500 ; 114 ; 1.5 ; 0 ; 27 ; - ; 0.6 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アミールW ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 57 ; 1.5 ; 0 ; 13 ; - ; 0.09 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ドデカミン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク どでかみん ; 100 ; 19 ; 0 ; 0 ; 4.7 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ドデカミンストロング ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク どでかみん ; 100 ; 26 ; 0 ; 0 ; 6.3 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ドデカミンmini ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク どでかみん ; 100 ; 19 ; 0 ; 0 ; 4.7 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ドデカミンのゼロが好きだと叫びたい ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク どでかみん ; 100 ; 0 ; 0 ; 0 ; 0.8 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ スーパーH2O ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 12 ; 0 ; 0 ; 2.9 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; バヤリース オレンジ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 43 ; 0 ; 0 ; 11 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; バヤリース オレンジ リターナブルびん ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 52 ; 0 ; 0 ; 13 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; バヤリース アップル ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 50 ; 0 ; 0 ; 13 ; - ; 0.05 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; バヤリース さらさら毎日おいしくトマト ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 23 ; 0.7 ; 0 ; 5.1 ; - ; 0.16 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; バヤリース すっきり1日分のマルチビタミン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 350 ; 140 ; 0.7 ; 0.3 ; 34 ; - ; 0.1 ; 1本(350g)=350,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ほっとゆずめぐりPlus ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 480 ; 56 ; 0 ; 0 ; 14 ; - ; 0.4 ; 1本(480ml)=480,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s グレープ100 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 56 ; 0.4 ; 0 ; 14 ; - ; 0.025 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s ピンクグレープフルーツ100 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 41 ; 0.4 ; 0 ; 9.9 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s マスカットブレンド100 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 59 ; 0 ; 0 ; 15 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s ピーチ100 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 50 ; 0.3 ; 0 ; 12 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s グレープ50 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 25 ; 0 ; 0 ; 6.2 ; - ; 0.05 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s FRUIT WATER LEMON ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 17 ; 0 ; 0 ; 4.2 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s 飲む果実 1房分のぶどう ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 49 ; 0 ; 0 ; 12 ; - ; 0.08 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s スパークリング白 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 48 ; 0 ; 0 ; 12 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’s スパークリングロゼ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 51 ; 0 ; 0 ; 13 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ほっとレモン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 41 ; 0 ; 0 ; 10 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース オレンジ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 49 ; 0 ; 0 ; 12 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース 南国グァバ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 47 ; 0 ; 0 ; 12 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース 南国マンゴー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 51 ; 0 ; 0 ; 13 ; - ; 0 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース 石垣島パイン ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 50 ; 0 ; 0 ; 13 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース シークヮサー入り四季柑100% ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 34 ; 0 ; 0.5 ; 7.8 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース ソルティシークヮサー ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 50 ; 0 ; 0 ; 13 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 沖縄バヤリース 島レモネード ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ばやりーす ; 100 ; 49 ; 0 ; 0 ; 12 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; バンホーテン ココア ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 50 ; 0.7 ; 0.8 ; 10 ; - ; 0.08 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ おしるこ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 90 ; 1.9 ; 0 ; 20 ; - ; 0.21 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; アサヒ コクうま コーンポタージュ ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 47 ; 0.7 ; 1 ; 8.8 ; - ; 0.8 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; クラフトシロップ すきっとみかん(希釈用)(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 50 ; 0 ; 0 ; 13 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; クラフトシロップ ほっとレモン(希釈用)(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 50 ; 0 ; 0 ; 13 ; - ; 0.09 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; クラフトシロップ ほっとゆず・かりん(希釈用)(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 50 ; 0 ; 0 ; 13 ; - ; 0.09 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス®」プラスチックボトル470ml(ギフト用)(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 46 ; 0.4 ; 0 ; 11 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス®北海道」プラスチックボトル470ml(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 50 ; 0.4 ; 0 ; 12 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス®免疫サポート」 缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 190 ; 102 ; 1.7 ; 0 ; 24 ; - ; 0.18 ; 1本(190g)=190,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「PLUSカルピス®睡眠・腸活ケア」 缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 190 ; 102 ; 1.7 ; 0 ; 24 ; - ; 0.17 ; 1本(190g)=190,コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「すこやかカルピス®」缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 48 ; 0.4 ; 0 ; 12 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「すこやかカルピス®」白桃 缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 46 ; 0.3 ; 0 ; 11 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「すこやかカルピス®」メロン缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 51 ; 0.4 ; 0 ; 12 ; - ; 0.08 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「すこやかカルピス®」いちご缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 45 ; 0.4 ; 0 ; 11 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「すこやかカルピス®」マンゴー缶190g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 46 ; 0.3 ; 0 ; 11 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sグレープ100 缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 52 ; 0 ; 0 ; 13 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sマンゴーブレンド100 缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 48 ; 0 ; 0 ; 12 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sアップル100 缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 46 ; 0 ; 0 ; 11 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sコンコードグレープ100 缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 54 ; 0.4 ; 0 ; 13 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sホワイトグレープ&レモン100 缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 51 ; 0 ; 0 ; 13 ; - ; 0.02 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sピーチブレンド100缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 49 ; 0 ; 0 ; 12 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; Welch’sパインアップルブレンド100 缶160g ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 48 ; 0 ; 0 ; 12 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス(R)」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 46 ; 0.4 ; 0 ; 11 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス(R)糖質60%オフ」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 16 ; 0.4 ; 0 ; 3.8 ; - ; 0.055 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス(R)完熟巨峰」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 49 ; 0.3 ; 0 ; 12 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス(R)完熟白桃」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 53 ; 0.3 ; 0 ; 13 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス(R)甘熟いちご」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 53 ; 0.3 ; 0 ; 13 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピス(R)和梨」(希釈後) ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 49 ; 0.3 ; 0 ; 12 ; - ; 0.015 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスウォーター(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 46 ; 0.3 ; 0 ; 11 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスウォーター(R)糖類ゼロ」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 0 ; 0.1 ; 0 ; 1.1 ; - ; 0.11 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスソーダ(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 52 ; 0.2 ; 0 ; 13 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスソーダ(R)こだわり素材のメロンクリームソーダ」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 50 ; 0.2 ; 0 ; 12 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスソーダ(R)メロンクリームソーダ」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 31 ; 0.2 ; 0 ; 7.6 ; - ; 0.06 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスソーダ(R)オレンジ」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 48 ; 0.2 ; 0 ; 12 ; - ; 0.03 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスソーダ(R)エメラルドマスカット」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 30 ; 0.3 ; 0 ; 7.2 ; - ; 0.05 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「CALPIS(R)濃いめ」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 61 ; 0.5 ; 0 ; 15 ; - ; 0.12 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「カルピスソーダ(R)冬泡」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 34 ; 0.4 ; 0 ; 8 ; - ; 0.04 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「ぶどう&カルピス(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 26 ; 0.2 ; 0 ; 6.2 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「まるしぼりりんご&カルピス(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 44 ; 0.3 ; 0 ; 11 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「豆乳生まれのカルピス(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 45 ; 0.1 ; 0 ; 11 ; - ; 0.12 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「完熟ももとカルピス(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 60 ; 0.5 ; 0 ; 14 ; - ; 0.12 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; 「バニラヨーグルト&カルピス(R)」 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク かるぴす ; 100 ; 64 ; 0.5 ; 0 ; 16 ; - ; 0.07 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
+アサヒ飲料 ; ぐんぐんグルト3種の乳酸菌 ; あさひ アサヒ飲料 じはんき 自販機 のみもの ドリンク ; 100 ; 23 ; 0.3 ; 0 ; 5.2 ; - ; 0.1 ; コップ1杯(200ml)=200 ; https://www.asahiinryo.co.jp/products/list/nutrition/
