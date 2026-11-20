@@ -233,7 +233,7 @@ const MEALS = [['breakfast', '朝食'], ['lunch', '昼食'], ['dinner', '夕食'
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-const norm = s => String(s).normalize('NFKC').toLowerCase().replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60)).replace(/\s+/g, '');
+const norm = s => String(s).normalize('NFKC').toLowerCase().replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60)).replace(/[\s・]+/g, '');
 const pad = n => String(n).padStart(2, '0');
 const dayStr = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 const dayDate = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
@@ -469,10 +469,11 @@ function searchFoods(q) {
     const alts = fd.alts || [], shopN = fd.shop ? norm(fd.shop) : '';
     const isShopTok = q => shopN && (shopN.includes(q) || alts.slice(0, 3).includes(q));
     const named = shopN && toks.some(isShopTok), rest = named ? toks.filter(q => !isShopTok(q)) : [toks[0]];
-    const score = name => { const n = norm(name), base = n.replace(/[（(].*/, '');
-      return rest.length ? Math.min(...rest.map(q => n === q || base === q ? 0 : alts.includes(q) ? 1 : n.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : n.includes(q) ? 4 : 5)) : 2; };
+    const score = (name, qs = rest) => { const n = norm(name), base = n.replace(/[（(].*/, '');
+      return qs.length ? Math.min(...qs.map(q => n === q || base === q ? 0 : alts.includes(q) ? 1 : n.startsWith(q) ? 2 : alts.some(a => a.startsWith(q)) ? 3 : n.includes(q) ? 4 : 5)) : 2; };
     // 店名を入れていなくても、店名を除いた料理名でも比べる（そのときは一般の料理より少しだけ後ろに）
-    const fit = named ? score(fd.name.replace(fd.shop, '')) : Math.min(score(fd.name), shopN ? score(fd.name.replace(fd.shop, '')) + 1 : 9);
+    // 店名・メーカー名だけで探したときも、その名前の商品（「コカ・コーラ」など）がぴったりなら先頭に
+    const fit = named ? (rest.length ? score(fd.name.replace(fd.shop, '')) : Math.min(2, score(fd.name, toks))) : Math.min(score(fd.name), shopN ? score(fd.name.replace(fd.shop, '')) + 1 : 9);
     hits.push([(fd.custom ? 0 : fd.common ? 1 : 2) * 10 + fit, fd.name.length, fd]);
   }
   return hits.sort((a, b) => a[0] - b[0] || (a[2].shop && a[2].shop === b[2].shop ? a[2].ord - b[2].ord : a[1] - b[1])).slice(0, 800).map(h => h[2]);
@@ -540,7 +541,7 @@ function readAmount() {
 }
 function updateCalc() {
   const a = readAmount(), fd = sheetCtx.fd, k = a.grams / 100;
-  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${noPFC(fd) ? 'PFC公表なし' : pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${isServ(fd) || fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
+  $('#calc').innerHTML = `<b>${kc(fd.kcal * k)}<small>kcal</small></b><span>${isServ(fd) ? `${esc(a.unit)}×${fmt(a.qty)}` : `${fmt(a.grams)}g`}・${noPFC(fd) ? 'PFC公表なし' : pfcText({ p: fd.p * k, f: fd.f * k, c: fd.c * k })}<br>食物繊維 ${fd.fibNA ? '表示なし' : fmt((fd.fib || 0) * k) + 'g'}・食塩 ${fmt((fd.salt || 0) * k)}g</span>`;
 }
 acts.qty = el => {
   const inp = $('#sheetForm').elements.qty, a = readAmount(), stepSize = a.unit === 'g' ? 10 : 0.5;
