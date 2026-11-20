@@ -913,3 +913,141 @@
 ケンタッキー ; スモークチキン パストラミ ; けんたっきー ケンタ KFC ; 310 ; 719 ; 93.0 ; 37.5 ; 2.5 ; 0.0 ; 1.9 ; 1食=310 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
 ケンタッキー ; 11スパイスチキン ; けんたっきー ケンタ KFC ; 38 ; 103 ; 6.7 ; 5.9 ; 5.9 ; 0.2 ; 0.8 ; 1食=38 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
 ケンタッキー ; 辛口ローストレッグ ; けんたっきー ケンタ KFC ; 135 ; 270 ; 29.1 ; 16.4 ; 1.2 ; 0.3 ; 2.6 ; 1食=135 ; https://www.kfc.co.jp/api/assets/food-info-nutrition
+
+# キリンビバレッジのソフトドリンク（自販機・店頭）。公式「原材料名・栄養成分等一覧（ソフトドリンク）」（2026年11月20日に取得）。表示単位（100ml・1本など）あたりの値のまま持つ。ml は g と同じとみなす。「0～1」のような幅のある表示は中央値
+キリン ; 午後の紅茶 ストレートティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 15 ; 0 ; 0 ; 3.8 ; - ; 0.02 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 ミルクティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 35 ; 0.5 ; 0.5 ; 7.1 ; - ; 0.07 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 レモンティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 27 ; 0 ; 0 ; 6.8 ; - ; 0.02 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 おいしい無糖 香るレモン ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご むとう かおる ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 おいしい無糖 ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご むとう ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.01 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 おいしい無糖 ミルクティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご むとう ; 100 ; 10 ; 0.6 ; 0.6 ; 0.6 ; - ; 0.08 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 リフレッシュオレンジティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 29 ; 0 ; 0 ; 7.3 ; - ; 0.02 ; 1本(430ml)=430,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 芳醇ロイヤルミルクティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ほうじゅん ; 100 ; 40 ; 0.6 ; 0.6 ; 8 ; - ; 0.07 ; 1缶(280g)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 TEA SELECTION アールグレイアイスティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 TEA SELECTION ロイヤルブレンドティーラテ ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 35 ; 0.5 ; 0.5 ; 7.1 ; - ; 0.07 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 FRUITS ＆ ICE TEA オレンジとグレープフルーツ ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 33 ; 0 ; 0 ; 8.3 ; - ; 0.02 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 FRUITS ＆ ICE TEA 白ぶどうとレモン ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご しろぶどう ; 100 ; 34 ; 0 ; 0 ; 8.5 ; - ; 0.02 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 TEA LATTE with ESPRESSO ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 31 ; 0.5 ; 0.5 ; 6 ; - ; 0.08 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 TEA LATTE CREAM & MILK ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 28 ; 0.5 ; 0.6 ; 5.2 ; - ; 0.1 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 アイスミルクティー デ モーニング（ローソン限定） ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 31 ; 0.5 ; 0.5 ; 6.1 ; - ; 0.09 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 ストレートティー ホット ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 15 ; 0 ; 0 ; 3.8 ; - ; 0.02 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 ミルクティー ホット ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 35 ; 0.6 ; 0.5 ; 6.9 ; - ; 0.09 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 レモンティー ホット ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 27 ; 0 ; 0 ; 6.8 ; - ; 0.02 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 おいしい無糖 ホット ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご むとう ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 チャイティーラテ ホット ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 38 ; 0.5 ; 0.5 ; 7.8 ; - ; 0.09 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 ゆず柑橘ティー ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご かんきつ ; 100 ; 25 ; 0 ; 0 ; 6.3 ; - ; 0.02 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 ミルクティー ホット＆コールド ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 35 ; 0.6 ; 0.5 ; 6.9 ; - ; 0.09 ; 1本(280ml)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 レモンティー ホット＆コールド ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 27 ; 0 ; 0 ; 6.8 ; - ; 0.02 ; 1本(280ml)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 チャイティーラテ ホット＆コールド ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご ; 100 ; 37 ; 0.6 ; 0.5 ; 7.5 ; - ; 0.09 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 午後の紅茶 40TH BLEND フルーツ＆シナモン香るミルクティー（期間限定） ; きりん じはんき 自販機 のみもの ドリンク ごごのこうちゃ ごごてぃー ごご かおる ; 100 ; 35 ; 0.5 ; 0.5 ; 7 ; - ; 0.07 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 香ばし麦茶（自動販売機専用） ; きりん じはんき 自販機 のみもの ドリンク むぎちゃ こうばし ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.025 ; 1本(555ml)=555,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; さわやか香ばし麦茶 ; きりん じはんき 自販機 のみもの ドリンク むぎちゃ こうばし ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.025 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 ; きりん じはんき 自販機 のみもの ドリンク なまちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; 1本(525ml)=525,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 ホット＆コールド ; きりん じはんき 自販機 のみもの ドリンク なまちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.03 ; 1本(280ml)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 熟成 ; きりん じはんき 自販機 のみもの ドリンク なまちゃ じゅくせい ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.04 ; 1本(525ml)=525,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 ほうじ煎茶 ; きりん じはんき 自販機 のみもの ドリンク なまちゃ せんちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; 1本(525ml)=525,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 ほうじ煎茶 ホット＆コールド ; きりん じはんき 自販機 のみもの ドリンク なまちゃ せんちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.02 ; 1本(280ml)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 カフェインフリー ; きりん じはんき 自販機 のみもの ドリンク なまちゃ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.05 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 生茶 からだ晴れ茶 ; きりん じはんき 自販機 のみもの ドリンク なまちゃ はれちゃ ; 525 ; 0 ; 0 ; 0 ; 0 ; - ; 0.16 ; 1本(525ml)=525,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリン×ファンケル カロリミット ブレンド茶 ; きりん じはんき 自販機 のみもの ドリンク ぶれんどちゃ ; 600 ; 14 ; 0 ; 0 ; 8.4 ; 6.6 ; 0.18 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ヘルシア うまみ緑茶 ; きりん じはんき 自販機 のみもの ドリンク りょくちゃ ; 500 ; 12 ; 0 ; 0 ; 3 ; - ; 0.13 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ヘルシア 緑茶 ; きりん じはんき 自販機 のみもの ドリンク りょくちゃ ; 350 ; 14 ; 0 ; 0 ; 3.9 ; - ; 0.1 ; 1本(350ml)=350,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ワンデイ ブラック ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0.6 ; - ; 0.01 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ワンデイ ラテ微糖 ; きりん じはんき 自販機 のみもの ドリンク びとう ; 100 ; 19 ; 0.7 ; 0.5 ; 2.9 ; - ; 0.11 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ワンデイ 甘くないラテ〈砂糖不使用〉 ; きりん じはんき 自販機 のみもの ドリンク あまくない ; 100 ; 16 ; 0.6 ; 0.5 ; 2.2 ; - ; 0.09 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 挽きたて微糖 ; きりん じはんき 自販機 のみもの ドリンク びとう ひきたて ; 100 ; 15 ; 0.5 ; 0.5 ; 2.1 ; - ; 0.07 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ブラック ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.04 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 直火ブレンド ; きりん じはんき 自販機 のみもの ドリンク じかび ; 100 ; 34 ; 0.8 ; 0.5 ; 6.5 ; - ; 0.13 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 冴えわたるキリマン ; きりん じはんき 自販機 のみもの ドリンク さえわたる ; 100 ; 28 ; 0.7 ; 0.3 ; 5.5 ; - ; 0.09 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア エクストリームブレンド ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 30 ; 0.7 ; 0.4 ; 5.8 ; - ; 0.09 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 贅沢デミタス（自動販売機専用） ; きりん じはんき 自販機 のみもの ドリンク ぜいたく ; 100 ; 32 ; 0.8 ; 0.5 ; 6 ; - ; 0.14 ; 1缶(165g)=165 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 贅沢カフェオレ ; きりん じはんき 自販機 のみもの ドリンク ぜいたく ; 100 ; 39 ; 0.7 ; 0.8 ; 7.2 ; - ; 0.11 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア カフェオレ（イオンディライト限定） ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 42 ; 0.8 ; 0.8 ; 8 ; - ; 0.09 ; 1缶(165g)=165 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア コクと香りの挽きたて微糖 ; きりん じはんき 自販機 のみもの ドリンク びとう ひきたて ; 100 ; 13 ; 0.5 ; 0 ; 2.1 ; - ; 0.11 ; 1缶(260g)=260,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ブラック 目覚めの深煎り ; きりん じはんき 自販機 のみもの ドリンク ふかいり めざめ ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.04 ; 1缶(260g)=260,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 満たされる ブラジルブレンド 微糖 ; きりん じはんき 自販機 のみもの ドリンク びとう みたされる ; 100 ; 17 ; 0.5 ; 0.5 ; 2.6 ; - ; 0.1 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 北海道限定ミルクテイスト ; きりん じはんき 自販機 のみもの ドリンク ほっかいどう ; 100 ; 45 ; 0.8 ; 0.9 ; 8.5 ; - ; 0.094 ; 1缶(245g)=245,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア 関西限定 香ばしミルクコーヒー ; きりん じはんき 自販機 のみもの ドリンク かんさい こうばし ; 100 ; 41 ; 0.8 ; 0.7 ; 7.9 ; - ; 0.09 ; 1缶(245g)=245,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ゴールドラッシュ 微糖 ; きりん じはんき 自販機 のみもの ドリンク びとう ; 100 ; 17 ; 0.7 ; 0.6 ; 2.2 ; - ; 0.12 ; 1本(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ゴールドラッシュ ブラック ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0.5 ; - ; 0.04 ; 1本(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ファイア ゴールドラッシュ カフェオレ ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 42 ; 0.9 ; 0.9 ; 7.5 ; - ; 0.12 ; 1本(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 Theカフェオレ ; きりん じはんき 自販機 のみもの ドリンク こいわい ; 100 ; 39 ; 0.7 ; 0.8 ; 7.3 ; - ; 0.12 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 ミルクとコーヒー ; きりん じはんき 自販機 のみもの ドリンク こいわい ; 100 ; 40 ; 0.8 ; 0.8 ; 7.3 ; - ; 0.11 ; 1缶(280g)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 Theカフェオレ ホット ; きりん じはんき 自販機 のみもの ドリンク こいわい ; 100 ; 33 ; 0.6 ; 0.5 ; 6.5 ; - ; 0.11 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 甘さをおさえたスポーツドリンク（CGCグループ限定） ; きりん じはんき 自販機 のみもの ドリンク あまさ ; 100 ; 13 ; 0 ; 0 ; 3.2 ; - ; 0.1 ; 1本(555ml)=555,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリン×ファンケル アミノサプリ プラス ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 16 ; 0 ; 0 ; 4 ; - ; 0.1 ; 1本(555ml)=555,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; KIRIN LOVES SPORTS (キリン ラブズ スポーツ） ; きりん じはんき 自販機 のみもの ドリンク らぶず らぶず ; 100 ; 14 ; 0 ; 0 ; 3.4 ; - ; 0.13 ; 1本(555ml)=555,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリンガラナ ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 44 ; 0 ; 0 ; 11 ; - ; 0 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; サプリプラス グレフルスカッシュ ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 16 ; 0 ; 0 ; 4.1 ; - ; 0.06 ; 1本(480ml)=480,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 力水 ; きりん じはんき 自販機 のみもの ドリンク りきすい ; 100 ; 48 ; 0 ; 0 ; 12 ; - ; 0.02 ; 1缶(300ml)=300,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリン×ファンケル カロリミット アップルスパークリング ; きりん じはんき 自販機 のみもの ドリンク ; 350 ; 0 ; 0 ; 0 ; 8.1 ; 6.3 ; 0.14 ; 1缶(350ml)=350,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリン×ファンケル カロリミット アップルスパークリング リフレッシュ ; きりん じはんき 自販機 のみもの ドリンク ; 500 ; 26 ; 0 ; 0 ; 11 ; 6 ; 0.18 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ 超刺激クリアグレープフルーツ ; きりん じはんき 自販機 のみもの ドリンク ちょうしげき ; 100 ; 36 ; 0 ; 0 ; 9 ; - ; 0.09 ; 1本(480ml)=480,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ ライチ ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 40 ; 0 ; 0 ; 10 ; - ; 0.05 ; 1本(480ml)=480,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ コーラ ; きりん じはんき 自販機 のみもの ドリンク ; 480 ; 0 ; 0 ; 0 ; 6.7 ; 5.4 ; 0 ; 1本(480ml)=480,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ プラス レモンスカッシュ ; きりん じはんき 自販機 のみもの ドリンク ; 480 ; 0 ; 0 ; 0 ; 7.1 ; 5.4 ; 0.23 ; 1本(480ml)=480,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ ブラック ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 44 ; 0 ; 0 ; 11 ; - ; 0 ; 1缶(350ml)=350,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ アルギニンＶ パワフルエナジー ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 52 ; 0 ; 0 ; 13 ; - ; 0.05 ; 1缶(350ml)=350,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; メッツ ジ・エナジー ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 52 ; 0 ; 0 ; 13 ; - ; 0.19 ; 1缶(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ヨサソーダ（インターネット通販限定） ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; 1缶(190ml)=190 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリンレモン ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 33 ; 0 ; 0 ; 8.3 ; - ; 0.06 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリンレモン 炭酸水 ; きりん じはんき 自販機 のみもの ドリンク たんさんすい ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.01 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 世界のKitchenから ソルティライチ ; きりん じはんき 自販機 のみもの ドリンク せかいの ; 100 ; 34 ; 0 ; 0 ; 8.4 ; - ; 0.11 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 世界のKitchenから ソルティライチベース（5倍希釈後） ; きりん じはんき 自販機 のみもの ドリンク せかいの ; 100 ; 34 ; 0 ; 0 ; 8.6 ; - ; 0.11 ; コップ1杯(希釈後200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 純水りんご ; きりん じはんき 自販機 のみもの ドリンク こいわい じゅんすい ; 100 ; 44 ; 0 ; 0 ; 11 ; - ; 0.04 ; 1本(430ml)=430,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 純水ぶどう ; きりん じはんき 自販機 のみもの ドリンク こいわい じゅんすい ; 100 ; 40 ; 0 ; 0 ; 10 ; - ; 0.07 ; 1本(430ml)=430,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 純水みかん ; きりん じはんき 自販機 のみもの ドリンク こいわい じゅんすい ; 100 ; 44 ; 0 ; 0 ; 11 ; - ; 0.03 ; 1本(430ml)=430,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ オレンジ（330ml） ; きりん じはんき 自販機 のみもの ドリンク ; 330 ; 172 ; 3 ; 0 ; 40 ; - ; 0.245 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ オレンジ（250ml） ; きりん じはんき 自販機 のみもの ドリンク ; 250 ; 129 ; 2.3 ; 0 ; 30 ; - ; 0.01 ; 1本(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ リフレッシュフルーツ オレンジ＆ピンクグレープフルーツ ; きりん じはんき 自販機 のみもの ドリンク ; 330 ; 144 ; 0 ; 0 ; 36 ; - ; 0.21 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ マルチビタミン（330ml） ; きりん じはんき 自販機 のみもの ドリンク ; 330 ; 132 ; 0 ; 0 ; 33 ; - ; 0.04 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ マルチビタミン（280ml） ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 44 ; 0 ; 0 ; 11 ; - ; 0.01 ; 1本(280ml)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ 鉄分 ; きりん じはんき 自販機 のみもの ドリンク てつぶん ; 330 ; 160 ; 0 ; 0 ; 40 ; - ; 0.02 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ マルチミネラル ; きりん じはんき 自販機 のみもの ドリンク ; 330 ; 172 ; 0 ; 0 ; 43 ; - ; 0.41 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ 食物繊維 ; きりん じはんき 自販機 のみもの ドリンク しょくもつせんい ; 330 ; 172 ; 0 ; 0 ; 46 ; 6 ; 0.11 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ FRUIT ＆ PROTEIN アップル＆パイン ; きりん じはんき 自販機 のみもの ドリンク ; 330 ; 144 ; 13 ; 0 ; 23 ; - ; 0.275 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ エッセンシャルズ FRUIT ＆ PROTEIN マンゴー＆白ぶどう ; きりん じはんき 自販機 のみもの ドリンク しろぶどう ; 330 ; 152 ; 13 ; 0 ; 25 ; - ; 0.12 ; 1本(330ml)=330,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ まるごと果実感 オレンジ ; きりん じはんき 自販機 のみもの ドリンク かじつ ; 400 ; 190 ; 3.6 ; 0 ; 44 ; - ; 0.09 ; コップ2杯(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ まるごと果実感 グレープフルーツ ; きりん じはんき 自販機 のみもの ドリンク かじつ ; 100 ; 46 ; 0.6 ; 0 ; 11 ; - ; 0 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ まるごと果実感 アップル ; きりん じはんき 自販機 のみもの ドリンク かじつ ; 100 ; 56 ; 0 ; 0 ; 14 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100% まるごと果実感 グレープ ; きりん じはんき 自販機 のみもの ドリンク かじつ ; 100 ; 56 ; 0 ; 0 ; 14 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ まるごと果実感 マンゴーブレンド ; きりん じはんき 自販機 のみもの ドリンク かじつ ; 100 ; 60 ; 0 ; 0 ; 15 ; - ; 0.01 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ グレープフルーツ ; きりん じはんき 自販機 のみもの ドリンク ; 250 ; 118 ; 1.5 ; 0 ; 28 ; - ; 0.01 ; 1本(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ アップル ; きりん じはんき 自販機 のみもの ドリンク ; 250 ; 140 ; 0 ; 0 ; 35 ; - ; 0.02 ; 1本(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ グレープ ; きりん じはんき 自販機 のみもの ドリンク ; 250 ; 132 ; 0 ; 0 ; 33 ; - ; 0.01 ; 1本(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トロピカーナ 100％ マンゴーブレンド ; きりん じはんき 自販機 のみもの ドリンク ; 250 ; 152 ; 0 ; 0 ; 38 ; - ; 0.02 ; 1本(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; The YELLOW ; きりん じはんき 自販機 のみもの ドリンク ; 115 ; 58 ; 0.5 ; 0 ; 14 ; - ; 0.16 ; 1袋(115g)=115 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; The GREEN ; きりん じはんき 自販機 のみもの ドリンク ; 115 ; 59 ; 0.7 ; 0 ; 14 ; - ; 0.225 ; 1袋(115g)=115 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; The RED ; きりん じはんき 自販機 のみもの ドリンク ; 115 ; 63 ; 0.7 ; 0 ; 15 ; - ; 0.24 ; 1袋(115g)=115 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トマトジュース 濃縮トマト還元 ; きりん じはんき 自販機 のみもの ドリンク のうしゅく かんげん ; 190 ; 37 ; 1.3 ; 0 ; 8 ; - ; 0.6 ; 1缶(190g)=190 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; トマトジュース ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 19 ; 0.7 ; 0 ; 4 ; - ; 0.43 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 毎日果菜 (まいにちください） ; きりん じはんき 自販機 のみもの ドリンク まいにちかさい ; 100 ; 58 ; 0.5 ; 0 ; 14 ; - ; 0.02 ; 1本(250ml)=250,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 無添加野菜 ４８種の濃い野菜１００％ ; きりん じはんき 自販機 のみもの ドリンク やさい むてんか こい ; 200 ; 48 ; 1.7 ; 0 ; 11 ; 1.4 ; 0.12 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 無添加野菜 31種の野菜100％ ; きりん じはんき 自販機 のみもの ドリンク こいわい やさい むてんか ; 100 ; 24 ; 0.9 ; 0 ; 5.3 ; 0.75 ; 0.205 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 無添加野菜 32種の野菜と果実 ; きりん じはんき 自販機 のみもの ドリンク こいわい やさい かじつ むてんか ; 100 ; 41 ; 0.5 ; 0 ; 10 ; 0.3 ; 0.41 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 自然が磨いた天然水 ; きりん じはんき 自販機 のみもの ドリンク てんねんすい みず しぜんがみがいた ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.002 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 信州のおいしい水（CGCグループ限定） ; きりん じはんき 自販機 のみもの ドリンク おいしいみず しんしゅう ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.001 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; キリンのやわらか天然水（インターネット通販限定） ; きりん じはんき 自販機 のみもの ドリンク てんねんすい みず ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.001 ; 1本(310ml)=310,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 富士のおいしい水（CGCグループ限定） ; きりん じはんき 自販機 のみもの ドリンク おいしいみず ふじ ; 100 ; 0 ; 0 ; 0 ; 0 ; - ; 0.002 ; コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 3つ星ローソン 天然水（ローソン限定） ; きりん じはんき 自販機 のみもの ドリンク てんねんすい みず ; 100 ; 0 ; 0 ; 0 ; 0 ; 0 ; 0.001 ; 1本(600ml)=600,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; サプリプラス さっぱりトマト ; きりん じはんき 自販機 のみもの ドリンク ; 350 ; 75 ; 0.7 ; 0 ; 18 ; - ; 0.33 ; 1缶(350g)=350,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 世界のKitchenから 小さなごちそう コーンポタージュ ; きりん じはんき 自販機 のみもの ドリンク ちいさなごちそう せかいの ; 100 ; 43 ; 1.1 ; 1 ; 7.4 ; - ; 0.56 ; 1缶(185g)=185 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; つよいぞ！ムテキッズ ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 46 ; 0.5 ; 0 ; 11 ; - ; 0.08 ; 1本(100ml)=100 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; ホットレモン ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 39 ; 0 ; 0 ; 9.8 ; - ; 0.07 ; 1本(280ml)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 ミルクとココア ; きりん じはんき 自販機 のみもの ドリンク こいわい ; 100 ; 46 ; 0.9 ; 0.7 ; 9 ; - ; 0.08 ; 1缶(280g)=280,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 小岩井 Theココア ホット ; きりん じはんき 自販機 のみもの ドリンク こいわい ; 100 ; 43 ; 0.8 ; 0.5 ; 8.9 ; - ; 0.08 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 貢茶（ゴンチャ） 黒糖烏龍ミルクティー（セブン‐イレブン限定） ; きりん じはんき 自販機 のみもの ドリンク うーろん こくとう ; 100 ; 40 ; 0.6 ; 0.7 ; 7.7 ; - ; 0.1 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 貢茶（ゴンチャ） 阿里山烏龍マンゴーティーエード（セブン‐イレブン限定） ; きりん じはんき 自販機 のみもの ドリンク うーろん ありさん ; 100 ; 39 ; 0 ; 0 ; 9.7 ; - ; 0.01 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 貢茶（ゴンチャ） ジャスミンミルクティー（期間限定）（セブン‐イレブン限定） ; きりん じはんき 自販機 のみもの ドリンク ; 100 ; 36 ; 0.6 ; 0.7 ; 6.7 ; - ; 0.09 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; 貢茶（ゴンチャ） 阿里山烏龍 グレープティーエード（期間限定）（セブン‐イレブン限定） ; きりん じはんき 自販機 のみもの ドリンク うーろん ありさん ; 100 ; 35 ; 0 ; 0 ; 8.7 ; - ; 0.01 ; 1本(400ml)=400,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; イミューズ ヨーグルトテイスト ; きりん じはんき 自販機 のみもの ドリンク ; 500 ; 200 ; 0 ; 0 ; 50 ; - ; 0.3 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; イミューズ フルーツリフレッシュ アップルミックス ; きりん じはんき 自販機 のみもの ドリンク ; 500 ; 72 ; 0 ; 0 ; 18 ; - ; 0.6 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; イミューズ フルーツリフレッシュ グレープフルーツミックス ; きりん じはんき 自販機 のみもの ドリンク ; 500 ; 64 ; 0 ; 0 ; 16 ; - ; 0.6 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; イミューズ オフ・ホワイト ヨーグルトテイスト ; きりん じはんき 自販機 のみもの ドリンク ; 500 ; 60 ; 0 ; 0 ; 15 ; - ; 0.3 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; イミューズ レモン ; きりん じはんき 自販機 のみもの ドリンク ; 500 ; 92 ; 0 ; 0 ; 23 ; - ; 0.3 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; イミューズ 免疫ケアウォーター ; きりん じはんき 自販機 のみもの ドリンク めんえきけあ ; 500 ; 0 ; 0 ; 0 ; 0 ; - ; 0 ; 1本(500ml)=500,コップ1杯(200ml)=200 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; おいしい免疫ケア ; きりん じはんき 自販機 のみもの ドリンク めんえきけあ ; 100 ; 47 ; 0.7 ; 0 ; 11 ; - ; 0.08 ; 1本(100ml)=100 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; おいしい免疫ケア カロリーオフ ; きりん じはんき 自販機 のみもの ドリンク めんえきけあ ; 100 ; 22 ; 0.6 ; 0 ; 4.8 ; - ; 0.08 ; 1本(100ml)=100 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; おいしい免疫ケア ＋ダブルビタミン ; きりん じはんき 自販機 のみもの ドリンク めんえきけあ ; 100 ; 46 ; 0.6 ; 0 ; 11 ; - ; 0.09 ; 1本(100ml)=100 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; おいしい免疫ケア 睡眠 ; きりん じはんき 自販機 のみもの ドリンク めんえきけあ すいみん ; 100 ; 46 ; 0.6 ; 0 ; 11 ; - ; 0.03 ; 1本(100ml)=100 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
+キリン ; おいしい免疫ケア セラミドプラス ; きりん じはんき 自販機 のみもの ドリンク めんえきけあ ; 100 ; 46 ; 0.6 ; 0 ; 11 ; - ; 0.09 ; 1本(100ml)=100 ; https://products.kirin.co.jp/softdrink/nutrition/softdrink/
