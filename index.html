@@ -325,7 +325,7 @@ async function loadDB() {
       fd.name = cm.n; fd.units = cm.u; fd.common = true; fd.key = norm(cm.n + cm.k + meat + fd.official); fd.alts = cm.k.split(/\s+/).map(norm);
     }
     // 成分表にない料理（材料から計算）と市販品（一般的な表示値）。どちらも目安
-    const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 'b' ? `${x.shop}の公式サイトの栄養成分表示（${x.basis}あたり）を、100gあたりに換算した値です` : x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。${x.note ? x.note + '。' : ''}食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
+    const extra = (j.extra || []).map((x, i) => ({ id: x.id, name: x.n, shop: x.shop || '', ord: i, official: x.t === 'b' ? (/^100g/.test(x.basis) ? `${x.shop}の公式サイトの栄養成分表示（100gあたり）の値です` : `${x.shop}の公式サイトの栄養成分表示（${x.basis}あたり）を、100gあたりに換算した値です`) : x.t === 's' ? `${x.shop}の公式の栄養成分（1食あたり）です。${x.note ? x.note + '。' : ''}食物繊維は公表されていないため 0 として計算します` : x.t === 'd' ? '成分表の食材を組み合わせたレシピから計算した目安です' : '市販品の一般的な栄養成分表示をもとにした目安です',
       kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, fibNA: x.fib == null, saltNA: x.salt == null, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
     for (const fd of extra) map.set(fd.id, fd);
     list.unshift(...extra);
@@ -553,7 +553,7 @@ function openScan(meal) {
     <p class="note" id="scanMsg" aria-live="polite">カメラを起動しています…</p>
     <div class="qrow"><input type="text" id="janIn" inputmode="numeric" autocomplete="off" placeholder="数字で入力（例：4514603010015）" aria-label="バーコードの数字">
       <button type="button" data-act="jan-go">探す</button></div>
-    <p class="note">メーカー公式のバーコード一覧がある飲料（アサヒ飲料・伊藤園）は、最初から登録済みです。見つからない商品は、一度食品を選ぶと次から読み取るだけで出ます。</p>`, { type: 'scan', meal }, true);
+    <p class="note">アサヒ飲料・伊藤園の飲料と、テーブルマーク・味の素冷凍食品の冷凍食品は、最初から登録済みです。見つからない商品は、一度食品を選ぶと次から読み取るだけで出ます。</p>`, { type: 'scan', meal }, true);
   startScan();
 }
 async function startScan() {
