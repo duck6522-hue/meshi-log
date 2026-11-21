@@ -105,6 +105,42 @@ for raw in (here / "extra.txt").read_text(encoding="utf-8").splitlines():
     label, kana, kcal, pp, ff, cc, fib, salt, us = [s.strip() for s in raw.split(";")]
     units = [[u.rsplit("=", 1)[0].strip(), float(u.rsplit("=", 1)[1])] for u in us.split(",") if u.strip()]
     extra.append({"id": "x:" + label, "n": label, "k": kana, "u": units, "kcal": float(kcal), "p": float(pp), "f": float(ff), "c": float(cc), "fib": float(fib), "salt": float(salt), "t": "x"})
+# ---- ジャンル別の「ざっくり外食」。料理（dishes.txt）や通称つき食品を組み合わせた目安
+# 材料は「名前=g」か「名前*個数」（その料理・食品の最初の単位を個数ぶん）で書く
+units_of = {cm["n"]: cm["u"] for cm in common}
+per_of = {}
+for e in extra:
+    per_of[e["n"]] = e
+    units_of.setdefault(e["n"], e["u"])
+genres_file = here / "genres.txt"
+for raw in (genres_file.read_text(encoding="utf-8").splitlines() if genres_file.exists() else []):
+    if not raw.strip() or raw.startswith("#"):
+        continue
+    label, kana, unit, recipe = [x.strip() for x in raw.split(";")]
+    tot = {"g": 0.0, "kcal": 0.0, "p": 0.0, "f": 0.0, "c": 0.0, "fib": 0.0, "salt": 0.0}
+    bad = False
+    for part in recipe.split(","):
+        part = part.strip()
+        if "*" in part:
+            ing, cnt = part.rsplit("*", 1); ing = ing.strip()
+            us = units_of.get(ing) or []
+            if not us:
+                problems.append(f"! {label}: 「{ing}」の単位がありません"); bad = True; continue
+            g = us[0][1] * float(cnt)
+        else:
+            ing, g = part.rsplit("=", 1); ing, g = ing.strip(), float(g)
+        f = per_of.get(ing) or by_label.get(ing) or by_name.get(ing)
+        if f is None:
+            problems.append(f"! {label}: 材料「{ing}」が見つかりません"); bad = True; continue
+        tot["g"] += g
+        for k in ("kcal", "p", "f", "c", "fib", "salt"):
+            tot[k] += (f.get(k) or 0) * g / 100
+    if bad:
+        continue
+    per = {k: round(tot[k] * 100 / tot["g"], 2 if k == "salt" else 1) for k in ("kcal", "p", "f", "c", "fib", "salt")}
+    extra.append({"id": "d:" + label, "n": label, "k": kana, "u": [[unit, round(tot["g"], 1)]], **per, "t": "d"})
+    if check:
+        print(f"{label}\t{unit} {round(tot['g'])}g\t{round(tot['kcal'])}kcal\tP{round(tot['p'], 1)} F{round(tot['f'], 1)} C{round(tot['c'], 1)} 塩{round(tot['salt'], 1)}")
 # ---- チェーン店の公式値（1食あたり）。重さがないので、100g を「1食」とみなして持つ
 for raw in (here / "chains.txt").read_text(encoding="utf-8").splitlines():
     if not raw.strip() or raw.startswith("#"):
@@ -148,7 +184,7 @@ for raw in (here / "jan.txt").read_text(encoding="utf-8").splitlines():
 names = [e["n"] for e in extra] + [cm["n"] for cm in common]
 for n in sorted(set(x for x in names if names.count(x) > 1)):
     problems.append(f"! {n}: 名前が重複しています")
-print("\n".join(p for p in problems if "材料" in p or "重複" in p), file=sys.stderr)
+print("\n".join(p for p in problems if "材料" in p or "重複" in p or "単位" in p or "JAN" in p), file=sys.stderr)
 print(f"extra={len(extra)} problems={sum(p.startswith('!') for p in problems)}", file=sys.stderr)
 
 if not check:

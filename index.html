@@ -505,6 +505,7 @@ function renderResults() {
       + (often.length ? `<p class="sec">${mealName(sheetCtx.meal)}によく食べる</p><div class="results">${often.map(foodRow).join('')}</div>` : '')
       + (recent.length ? `<p class="sec">最近使った食品</p><div class="results">${recent.map(foodRow).join('')}</div>` : '')
       + (mine.length ? `<p class="sec">マイ食品</p><div class="results">${mine.map(foodRow).join('')}</div>` : '')
+      + `<p class="sec">ざっくり外食（お店を決めずに目安で記録）</p><div class="chips">${GENRES.map(([q, l]) => `<button type="button" class="chip" data-act="genre" data-q="${esc(q)}">${l}</button>`).join('')}</div>`
       + (!recent.length && !mine.length ? '<div class="empty"><b>食品名を入力してください</b>ひらがなでも探せます（例：ごはん、とりむね、なっとう）</div>' : '');
     return;
   }
@@ -512,6 +513,9 @@ function renderResults() {
   box.innerHTML = status + (hits.length ? `<div class="results">${hits.map(foodRow).join('')}</div>` : '<div class="empty"><b>見つかりませんでした</b>別の呼び方で試すか、マイ食品として登録できます</div>')
     + `<button type="button" class="wide" data-act="new-custom" data-name="${esc(q)}" style="margin-top:12px">「${esc(q)}」をマイ食品として登録</button>`;
 }
+const GENRES = [['寿司', '🍣 寿司'], ['イタリアン', '🍝 イタリアン'], ['居酒屋', '🍺 居酒屋'], ['焼肉', '🥩 焼肉'], ['中華', '🥟 中華'], ['天ぷら', '🍤 天ぷら'],
+  ['しゃぶしゃぶ', '🍲 しゃぶしゃぶ'], ['すき焼き', '🍲 すき焼き'], ['お好み焼き', 'お好み焼き'], ['洋食', '🍳 洋食'], ['カフェ', '☕ カフェ'], ['韓国', '韓国'], ['エスニック', 'エスニック'], ['ファミレス', 'ファミレス'], ['ビュッフェ', 'ビュッフェ']];
+acts.genre = el => { const i = $('#q'); i.value = 'ざっくり ' + el.dataset.q; renderResults(); };
 function openSearch(meal, jan) {
   openSheet(`<h2>${mealName(meal)}に追加<button type="button" class="text" data-act="close">閉じる</button></h2>
     ${jan ? `<div class="janbar"><span>バーコード <b class="num">${esc(jan)}</b> はまだ登録がありません。食品を選ぶと覚えて、次からは読み取るだけで出ます。</span><button type="button" class="text" data-act="jan-forget">覚えない</button></div>` : ''}
