@@ -119,6 +119,7 @@ for raw in (here / "chains.txt").read_text(encoding="utf-8").splitlines():
     extra.append({"id": f"{'n' if nopfc else 's'}:{shop}:{menu}:{size}", "n": name, "k": f"{shop} {kana}", "u": [[unit, 100]],
                   "kcal": float(kcal), "p": 0.0 if nopfc else float(pp), "f": 0.0 if nopfc else float(ff), "c": 0.0 if nopfc else float(cc), "fib": fib, "salt": None if salt == "-" else float(salt), "t": "s", "shop": shop, **({"note": note} if note else {})})
 # ---- 市販のお菓子（メーカー公式の栄養成分表示。基準量あたりの値を100gあたりに換算）
+snack_ids = {}
 for raw in (here / "snacks.txt").read_text(encoding="utf-8").splitlines():
     if not raw.strip() or raw.startswith("#"):
         continue
@@ -127,11 +128,23 @@ for raw in (here / "snacks.txt").read_text(encoding="utf-8").splitlines():
     k100 = lambda v: round(float(v) * 100 / g, 2)
     units = [[u.rsplit("=", 1)[0], float(u.rsplit("=", 1)[1])] for u in us.split(",") if u.strip()]
     basis = next((u for u, x in units if abs(x - g) < 0.01), None)
+    orig = name
     if name in {cm["n"] for cm in common} | {e["n"] for e in extra}:
         name = f"{name}（{maker}）"  # 成分表の通称や他の品目と同じ名前なら、メーカー名を添える
+    snack_ids[(maker, orig)] = f"b:{maker}:{name}"
     extra.append({"id": f"b:{maker}:{name}", "n": name, "k": f"{maker} {kana}", "u": units,
                   "kcal": k100(kcal), "p": k100(pp), "f": k100(ff), "c": k100(cc), "fib": None if fib == "-" else k100(fib), "salt": round(float(salt) * 100 / g, 3),
                   "t": "b", "shop": maker, "basis": f"{basis}（{g:g}g）" if basis else f"{g:g}g"})
+# ---- バーコード（JANコード）→ 市販品の id
+jan = {}
+for raw in (here / "jan.txt").read_text(encoding="utf-8").splitlines():
+    if not raw.strip() or raw.startswith("#"):
+        continue
+    code, maker, nm = [x.strip() for x in raw.split(" ; ")]
+    if (maker, nm) in snack_ids:
+        jan[code] = snack_ids[(maker, nm)]
+    else:
+        problems.append(f"! JAN {code}: {maker} {nm} が見つかりません")
 names = [e["n"] for e in extra] + [cm["n"] for cm in common]
 for n in sorted(set(x for x in names if names.count(x) > 1)):
     problems.append(f"! {n}: 名前が重複しています")
@@ -145,5 +158,6 @@ if not check:
         "foods": [[f["id"], f["name"], f["kcal"], f["p"], f["f"], f["c"], f["fib"], f["salt"]] for f in foods],
         "common": common,
         "extra": extra,
+        "jan": jan,
     }
     (here.parent / "foods.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

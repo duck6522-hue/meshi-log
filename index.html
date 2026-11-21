@@ -174,6 +174,15 @@
   .wd.on .bar { background: linear-gradient(180deg, var(--p1), var(--p2)); }
   .wd small { position: absolute; bottom: -20px; font-size: 11px; font-weight: 700; color: var(--muted); }
   .wd.on small { color: var(--pt); font-weight: 900; }
+  .qrow { display: flex; gap: 8px; align-items: stretch; }
+  .qrow > input { flex: 1; min-width: 0; }
+  .qrow > button { flex: none; }
+  .scanbtn { width: 48px; padding: 0; display: grid; place-items: center; }
+  .janbar { display: flex; gap: 8px; align-items: center; justify-content: space-between; background: var(--card); border-radius: 14px; padding: 10px 12px; margin-bottom: 10px; font-size: 13px; }
+  .janbar > button { flex: none; white-space: nowrap; }
+  .scan { position: relative; border-radius: 16px; overflow: hidden; background: #000; aspect-ratio: 4 / 3; margin-bottom: 10px; }
+  .scan video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .scan .aim { position: absolute; left: 5%; right: 5%; top: 30%; bottom: 30%; border: 3px solid var(--p1); border-radius: 12px; box-shadow: 0 0 0 999px rgba(0,0,0,.35); pointer-events: none; }
   .week.month { gap: 2px; }
   .week.month .wd .bar { border-radius: 2px 2px 0 0; }
   .wd:disabled { opacity: 1; }
@@ -250,7 +259,7 @@ const toNum = v => { if (typeof v === 'number') return v; const s = String(v ?? 
 const numOr = (v, d) => { const n = toNum(v); return Number.isFinite(n) ? n : d; };
 
 /* ---------- 保存（この端末の localStorage だけ） ---------- */
-const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, fiber: 20, salt: 7.5, addExercise: true, recipe: { prefs: '', template: '' } }, meals: {}, exercise: {}, weights: {}, custom: [], sets: [], recent: [] });
+const fresh = () => ({ v: 1, settings: { kcal: 2000, weightGoal: null, pfc: { p: 20, f: 25, c: 55 }, fiber: 20, salt: 7.5, addExercise: true, recipe: { prefs: '', template: '' } }, meals: {}, exercise: {}, weights: {}, custom: [], sets: [], recent: [], barcodes: {} });
 const item = e => ({ foodId: e.foodId ?? null, name: String(e.name), grams: +e.grams, qty: numOr(e.qty, +e.grams), unit: String(e.unit || 'g'), unitG: numOr(e.unitG, 1),
   kcal: numOr(e.kcal, 0), p: numOr(e.p, 0), f: numOr(e.f, 0), c: numOr(e.c, 0), fib: numOr(e.fib, null), salt: numOr(e.salt, null) });
 const validItem = e => e && e.name && numOr(e.grams, -1) >= 0;
@@ -284,6 +293,7 @@ function normalize(s) {
     if (ok.length) f.exercise[d] = ok;
   }
   f.recent = (Array.isArray(s.recent) ? s.recent : []).filter(x => x && x.id != null).slice(0, 30);
+  for (const [k, v] of Object.entries(s.barcodes && typeof s.barcodes === 'object' ? s.barcodes : {})) if (/^\d{8,14}$/.test(k) && v != null) f.barcodes[k] = typeof v === 'number' ? v : String(v);
   return f;
 }
 function load() { try { const raw = localStorage.getItem(KEY); if (raw) return normalize(JSON.parse(raw)); } catch (e) {} return fresh(); }
@@ -319,7 +329,7 @@ async function loadDB() {
       kcal: x.kcal, p: x.p, f: x.f, c: x.c, fib: x.fib || 0, fibNA: x.fib == null, saltNA: x.salt == null, salt: x.salt || 0, units: x.u, common: true, est: true, key: norm(x.n + x.k), alts: x.k.split(/\s+/).map(norm) }));
     for (const fd of extra) map.set(fd.id, fd);
     list.unshift(...extra);
-    DB = { map, list, source: j.source, official: j.foods.length, extra: extra.length };
+    DB = { map, list, source: j.source, official: j.foods.length, extra: extra.length, jan: j.jan || {} };
     backfill();
   } catch (e) { dbError = true; }
   render();
@@ -367,12 +377,12 @@ acts.tab = el => { view = el.dataset.view; try { localStorage.setItem(VIEW_KEY, 
 
 /* ---------- シートとトースト ---------- */
 function openSheet(html, ctx, tall) {
-  sheetCtx = ctx; $('#sheetForm').innerHTML = html;
+  stopScan(); sheetCtx = ctx; $('#sheetForm').innerHTML = html;
   const d = $('#sheet'); d.classList.toggle('tall', !!tall);
   if (!d.open) d.showModal();
   d.scrollTop = 0;
 }
-function closeSheet() { const d = $('#sheet'); document.body.append($('#toast')); if (d.open) d.close(); sheetCtx = null; }
+function closeSheet() { stopScan(); const d = $('#sheet'); document.body.append($('#toast')); if (d.open) d.close(); sheetCtx = null; }
 acts.close = closeSheet;
 let toastTimer = 0;
 function toast(msg, undo) {
@@ -502,14 +512,104 @@ function renderResults() {
   box.innerHTML = status + (hits.length ? `<div class="results">${hits.map(foodRow).join('')}</div>` : '<div class="empty"><b>見つかりませんでした</b>別の呼び方で試すか、マイ食品として登録できます</div>')
     + `<button type="button" class="wide" data-act="new-custom" data-name="${esc(q)}" style="margin-top:12px">「${esc(q)}」をマイ食品として登録</button>`;
 }
-function openSearch(meal) {
+function openSearch(meal, jan) {
   openSheet(`<h2>${mealName(meal)}に追加<button type="button" class="text" data-act="close">閉じる</button></h2>
-    <input type="search" id="q" placeholder="食品名でさがす（例：ごはん、とりむね）" enterkeyhint="search" aria-label="食品名でさがす">
-    <div id="qRes"></div>`, { type: 'search', meal }, true);
+    ${jan ? `<div class="janbar"><span>バーコード <b class="num">${esc(jan)}</b> はまだ登録がありません。食品を選ぶと覚えて、次からは読み取るだけで出ます。</span><button type="button" class="text" data-act="jan-forget">覚えない</button></div>` : ''}
+    <div class="qrow"><input type="search" id="q" placeholder="食品名でさがす（例：ごはん、とりむね）" enterkeyhint="search" aria-label="食品名でさがす">
+      <button type="button" class="scanbtn" data-act="scan" aria-label="バーコードを読み取る" title="バーコード"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3M7 8v8M10 8v8M13 8v8M16 8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <div id="qRes"></div>`, { type: 'search', meal, jan }, true);
   renderResults();
 }
 acts['add-food'] = el => openSearch(el.dataset.meal);
-acts['pick-food'] = el => { const fd = foodById(parseId(el.dataset.id)); if (fd) openAmount(fd, { meal: sheetCtx && sheetCtx.meal || 'breakfast' }); };
+acts['pick-food'] = el => {
+  const fd = foodById(parseId(el.dataset.id)); if (!fd) return;
+  const jan = sheetCtx && sheetCtx.jan, meal = sheetCtx && sheetCtx.meal || 'breakfast';
+  if (jan) { state.barcodes[jan] = fd.id; save(); }
+  openAmount(fd, { meal });
+  if (jan) toast('バーコードを覚えました');
+};
+acts['jan-forget'] = () => { if (sheetCtx) sheetCtx.jan = null; const b = $('.janbar'); if (b) b.remove(); };
+
+/* ---------- バーコード ---------- */
+// 対応ブラウザ（Android の Chrome など）は標準の BarcodeDetector、ない端末（iPhone の Safari など）は同梱の ZXing で読む。
+// 映像は端末の中で処理するだけで、どこにも送らない。
+let scan = null;
+const janOk = c => { // EAN-13 / EAN-8 / UPC-A のチェックディジットを確かめる
+  if (!/^(\d{8}|\d{12}|\d{13})$/.test(c)) return false;
+  const d = c.split('').map(Number), last = d.pop();
+  const sum = d.reverse().reduce((a, x, i) => a + x * (i % 2 ? 1 : 3), 0);
+  return (10 - sum % 10) % 10 === last;
+};
+function stopScan() {
+  if (!scan) return;
+  scan.stop = true; clearTimeout(scan.timer);
+  if (scan.stream) scan.stream.getTracks().forEach(t => t.stop());
+  scan = null;
+}
+const loadScript = src => new Promise((ok, ng) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ng; document.head.append(s); });
+function openScan(meal) {
+  openSheet(`<h2>バーコードで探す<button type="button" class="text" data-act="close">閉じる</button></h2>
+    <div class="scan"><video id="scanVideo" playsinline muted></video><i class="aim" aria-hidden="true"></i></div>
+    <p class="note" id="scanMsg" aria-live="polite">カメラを起動しています…</p>
+    <div class="qrow"><input type="text" id="janIn" inputmode="numeric" autocomplete="off" placeholder="数字で入力（例：4514603010015）" aria-label="バーコードの数字">
+      <button type="button" data-act="jan-go">探す</button></div>
+    <p class="note">メーカー公式のバーコード一覧がある飲料（アサヒ飲料・伊藤園）は、最初から登録済みです。見つからない商品は、一度食品を選ぶと次から読み取るだけで出ます。</p>`, { type: 'scan', meal }, true);
+  startScan();
+}
+async function startScan() {
+  const msg = t => { const m = $('#scanMsg'); if (m) m.textContent = t; };
+  const me = scan = { stop: false };
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { msg('この端末・ブラウザではカメラを使えません。数字で入力してください。'); return; }
+  try {
+    me.stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false });
+  } catch (e) { if (scan === me) msg('カメラを使えませんでした（許可されていないか、ほかのアプリが使用中です）。数字で入力してください。'); return; }
+  if (me.stop) { me.stream.getTracks().forEach(t => t.stop()); return; }
+  const v = $('#scanVideo'); v.srcObject = me.stream; try { await v.play(); } catch (e) {}
+  let detect;
+  try {
+    if ('BarcodeDetector' in window && (await BarcodeDetector.getSupportedFormats()).includes('ean_13')) {
+      const bd = new BarcodeDetector({ formats: ['ean_13', 'ean_8', 'upc_a'] });
+      detect = async () => { const r = await bd.detect(v); return r.length ? r[0].rawValue : null; };
+    } else {
+      if (!window.ZXing) await loadScript('vendor/zxing-library.min.js');
+      const Z = window.ZXing, hints = new Map(), reader = new Z.MultiFormatReader(), cv = document.createElement('canvas');
+      hints.set(Z.DecodeHintType.POSSIBLE_FORMATS, [Z.BarcodeFormat.EAN_13, Z.BarcodeFormat.EAN_8, Z.BarcodeFormat.UPC_A]);
+      hints.set(Z.DecodeHintType.TRY_HARDER, true); reader.setHints(hints);
+      detect = async () => { // 画面中央の横長の帯だけを読む（速くて誤読も減る）
+        const w = v.videoWidth, h = v.videoHeight; if (!w) return null;
+        const cw = Math.round(w * 0.9), ch = Math.round(h * 0.4); cv.width = cw; cv.height = ch;
+        cv.getContext('2d', { willReadFrequently: true }).drawImage(v, (w - cw) / 2, (h - ch) / 2, cw, ch, 0, 0, cw, ch);
+        try { return reader.decode(new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.HTMLCanvasElementLuminanceSource(cv)))).getText(); } catch (e) { return null; }
+      };
+    }
+  } catch (e) { msg('読み取りの準備ができませんでした。数字で入力してください。'); return; }
+  msg('枠の中にバーコードを写してください');
+  let last = null;
+  const tick = async () => {
+    if (me.stop) return;
+    let code = null; try { code = await detect(); } catch (e) {}
+    if (me.stop) return;
+    if (code && janOk(code)) {
+      if (code === last) { const meal = sheetCtx && sheetCtx.meal; stopScan(); if (navigator.vibrate) navigator.vibrate(60); findJan(code, meal); return; }
+      last = code; // 同じ数字を2回続けて読めたら確定（読み間違いを防ぐ）
+    }
+    me.timer = setTimeout(tick, 120);
+  };
+  tick();
+}
+function findJan(code, meal) {
+  code = String(code).replace(/\D/g, '');
+  if (code.length === 12) code = '0' + code; // UPC-A は先頭に0を付けた EAN-13 として扱う
+  const id = state.barcodes[code] ?? (DB && DB.jan[code]), fd = id != null ? foodById(id) : null;
+  if (fd) { openAmount(fd, { meal: meal || 'breakfast' }); return; }
+  openSearch(meal || 'breakfast', code);
+}
+acts.scan = () => openScan(sheetCtx && sheetCtx.meal || 'breakfast');
+acts['jan-go'] = () => {
+  const c = ($('#janIn').value || '').normalize('NFKC').replace(/\D/g, '');
+  if (!janOk(c)) { toast('バーコードの数字を確かめてください（8けたか13けた）'); return; }
+  findJan(c, sheetCtx && sheetCtx.meal);
+};
 submits.search = () => { $('#q').blur(); };
 
 /* ---------- 量を決めて記録する ---------- */
